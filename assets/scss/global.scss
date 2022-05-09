@@ -1,1 +1,28 @@
-$green: blue;
+html,
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #e5e5e5;
+}
+
+header {
+  min-height: 100px;
+}
+
+footer {
+  min-height: 490px;
+  margin-top: auto;
+}
+
+body {
+  height: 100vh;
+  margin: 0;
+}
+
+.main-btn{
+  background-color: black;
+  color: white;
+  padding: 1rem 3rem;
+  font-size: 18px;
+  line-height: 21px;
+  font-weight: 700;
+}
