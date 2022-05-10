@@ -54,9 +54,9 @@
           <a-tabs class="custom-tab" default-active-key="1" @change="callback">
             <a-tab-pane class="flex-col-center" key="1" tab="Condon">
               <div class="sample-grid">
-                <div>owo</div>
-                <div>owo</div>
-                <div>owo</div>
+                <ItemCard :location="alias" :region="markham" />
+                <ItemCard />
+                <ItemCard />
               </div>
               <a class="main-btn">View All</a>
             </a-tab-pane>
@@ -74,15 +74,17 @@
 </template>
 
 <script>
+import ItemCard from '~/components/ItemCard.vue'
 export default {
-  data() {
-    return {}
-  },
-  methods: {
-    callback(key) {
-      console.log(key)
+    data() {
+        return {};
     },
-  },
+    methods: {
+        callback(key) {
+            console.log(key);
+        },
+    },
+    components: { ItemCard }
 }
 </script>
 
@@ -192,6 +194,7 @@ export default {
   grid-template-columns: 1fr 1fr 1fr;
   gap: 27px;
   width: 100%;
+  margin: 2rem auto;
 }
 
 .flex-col-center {
@@ -199,6 +202,14 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+h1{
+  font-size: 38px;
+  line-height: 45px;
+  color: $navy;
+  font-weight: 900;
+  text-align: center;
 }
 
 @media all and (max-width: $lg) {
@@ -229,6 +240,9 @@ export default {
         text-align: center;
       }
     }
+  }
+  .sample-grid{
+    grid-template-columns: 1fr;
   }
 }
 
