@@ -2,7 +2,7 @@
   <div>
     <section class="sec-landing">
       <div class="sec-content">
-        <img src="~/assets/img/home-logo.png" alt="logo" />
+        <img id="home-logo" src="~/assets/img/home-logo.png" alt="logo" />
         <p>Client First, Client’s Need Is Our # 1 Priority</p>
         <a class="main-btn">Learn More</a>
       </div>
@@ -24,50 +24,56 @@
         </div>
       </div>
     </section>
-    <section class="sec-subscribe">
-      <div class="left-block">
-        <img
-          class="img-fluid"
-          src="~/assets/img/3d-illustration-residential-building-exterior.png"
-          alt="building"
-        />
-      </div>
-      <form>
-        <label for="email">
-          Subscribe for our lastest newsletter, don’t miss the best one.
-        </label>
-        <div>
-          <input
-            name="email"
-            type="email"
-            required
-            placeholder="example@email.com"
-          />
-          <input name="submit" type="submit" value="SUBSCRIBE" />
-        </div>
-      </form>
-    </section>
-    <section class="sec-pre-construction">
+    <Subscription />
+    <ItemDisplay title="pre-construction" />
+    <section class="sec-slogen-1">
+      <img src="~/assets/img/building-bg-blue.png" alt="" class="fluid-img" />
       <div class="wrapper">
-        <h1>Pre-Construction</h1>
-        <div>
-          <a-tabs class="custom-tab" default-active-key="1" @change="callback">
-            <a-tab-pane class="flex-col-center" key="1" tab="Condon">
-              <div class="sample-grid">
-                <ItemCard :location="alias" :region="markham" />
-                <ItemCard />
-                <ItemCard />
-              </div>
-              <a class="main-btn">View All</a>
-            </a-tab-pane>
-            <a-tab-pane key="2" tab="House" force-render>
-              Content of Tab Pane 2
-            </a-tab-pane>
-            <a-tab-pane key="3" tab="Townhouse">
-              Content of Tab Pane 3
-            </a-tab-pane>
-          </a-tabs>
+        <h2>Build a culture of real estate investment</h2>
+        <h2>Live an exquisite life</h2>
+        <h2>Enhance the quality of life</h2>
+        <h2>One-stop-shop for Worry-free services</h2>
+      </div>
+    </section>
+    <ItemDisplay title="RESALES" />
+    <section class="sec-slogen-2">
+      <div class="wrapper flex-col-center">
+        <h2>We build a culture of real estate investment.</h2>
+        <h5>Calvin Deng</h5>
+        <p>CEO/Founder, Broker of Record, FRI, BEc, MBA</p>
+      </div>
+    </section>
+    <section class="sec-landing-news">
+      <div class="wrapper flex-col-center">
+        <h6>Toronto Real Estate Company</h6>
+        <h1>Landing news</h1>
+        <div class="news-grid">
+          <ItemCard
+            img="blog-demo-img-01.jpg"
+            title="How to invest home"
+            content="Lorem ipsum dolor sit amet"
+            hideTag
+          />
+          <ItemCard
+            img="blog-demo-img-02.jpg"
+            title="How to invest home"
+            content="Lorem ipsum dolor sit amet"
+            hideTag
+          />
+          <ItemCard
+            img="blog-demo-img-03.jpg"
+            title="How to invest home"
+            content="Lorem ipsum dolor sit amet"
+            hideTag
+          />
+          <ItemCard
+            img="blog-demo-img-04.jpg"
+            title="How to invest home"
+            content="Lorem ipsum dolor sit amet"
+            hideTag
+          />
         </div>
+        <a class="main-btn">Learn More</a>
       </div>
     </section>
   </div>
@@ -75,16 +81,17 @@
 
 <script>
 import ItemCard from '~/components/ItemCard.vue'
+import Subscription from '~/components/Subscription.vue'
 export default {
-    data() {
-        return {};
+  data() {
+    return {}
+  },
+  methods: {
+    callback(key) {
+      console.log(key)
     },
-    methods: {
-        callback(key) {
-            console.log(key);
-        },
-    },
-    components: { ItemCard }
+  },
+  components: { ItemCard, Subscription },
 }
 </script>
 
@@ -99,6 +106,7 @@ export default {
   background-repeat: no-repeat;
   width: 100%;
   padding: 10%;
+  min-height: 100vh;
 }
 .sec-content {
   display: flex;
@@ -140,63 +148,6 @@ export default {
   }
 }
 
-.sec-subscribe {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  background-color: $navy;
-  color: white;
-  margin-top: 2rem;
-  .left-block {
-    position: relative;
-    img {
-      position: absolute;
-      bottom: 0;
-      left: -45px;
-    }
-  }
-  form {
-    padding: 2rem 0;
-    label {
-      font-size: 20px;
-      line-height: 27px;
-      margin-bottom: 3rem;
-    }
-    div {
-      display: grid;
-      grid-template-columns: 2.5fr 1fr;
-      margin-top: 0.75rem;
-      max-width: 545px;
-      input {
-        border: 2px solid white;
-      }
-      input[type='email'] {
-        color: #b4b4b4;
-        padding-left: 1rem;
-        font-size: 16px;
-        line-height: 27px;
-      }
-      input[type='submit'] {
-        background-color: $navy;
-        font-size: 16px;
-        font-weight: 700;
-        padding: 0.5rem 1.5rem;
-      }
-    }
-  }
-}
-
-.sec-pre-construction {
-  padding: 7rem 0;
-}
-
-.sample-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 27px;
-  width: 100%;
-  margin: 2rem auto;
-}
-
 .flex-col-center {
   display: flex;
   flex-direction: column;
@@ -204,7 +155,7 @@ export default {
   align-items: center;
 }
 
-h1{
+h1 {
   font-size: 38px;
   line-height: 45px;
   color: $navy;
@@ -212,9 +163,82 @@ h1{
   text-align: center;
 }
 
+h2 {
+  font-size: 34px;
+  font-weight: 900;
+  line-height: 39.84px;
+  color: white;
+}
+
+.sec-slogen-1 {
+  display: flex;
+  flex-direction: row-reverse;
+  background-color: $navy;
+  position: relative;
+  .fluid-img {
+    max-width: 50%;
+  }
+  .wrapper {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    h2 {
+      margin: 0;
+    }
+    h2:nth-child(odd) {
+      color: #b3b3b3;
+    }
+  }
+}
+
+h5 {
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: white;
+}
+
+.sec-slogen-2 {
+  background-color: $navy;
+  .wrapper {
+    color: white;
+    padding: 5rem 0 3rem;
+  }
+}
+
+h6 {
+  font-size: 18px;
+  line-height: 21px;
+}
+
+.sec-landing-news {
+  padding: 4rem 0;
+  color: $navy;
+  h6 {
+    color: $navy;
+  }
+}
+.news-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 30px;
+  margin: 3rem 0;
+}
+
 @media all and (max-width: $lg) {
-  .sec-subscribe {
-    grid-template-columns: 1.2fr 0.8fr;
+  footer {
+    .sec-subscribe {
+      grid-template-columns: 1.2fr 0.8fr;
+    }
+    .news-grid {
+      grid-template-columns: 1fr 1fr;
+    }
   }
 }
 
@@ -241,7 +265,7 @@ h1{
       }
     }
   }
-  .sample-grid{
+  .sample-grid {
     grid-template-columns: 1fr;
   }
 }

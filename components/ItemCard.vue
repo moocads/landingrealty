@@ -1,16 +1,16 @@
 <template>
   <div class="container">
     <img
-      :class="{ hovered: hover }"
+      :class="{ hovered: hover || hideTag }"
       class="image"
       :src="require(`@/assets/img/${img}`)"
-      :alt="location"
+      :alt="title"
     />
     <div class="details" @mouseover="hover = true" @mouseleave="hover = false">
-      <span class="region-tag">
-        {{ region }}
+      <span class="region-tag" v-if="!hideTag">
+        {{ tag }}
       </span>
-      <div class="eye" v-if="hover">
+      <div class="eye" v-if="hover && !hideTag">
         <svg
           width="41"
           height="30"
@@ -35,8 +35,8 @@
         </svg>
       </div>
       <div class="info">
-        <h3>{{ location }}</h3>
-        <p>$ {{ price }}</p>
+        <h3 :class="{smallTitle: hideTag}">{{ title }}</h3>
+        <p><span v-if="!hideTag">$ </span>{{ content }}</p>
       </div>
     </div>
   </div>
@@ -46,15 +46,17 @@
 export default {
   props: {
     img: { default: 'sample-img.png', type: String },
-    region: { default: 'Toronto', type: String },
-    location: { default: 'Markham', type: String },
-    price: { default: '10,000,000', type: String },
+    tag: String,
+    title: String,
+    content: String,
+    hideTag: { type: Boolean, default: false },
   },
   data() {
     return {
       hover: false,
     }
   },
+  methods: {},
 }
 </script>
 
@@ -67,9 +69,6 @@ export default {
   width: 100%;
   height: auto;
   filter: grayscale(100);
-}
-.image:hover {
-  filter: grayscale(0);
 }
 .details {
   position: absolute;
@@ -123,5 +122,9 @@ export default {
 }
 .hovered {
   filter: grayscale(0);
+}
+.smallTitle{
+  font-size: 18px!important;
+  line-height: 21px;
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <nav>
+  <nav :class="{ homeNav: homeLogo }">
     <div class="logo-container">
       <img src="~/assets/img/nav-logo.png" alt="" />
     </div>
@@ -14,10 +14,35 @@
 </template>
 
 <script>
+export default {
+  data() {
+    return {
+      homeLogo: false,
+    }
+  },
+  methods: {
+    homeLogoListener() {
+      if ($nuxt.$route.path === '/') {
+        this.homeLogo = true
+        if (window.scrollY >= 345) {
+          this.homeLogo = false
+        }
+      } else {
+        this.homeLogo = false
+      }
+    },
+  },
+  beforeMount() {
+    window.addEventListener('load', this.homeLogoListener)
+    window.addEventListener('scroll', this.homeLogoListener)
+  },
+  beforeDestroy() {
+    window.removeEventListener('scroll', this.homeLogoListener)
+  },
+}
 </script>
 
-
-<style lang='scss' scoped>
+<style lang="scss" scoped>
 nav {
   display: flex;
   justify-content: space-between;
@@ -28,14 +53,12 @@ nav {
   z-index: 999;
   width: 100%;
   min-height: 100px;
-}
-.navy{
   background-color: $navy;
 }
 .nav-items {
   display: flex;
 }
-.nav-items>a{
+.nav-items > a {
   color: white;
   text-transform: uppercase;
   padding: 20px;
@@ -49,13 +72,12 @@ nav {
 .logo-container > img {
   width: auto;
   height: 100%;
-  opacity: 0;
 }
 // for scrolled navbar
-.nav-display{
-  background: $navy;
-  img{
-    opacity: 1;
+.homeNav {
+  background: transparent;
+  img {
+    opacity: 0;
   }
 }
 </style>
