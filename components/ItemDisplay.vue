@@ -6,16 +6,8 @@
         <a-tabs class="custom-tab" default-active-key="1" @change="callback">
           <a-tab-pane class="flex-col-center" key="1" tab="Condon">
             <div class="sample-grid">
-              <ItemCard
-                title="alias"
-                tag="markham"
-                content="20000"
-              />
-              <ItemCard
-                title="FREDERICK"
-                tag="North York"
-                content="20000"
-              />
+              <ItemCard title="alias" tag="markham" content="20000" />
+              <ItemCard title="FREDERICK" tag="North York" content="20000" />
               <ItemCard
                 title="Upper east"
                 tag="Richmond hill"
@@ -25,10 +17,26 @@
             <a class="main-btn">View All</a>
           </a-tab-pane>
           <a-tab-pane key="2" tab="House" force-render>
-            Content of Tab Pane 2
+            <div class="sample-grid">
+              <ItemCard title="alias" tag="markham" content="20000" />
+              <ItemCard title="FREDERICK" tag="North York" content="20000" />
+              <ItemCard
+                title="Upper east"
+                tag="Richmond hill"
+                content="20000"
+              />
+            </div>
           </a-tab-pane>
           <a-tab-pane key="3" tab="Townhouse">
-            Content of Tab Pane 3
+            <div class="sample-grid">
+              <ItemCard title="alias" tag="markham" content="20000" />
+              <ItemCard title="FREDERICK" tag="North York" content="20000" />
+              <ItemCard
+                title="Upper east"
+                tag="Richmond hill"
+                content="20000"
+              />
+            </div>
           </a-tab-pane>
         </a-tabs>
       </div>
@@ -77,4 +85,11 @@ h1 {
   text-align: center;
   text-transform: uppercase;
 }
+
+@media all and (max-width: $md) {
+  .sample-grid{
+    grid-template-columns: 1fr;
+  }
+}
+
 </style>

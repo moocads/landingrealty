@@ -156,6 +156,7 @@ ul.contact-list {
   display: grid;
   grid-template-columns: 1fr 3.25fr;
   gap: 0.25rem;
+  margin-bottom: 1rem;
   img {
     max-width: 60px;
     max-height: 60px;
@@ -181,9 +182,44 @@ ul.links {
   footer {
     .wrapper {
       grid-template-columns: 1fr 1fr;
+      section:not(:first-child) {
+        margin-top: 0;
+      }
     }
     .news-block {
       grid-template-columns: 1fr 2fr;
+    }
+  }
+}
+@media all and (max-width: $md) {
+  footer {
+    padding-bottom: 4rem;
+    .wrapper {
+      grid-template-columns: 1fr;
+    }
+    .news {
+      display: flex;
+      .news-block {
+        grid-template-columns: auto 1fr;
+      }
+    }
+
+    ul.links {
+      display: flex;
+      * {
+        margin-right: 2rem;
+      }
+    }
+  }
+}
+@media all and (max-width: $sm) {
+  footer {
+    ul.links {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      * {
+        margin-right: 0;
+      }
     }
   }
 }

@@ -36,13 +36,17 @@ body {
   }
 }
 
+.container{
+  margin-top: 100px;
+}
+
 .img-fluid {
   width: 100%;
   height: auto;
   object-fit: cover;
 }
 
-/*AntDV*/
+/*Ant*/
 .custom-tab {
   .ant-tabs-tab{
     font-size: 18px;

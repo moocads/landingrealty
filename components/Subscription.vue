@@ -37,6 +37,7 @@
       position: absolute;
       bottom: 0;
       left: -45px;
+      width: 80%;
     }
   }
   form {
@@ -66,6 +67,49 @@
         font-weight: 700;
         padding: 0.5rem 1.5rem;
       }
+    }
+  }
+}
+
+@media all and (max-width: $lg) {
+  footer {
+    .sec-subscribe {
+      grid-template-columns: 1.2fr 0.8fr;
+      width: 100%;
+    }
+  }
+}
+
+@media all and (max-width: $md) {
+  .sec-subscribe {
+    display: flex;
+    flex-direction: column-reverse;
+    .left-block {
+      position: static;
+      display: flex;
+      justify-content: center;
+      img {
+        position: static;
+      }
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      label {
+        margin-bottom: 0.5rem;
+        text-align: center;
+      }
+    }
+  }
+}
+
+@media all and (max-width: $sm) {
+  .sec-subscribe{
+    form{
+      width: 90vw;
+      margin: auto;
     }
   }
 }

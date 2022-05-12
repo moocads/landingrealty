@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="card-container">
     <img
       :class="{ hovered: hover || hideTag }"
       class="image"
@@ -61,7 +61,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.container {
+.card-container {
   position: relative;
   width: 100%;
 }

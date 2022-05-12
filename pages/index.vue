@@ -4,7 +4,7 @@
       <div class="sec-content">
         <img id="home-logo" src="~/assets/img/home-logo.png" alt="logo" />
         <p>Client First, Client’s Need Is Our # 1 Priority</p>
-        <a class="main-btn">Learn More</a>
+        <NuxtLink to="/about" class="main-btn">Learn More</NuxtLink>
       </div>
     </section>
     <section class="sec-intro">
@@ -20,7 +20,7 @@
             pre-construction sales, rentals, property management, and real
             estate investment.
           </p>
-          <a class="main-btn">Learn More</a>
+          <NuxtLink to="/about" class="main-btn">Learn More</NuxtLink>
         </div>
       </div>
     </section>
@@ -73,7 +73,7 @@
             hideTag
           />
         </div>
-        <a class="main-btn">Learn More</a>
+        <NuxtLink to="news" class="main-btn">Learn More</NuxtLink>
       </div>
     </section>
   </div>
@@ -85,11 +85,6 @@ import Subscription from '~/components/Subscription.vue'
 export default {
   data() {
     return {}
-  },
-  methods: {
-    callback(key) {
-      console.log(key)
-    },
   },
   components: { ItemCard, Subscription },
 }
@@ -138,7 +133,7 @@ export default {
     text-align: center;
   }
   p {
-    font-size: 18px;
+    font-size: 16px;
     line-height: 27px;
   }
   h3 {
@@ -209,6 +204,7 @@ h5 {
   .wrapper {
     color: white;
     padding: 5rem 0 3rem;
+    text-align: center;
   }
 }
 
@@ -229,16 +225,12 @@ h6 {
   grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 30px;
   margin: 3rem 0;
+  width: 100%;
 }
 
 @media all and (max-width: $lg) {
-  footer {
-    .sec-subscribe {
-      grid-template-columns: 1.2fr 0.8fr;
-    }
-    .news-grid {
-      grid-template-columns: 1fr 1fr;
-    }
+  .sec-subscribe {
+    grid-template-columns: 1.2fr 0.8fr;
   }
 }
 
@@ -268,8 +260,25 @@ h6 {
   .sample-grid {
     grid-template-columns: 1fr;
   }
+  .sec-slogen-1 {
+    .fluid-img {
+      max-width: 80%;
+    }
+  }
+  .news-grid {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 @media all and (max-width: $sm) {
+  .sec-slogen-1 {
+    height: 550px;
+    .fluid-img {
+      max-width: 100%;
+    }
+  }
+  .news-grid {
+    grid-template-columns: 1fr;
+  }
 }
 </style>
