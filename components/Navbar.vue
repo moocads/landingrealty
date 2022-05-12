@@ -9,7 +9,14 @@
     <div class="nav-items">
       <NuxtLink to="/">home</NuxtLink>
       <NuxtLink to="/about">about</NuxtLink>
-      <NuxtLink to="/projects">projects</NuxtLink>
+      <div class="dropdown-wrapper">
+        <a class="dropdown-link"> projects </a>
+        <div class="dropdown-content">
+          <NuxtLink to="/pre-construction">Pre-construction</NuxtLink>
+          <NuxtLink to="/resales">Resales</NuxtLink>
+        </div>
+      </div>
+
       <NuxtLink to="/news">news</NuxtLink>
       <NuxtLink to="/contact">contact</NuxtLink>
     </div>
@@ -22,11 +29,30 @@
     <div class="mobile-nav-mask" :class="{ open: mobileNavOpen }"></div>
     <div class="mobile-nav-wrapper" :class="{ open: mobileNavOpen }">
       <div class="mobile-nav-items">
-        <NuxtLink to="/">home</NuxtLink>
-        <NuxtLink to="/about">about</NuxtLink>
-        <NuxtLink to="/projects">projects</NuxtLink>
-        <NuxtLink to="/news">news</NuxtLink>
-        <NuxtLink to="/contact">contact</NuxtLink>
+        <div @click="mobileNavOpen = false">
+          <NuxtLink to="/">home</NuxtLink>
+        </div>
+        <div @click="mobileNavOpen = false">
+          <NuxtLink to="/about">about</NuxtLink>
+        </div>
+
+        <div class="mobile-dropdown-wrapper">
+          <a @click="mobileProjectTab = !mobileProjectTab" class="dropdown-link">projects</a>
+          <div class="mobile-dropdown-content" :class="{open: mobileProjectTab}">
+            <div @click="mobileNavOpen = false">
+              <NuxtLink to="/pre-construction">pre-construction</NuxtLink>
+            </div>
+            <div @click="mobileNavOpen = false">
+              <NuxtLink to="/resales">resales</NuxtLink>
+            </div>
+          </div>
+        </div>
+        <div @click="mobileNavOpen = false">
+          <NuxtLink to="/news">news</NuxtLink>
+        </div>
+        <div @click="mobileNavOpen = false">
+          <NuxtLink to="/contact">contact</NuxtLink>
+        </div>
       </div>
     </div>
   </nav>
@@ -38,6 +64,8 @@ export default {
     return {
       homeLogo: false,
       mobileNavOpen: false,
+      projectHover: false,
+      mobileProjectTab: false,
     }
   },
   methods: {
@@ -53,6 +81,9 @@ export default {
     },
     toggleNav() {
       this.mobileNavOpen = !this.mobileNavOpen
+    },
+    closeNav() {
+      this.mobileNavOpen = false
     },
   },
   beforeMount() {
@@ -86,9 +117,6 @@ nav {
   width: 100%;
   min-height: 100px;
   background-color: $navy;
-  .nav-items {
-    display: flex;
-  }
   .logo-container {
     height: 50px;
   }
@@ -97,7 +125,26 @@ nav {
     height: 100%;
   }
 }
-
+.dropdown-wrapper {
+  position: relative;
+  display: inline-block;
+}
+.dropdown-link::after {
+  content: '▼';
+  font-size: 10px;
+  padding-left: 0.5rem;
+}
+.dropdown-content {
+  background-color: $navy;
+  position: absolute;
+  display: none;
+  flex-direction: column;
+  z-index: 1;
+  padding-top: 30px;
+}
+.dropdown-wrapper:hover .dropdown-content {
+  display: flex;
+}
 // for scrolled navbar
 .homeNav {
   background: transparent;
@@ -165,20 +212,32 @@ nav {
   height: 100%;
   flex-direction: column;
   display: none;
-  min-width: 300px;
-  padding: 10rem 10vw 0 0;
+  width: 100vw;
+  justify-content: center;
   z-index: 100;
 }
 .mobile-nav-items {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1.5rem;
-  justify-items: end;
-  a {
-    padding: 2rem 0;
+  justify-items: center;
+  * {
     font-size: 20px;
+    margin: 1rem 0;
   }
 }
+.mobile-dropdown-wrapper {
+  text-align: center;
+}
+.mobile-dropdown-content {
+  display: none;
+  div{
+    margin: 1rem 0;
+  }
+  &.open {
+    display: block;
+  }
+}
+
 @media all and (max-width: $md) {
   nav {
     .nav-items {

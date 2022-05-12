@@ -10,32 +10,35 @@
       <span class="region-tag" v-if="!hideTag">
         {{ tag }}
       </span>
-      <div class="eye" v-if="hover && !hideTag">
-        <svg
-          width="41"
-          height="30"
-          viewBox="0 0 45 34"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M42.4353 14.7757C43.451 16.1043 43.451 17.8979 42.4353 19.2243C39.236 23.4007 31.5603 32 22.5989 32C13.6374 32 5.96172 23.4007 2.76244 19.2243C2.26826 18.5881 2 17.8055 2 17C2 16.1945 2.26826 15.4119 2.76244 14.7757C5.96172 10.5993 13.6374 2 22.5989 2C31.5603 2 39.236 10.5993 42.4353 14.7757V14.7757Z"
-            stroke="#C8C8C8"
-            stroke-width="3"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-          <path
-            d="M22.599 23.4284C26.1494 23.4284 29.0276 20.5503 29.0276 16.9999C29.0276 13.4495 26.1494 10.5713 22.599 10.5713C19.0486 10.5713 16.1704 13.4495 16.1704 16.9999C16.1704 20.5503 19.0486 23.4284 22.599 23.4284Z"
-            stroke="#C8C8C8"
-            stroke-width="3"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-        </svg>
-      </div>
+      <Transition>
+        <div class="eye" v-if="hover && !hideTag">
+          <svg
+            width="41"
+            height="30"
+            viewBox="0 0 45 34"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M42.4353 14.7757C43.451 16.1043 43.451 17.8979 42.4353 19.2243C39.236 23.4007 31.5603 32 22.5989 32C13.6374 32 5.96172 23.4007 2.76244 19.2243C2.26826 18.5881 2 17.8055 2 17C2 16.1945 2.26826 15.4119 2.76244 14.7757C5.96172 10.5993 13.6374 2 22.5989 2C31.5603 2 39.236 10.5993 42.4353 14.7757V14.7757Z"
+              stroke="#C8C8C8"
+              stroke-width="3"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M22.599 23.4284C26.1494 23.4284 29.0276 20.5503 29.0276 16.9999C29.0276 13.4495 26.1494 10.5713 22.599 10.5713C19.0486 10.5713 16.1704 13.4495 16.1704 16.9999C16.1704 20.5503 19.0486 23.4284 22.599 23.4284Z"
+              stroke="#C8C8C8"
+              stroke-width="3"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </div>
+      </Transition>
+
       <div class="info">
-        <h3 :class="{smallTitle: hideTag}">{{ title }}</h3>
+        <h3 :class="{ smallTitle: hideTag }">{{ title }}</h3>
         <p><span v-if="!hideTag">$ </span>{{ content }}</p>
       </div>
     </div>
@@ -96,6 +99,7 @@ export default {
     background: rgba(11, 44, 66, 0.73);
     border-radius: 100%;
     color: #c8c8c8;
+    transition: 0.3s;
   }
   .info {
     position: absolute;
@@ -123,8 +127,14 @@ export default {
 .hovered {
   filter: grayscale(0);
 }
-.smallTitle{
-  font-size: 18px!important;
+.smallTitle {
+  font-size: 18px !important;
   line-height: 21px;
+}
+
+// vue transition
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.5s ease;
 }
 </style>

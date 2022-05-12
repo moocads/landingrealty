@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <section class="header-img">
-      <img src="~/assets/img/about-img.jpg" alt="" />
+      <img class="img-fluid" src="~/assets/img/about-img.jpg" alt="" />
     </section>
     <section class="about">
       <div class="wrapper">
