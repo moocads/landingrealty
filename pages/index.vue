@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Preload v-if="preload" />
+    <Preload v-if="!$store.state.preloaded" />
     <section class="sec-landing">
       <div class="sec-content">
         <img id="home-logo" src="/img/logo/logo-text.svg" alt="logo" />
@@ -105,11 +105,6 @@ export default {
     }
   },
   components: { ItemCard, Subscription },
-  created() {
-    setTimeout(() => {
-      this.preload = false
-    }, 10000)
-  }
 }
 </script>
 

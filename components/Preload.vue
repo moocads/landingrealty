@@ -1,5 +1,10 @@
 <template>
 <div id="preload" scroll="no">
+  <div class="skipContainer">
+    <span class="skip" @click="skipPreload">
+      SKIP >>
+    </span>
+  </div>
   <div class="elementContainer">
     <svg class="logoSVG" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
       viewBox="0 0 432 432" style="enable-background:new 0 0 432 432;" xml:space="preserve">
@@ -75,6 +80,20 @@
 
 </div>
 </template>
+<script>
+export default {
+  created() {
+    setTimeout(() => {
+      this.$store.commit('setPreload', true)
+    }, 10000)
+  },
+  methods: {
+    skipPreload () {
+      this.$store.commit('setPreload', true)
+    }
+  }
+}
+</script>
 <style lang="scss" scoped>
 #preload {
   position: fixed;
@@ -85,6 +104,29 @@
   // mix-blend-mode: multiply;
   animation: fade 2s ease-in 8s forwards;
 }
+
+.skipContainer {
+  position: fixed;
+  top: 30px;
+  right: 30px;
+  z-index: 1001;
+  opacity: 0;
+  animation: fadeIn 0.5s ease-in 2s forwards, fade 0.5s ease-in 8s forwards;
+
+  .skip {
+    transition: all 0.3s ease;
+    opacity: 0.3;
+    font-weight: 700;
+    color: white;
+    font-size: 14px;
+  
+    &:hover {
+      cursor: pointer;
+      opacity: 0.8;
+    }
+  }
+}
+
 
 .elementContainer {
   background: linear-gradient(105.4deg, #0B2C42 21.18%, rgba(11, 44, 66, 0.48) 91.93%);
@@ -151,6 +193,14 @@
   }
   100% {
     opacity: 0;
+  }
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
 </style>
