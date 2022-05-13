@@ -31,19 +31,27 @@
         <h1>WHY CHOOSE US</h1>
         <div class="grid">
           <div class="key-block">
-            <div class="placeholder"></div>
+            <div class="placeholder">
+              <img src="/img/about/professional.jpg" alt="Landing Realty - Professional">
+            </div>
             <p>Professional</p>
           </div>
           <div class="key-block">
-            <div class="placeholder"></div>
+            <div class="placeholder">
+              <img src="/img/about/experienced.jpg" alt="Landing Realty - Experienced">
+            </div>
             <p>Experienced</p>
           </div>
           <div class="key-block">
-            <div class="placeholder"></div>
+            <div class="placeholder">
+              <img src="/img/about/reliable.jpg" alt="Landing Realty - Reliable">
+            </div>
             <p>reliable</p>
           </div>
           <div class="key-block">
-            <div class="placeholder"></div>
+            <div class="placeholder">
+              <img src="/img/about/efficient.jpg" alt="Landing Realty - Efficient">
+            </div>
             <p>efficient</p>
           </div>
         </div>
@@ -102,8 +110,21 @@
   }
   .placeholder {
     width: 100%;
+    // padding-bottom: 100%;
     background-color: #c4c4c4;
     margin-bottom: 2rem;
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
   }
   .placeholder::after {
     content: '';

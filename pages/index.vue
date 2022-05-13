@@ -1,8 +1,10 @@
 <template>
   <div>
+    <Preload v-if="preload" />
     <section class="sec-landing">
       <div class="sec-content">
-        <img id="home-logo" src="~/assets/img/home-logo.png" alt="logo" />
+        <img id="home-logo" src="/img/logo/logo-text.svg" alt="logo" />
+        <!-- <img id="home-logo" src="~/assets/img/home-logo.png" alt="logo" /> -->
         <p>Client First, Client’s Need Is Our # 1 Priority</p>
         <NuxtLink to="/about" class="main-btn">Learn More</NuxtLink>
       </div>
@@ -11,7 +13,7 @@
       <div class="wrapper">
         <div>
           <p>Toronto Real Estate Company</p>
-          <h3>EXTRAODINARY, LANDED</h3>
+          <h3>EXTRAORDINARY, LANDED</h3>
           <p>
             Landing Realty Inc. Brokerage is a Full-Service real estate company
             serving Greater Toronto Area and other cities across Ontario,
@@ -83,23 +85,31 @@
 import ItemCard from '~/components/ItemCard.vue'
 import Subscription from '~/components/Subscription.vue'
 export default {
-  data() {
+  async asyncData() {
+    // this.$axios.$get('/assignments', {
+    //   params: {
+    //     filters: {
+    //       type: {
+    //         $eq: 'precon'
+    //       }
+    //     },
+    //   }
+    // }).then(res => {
+    //   console.log(res)
+    // })
     return {}
   },
+  data() {
+    return {
+      preload: true
+    }
+  },
   components: { ItemCard, Subscription },
-  // created() {
-  //   this.$axios.$get('/assignments', {
-  //     params: {
-  //       filters: {
-  //         type: {
-  //           $eq: 'precon'
-  //         }
-  //       },
-  //     }
-  //   }).then(res => {
-  //     console.log(res)
-  //   })
-  // }
+  created() {
+    setTimeout(() => {
+      this.preload = false
+    }, 10000)
+  }
 }
 </script>
 
@@ -109,12 +119,15 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: url('~assets/img/banner-background.jpg');
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
+  // background-image: url('~assets/img/banner-background.jpg');
+  // background-size: 100% 100%;
+  // background-repeat: no-repeat;
+  background: linear-gradient(105.4deg, #0B2C42 21.18%, rgba(11, 44, 66, 0.48) 91.93%);
+  mix-blend-mode: multiply;
   width: 100%;
   padding: 10%;
   min-height: 100vh;
+
 }
 .sec-content {
   display: flex;
@@ -122,8 +135,9 @@ export default {
   justify-content: center;
   align-items: center;
   img {
-    width: 200px;
+    width: 300px;
     height: auto;
+    margin-bottom: 30px;
   }
   p {
     font-size: 18px;
