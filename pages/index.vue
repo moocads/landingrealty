@@ -87,6 +87,19 @@ export default {
     return {}
   },
   components: { ItemCard, Subscription },
+  // created() {
+  //   this.$axios.$get('/assignments', {
+  //     params: {
+  //       filters: {
+  //         type: {
+  //           $eq: 'precon'
+  //         }
+  //       },
+  //     }
+  //   }).then(res => {
+  //     console.log(res)
+  //   })
+  // }
 }
 </script>
 
