@@ -3,44 +3,40 @@
     <div class="wrapper">
       <h1>{{ title }}</h1>
       <div>
-        <a-tabs class="custom-tab" default-active-key="1" @change="callback">
-          <a-tab-pane class="flex-col-center" key="1" tab="Condon">
+        <a-tabs class="custom-tab" default-active-key="1">
+          <a-tab-pane
+            class="flex-col-center"
+            v-for="(type, i) in types"
+            :key="i"
+            :tab="type"
+          >
             <div class="sample-grid">
-              <ItemCard title="alias" tag="markham" content="20000" />
+              <div v-for="(item, index) in items" :key="index">
+                <NuxtLink
+                  :to="`/projects/${item.id}`"
+                  v-if="type === item.attributes.style"
+                >
+                  <ItemCard
+                    :title="item.attributes.title"
+                    :tag="item.attributes.location"
+                    :content="item.attributes.price.toString()"
+                  />
+                </NuxtLink>
+              </div>
+
+              <!-- <ItemCard title="alias" tag="markham" content="20000" />
               <ItemCard title="FREDERICK" tag="North York" content="20000" />
               <ItemCard
                 title="Upper east"
                 tag="Richmond hill"
                 content="20000"
-              />
-            </div>
-            <a class="main-btn">View All</a>
-          </a-tab-pane>
-          <a-tab-pane key="2" tab="House" force-render>
-            <div class="sample-grid">
-              <ItemCard title="alias" tag="markham" content="20000" />
-              <ItemCard title="FREDERICK" tag="North York" content="20000" />
-              <ItemCard
-                title="Upper east"
-                tag="Richmond hill"
-                content="20000"
-              />
-            </div>
-          </a-tab-pane>
-          <a-tab-pane key="3" tab="Townhouse">
-            <div class="sample-grid">
-              <ItemCard title="alias" tag="markham" content="20000" />
-              <ItemCard title="FREDERICK" tag="North York" content="20000" />
-              <ItemCard
-                title="Upper east"
-                tag="Richmond hill"
-                content="20000"
-              />
+              /> -->
             </div>
           </a-tab-pane>
         </a-tabs>
       </div>
     </div>
+    <!-- <a v-if="isHome" class="main-btn">View All</a> -->
   </section>
 </template>
 
@@ -48,12 +44,19 @@
 export default {
   props: {
     title: String,
+    items: Array,
+    // isHome: {type: Boolean, default: false}
   },
-  methods: {
-    callback(key) {
-      console.log(key)
-    },
+  data() {
+    return {
+      slug: {
+        precon: 'pre-construction',
+        resell: 'resales',
+      },
+      types: ['condo', 'house', 'townhouse'],
+    }
   },
+  methods: {},
 }
 </script>
 
@@ -87,9 +90,8 @@ h1 {
 }
 
 @media all and (max-width: $md) {
-  .sample-grid{
+  .sample-grid {
     grid-template-columns: 1fr;
   }
 }
-
 </style>

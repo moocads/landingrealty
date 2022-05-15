@@ -35,7 +35,7 @@
         <h2>One-stop-shop for Worry-free services</h2>
       </div>
     </section>
-    <ItemDisplay title="RESALES" />
+    <ItemDisplay title="RESALES"/>
     <section class="sec-slogen-2">
       <div class="wrapper flex-col-center">
         <h2>We build a culture of real estate investment.</h2>

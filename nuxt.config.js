@@ -44,11 +44,12 @@ export default {
   },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {},
+  axios: {
+    baseURL: 'https://landing-realty-cms-staging.herokuapp.com/api',
+  },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {
-  },
+  build: {},
   server: {
     port: process.env.PORT || 3000,
     host: process.env.HOST || '0.0.0.0',

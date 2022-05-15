@@ -12,8 +12,8 @@
       <div class="dropdown-wrapper">
         <a class="dropdown-link"> projects </a>
         <div class="dropdown-content">
-          <NuxtLink to="/pre-construction">Pre-construction</NuxtLink>
-          <NuxtLink to="/resales">Resales</NuxtLink>
+          <NuxtLink to="/projects/pre-construction">Pre-construction</NuxtLink>
+          <NuxtLink to="/projects/resales">Resales</NuxtLink>
         </div>
       </div>
 
