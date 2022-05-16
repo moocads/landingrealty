@@ -28,7 +28,9 @@
         <h5>contact us</h5>
         <ul class="contact-list">
           <li class="phone">(905) 604-7171</li>
-          <li class="email">info@landingrealestate.com</li>
+          <li class="email">
+            <a href="mailto:info@landingrealestate.com">info@landingrealestate.com</a>
+          </li>
           <li class="address">
             145 Royal Crest Ct Unit48, Markham, ON L3R 9Z4
           </li>
@@ -38,45 +40,25 @@
       <section>
         <h5>Lastest News</h5>
         <div class="news">
-          <div class="news-block">
-            <img
-              src="~/assets/img/blog-demo-img-01.jpg"
-              alt="blog 1"
-              class="img-fluid"
-            />
-            <div class="news-content">
-              <h5>How to invest home</h5>
-              <p>Lorem ipsum dolor sit ametLorem ipsum dolor ...</p>
-            </div>
-          </div>
-          <div class="news-block">
-            <img
-              src="~/assets/img/blog-demo-img-01.jpg"
-              alt="blog 1"
-              class="img-fluid"
-            />
-            <div class="news-content">
-              <h5>How to invest home</h5>
-              <p>Lorem ipsum dolor sit ametLorem ipsum dolor ...</p>
-            </div>
-          </div>
-          <div class="news-block">
-            <img
-              src="~/assets/img/blog-demo-img-01.jpg"
-              alt="blog 1"
-              class="img-fluid"
-            />
-            <div class="news-content">
-              <h5>How to invest home</h5>
-              <p>Lorem ipsum dolor sit ametLorem ipsum dolor ...</p>
-            </div>
+          <div v-for="b in blogs" :key="b.id">
+            <NuxtLink class="news-block" :to="`/news/${b.attributes.slug}`">
+              <img
+                v-if="b.attributes.thumbnail.data"
+                :src="b.attributes.thumbnail.data.attributes.url"
+                :alt="b.attributes.title"
+              />
+              <div class="news-content">
+                <h5>{{ b.attributes.title }}</h5>
+                <!-- <p>{{b.attributes.blurb}}</p> -->
+              </div>
+            </NuxtLink>
           </div>
         </div>
       </section>
       <section>
         <h5>links</h5>
         <ul class="links">
-          <li><a href="#">About Us</a></li>
+          <li><NuxtLink to="/about">About Us</NuxtLink></li>
           <li><a href="#">Services</a></li>
           <li><a href="#">Properties</a></li>
           <li><a href="#">Terms & Policy</a></li>
@@ -86,7 +68,30 @@
   </footer>
 </template>
 
-<script></script>
+<script>
+export default {
+  data() {
+    return {
+      blogs: undefined,
+    }
+  },
+  created() {
+    this.$axios
+      .$get('/blogs', {
+        params: {
+          populate: ['thumbnail'],
+          pagination: {
+            start: 0,
+            limit: 3,
+          },
+        },
+      })
+      .then((res) => {
+        this.blogs = res.data
+      })
+  },
+}
+</script>
 
 <style lang="scss" scoped>
 footer {
@@ -137,6 +142,11 @@ ul.contact-list {
   li {
     padding: 0.25rem 1rem;
   }
+  li.email{
+    a{
+      color: white;
+    }
+  }
   li.phone::marker {
     content: url(~assets/img/phone.svg);
   }
@@ -168,6 +178,11 @@ ul.contact-list {
   h5 {
     font-weight: 600;
     margin-bottom: 0;
+    display: -webkit-box;
+    line-height: 1.5;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
   }
 }
 ul.links {

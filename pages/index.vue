@@ -27,7 +27,11 @@
       </div>
     </section>
     <Subscription />
-    <ItemDisplay title="pre-construction" :displayData="this.precon" isHome="true"/>
+    <ItemDisplay
+      title="pre-construction"
+      :displayData="this.precon"
+      :isHome="true"
+    />
     <section class="sec-slogen-1">
       <img src="~/assets/img/building-bg-blue.png" alt="" class="fluid-img" />
       <div class="wrapper">
@@ -37,7 +41,7 @@
         <h2>One-stop-shop for Worry-free services</h2>
       </div>
     </section>
-    <ItemDisplay title="resales" :displayData="this.resales" isHome="true"/>
+    <ItemDisplay title="resales" :displayData="this.resales" :isHome="true" />
     <section class="sec-slogen-2">
       <div class="wrapper flex-col-center">
         <h2>We build a culture of real estate investment.</h2>
@@ -50,13 +54,16 @@
         <h6>Toronto Real Estate Company</h6>
         <h1>Landing news</h1>
         <div class="news-grid">
-          <ItemCard
-            img="blog-demo-img-01.jpg"
-            title="How to invest home"
-            content="Lorem ipsum dolor sit amet"
-            hideTag
-          />
-          <ItemCard
+          <NuxtLink v-for="(b, i) in blogs" :key="i" :to="`/news/${b.attributes.slug}`">
+            <ItemCard
+              img="blog-demo-img-01.jpg"
+              :title="b.attributes.title"
+              content="Lorem ipsum dolor sit amet"
+              hideTag
+            />
+          </NuxtLink>
+
+          <!-- <ItemCard
             img="blog-demo-img-02.jpg"
             title="How to invest home"
             content="Lorem ipsum dolor sit amet"
@@ -73,7 +80,7 @@
             title="How to invest home"
             content="Lorem ipsum dolor sit amet"
             hideTag
-          />
+          /> -->
         </div>
         <NuxtLink to="news" class="main-btn">Learn More</NuxtLink>
       </div>
@@ -186,9 +193,19 @@ export default {
       house: res5.data,
       townhouse: res6.data,
     }
+    const allBlogs = await $axios.$get('/blogs', {
+      params: {
+        populate: ['thumbnail'],
+        pagination: {
+          start: 0,
+          limit: 4,
+        },
+      },
+    })
     return {
       precon,
       resales,
+      blogs: allBlogs.data,
     }
   },
   data() {

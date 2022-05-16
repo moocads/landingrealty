@@ -38,10 +38,6 @@ export default {
     displayData: Object,
     isHome: { type: Boolean, default: false },
   },
-  methods: {},
-  created() {
-    console.log(this.displayData)
-  },
 }
 </script>
 

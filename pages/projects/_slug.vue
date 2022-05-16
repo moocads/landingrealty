@@ -128,6 +128,7 @@ export default {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    font-size: 26px;
   }
   div:not(.ant-divider) {
     padding: 0.5rem 0;
