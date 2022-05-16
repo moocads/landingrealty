@@ -12,8 +12,8 @@
       <div class="dropdown-wrapper">
         <a class="dropdown-link"> projects </a>
         <div class="dropdown-content">
-          <NuxtLink to="/pre-construction">Pre-construction</NuxtLink>
-          <NuxtLink to="/resales">Resales</NuxtLink>
+          <NuxtLink to="/projects/pre-construction">Pre-construction</NuxtLink>
+          <NuxtLink to="/projects/resales">Resales</NuxtLink>
         </div>
       </div>
 
@@ -40,10 +40,10 @@
           <a @click="mobileProjectTab = !mobileProjectTab" class="dropdown-link">projects</a>
           <div class="mobile-dropdown-content" :class="{open: mobileProjectTab}">
             <div @click="mobileNavOpen = false">
-              <NuxtLink to="/pre-construction">pre-construction</NuxtLink>
+              <NuxtLink to="/projects/pre-construction">pre-construction</NuxtLink>
             </div>
             <div @click="mobileNavOpen = false">
-              <NuxtLink to="/resales">resales</NuxtLink>
+              <NuxtLink to="/projects/resales">resales</NuxtLink>
             </div>
           </div>
         </div>

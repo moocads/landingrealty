@@ -3,43 +3,30 @@
     <div class="wrapper">
       <h1>{{ title }}</h1>
       <div>
-        <a-tabs class="custom-tab" default-active-key="1" @change="callback">
-          <a-tab-pane class="flex-col-center" key="1" tab="Condon">
+        <a-tabs class="custom-tab" default-active-key="tab0">
+          <a-tab-pane
+            class="flex-col-center"
+            v-for="(items, style,i) in this.displayData"
+            :key="'tab'+i"
+            :tab="style"
+          >
             <div class="sample-grid">
-              <ItemCard title="alias" tag="markham" content="20000" />
-              <ItemCard title="FREDERICK" tag="North York" content="20000" />
-              <ItemCard
-                title="Upper east"
-                tag="Richmond hill"
-                content="20000"
-              />
-            </div>
-            <a class="main-btn">View All</a>
-          </a-tab-pane>
-          <a-tab-pane key="2" tab="House" force-render>
-            <div class="sample-grid">
-              <ItemCard title="alias" tag="markham" content="20000" />
-              <ItemCard title="FREDERICK" tag="North York" content="20000" />
-              <ItemCard
-                title="Upper east"
-                tag="Richmond hill"
-                content="20000"
-              />
-            </div>
-          </a-tab-pane>
-          <a-tab-pane key="3" tab="Townhouse">
-            <div class="sample-grid">
-              <ItemCard title="alias" tag="markham" content="20000" />
-              <ItemCard title="FREDERICK" tag="North York" content="20000" />
-              <ItemCard
-                title="Upper east"
-                tag="Richmond hill"
-                content="20000"
-              />
+              <div v-for="(item, index) in items" :key="index">
+                <NuxtLink :to="`/projects/${item.id}`">
+                  <ItemCard
+                    :title="item.attributes.title"
+                    :tag="item.attributes.location"
+                    :content="item.attributes.price.toString()"
+                  />
+                </NuxtLink>
+              </div>
             </div>
           </a-tab-pane>
         </a-tabs>
       </div>
+      <NuxtLink v-if="isHome" :to="`/projects/${this.title}`" class="main-btn">
+        View All
+      </NuxtLink>
     </div>
   </section>
 </template>
@@ -48,11 +35,8 @@
 export default {
   props: {
     title: String,
-  },
-  methods: {
-    callback(key) {
-      console.log(key)
-    },
+    displayData: Object,
+    isHome: { type: Boolean, default: false },
   },
 }
 </script>
@@ -60,6 +44,11 @@ export default {
 <style lang="scss" scoped>
 .sec-pre-construction {
   padding: 7rem 0;
+  .main-btn {
+    display: block;
+    margin: auto;
+    width: 200px;
+  }
 }
 
 .sample-grid {
@@ -87,9 +76,8 @@ h1 {
 }
 
 @media all and (max-width: $md) {
-  .sample-grid{
+  .sample-grid {
     grid-template-columns: 1fr;
   }
 }
-
 </style>

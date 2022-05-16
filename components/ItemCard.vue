@@ -1,10 +1,6 @@
 <template>
-  <div class="card-container">
-    <img
-      class="image"
-      :src="require(`@/assets/img/${img}`)"
-      :alt="title"
-    />
+  <div class="card-container" :class="{ removeHover: hideTag }">
+    <img class="image" :src="require(`@/assets/img/${img}`)" :alt="title" />
     <div class="details">
       <span class="region-tag" v-if="!hideTag">
         {{ tag }}
@@ -64,7 +60,19 @@ export default {
   position: relative;
   width: 100%;
 
-  &:hover {
+  .image {
+    width: 100%;
+    height: auto;
+    filter: grayscale(1);
+  }
+
+  &.removeHover {
+    .image {
+      filter: grayscale(0);
+    }
+  }
+
+  &:not(.removeHover):hover {
     .image {
       filter: grayscale(0);
     }
@@ -74,11 +82,7 @@ export default {
     }
   }
 }
-.image {
-  width: 100%;
-  height: auto;
-  filter: grayscale(1);
-}
+
 .details {
   position: absolute;
   top: 0;
@@ -134,11 +138,5 @@ export default {
 .smallTitle {
   font-size: 18px !important;
   line-height: 21px;
-}
-
-// vue transition
-.v-enter-active,
-.v-leave-active {
-  transition: opacity 0.5s ease;
 }
 </style>

@@ -15,7 +15,7 @@ export default {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       {
         rel: 'stylesheet',
-        href: 'https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap',
+        href: 'https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700;900&display=swap',
       },
     ],
   },
@@ -49,8 +49,7 @@ export default {
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {
-  },
+  build: {},
   server: {
     port: process.env.PORT || 3000,
     host: process.env.HOST || '0.0.0.0',

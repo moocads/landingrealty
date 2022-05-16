@@ -82,7 +82,6 @@ export default {
 <style lang="scss" scoped>
 #news {
   background-color: #fff;
-  // background-color: #e5e5e5;
   padding-top: 110px;
 
   .title {
