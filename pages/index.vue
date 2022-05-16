@@ -27,7 +27,7 @@
       </div>
     </section>
     <Subscription />
-    <ItemDisplay title="pre-construction" />
+    <ItemDisplay title="pre-construction" :displayData="this.precon" isHome="true"/>
     <section class="sec-slogen-1">
       <img src="~/assets/img/building-bg-blue.png" alt="" class="fluid-img" />
       <div class="wrapper">
@@ -37,7 +37,7 @@
         <h2>One-stop-shop for Worry-free services</h2>
       </div>
     </section>
-    <ItemDisplay title="RESALES"/>
+    <ItemDisplay title="resales" :displayData="this.resales" isHome="true"/>
     <section class="sec-slogen-2">
       <div class="wrapper flex-col-center">
         <h2>We build a culture of real estate investment.</h2>
@@ -85,23 +85,115 @@
 import ItemCard from '~/components/ItemCard.vue'
 import Subscription from '~/components/Subscription.vue'
 export default {
-  async asyncData() {
-    // this.$axios.$get('/assignments', {
-    //   params: {
-    //     filters: {
-    //       type: {
-    //         $eq: 'precon'
-    //       }
-    //     },
-    //   }
-    // }).then(res => {
-    //   console.log(res)
-    // })
-    return {}
+  async asyncData({ $axios }) {
+    const res1 = await $axios.$get('/assignments', {
+      params: {
+        filters: {
+          type: {
+            $eq: 'precon',
+          },
+          style: {
+            $eq: 'condo',
+          },
+        },
+        pagination: {
+          pageSize: 3,
+        },
+      },
+    })
+    const res2 = await $axios.$get('/assignments', {
+      params: {
+        filters: {
+          type: {
+            $eq: 'precon',
+          },
+          style: {
+            $eq: 'house',
+          },
+        },
+        pagination: {
+          pageSize: 3,
+        },
+      },
+    })
+    const res3 = await $axios.$get('/assignments', {
+      params: {
+        filters: {
+          type: {
+            $eq: 'precon',
+          },
+          style: {
+            $eq: 'townhouse',
+          },
+        },
+        pagination: {
+          pageSize: 3,
+        },
+      },
+    })
+    const res4 = await $axios.$get('/assignments', {
+      params: {
+        filters: {
+          type: {
+            $eq: 'resell',
+          },
+          style: {
+            $eq: 'condo',
+          },
+        },
+        pagination: {
+          pageSize: 3,
+        },
+      },
+    })
+    const res5 = await $axios.$get('/assignments', {
+      params: {
+        filters: {
+          type: {
+            $eq: 'resell',
+          },
+          style: {
+            $eq: 'house',
+          },
+        },
+        pagination: {
+          pageSize: 3,
+        },
+      },
+    })
+    const res6 = await $axios.$get('/assignments', {
+      params: {
+        filters: {
+          type: {
+            $eq: 'resell',
+          },
+          style: {
+            $eq: 'townhouse',
+          },
+        },
+        pagination: {
+          pageSize: 3,
+        },
+      },
+    })
+    let precon = {
+      condo: res1.data,
+      house: res2.data,
+      townhouse: res3.data,
+    }
+    let resales = {
+      condo: res4.data,
+      house: res5.data,
+      townhouse: res6.data,
+    }
+    return {
+      precon,
+      resales,
+    }
   },
   data() {
     return {
-      preload: true
+      preload: true,
     }
   },
   components: { ItemCard, Subscription },
@@ -114,15 +206,15 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  // background-image: url('~assets/img/banner-background.jpg');
-  // background-size: 100% 100%;
-  // background-repeat: no-repeat;
-  background: linear-gradient(105.4deg, #0B2C42 21.18%, rgba(11, 44, 66, 0.48) 91.93%);
+  background: linear-gradient(
+    105.4deg,
+    #0b2c42 21.18%,
+    rgba(11, 44, 66, 0.48) 91.93%
+  );
   mix-blend-mode: multiply;
   width: 100%;
   padding: 10%;
   min-height: 100vh;
-
 }
 .sec-content {
   display: flex;

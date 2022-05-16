@@ -3,19 +3,16 @@
     <div class="wrapper">
       <h1>{{ title }}</h1>
       <div>
-        <a-tabs class="custom-tab" default-active-key="1">
+        <a-tabs class="custom-tab" default-active-key="tab0">
           <a-tab-pane
             class="flex-col-center"
-            v-for="(type, i) in types"
-            :key="i"
-            :tab="type"
+            v-for="(items, style,i) in this.displayData"
+            :key="'tab'+i"
+            :tab="style"
           >
             <div class="sample-grid">
               <div v-for="(item, index) in items" :key="index">
-                <NuxtLink
-                  :to="`/projects/${item.id}`"
-                  v-if="type === item.attributes.style"
-                >
+                <NuxtLink :to="`/projects/${item.id}`">
                   <ItemCard
                     :title="item.attributes.title"
                     :tag="item.attributes.location"
@@ -23,20 +20,14 @@
                   />
                 </NuxtLink>
               </div>
-
-              <!-- <ItemCard title="alias" tag="markham" content="20000" />
-              <ItemCard title="FREDERICK" tag="North York" content="20000" />
-              <ItemCard
-                title="Upper east"
-                tag="Richmond hill"
-                content="20000"
-              /> -->
             </div>
           </a-tab-pane>
         </a-tabs>
       </div>
+      <NuxtLink v-if="isHome" :to="`/projects/${this.title}`" class="main-btn">
+        View All
+      </NuxtLink>
     </div>
-    <!-- <a v-if="isHome" class="main-btn">View All</a> -->
   </section>
 </template>
 
@@ -44,25 +35,24 @@
 export default {
   props: {
     title: String,
-    items: Array,
-    // isHome: {type: Boolean, default: false}
-  },
-  data() {
-    return {
-      slug: {
-        precon: 'pre-construction',
-        resell: 'resales',
-      },
-      types: ['condo', 'house', 'townhouse'],
-    }
+    displayData: Object,
+    isHome: { type: Boolean, default: false },
   },
   methods: {},
+  created() {
+    console.log(this.displayData)
+  },
 }
 </script>
 
 <style lang="scss" scoped>
 .sec-pre-construction {
   padding: 7rem 0;
+  .main-btn {
+    display: block;
+    margin: auto;
+    width: 200px;
+  }
 }
 
 .sample-grid {
