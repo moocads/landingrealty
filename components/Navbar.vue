@@ -1,5 +1,5 @@
 <template>
-  <nav :class="{ homeNav: homeLogo }">
+  <nav :class="{ homeNav: $nuxt.$route.path === '/', active: navActive }">
     <NuxtLink to="/">
       <div class="logo-container">
         <img src="~/assets/img/nav-logo.png" alt="" />
@@ -62,23 +62,13 @@
 export default {
   data() {
     return {
-      homeLogo: false,
       mobileNavOpen: false,
       projectHover: false,
       mobileProjectTab: false,
+      navActive: false
     }
   },
   methods: {
-    homeLogoListener() {
-      if ($nuxt.$route.path === '/') {
-        this.homeLogo = true
-        if (window.scrollY >= 345) {
-          this.homeLogo = false
-        }
-      } else {
-        this.homeLogo = false
-      }
-    },
     toggleNav() {
       this.mobileNavOpen = !this.mobileNavOpen
     },
@@ -86,14 +76,15 @@ export default {
       this.mobileNavOpen = false
     },
   },
-  beforeMount() {
-    window.addEventListener('load', this.homeLogoListener)
-    window.addEventListener('scroll', this.homeLogoListener)
-  },
-  beforeDestroy() {
-    window.addEventListener('load', this.homeLogoListener)
-    window.removeEventListener('scroll', this.homeLogoListener)
-  },
+  mounted() {
+    document.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        this.navActive = true
+      } else {
+        this.navActive = false
+      }
+    })
+  }
 }
 </script>
 
@@ -148,8 +139,18 @@ nav {
 // for scrolled navbar
 .homeNav {
   background: transparent;
+  transition: all 0.5s ease;
   img {
     opacity: 0;
+    transition: all 0.5s ease;
+  }
+
+  &.active {
+    background-color: $navy;
+    
+    img {
+      opacity: 1;
+    }
   }
 }
 

@@ -18,7 +18,7 @@
       </a-breadcrumb>
       <section>
         <a-row type="flex" :gutter="[40,50]">
-          <a-col :lg="{span:18}" :md="{span:24}" :sm="{span:24}" :xs="{span:24}">
+          <a-col :lg="{span:16}" :md="{span:15}" :sm="{span:24}" :xs="{span:24}">
             <div class="blogBody">
               <div class="title">
                 <h1>{{blog.attributes.title}}</h1>
@@ -28,7 +28,7 @@
               <div v-html="blog.attributes.content"></div>
             </div>
           </a-col>
-          <a-col :lg="{span:6, offset:0}" :md="{span:12, offset:6}" :sm="{span:18, offset:3}" :xs="{span:24, offset:0}">
+          <a-col :lg="{span:8}" :md="{span:9}" :sm="{span:24}" :xs="{span:24}">
             <div class="featured">
               <h2>
                 Featured Blogs
@@ -39,9 +39,19 @@
               </div>
               <div class="eachFeature" v-for="b in features" :key="b.id">
                 <nuxt-link :to="`/news/${b.attributes.slug}`">
-                  <img v-if="b.attributes.thumbnail.data" :src="b.attributes.thumbnail.data.attributes.url" :alt="b.attributes.title">
-                  <h4>{{b.attributes.title}}</h4>
-                  <span><a-icon type="clock-circle" />  {{b.attributes.date}}</span>
+                  <a-row type="flex" :gutter="[15,20]">
+                    <a-col :lg="{span:8}" :md="{span:9}" :sm="{span:7}" :xs="{span:7}">
+                      <div class="img">
+                        <img v-if="b.attributes.thumbnail.data" :src="b.attributes.thumbnail.data.attributes.url" :alt="b.attributes.title">
+                      </div>
+                    </a-col>
+                    <a-col :lg="{span:16}" :md="{span:15}" :sm="{span:17}" :xs="{span:17}">
+                      <div class="text">
+                        <h3>{{b.attributes.title}}</h3>
+                        <span><a-icon type="clock-circle" />  {{b.attributes.date}}</span>
+                      </div>
+                    </a-col>
+                  </a-row>
                 </nuxt-link>
               </div>
             </div>
@@ -82,6 +92,7 @@ export default {
 <style lang="scss" scoped>
 #blogDetails {
   padding-top: 160px;
+  background-color: white;
 
   section {
     margin-top: 50px;
@@ -149,33 +160,53 @@ export default {
       &:hover {
         cursor: pointer;
 
-        h4 {
+        h3 {
           text-decoration: underline;
         }
       }
 
       img {
-        // width: 120px;
-        // height: 80px;
         width: 100%;
-        height: 120px;
+        height: 100px;
         object-fit: cover;
         margin-bottom: 10px;
       }
 
-      h4 {
+      h3 {
         color: $navy;
         font-weight: 700;
-        font-size: 16px;
-        line-height: 19px;
+        font-size: 14px;
         text-transform: capitalize;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;  
+        overflow: hidden;
       }
       span {
         font-size: 14px;
-        line-height: 16px;
         color: #88765B;
         display: block;
         margin-bottom: 10px;
+      }
+
+      @media (max-width: 765px) {
+        .img {
+          height: 100px;
+        }
+
+        .text {
+          h3 {
+            font-size: 14px;
+            -webkit-line-clamp: 2;
+          }
+          span{
+            font-size: 12px;
+            -webkit-line-clamp: 1;
+          }
+          p {
+            display: none;
+          }
+        }
       }
     }
   }

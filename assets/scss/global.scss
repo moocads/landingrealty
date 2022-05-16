@@ -29,10 +29,10 @@ body {
 
 .wrapper {
   max-width: 1200px;
-  width: 85vw;
+  width: 90vw;
   margin: auto;
   @media all and (max-width: $md) {
-    width: 90vw;
+    width: 95vw;
   }
 }
 

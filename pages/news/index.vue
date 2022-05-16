@@ -7,17 +7,17 @@
     </section>
     <section class="articleList">
       <div class="wrapper">
-        <a-row type="flex" :gutter="[40,50]">
-          <a-col :lg="{span:18}" :md="{span:24}" :sm="{span:24}" :xs="{span:24}">
+        <a-row type="flex" :gutter="[30,40]">
+          <a-col :lg="{span:16}" :md="{span:15}" :sm="{span:24}" :xs="{span:24}">
             <div v-for="b in blogs" :key="b.id" class="eachArticle">
               <nuxt-link :to="`/news/${b.attributes.slug}`">
-                <a-row type="flex" :gutter="[25,30]">
-                  <a-col :lg="{span:7}" :md="{span:24}" :sm="{span:24}" :xs="{span:24}">
+                <a-row type="flex" :gutter="[20,25]">
+                  <a-col :lg="{span:7}" :md="{span:7, offset: 0}" :sm="{span:7, offset: 0}" :xs="{span:7, offset: 0}">
                     <div class="img">
                       <img v-if="b.attributes.thumbnail.data" :src="b.attributes.thumbnail.data.attributes.url" :alt="b.attributes.title">
                     </div>
                   </a-col>
-                  <a-col :lg="{span:17}" :md="{span:24}" :sm="{span:24}" :xs="{span:24}">
+                  <a-col :lg="{span:17}" :md="{span:17, offset: 0}" :sm="{span:17, offset: 0}" :xs="{span:17, offset: 0}">
                     <div class="text">
                       <h3>{{b.attributes.title}}</h3>
                       <span><a-icon type="clock-circle" />  {{b.attributes.date}}</span>
@@ -28,7 +28,7 @@
               </nuxt-link>
             </div>
           </a-col>
-          <a-col :lg="{span:6}" :md="{span:24}" :sm="{span:24}" :xs="{span:24}">
+          <a-col :lg="{span:8}" :md="{span:9}" :sm="{span:24}" :xs="{span:24}">
             <div class="featured">
               <h2>
                 Featured Blogs
@@ -39,9 +39,19 @@
               </div>
               <div class="eachFeature" v-for="b in features" :key="b.id">
                 <nuxt-link :to="`/news/${b.attributes.slug}`">
-                  <img v-if="b.attributes.thumbnail.data" :src="b.attributes.thumbnail.data.attributes.url" :alt="b.attributes.title">
-                  <h4>{{b.attributes.title}}</h4>
-                  <span><a-icon type="clock-circle" />  {{b.attributes.date}}</span>
+                  <a-row type="flex" :gutter="[15,20]">
+                    <a-col :lg="{span:8}" :md="{span:9}" :sm="{span:7}" :xs="{span:7}">
+                      <div class="img">
+                        <img v-if="b.attributes.thumbnail.data" :src="b.attributes.thumbnail.data.attributes.url" :alt="b.attributes.title">
+                      </div>
+                    </a-col>
+                    <a-col :lg="{span:16}" :md="{span:15}" :sm="{span:17}" :xs="{span:17}">
+                      <div class="text">
+                        <h3>{{b.attributes.title}}</h3>
+                        <span><a-icon type="clock-circle" />  {{b.attributes.date}}</span>
+                      </div>
+                    </a-col>
+                  </a-row>
                 </nuxt-link>
               </div>
             </div>
@@ -117,7 +127,7 @@ export default {
 
     .img {
       width: 100%;
-      height: 160px;
+      height: 150px;
 
       img {
         width: 100%;
@@ -129,19 +139,17 @@ export default {
     .text {
       h3 {
         font-weight: 700;
-        font-size: 22px;
-        line-height: 26px;
+        font-size: 20px;
         text-transform: capitalize;
         color: $navy;
         display: -webkit-box;
-        -webkit-line-clamp: 2;
+        -webkit-line-clamp: 3;
         -webkit-box-orient: vertical;  
         overflow: hidden;
       }
 
       span {
         font-size: 14px;
-        line-height: 16px;
         color: #88765B;
         display: block;
         margin-bottom: 10px;
@@ -149,12 +157,49 @@ export default {
 
       p {
         font-size: 14px;
-        line-height: 22px;
         color: #212121;
         display: -webkit-box;
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;  
         overflow: hidden;
+        margin-bottom: 0;
+      }
+    }
+
+    @media (max-width: 992px) {
+      padding: 30px 0;
+
+      .img {
+        height: 125px;
+      }
+
+      .text {
+        h3 {
+          font-size: 16px;
+        }
+        span, p {
+          size: 13px;
+        }
+      }
+    }
+
+    @media (max-width: 765px) {
+      .img {
+        height: 100px;
+      }
+
+      .text {
+        h3 {
+          font-size: 14px;
+          -webkit-line-clamp: 2;
+        }
+        span{
+          font-size: 12px;
+          -webkit-line-clamp: 1;
+        }
+        p {
+          display: none;
+        }
       }
     }
   }
@@ -189,33 +234,53 @@ export default {
       &:hover {
         cursor: pointer;
 
-        h4 {
+        h3 {
           text-decoration: underline;
         }
       }
 
       img {
-        // width: 120px;
-        // height: 80px;
         width: 100%;
-        height: 120px;
+        height: 100px;
         object-fit: cover;
         margin-bottom: 10px;
       }
 
-      h4 {
+      h3 {
         color: $navy;
         font-weight: 700;
-        font-size: 16px;
-        line-height: 19px;
+        font-size: 14px;
         text-transform: capitalize;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;  
+        overflow: hidden;
       }
       span {
         font-size: 14px;
-        line-height: 16px;
         color: #88765B;
         display: block;
         margin-bottom: 10px;
+      }
+
+      @media (max-width: 765px) {
+        .img {
+          height: 100px;
+        }
+
+        .text {
+          h3 {
+            font-size: 14px;
+            -webkit-line-clamp: 2;
+          }
+          span{
+            font-size: 12px;
+            -webkit-line-clamp: 1;
+          }
+          p {
+            display: none;
+          }
+        }
       }
     }
   }
