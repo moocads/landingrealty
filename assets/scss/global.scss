@@ -30,6 +30,11 @@ body {
   &.navy{
     background-color: $navy;
   }
+  &.grey{
+    color: #212121;
+    background-color: #E5E5E5;
+    border: 1px solid black;
+  }
 }
 
 .wrapper {

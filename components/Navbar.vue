@@ -1,61 +1,75 @@
 <template>
-  <nav :class="{ homeNav: $nuxt.$route.path === '/', active: navActive }">
-    <NuxtLink to="/">
-      <div class="logo-container">
-        <img src="~/assets/img/nav-logo.png" alt="" />
-      </div>
-    </NuxtLink>
-
-    <div class="nav-items">
-      <NuxtLink to="/">home</NuxtLink>
-      <NuxtLink to="/about">about</NuxtLink>
-      <div class="dropdown-wrapper">
-        <a class="dropdown-link"> projects </a>
-        <div class="dropdown-content">
-          <NuxtLink to="/projects/pre-construction">Pre-construction</NuxtLink>
-          <NuxtLink to="/projects/resales">Resales</NuxtLink>
+  <div class="nav-container">
+    <Infobar />
+    <nav :class="{ homeNav: $nuxt.$route.path === '/', active: navActive }">
+      <NuxtLink to="/">
+        <div class="logo-container">
+          <img src="~/assets/img/nav-logo.png" alt="" />
         </div>
-      </div>
+      </NuxtLink>
 
-      <NuxtLink to="/news">news</NuxtLink>
-      <NuxtLink to="/contact">contact</NuxtLink>
-    </div>
-    <!-- mobile -->
-    <div class="hamburger" @click="toggleNav">
-      <div class="hamburgerOne line"></div>
-      <div class="hamburgerTwo line"></div>
-      <div class="hamburgerThree line"></div>
-    </div>
-    <div class="mobile-nav-mask" :class="{ open: mobileNavOpen }"></div>
-    <div class="mobile-nav-wrapper" :class="{ open: mobileNavOpen }">
-      <div class="mobile-nav-items">
-        <div @click="mobileNavOpen = false">
-          <NuxtLink to="/">home</NuxtLink>
-        </div>
-        <div @click="mobileNavOpen = false">
-          <NuxtLink to="/about">about</NuxtLink>
-        </div>
-
-        <div class="mobile-dropdown-wrapper">
-          <a @click="mobileProjectTab = !mobileProjectTab" class="dropdown-link">projects</a>
-          <div class="mobile-dropdown-content" :class="{open: mobileProjectTab}">
-            <div @click="mobileNavOpen = false">
-              <NuxtLink to="/projects/pre-construction">pre-construction</NuxtLink>
-            </div>
-            <div @click="mobileNavOpen = false">
-              <NuxtLink to="/projects/resales">resales</NuxtLink>
-            </div>
+      <div class="nav-items">
+        <NuxtLink to="/">home</NuxtLink>
+        <NuxtLink to="/about">about</NuxtLink>
+        <div class="dropdown-wrapper">
+          <a class="dropdown-link"> projects </a>
+          <div class="dropdown-content">
+            <NuxtLink to="/projects/pre-construction"
+              >Pre-construction</NuxtLink
+            >
+            <NuxtLink to="/projects/resales">Resales</NuxtLink>
           </div>
         </div>
-        <div @click="mobileNavOpen = false">
-          <NuxtLink to="/news">news</NuxtLink>
-        </div>
-        <div @click="mobileNavOpen = false">
-          <NuxtLink to="/contact">contact</NuxtLink>
+
+        <NuxtLink to="/news">news</NuxtLink>
+        <NuxtLink to="/contact">contact</NuxtLink>
+      </div>
+      <!-- mobile -->
+      <div class="hamburger" @click="toggleNav">
+        <div class="hamburgerOne line"></div>
+        <div class="hamburgerTwo line"></div>
+        <div class="hamburgerThree line"></div>
+      </div>
+      <div class="mobile-nav-mask" :class="{ open: mobileNavOpen }"></div>
+      <div class="mobile-nav-wrapper" :class="{ open: mobileNavOpen }">
+        <div class="mobile-nav-items">
+          <div @click="mobileNavOpen = false">
+            <NuxtLink to="/">home</NuxtLink>
+          </div>
+          <div @click="mobileNavOpen = false">
+            <NuxtLink to="/about">about</NuxtLink>
+          </div>
+
+          <div class="mobile-dropdown-wrapper">
+            <a
+              @click="mobileProjectTab = !mobileProjectTab"
+              class="dropdown-link"
+              >projects</a
+            >
+            <div
+              class="mobile-dropdown-content"
+              :class="{ open: mobileProjectTab }"
+            >
+              <div @click="mobileNavOpen = false">
+                <NuxtLink to="/projects/pre-construction"
+                  >pre-construction</NuxtLink
+                >
+              </div>
+              <div @click="mobileNavOpen = false">
+                <NuxtLink to="/projects/resales">resales</NuxtLink>
+              </div>
+            </div>
+          </div>
+          <div @click="mobileNavOpen = false">
+            <NuxtLink to="/news">news</NuxtLink>
+          </div>
+          <div @click="mobileNavOpen = false">
+            <NuxtLink to="/contact">contact</NuxtLink>
+          </div>
         </div>
       </div>
-    </div>
-  </nav>
+    </nav>
+  </div>
 </template>
 
 <script>
@@ -65,7 +79,7 @@ export default {
       mobileNavOpen: false,
       projectHover: false,
       mobileProjectTab: false,
-      navActive: false
+      navActive: false,
     }
   },
   methods: {
@@ -84,11 +98,17 @@ export default {
         this.navActive = false
       }
     })
-  }
+  },
 }
 </script>
 
 <style lang="scss" scoped>
+.nav-container {
+  position: fixed;
+  top: 0;
+  z-index: 999;
+  width: 100%;
+}
 a {
   color: white;
   text-transform: uppercase;
@@ -102,10 +122,7 @@ nav {
   justify-content: space-between;
   align-items: center;
   padding: 10px 10vw;
-  position: fixed;
-  top: 0;
-  z-index: 999;
-  width: 100%;
+
   min-height: 100px;
   background-color: $navy;
   .logo-container {
@@ -147,7 +164,7 @@ nav {
 
   &.active {
     background-color: $navy;
-    
+
     img {
       opacity: 1;
     }
@@ -231,7 +248,7 @@ nav {
 }
 .mobile-dropdown-content {
   display: none;
-  div{
+  div {
     margin: 1rem 0;
   }
   &.open {
