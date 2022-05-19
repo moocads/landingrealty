@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container" id="resaleProjects">
     <ItemDisplay title="resales" :displayData="data" />
     <Subscription />
   </div>
@@ -56,4 +56,8 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+#resaleProjects {
+  background-color: white;
+}
+</style>

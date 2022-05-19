@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container" id="preconProjects">
     <ItemDisplay title="pre-construction" :displayData="data" />
     <Subscription />
   </div>
@@ -58,4 +58,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+#preconProjects {
+  background-color: white;
+}</style>

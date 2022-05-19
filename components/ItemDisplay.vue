@@ -14,6 +14,7 @@
               <div v-for="(item, index) in items" :key="index">
                 <NuxtLink :to="`/projects/${item.id}`">
                   <ItemCard
+                    :img="item.attributes.images.data[0].attributes.url"
                     :title="item.attributes.title"
                     :tag="item.attributes.location"
                     :content="item.attributes.price.toString()"
@@ -76,6 +77,12 @@ h1 {
 }
 
 @media all and (max-width: $md) {
+  .sample-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media all and (max-width: 576px) {
   .sample-grid {
     grid-template-columns: 1fr;
   }

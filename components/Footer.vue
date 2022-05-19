@@ -1,69 +1,72 @@
 <template>
   <footer>
     <div class="wrapper">
-      <section>
-        <div class="logo-container">
-          <img src="~/assets/img/nav-logo.png" alt="" />
-        </div>
-        <p class="detail">
-          Landing Realty Inc. Brokerage is a Full-Service real estate company
-          serving Greater Toronto Area and other cities across Ontario, Canada.
-          We provide a wide variety of real estate services to homeowners &
-          investors including residential/commercial resales, pre-construction
-          sales, rentals, property management, and real estate investment.
-        </p>
-        <div class="social-icons">
-          <a href="/" target="_blank">
-            <IconFacebook />
-          </a>
-          <a href="/" target="_blank">
-            <IconInstagram />
-          </a>
-          <a href="/" target="_blank">
-            <IconWechat />
-          </a>
-        </div>
-      </section>
-      <section class="contact-block">
-        <h5>contact us</h5>
-        <ul class="contact-list">
-          <li class="phone">(905) 604-7171</li>
-          <li class="email">
-            <a href="mailto:info@landingrealestate.com">info@landingrealestate.com</a>
-          </li>
-          <li class="address">
-            145 Royal Crest Ct Unit48, Markham, ON L3R 9Z4
-          </li>
-        </ul>
-        <img src="~/assets/img/map.jpg" alt="map" class="img-fluid" />
-      </section>
-      <section>
-        <h5>Lastest News</h5>
-        <div class="news">
-          <div v-for="b in blogs" :key="b.id">
-            <NuxtLink class="news-block" :to="`/news/${b.attributes.slug}`">
-              <img
-                v-if="b.attributes.thumbnail.data"
-                :src="b.attributes.thumbnail.data.attributes.url"
-                :alt="b.attributes.title"
-              />
-              <div class="news-content">
-                <h5>{{ b.attributes.title }}</h5>
-                <!-- <p>{{b.attributes.blurb}}</p> -->
-              </div>
-            </NuxtLink>
+      <div class="logo-container">
+        <img src="~/assets/img/nav-logo.png" alt="" />
+      </div>
+      <div class="footer-container">
+        <section>
+          <p class="detail">
+            Landing Realty Inc. Brokerage is a Full-Service real estate company
+            serving Greater Toronto Area and other cities across Ontario, Canada.
+            We provide a wide variety of real estate services to homeowners &
+            investors including residential/commercial resales, pre-construction
+            sales, rentals, property management, and real estate investment.
+          </p>
+          <div class="social-icons">
+            <a href="/" target="_blank">
+              <IconFacebook />
+            </a>
+            <a href="/" target="_blank">
+              <IconInstagram />
+            </a>
+            <a href="/" target="_blank">
+              <IconWechat />
+            </a>
           </div>
-        </div>
-      </section>
-      <section>
-        <h5>links</h5>
-        <ul class="links">
-          <li><NuxtLink to="/about">About Us</NuxtLink></li>
-          <li><a href="#">Services</a></li>
-          <li><a href="#">Properties</a></li>
-          <li><a href="#">Terms & Policy</a></li>
-        </ul>
-      </section>
+        </section>
+        <section class="contact-block">
+          <h5>contact us</h5>
+          <ul class="contact-list">
+            <li class="phone">(905) 604-7171</li>
+            <li class="email">
+              <a href="mailto:info@landingrealestate.com">info@landingrealestate.com</a>
+            </li>
+            <li class="address">
+              145 Royal Crest Ct Unit48, Markham, ON L3R 9Z4
+            </li>
+          </ul>
+          <img src="~/assets/img/map.jpg" alt="map" class="img-fluid" />
+        </section>
+        <section>
+          <h5>Lastest News</h5>
+          <div class="news">
+            <div v-for="b in blogs" :key="b.id">
+              <NuxtLink class="news-block" :to="`/news/${b.attributes.slug}`">
+                <img
+                  v-if="b.attributes.thumbnail.data"
+                  :src="b.attributes.thumbnail.data.attributes.url"
+                  :alt="b.attributes.title"
+                />
+                <div class="news-content">
+                  <h5>{{ b.attributes.title }}</h5>
+                  <!-- <p>{{b.attributes.blurb}}</p> -->
+                </div>
+              </NuxtLink>
+            </div>
+          </div>
+        </section>
+        <section>
+          <h5>links</h5>
+          <ul class="links">
+            <li><NuxtLink to="/about">About Us</NuxtLink></li>
+            <li><NuxtLink to="/projects/pre-construction">Pre-Construction</NuxtLink></li>
+            <li><NuxtLink to="/projects/resales">Resales</NuxtLink></li>
+            <li><NuxtLink to="/news">News</NuxtLink></li>
+            <li><NuxtLink to="/contact">Contact</NuxtLink></li>
+          </ul>
+        </section>
+      </div>
     </div>
   </footer>
 </template>
@@ -98,18 +101,16 @@ footer {
   min-height: 100px;
   background-image: url(~assets/img/footer-bg.jpg);
   background-position: center;
+  background-size: cover;
   padding: 4rem 0 8rem;
   .wrapper {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    color: white;
-    gap: 50px;
-    section:not(:first-child) {
-      margin-top: 2.5rem;
+
+    .footer-container {
+      display: grid;
+      grid-template-columns: 4fr 4fr 4fr 3fr;
+      color: white;
+      gap: 50px;
     }
-  }
-  .detail {
-    margin-top: 1rem;
   }
   .social-icons {
     display: flex;
@@ -119,7 +120,8 @@ footer {
   }
 }
 .logo-container {
-  height: 50px;
+  height: 60px;
+  margin-bottom: 30px;
 }
 .logo-container > img {
   width: auto;
@@ -163,13 +165,10 @@ ul.contact-list {
   flex-direction: column;
 }
 .news-block {
-  display: grid;
-  grid-template-columns: 1fr 3.25fr;
-  gap: 0.25rem;
-  margin-bottom: 1rem;
+  display: flex;
+
   img {
-    max-width: 60px;
-    max-height: 60px;
+    width: 25%;
   }
 }
 .news-content {
@@ -188,8 +187,12 @@ ul.contact-list {
 ul.links {
   list-style: none;
   padding-left: 0;
-  a {
-    color: white;
+  li {
+    margin-bottom: 10px;
+
+    a {
+      color: white;
+    }
   }
 }
 
