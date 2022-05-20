@@ -1,12 +1,12 @@
 <template>
   <section class="sec-pre-construction">
     <div class="wrapper">
-      <h1>{{ title }}</h1>
+      <h2 v-if="title">{{ title }}</h2>
       <div>
         <a-tabs class="custom-tab" default-active-key="tab0">
           <a-tab-pane
             class="flex-col-center"
-            v-for="(items, style,i) in this.displayData"
+            v-for="(items, style,i) in displayData"
             :key="'tab'+i"
             :tab="style"
           >
@@ -15,7 +15,7 @@
                 <NuxtLink :to="`/projects/${item.id}`">
                   <ItemCard
                     :img="item.attributes.images.data[0].attributes.url"
-                    :title="item.attributes.title"
+                    :title="item.attributes.type === 'precon' ? item.attributes.title : item.attributes.type === 'resell' ? 'MLS ' + item.attributes.mls : ''"
                     :tag="item.attributes.location"
                     :content="item.attributes.price.toString()"
                   />
@@ -39,12 +39,15 @@ export default {
     displayData: Object,
     isHome: { type: Boolean, default: false },
   },
+  created() {
+    console.log(this.displayData)
+  }
 }
 </script>
 
 <style lang="scss" scoped>
 .sec-pre-construction {
-  padding: 7rem 0;
+  padding: 50px 0;
   .main-btn {
     display: block;
     margin: auto;
@@ -67,7 +70,7 @@ export default {
   align-items: center;
 }
 
-h1 {
+h2 {
   font-size: 38px;
   line-height: 45px;
   color: $navy;

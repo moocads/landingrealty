@@ -99,7 +99,6 @@ export default {
   }
 
   .blogBody {
-    padding-bottom: 50px;
     .title {
       border-bottom: 1px solid #d9d9d9;
       padding-bottom: 30px;

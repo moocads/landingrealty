@@ -1,115 +1,101 @@
 <template>
   <section class="sec-subscribe">
-    <div class="left-block">
-      <img
-        class="img-fluid"
-        src="~/assets/img/3d-illustration-residential-building-exterior.png"
-        alt="building"
-      />
-    </div>
-    <form>
-      <label for="email">
-        Subscribe for our lastest newsletter, don’t miss the best one.
-      </label>
-      <div>
-        <input
-          name="email"
-          type="email"
-          required
-          placeholder="example@email.com"
+    <div class="navy">
+      <div class="left-block">
+        <img
+          class="img-fluid"
+          src="~/assets/img/3d-illustration-residential-building-exterior.png"
+          alt="building"
         />
-        <input name="submit" type="submit" value="SUBSCRIBE" />
       </div>
-    </form>
+      <div class="right-block">
+        <form>
+          <input
+            name="email"
+            type="email"
+            required
+            placeholder="example@email.com"
+          />
+          <input name="submit" type="submit" value="SUBSCRIBE" />
+        </form>
+      </div>
+    </div>
   </section>
 </template>
 
 <style lang="scss" scoped>
 .sec-subscribe {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  background-color: $navy;
-  color: white;
-  margin-top: 2rem;
-  .left-block {
-    position: relative;
-    img {
-      position: absolute;
-      bottom: 0;
-      left: -45px;
-      width: 80%;
+  // padding-top: 30px;
+
+  .navy {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color: $navy;
+    color: white;
+    // margin-top: 2rem;
+    .left-block {
+      position: relative;
+      img {
+        position: absolute;
+        bottom: 0;
+        // left: -45px;
+        width: 100%;
+        max-width: 500px;
+      }
     }
+  }
+
+  .right-block {
+    padding: 30px 5vw 30px 5vw;
+    display: flex;
+    justify-content: center;
   }
   form {
-    padding: 2rem 0;
-    label {
-      font-size: 20px;
-      line-height: 27px;
-      margin-bottom: 3rem;
-    }
-    div {
-      display: grid;
-      grid-template-columns: 2.5fr 1fr;
-      margin-top: 0.75rem;
-      max-width: 545px;
-      input {
-        border: 2px solid white;
-      }
-      input[type='email'] {
-        color: #b4b4b4;
-        padding-left: 1rem;
-        font-size: 16px;
-        line-height: 27px;
-      }
-      input[type='submit'] {
-        background-color: $navy;
-        font-size: 16px;
-        font-weight: 700;
-        padding: 0.5rem 1.5rem;
-      }
-    }
-  }
-}
+    justify-content: flex-end;
+    display: flex;
 
-@media all and (max-width: $lg) {
-  footer {
-    .sec-subscribe {
-      grid-template-columns: 1.2fr 0.8fr;
-      width: 100%;
+    input {
+      border: 1px solid white;
+    }
+    input[type='email'] {
+      color: #b4b4b4;
+      padding-left: 1rem;
+      font-size: 16px;
+      padding: 0.5rem 1.5rem;
+    }
+    input[type='submit'] {
+      background-color: $navy;
+      font-size: 16px;
+      font-weight: 700;
+      padding: 0.5rem 1.5rem;
     }
   }
 }
 
 @media all and (max-width: $md) {
   .sec-subscribe {
-    display: flex;
-    flex-direction: column-reverse;
-    .left-block {
-      position: static;
+    .navy {
+      display: flex;
+      flex-direction: column-reverse;
+
+      .left-block {
       display: flex;
       justify-content: center;
-      img {
-        position: static;
+
+        img {
+          position: static;
+          max-width: 400px;
+        }
       }
     }
+
+    .right-block {
+      margin: auto;
+      padding: 30px 0 15px 0;
+    }
+
     form {
       display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      label {
-        margin-bottom: 0.5rem;
-        text-align: center;
-      }
-    }
-  }
-}
-
-@media all and (max-width: $sm) {
-  .sec-subscribe{
-    form{
-      width: 90vw;
-      margin: auto;
     }
   }
 }

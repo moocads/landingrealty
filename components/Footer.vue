@@ -1,72 +1,121 @@
 <template>
   <footer>
-    <div class="wrapper">
-      <div class="logo-container">
-        <img src="~/assets/img/nav-logo.png" alt="" />
-      </div>
-      <div class="footer-container">
-        <section>
-          <p class="detail">
-            Landing Realty Inc. Brokerage is a Full-Service real estate company
-            serving Greater Toronto Area and other cities across Ontario, Canada.
-            We provide a wide variety of real estate services to homeowners &
-            investors including residential/commercial resales, pre-construction
-            sales, rentals, property management, and real estate investment.
-          </p>
-          <div class="social-icons">
-            <a href="/" target="_blank">
-              <IconFacebook />
-            </a>
-            <a href="/" target="_blank">
-              <IconInstagram />
-            </a>
-            <a href="/" target="_blank">
-              <IconWechat />
-            </a>
-          </div>
-        </section>
-        <section class="contact-block">
+    <!-- <div class="logo-container">
+      <a-row type="flex" :gutter="[36,36]" align="bottom">
+        <a-col :xl="{span:6}" :lg="{span:12}" :md="{span:12}" :sm="{span:12}" :xs="{span:24}">
+          <img src="~/assets/img/nav-logo.png" alt="" />
+        </a-col>
+        <a-col :xl="{span:6}" :lg="{span:12}" :md="{span:12}" :sm="{span:12}" :xs="{span:24}">
           <h5>contact us</h5>
-          <ul class="contact-list">
-            <li class="phone">(905) 604-7171</li>
-            <li class="email">
-              <a href="mailto:info@landingrealestate.com">info@landingrealestate.com</a>
-            </li>
-            <li class="address">
-              145 Royal Crest Ct Unit48, Markham, ON L3R 9Z4
-            </li>
-          </ul>
-          <img src="~/assets/img/map.jpg" alt="map" class="img-fluid" />
-        </section>
-        <section>
-          <h5>Lastest News</h5>
-          <div class="news">
-            <div v-for="b in blogs" :key="b.id">
-              <NuxtLink class="news-block" :to="`/news/${b.attributes.slug}`">
-                <img
-                  v-if="b.attributes.thumbnail.data"
-                  :src="b.attributes.thumbnail.data.attributes.url"
-                  :alt="b.attributes.title"
-                />
-                <div class="news-content">
-                  <h5>{{ b.attributes.title }}</h5>
-                  <!-- <p>{{b.attributes.blurb}}</p> -->
-                </div>
-              </NuxtLink>
-            </div>
-          </div>
-        </section>
-        <section>
+        </a-col>
+        <a-col :xl="{span:8}" :lg="{span:12}" :md="{span:12}" :sm="{span:12}" :xs="{span:24}">
+          <h5>featured news</h5>
+        </a-col>
+        <a-col :xl="{span:8}" :lg="{span:12}" :md="{span:12}" :sm="{span:12}" :xs="{span:24}">
           <h5>links</h5>
-          <ul class="links">
-            <li><NuxtLink to="/about">About Us</NuxtLink></li>
-            <li><NuxtLink to="/projects/pre-construction">Pre-Construction</NuxtLink></li>
-            <li><NuxtLink to="/projects/resales">Resales</NuxtLink></li>
-            <li><NuxtLink to="/news">News</NuxtLink></li>
-            <li><NuxtLink to="/contact">Contact</NuxtLink></li>
-          </ul>
-        </section>
-      </div>
+        </a-col>
+      </a-row>
+    </div>
+    <br> -->
+    <div class="footer-container">
+      <a-row type="flex" :gutter="[36,36]">
+        <a-col :xl="{span:6}" :lg="{span:12}" :md="{span:12}" :sm="{span:12}" :xs="{span:24}">
+          <section>
+            <img class="logo" src="~/assets/img/nav-logo.png" alt="" />
+            <p class="detail">
+              Landing Realty Inc. Brokerage is a Full-Service real estate company
+              serving Greater Toronto Area and other cities across Ontario, Canada.
+              We provide a wide variety of real estate services to homeowners &
+              investors including residential/commercial resales, pre-construction
+              sales, rentals, property management, and real estate investment.
+            </p>
+            <div class="social-icons">
+              <a href="/" target="_blank">
+                <IconFacebook />
+              </a>
+              <a href="/" target="_blank">
+                <IconInstagram />
+              </a>
+              <a href="/" target="_blank">
+                <IconWechat />
+              </a>
+            </div>
+          </section>
+        </a-col>
+        <a-col :xl="{span:8}" :lg="{span:12}" :md="{span:12}" :sm="{span:12}" :xs="{span:24}">
+          <section>
+            <div class="title">
+              <h4>featured news</h4>
+            </div>
+            <div class="news">
+              <div v-for="b in blogs" :key="b.id">
+                <NuxtLink class="news-block" :to="`/news/${b.attributes.slug}`">
+                  <img
+                    v-if="b.attributes.thumbnail.data"
+                    :src="b.attributes.thumbnail.data.attributes.url"
+                    :alt="b.attributes.title"
+                  />
+                  <div class="news-content">
+                    <h5>{{ b.attributes.title }}</h5>
+                    <!-- <p>{{b.attributes.blurb}}</p> -->
+                  </div>
+                </NuxtLink>
+              </div>
+            </div>
+          </section>
+        </a-col>
+        <a-col :xl="{span:6}" :lg="{span:12}" :md="{span:12}" :sm="{span:12}" :xs="{span:24}">
+          <section class="contact-block">
+            <div class="title">
+              <h4>contact us</h4>
+            </div>
+            <ul class="contact-list">
+              <li class="phone">
+                <a href="tel:9056047171">
+                  <a-icon type="phone" theme="filled" />
+                  <span>
+                    (905) 604-7171
+                  </span>
+                </a>
+              </li>
+              <li class="email">
+                <a href="mailto:info@landingrealestate.com">
+                  <a-icon type="mail" theme="filled" />
+                  <span>
+                    info@landingrealestate.com
+                  </span>
+                </a>
+              </li>
+              <li class="address">
+                <a href="https://goo.gl/maps/anNTEMmDad13bScA6">
+                  <a-icon type="environment" theme="filled" />
+                  <span>
+                    145 Royal Crest Ct Unit48, 
+                  </span>
+                  <span>
+                    Markham, ON L3R 9Z4
+                  </span>
+                </a>
+              </li>
+            </ul>
+            <img src="~/assets/img/map.jpg" alt="map" class="img-fluid" />
+          </section>
+        </a-col>
+        <a-col :xl="{span:4}" :lg="{span:12}" :md="{span:12}" :sm="{span:12}" :xs="{span:24}">
+          <section>
+            <div class="title">
+              <h4>links</h4>
+            </div>
+            <ul class="links">
+              <li><NuxtLink to="/about">About Us</NuxtLink></li>
+              <li><NuxtLink to="/projects/pre-construction">Pre-Construction</NuxtLink></li>
+              <li><NuxtLink to="/projects/resales">Resales</NuxtLink></li>
+              <li><NuxtLink to="/news">News</NuxtLink></li>
+              <li><NuxtLink to="/contact">Contact</NuxtLink></li>
+            </ul>
+          </section>
+        </a-col>
+      </a-row>
     </div>
   </footer>
 </template>
@@ -102,63 +151,80 @@ footer {
   background-image: url(~assets/img/footer-bg.jpg);
   background-position: center;
   background-size: cover;
-  padding: 4rem 0 8rem;
-  .wrapper {
+  padding: 50px 10vw 100px 10vw;
 
-    .footer-container {
-      display: grid;
-      grid-template-columns: 4fr 4fr 4fr 3fr;
-      color: white;
-      gap: 50px;
-    }
+  p {
+    color: white;
   }
+
   .social-icons {
     display: flex;
     a {
-      margin-right: 5px;
+      margin-right: 10px;
     }
   }
 }
-.logo-container {
+
+.logo, .title {
   height: 60px;
-  margin-bottom: 30px;
+  margin-bottom: 15px;
 }
-.logo-container > img {
-  width: auto;
-  height: 100%;
+
+.title {
+  display: flex;
+  align-items: flex-end;
 }
-.contact-block {
-  img {
-    border-radius: 10px;
-  }
-}
-h5 {
+
+h4, h5 {
   color: white;
   font-size: 16px;
   font-weight: 700;
-  margin-bottom: 2rem;
+  margin-bottom: 0;
+}
+
+h4 {
   text-transform: uppercase;
 }
-ul.contact-list {
-  padding-left: 15px;
-  li {
-    padding: 0.25rem 1rem;
-  }
-  li.email{
-    a{
-      color: white;
+
+.contact-block {
+  .phone, .email, .address {
+    margin-bottom: 10px;
+    
+    i {
+      margin-right: 10px;
     }
   }
-  li.phone::marker {
-    content: url(~assets/img/phone.svg);
+
+  .phone {
+    i {
+      transform: rotateY(180deg);
+    }
   }
-  li.email::marker {
-    content: url(~assets/img/email.svg);
+
+  .address {
+    span:last-of-type {
+      display: block;
+      padding-left: 25px;
+    }
   }
-  li.address::marker {
-    content: url(~assets/img/address.svg);
+  img {
+    // height: 250px;
+    // width: 80%;
+    border-radius: 10px;
+  }
+
+  ul.contact-list {
+    padding-left: 0px;
+    list-style: none;
+
+    li {
+      a{
+        color: white;
+      }
+    }
   }
 }
+
 
 .news {
   display: flex;
@@ -166,14 +232,20 @@ ul.contact-list {
 }
 .news-block {
   display: flex;
+  align-items: center;
+  margin-bottom: 10px;
 
   img {
     width: 25%;
+    height: 50px;
+    margin-right: 10px;
   }
 }
 .news-content {
+  width: 75%;
   display: flex;
   flex-direction: column;
+
   h5 {
     font-weight: 600;
     margin-bottom: 0;
@@ -192,52 +264,6 @@ ul.links {
 
     a {
       color: white;
-    }
-  }
-}
-
-@media all and (max-width: $lg) {
-  footer {
-    .wrapper {
-      grid-template-columns: 1fr 1fr;
-      section:not(:first-child) {
-        margin-top: 0;
-      }
-    }
-    .news-block {
-      grid-template-columns: 1fr 2fr;
-    }
-  }
-}
-@media all and (max-width: $md) {
-  footer {
-    padding-bottom: 4rem;
-    .wrapper {
-      grid-template-columns: 1fr;
-    }
-    .news {
-      display: flex;
-      .news-block {
-        grid-template-columns: auto 1fr;
-      }
-    }
-
-    ul.links {
-      display: flex;
-      * {
-        margin-right: 2rem;
-      }
-    }
-  }
-}
-@media all and (max-width: $sm) {
-  footer {
-    ul.links {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr 1fr;
-      * {
-        margin-right: 0;
-      }
     }
   }
 }

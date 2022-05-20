@@ -30,8 +30,8 @@
         </svg>
       </div>
       <div class="info">
-        <h3 :class="{ smallTitle: hideTag }">{{ title }}</h3>
-        <p><span v-if="!hideTag">$ </span>{{ content }}</p>
+        <h3 :class="{ smallTitle: hideTag }">{{ title ? title : '' }}</h3>
+        <!-- <p><span v-if="!hideTag">$ </span>{{ content }}</p> -->
       </div>
     </div>
   </div>
@@ -72,7 +72,6 @@ export default {
 
     &.blog {
       height: 300px;
-      filter: none;
     }
   }
 
@@ -120,7 +119,7 @@ export default {
     position: absolute;
     bottom: 0;
     width: 100%;
-    padding: 3rem 0 0.75rem 1rem;
+    padding: 3rem 1rem 0.75rem 1rem;
     opacity: 0.8;
     display: flex;
     flex-direction: column;
@@ -148,7 +147,7 @@ export default {
   }
 }
 .smallTitle {
-  font-size: 18px !important;
-  line-height: 21px;
+  font-size: 16px !important;
+  text-transform: none !important;
 }
 </style>

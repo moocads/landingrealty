@@ -17,14 +17,32 @@ export default {
         rel: 'stylesheet',
         href: 'https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700;900&display=swap',
       },
+      {
+        rel: 'stylesheet',
+        href: 'https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css'
+      },
+      {
+        rel:"stylesheet",
+        href:"https://unpkg.com/swiper@8/swiper-bundle.min.css"
+      }
     ],
+    script: [
+      {src: 'https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js'},
+      {src: 'https://unpkg.com/swiper@8/swiper-bundle.min.js'}
+    ]
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: ['ant-design-vue/dist/antd.css', '@/assets/scss/global.scss'],
+  css: [
+    'ant-design-vue/dist/antd.css',
+    '@/assets/scss/global.scss',
+  ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: ['@/plugins/antd-ui','@/plugins/axios'],
+  plugins: [
+    '@/plugins/antd-ui',
+    '@/plugins/axios',
+  ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -45,7 +63,7 @@ export default {
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    baseURL: "https://landing-realty-cms-staging.herokuapp.com/api"
+    baseURL: 'https://landing-realty-cms-staging.herokuapp.com/api',
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

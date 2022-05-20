@@ -18,6 +18,7 @@ export default {
             $eq: 'condo',
           },
         },
+        populate: '*'
       },
     })
     const res2 = await $axios.$get('/assignments', {
@@ -30,6 +31,7 @@ export default {
             $eq: 'house',
           },
         },
+        populate: '*'
       },
     })
     const res3 = await $axios.$get('/assignments', {
@@ -42,6 +44,7 @@ export default {
             $eq: 'townhouse',
           },
         },
+        populate: '*'
       },
     })
     let data = {
