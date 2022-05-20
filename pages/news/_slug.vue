@@ -99,6 +99,7 @@ export default {
   }
 
   .blogBody {
+
     .title {
       border-bottom: 1px solid #d9d9d9;
       padding-bottom: 30px;
@@ -126,6 +127,10 @@ export default {
       width: 100%;
       max-height: 400px;
       object-fit: cover;
+    }
+
+    @media (min-width:766px) {
+      padding-bottom: 50px;
     }
   }
 
