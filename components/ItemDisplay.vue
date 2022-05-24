@@ -1,5 +1,5 @@
 <template>
-  <section class="sec-pre-construction">
+  <section class="item-display">
     <div class="wrapper">
       <h2 v-if="title">{{ title }}</h2>
       <div>
@@ -46,12 +46,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.sec-pre-construction {
-  padding: 50px 0;
+.item-display {
+  padding: 50px 0 80px 0;
   .main-btn {
     display: block;
     margin: auto;
     width: 200px;
+  }
+
+  @media (max-width:992px) {
+    padding: 50px 0 50px 0;
   }
 }
 

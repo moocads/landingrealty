@@ -249,6 +249,12 @@ h4 {
     height: 50px;
     margin-right: 10px;
   }
+
+  &:hover {
+    h5 {
+      text-decoration: underline;
+    }
+  }
 }
 .articles-content {
   width: 75%;

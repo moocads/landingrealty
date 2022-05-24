@@ -82,7 +82,7 @@
 }
 
 .choose-us {
-  padding: 5rem 0;
+  padding: 5rem 0 6rem 0;
   .wrapper {
     display: flex;
     flex-direction: column;
@@ -137,7 +137,12 @@
 }
 
 @media all and (max-width: $md) {
+  .about {
+    padding: 4rem 0;
+  }
+
   .choose-us {
+    padding: 4rem 0 ;
     .grid {
       grid-template-columns: 1fr 1fr;
     }

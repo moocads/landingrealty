@@ -9,12 +9,13 @@
         />
       </div>
       <div class="right-block">
-        <form>
+        <form @submit="addSubscription">
           <input
             name="email"
             type="email"
             required
             placeholder="example@email.com"
+            v-model="customerEmail"
           />
           <input name="submit" type="submit" value="SUBSCRIBE" />
         </form>
@@ -22,6 +23,35 @@
     </div>
   </section>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      customerEmail: undefined
+    }
+  },
+  methods: {
+    addSubscription(e) {
+      e.preventDefault()
+      this.$axios.$post('/subscriptions', {
+        data: {
+          email: this.customerEmail
+        }
+      }).then(
+        res => {
+          if (res) {
+            this.customerEmail = undefined
+            this.$message.success('Subscription success!')
+          } else {
+            this.$message.error('Uh-Oh, something went wrong.')
+          }
+        }
+      )
+    }
+  }
+}
+</script>
 
 <style lang="scss" scoped>
 .sec-subscribe {
@@ -60,16 +90,26 @@
     }
     input[type='email'] {
       width: 100%;
-      color: #b4b4b4;
       padding-left: 1rem;
       font-size: 16px;
       padding: 0.5rem 1.5rem;
+      color: rgba(#000, 0.65);
+
+      &::placeholder {
+        color: #b4b4b4;
+      }
     }
     input[type='submit'] {
       background-color: $navy;
       font-size: 16px;
       font-weight: 700;
       padding: 0.5rem 1.5rem;
+      transition: all 0.5s ease;
+
+      &:hover {
+        cursor: pointer;
+        filter: brightness(1.3);
+      }
     }
   }
 }

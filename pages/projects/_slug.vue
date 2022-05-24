@@ -130,10 +130,10 @@
               </div>
               <div class="btn-container">
                 <a-row type="flex" :gutter="[12,12]">
-                  <a-col :md="{span:12}" :sm="{span:24}">
+                  <a-col :md="{span:12}" :sm="{span:12}" :xs="{span:24}">
                     <a href="#" class="main-btn navy"> contact agent</a>
                   </a-col>
-                  <a-col :md="{span:12}" :sm="{span:24}" v-if="item.attributes.floorPlan.data">
+                  <a-col :md="{span:12}" :sm="{span:12}" :xs="{span:24}" v-if="item.attributes.floorPlan.data">
                     <a :href="item.attributes.floorPlan.data.attributes.url" target="_blank" class="main-btn gray"> floorplan </a>
                   </a-col>
                 </a-row>

@@ -130,7 +130,7 @@ nav {
   align-items: center;
   padding: 0 calc(10vw - 20px);
   background-color: $navy;
-  box-shadow: 0px 5px 20px 10px rgba(black, 0.4);
+  box-shadow: 0 5px 20px 10px rgb(97, 113, 127, 29%);
 
   .logo-container {
     height: 50px;
@@ -143,10 +143,25 @@ nav {
   // @media (max-width: 576px) {
   //   padding: 0 10vw;
   // }
+
+  &:not(.homeNav) {
+    .nav-items .nuxt-link-exact-active {
+      background-color: $navy !important;
+      filter: brightness(1.3) !important;
+    }
+  }
 }
 .nav-items {
   display: flex;
   align-items: center;
+  
+  a {
+    display: block;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    transition: all 0.5s ease;
+  }
 }
 .dropdown-wrapper {
   display: flex;
@@ -200,6 +215,7 @@ nav {
   background: transparent;
   transition: all 0.5s ease;
   box-shadow: none;
+
   img {
     opacity: 0;
     transition: all 0.5s ease;
@@ -207,10 +223,15 @@ nav {
 
   &.active {
     background-color: $navy;
-    box-shadow: 0px 5px 20px 5px rgba(black, 0.4);
+    box-shadow: 0 5px 20px 10px rgb(97, 113, 127, 29%);
 
     img {
       opacity: 1;
+    }
+
+    .nav-items .nuxt-link-exact-active {
+      background-color: $navy !important;
+      filter: brightness(1.3) !important;
     }
   }
 }
