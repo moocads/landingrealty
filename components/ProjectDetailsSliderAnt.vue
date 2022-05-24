@@ -37,16 +37,6 @@ export default {
   },
   data() {
     return {
-      // images: [
-      //   '/img/test/blog-demo-img-01.jpg',
-      //   '/img/test/blog-demo-img-02.jpg',
-      //   '/img/test/blog-demo-img-03.jpg',
-      //   '/img/test/blog-demo-img-04.jpg',
-      //   '/img/test/blog-demo-img-01.jpg',
-      //   '/img/test/blog-demo-img-02.jpg',
-      //   '/img/test/blog-demo-img-03.jpg',
-      //   '/img/test/blog-demo-img-04.jpg',
-      // ]
     }
   },
   created() {

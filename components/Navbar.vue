@@ -21,7 +21,7 @@
           </div>
         </div>
 
-        <NuxtLink to="/news">news</NuxtLink>
+        <NuxtLink to="/articles">articles</NuxtLink>
         <NuxtLink to="/contact">contact</NuxtLink>
       </div>
       <!-- mobile -->
@@ -39,8 +39,14 @@
           <div @click="mobileNavOpen = false">
             <NuxtLink to="/about">about</NuxtLink>
           </div>
+          <div @click="mobileNavOpen = false">
+            <NuxtLink to="/projects/pre-construction">pre-construction</NuxtLink>
+          </div>
+          <div @click="mobileNavOpen = false">
+            <NuxtLink to="/projects/resales">resales</NuxtLink>
+          </div>
 
-          <div class="mobile-dropdown-wrapper">
+          <!-- <div class="mobile-dropdown-wrapper">
             <a
               @click="mobileProjectTab = !mobileProjectTab"
               class="dropdown-link"
@@ -59,9 +65,9 @@
                 <NuxtLink to="/projects/resales">resales</NuxtLink>
               </div>
             </div>
-          </div>
+          </div> -->
           <div @click="mobileNavOpen = false">
-            <NuxtLink to="/news">news</NuxtLink>
+            <NuxtLink to="/articles">articles</NuxtLink>
           </div>
           <div @click="mobileNavOpen = false">
             <NuxtLink to="/contact">contact</NuxtLink>
@@ -122,7 +128,7 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 10vw;
+  padding: 0 calc(10vw - 20px);
   background-color: $navy;
   .logo-container {
     height: 50px;
@@ -131,6 +137,10 @@ nav {
     width: auto;
     height: 100%;
   }
+
+  // @media (max-width: 992px) {
+  //   padding: 0 calc(5vw - 20px);
+  // }
 }
 .nav-items {
   display: flex;
@@ -265,26 +275,30 @@ nav {
   z-index: 100;
 }
 .mobile-nav-items {
-  display: grid;
-  grid-template-columns: 1fr;
-  justify-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  // justify-items: center;
+  // display: grid;
+  // grid-template-columns: 1fr;
   * {
     font-size: 20px;
-    margin: 1rem 0;
+    // margin: 1rem 0;
   }
 }
-.mobile-dropdown-wrapper {
-  text-align: center;
-}
-.mobile-dropdown-content {
-  display: none;
-  div {
-    margin: 1rem 0;
-  }
-  &.open {
-    display: block;
-  }
-}
+// .mobile-dropdown-wrapper {
+//   text-align: center;
+// }
+// .mobile-dropdown-content {
+//   display: none;
+//   div {
+//     margin: 1rem 0;
+//   }
+//   &.open {
+//     display: block;
+//   }
+// }
 
 @media all and (max-width: $md) {
   nav {

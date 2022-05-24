@@ -1,5 +1,5 @@
 <template>
-  <div id="blogDetails">
+  <div id="articleDetails">
     <div class="wrapper">
       <a-breadcrumb>
         <a-breadcrumb-item>
@@ -8,37 +8,37 @@
           </nuxt-link>
         </a-breadcrumb-item>
         <a-breadcrumb-item>
-          <nuxt-link to="/news">
-            News
+          <nuxt-link to="/articles">
+            Articles
           </nuxt-link>
         </a-breadcrumb-item>
         <a-breadcrumb-item>
-            {{blog.attributes.title}}
+            {{article.attributes.title}}
         </a-breadcrumb-item>
       </a-breadcrumb>
       <section>
         <a-row type="flex" :gutter="[40,50]">
           <a-col :lg="{span:16}" :md="{span:15}" :sm="{span:24}" :xs="{span:24}">
-            <div class="blogBody">
+            <div class="articleBody">
               <div class="title">
-                <h1>{{blog.attributes.title}}</h1>
-                <span><a-icon type="clock-circle" />  {{blog.attributes.date}}</span>
+                <h1>{{article.attributes.title}}</h1>
+                <span><a-icon type="clock-circle" />  {{article.attributes.date}}</span>
               </div>
-              <img v-if="blog.attributes.thumbnail.data" :src="blog.attributes.thumbnail.data.attributes.url" :alt="blog.attributes.title">
-              <div v-html="blog.attributes.content"></div>
+              <img v-if="article.attributes.thumbnail.data" :src="article.attributes.thumbnail.data.attributes.url" :alt="article.attributes.title">
+              <div v-html="article.attributes.content"></div>
             </div>
           </a-col>
           <a-col :lg="{span:8}" :md="{span:9}" :sm="{span:24}" :xs="{span:24}">
             <div class="featured">
               <h2>
-                Featured Blogs
+                Featured Articles
               </h2>
               <div class="decoration">
                 <div class="dark"></div>
                 <div class="light"></div>
               </div>
               <div class="eachFeature" v-for="b in features" :key="b.id">
-                <nuxt-link :to="`/news/${b.attributes.slug}`">
+                <nuxt-link :to="`/articles/${b.attributes.slug}`">
                   <a-row type="flex" :gutter="[15,20]">
                     <a-col :lg="{span:8}" :md="{span:9}" :sm="{span:7}" :xs="{span:7}">
                       <div class="img">
@@ -76,21 +76,21 @@ export default {
         populate: ['thumbnail']
       }
     })
-    const featuredBlogs = await $axios.$get('/blogs', {params:{populate: ['thumbnail'], filters: {featured: { $eq:true}} }})
+    const featuredArticles = await $axios.$get('/blogs', {params:{populate: ['thumbnail'], filters: {featured: { $eq:true}} }})
     return {
       slug,
-      blog: res.data[0],
-      features: featuredBlogs.data
+      article: res.data[0],
+      features: featuredArticles.data
     }
   },
   created() {
-    console.log(this.blog)
+    console.log(this.article)
   }
 }
 </script>
 
 <style lang="scss" scoped>
-#blogDetails {
+#articleDetails {
   padding-top: 160px;
   background-color: white;
 
@@ -98,7 +98,7 @@ export default {
     margin-top: 50px;
   }
 
-  .blogBody {
+  .articleBody {
 
     .title {
       border-bottom: 1px solid #d9d9d9;

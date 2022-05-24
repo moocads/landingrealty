@@ -9,7 +9,7 @@
           <h5>contact us</h5>
         </a-col>
         <a-col :xl="{span:8}" :lg="{span:12}" :md="{span:12}" :sm="{span:12}" :xs="{span:24}">
-          <h5>featured news</h5>
+          <h5>Featured Articles</h5>
         </a-col>
         <a-col :xl="{span:8}" :lg="{span:12}" :md="{span:12}" :sm="{span:12}" :xs="{span:24}">
           <h5>links</h5>
@@ -45,17 +45,17 @@
         <a-col :xl="{span:8}" :lg="{span:12}" :md="{span:12}" :sm="{span:12}" :xs="{span:24}">
           <section>
             <div class="title">
-              <h4>featured news</h4>
+              <h4>Featured Articles</h4>
             </div>
-            <div class="news">
-              <div v-for="b in blogs" :key="b.id">
-                <NuxtLink class="news-block" :to="`/news/${b.attributes.slug}`">
+            <div class="articles">
+              <div v-for="b in articles" :key="b.id">
+                <NuxtLink class="articles-block" :to="`/articles/${b.attributes.slug}`">
                   <img
                     v-if="b.attributes.thumbnail.data"
                     :src="b.attributes.thumbnail.data.attributes.url"
                     :alt="b.attributes.title"
                   />
-                  <div class="news-content">
+                  <div class="articles-content">
                     <h5>{{ b.attributes.title }}</h5>
                     <!-- <p>{{b.attributes.blurb}}</p> -->
                   </div>
@@ -110,7 +110,7 @@
               <li><NuxtLink to="/about">About Us</NuxtLink></li>
               <li><NuxtLink to="/projects/pre-construction">Pre-Construction</NuxtLink></li>
               <li><NuxtLink to="/projects/resales">Resales</NuxtLink></li>
-              <li><NuxtLink to="/news">News</NuxtLink></li>
+              <li><NuxtLink to="/articles">Articles</NuxtLink></li>
               <li><NuxtLink to="/contact">Contact</NuxtLink></li>
             </ul>
           </section>
@@ -124,7 +124,7 @@
 export default {
   data() {
     return {
-      blogs: undefined,
+      articles: undefined,
     }
   },
   created() {
@@ -136,10 +136,15 @@ export default {
             start: 0,
             limit: 3,
           },
+          filters: {
+            featured: {
+              $eq:true
+            }
+          }
         },
       })
       .then((res) => {
-        this.blogs = res.data
+        this.articles = res.data
       })
   },
 }
@@ -163,6 +168,10 @@ footer {
       margin-right: 10px;
     }
   }
+
+  // @media (max-width:992px) {
+  //   padding: 50px 5vw 100px 5vw;  
+  // }
 }
 
 .logo, .title {
@@ -226,11 +235,11 @@ h4 {
 }
 
 
-.news {
+.articles {
   display: flex;
   flex-direction: column;
 }
-.news-block {
+.articles-block {
   display: flex;
   align-items: center;
   margin-bottom: 10px;
@@ -241,7 +250,7 @@ h4 {
     margin-right: 10px;
   }
 }
-.news-content {
+.articles-content {
   width: 75%;
   display: flex;
   flex-direction: column;

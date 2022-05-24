@@ -46,18 +46,20 @@
   }
 
   .right-block {
-    padding: 30px 5vw 30px 5vw;
+    padding: 30px 10vw 30px 10vw;
     display: flex;
     justify-content: center;
   }
   form {
     justify-content: flex-end;
     display: flex;
+    width: 100%;
 
     input {
       border: 1px solid white;
     }
     input[type='email'] {
+      width: 100%;
       color: #b4b4b4;
       padding-left: 1rem;
       font-size: 16px;

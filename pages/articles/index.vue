@@ -1,16 +1,16 @@
 <template>
-  <div id="news">
+  <div id="articles">
     <section class="title">
       <div class="wrapper">
-        <h1>real estate blog</h1>
+        <h1>real estate article</h1>
       </div>
     </section>
     <section class="articleList">
       <div class="wrapper">
         <a-row type="flex" :gutter="[30,40]">
           <a-col :lg="{span:16}" :md="{span:15}" :sm="{span:24}" :xs="{span:24}">
-            <div v-for="b in blogs" :key="b.id" class="eachArticle">
-              <nuxt-link :to="`/news/${b.attributes.slug}`">
+            <div v-for="b in articles" :key="b.id" class="eachArticle">
+              <nuxt-link :to="`/articles/${b.attributes.slug}`">
                 <a-row type="flex" :gutter="[20,25]">
                   <a-col :lg="{span:7}" :md="{span:7, offset: 0}" :sm="{span:7, offset: 0}" :xs="{span:7, offset: 0}">
                     <div class="img">
@@ -31,14 +31,14 @@
           <a-col :lg="{span:8}" :md="{span:9}" :sm="{span:24}" :xs="{span:24}">
             <div class="featured">
               <h2>
-                Featured Blogs
+                FEATURED ARTICLES
               </h2>
               <div class="decoration">
                 <div class="dark"></div>
                 <div class="light"></div>
               </div>
               <div class="eachFeature" v-for="b in features" :key="b.id">
-                <nuxt-link :to="`/news/${b.attributes.slug}`">
+                <nuxt-link :to="`/articles/${b.attributes.slug}`">
                   <a-row type="flex" :gutter="[15,20]">
                     <a-col :lg="{span:8}" :md="{span:9}" :sm="{span:7}" :xs="{span:7}">
                       <div class="img">
@@ -65,22 +65,22 @@
 <script>
 export default {
   async asyncData({$axios}) {
-    const allBlogs = await $axios.$get('/blogs', {params:{populate: ['thumbnail'] }})
-    const featuredBlogs = await $axios.$get('/blogs', {params:{populate: ['thumbnail'], filters: {featured: { $eq:true}} }})
+    const allArticles = await $axios.$get('/blogs', {params:{populate: ['thumbnail'] }})
+    const featuredArticles = await $axios.$get('/blogs', {params:{populate: ['thumbnail'], filters: {featured: { $eq:true}} }})
 
     return {
-      blogs: allBlogs.data,
-      features: featuredBlogs.data
+      articles: allArticles.data,
+      features: featuredArticles.data
     }
   },
   created() {
-    console.log(this.blogs)
+    console.log(this.articles)
   }
 }
 </script>
 
 <style lang="scss" scoped>
-#news {
+#articles {
   background-color: #fff;
   padding-top: 110px;
 

@@ -1,6 +1,6 @@
 <template>
   <div class="infobar-container">
-    <div class="wrapper">
+    <div class="infobar-wrapper">
       <p>Client First, Client’s Need Is Our # 1 Priority</p>
       <div>
         <p>info@landingrealty.ca</p>
@@ -15,9 +15,11 @@
   width: 100%;
   background-color: #c4c4c4;
   padding: 0.25rem 0;
-  .wrapper {
+  .infobar-wrapper {
     display: flex;
     justify-content: space-between;
+    max-width: 10000px;
+    padding: 0 10vw;
     div {
       display: flex;
       p:first-child{
@@ -29,6 +31,10 @@
       font-size: 16px;
       margin: 0;
     }
+
+    // @media (max-width: 992px) {
+    //   padding: 0 5vw;
+    // }
   }
 }
 

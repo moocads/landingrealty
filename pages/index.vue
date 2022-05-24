@@ -62,12 +62,12 @@
         <p>CEO/Founder, Broker of Record, FRI, BEc, MBA</p>
       </div>
     </section>
-    <section class="sec-landing-news">
+    <section class="sec-landing-articles">
       <div class="wrapper flex-col-center">
         <h6>Toronto Real Estate Company</h6>
-        <h1>LANDING NEWS</h1>
-        <div class="news-grid">
-          <NuxtLink v-for="(b, i) in blogs" :key="i" :to="`/news/${b.attributes.slug}`">
+        <h1>LANDING ARTICLES</h1>
+        <div class="articles-grid">
+          <NuxtLink v-for="(b, i) in articles" :key="i" :to="`/articles/${b.attributes.slug}`">
             <ItemCard
               :img="b.attributes.thumbnail.data.attributes.url"
               :title="b.attributes.title"
@@ -76,7 +76,7 @@
             />
           </NuxtLink>
         </div>
-        <NuxtLink to="news" class="main-btn">Learn More</NuxtLink>
+        <NuxtLink to="articles" class="main-btn">Learn More</NuxtLink>
       </div>
     </section>
   </div>
@@ -193,7 +193,7 @@ export default {
       house: res5.data,
       townhouse: res6.data,
     }
-    const allBlogs = await $axios.$get('/blogs', {
+    const allArticles = await $axios.$get('/blogs', {
       params: {
         populate: ['thumbnail'],
         pagination: {
@@ -205,7 +205,7 @@ export default {
     return {
       precon,
       resales,
-      blogs: allBlogs.data,
+      articles: allArticles.data,
     }
   },
   data() {
@@ -475,6 +475,11 @@ h5 {
     bottom: 15%;
     right: 5%;
   }
+
+  h2, h5, p {
+    position: relative;
+    z-index: 10;
+  }
 }
 
 h6 {
@@ -482,14 +487,14 @@ h6 {
   line-height: 21px;
 }
 
-.sec-landing-news {
+.sec-landing-articles {
   padding: 4rem 0;
   color: $navy;
   h6 {
     color: $navy;
   }
 }
-.news-grid {
+.articles-grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 30px;
@@ -534,7 +539,7 @@ h6 {
       max-width: 80%;
     }
   }
-  .news-grid {
+  .articles-grid {
     grid-template-columns: 1fr 1fr;
   }
 }
@@ -546,7 +551,7 @@ h6 {
       max-width: 100%;
     }
   }
-  .news-grid {
+  .articles-grid {
     grid-template-columns: 1fr;
   }
 }

@@ -1,6 +1,6 @@
 <template>
   <div class="card-container">
-    <img class="image" :class="{blog:hideTag}" :src="img" :alt="title" />
+    <img class="image" :class="{article:hideTag}" :src="img" :alt="title" />
     <div class="details">
       <span class="region-tag" v-if="!hideTag">
         {{ locations[tag].en }}
@@ -70,7 +70,7 @@ export default {
     height: 500px;
     object-fit: cover;
 
-    &.blog {
+    &.article {
       height: 300px;
     }
   }
