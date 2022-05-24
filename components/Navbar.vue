@@ -15,9 +15,9 @@
           <a class="dropdown-link"> projects  <a-icon type="caret-down" /></a>
           <div class="dropdown-content">
             <NuxtLink to="/projects/pre-construction"
-              >Pre-Construction</NuxtLink
+              >pre-construction</NuxtLink
             >
-            <NuxtLink to="/projects/resales">Resales</NuxtLink>
+            <NuxtLink to="/projects/resales">resales</NuxtLink>
           </div>
         </div>
 
@@ -130,6 +130,8 @@ nav {
   align-items: center;
   padding: 0 calc(10vw - 20px);
   background-color: $navy;
+  box-shadow: 0px 5px 20px 10px rgba(black, 0.4);
+
   .logo-container {
     height: 50px;
   }
@@ -138,8 +140,8 @@ nav {
     height: 100%;
   }
 
-  // @media (max-width: 992px) {
-  //   padding: 0 calc(5vw - 20px);
+  // @media (max-width: 576px) {
+  //   padding: 0 10vw;
   // }
 }
 .nav-items {
@@ -197,6 +199,7 @@ nav {
 .homeNav {
   background: transparent;
   transition: all 0.5s ease;
+  box-shadow: none;
   img {
     opacity: 0;
     transition: all 0.5s ease;
@@ -204,6 +207,7 @@ nav {
 
   &.active {
     background-color: $navy;
+    box-shadow: 0px 5px 20px 5px rgba(black, 0.4);
 
     img {
       opacity: 1;
@@ -216,6 +220,8 @@ nav {
   display: none;
   position: relative;
   z-index: 101;
+  padding-bottom: 10px ;
+  margin-right: 20px;
 
   .line {
     background-color: white;
@@ -269,10 +275,13 @@ nav {
   background-color: $navy;
   height: 100%;
   flex-direction: column;
-  display: none;
+  display: flex;
   width: 100vw;
   justify-content: center;
   z-index: 100;
+  opacity: 0;
+  transition: all 0.5s ease;
+  pointer-events: none;
 }
 .mobile-nav-items {
   display: flex;
@@ -310,7 +319,9 @@ nav {
     }
     .mobile-nav-wrapper {
       &.open {
-        display: flex;
+        // display: flex;
+        opacity: 1;
+        pointer-events: all;
       }
     }
     .mobile-nav-mask {

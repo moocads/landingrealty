@@ -20,7 +20,7 @@
       <br>
     </div>
     <div class="wrapper project-main">
-      <a-row type="flex" :gutter="[24,24]">
+      <a-row type="flex" :gutter="[{xl: 24, lg: 24, md: 0, sm: 0, xs: 0},24]">
         <a-col :xl="{span:10}" :lg="{span:10}" :md="{span:24}" :sm="{span:24}" :xs="{span:24}">
           <ProjectDetailsSlider :images="item.attributes.images.data" />
         </a-col>
@@ -345,6 +345,14 @@ export default {
   margin-bottom: 50px;
   justify-content: space-between;
 
+  .ant-row-flex {
+    width: 100%;
+
+    // @media (max-width: 992px) {
+    //   width: 110%;
+    // }
+  }
+
   .img-slider {
     max-width: 100%;
   }
@@ -526,7 +534,7 @@ export default {
 @media all and (max-width: $md) {
   .wrapper {
     grid-template-columns: 1fr;
-    padding: 0 2rem;
+    // padding: 0 2rem;
     img {
       margin: 0 auto;
     }

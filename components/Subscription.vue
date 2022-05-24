@@ -38,7 +38,7 @@
       img {
         position: absolute;
         bottom: 0;
-        // left: -45px;
+        left: calc(10vw - 20px);
         width: 100%;
         max-width: 500px;
       }
@@ -46,7 +46,7 @@
   }
 
   .right-block {
-    padding: 30px 10vw 30px 10vw;
+    padding: 30px 10vw 30px 5vw;
     display: flex;
     justify-content: center;
   }

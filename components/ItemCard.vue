@@ -70,8 +70,16 @@ export default {
     height: 500px;
     object-fit: cover;
 
+    @media(max-width:1200px) {
+      height: 400px;
+    }
+
     &.article {
       height: 300px;
+
+      @media (max-width: 1200px) {
+        height: 250px;
+      }
     }
   }
 
