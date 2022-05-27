@@ -63,13 +63,13 @@ export default {
   }
 
   .allContainer {
+    background: linear-gradient(105.4deg, #0B2C42 20%, rgba(11, 44, 66, 0.78),rgba(11, 44, 66, 0.58),rgba(11, 44, 66, 0.78), #0B2C42,#0B2C42,rgba(11, 44, 66, 0.88), rgba(11, 44, 66, 0.68), rgba(11, 44, 66, 0.48));
     // background: linear-gradient(100deg, #0B2C42 10%, rgba(#0B2C42, 0.48) 30%,rgba(#0B2C42, 0.68) 50%, rgba(#0B2C42, 0.58) 80%), #163f5a 100%;
-    background: linear-gradient(105.4deg, #0B2C42 21.18%, rgba(11, 44, 66, 0.48) 91.93%);
     position: relative;
     width: 100%;
     height: 100%;
-
-    animation: gradient 15s ease infinite;
+    background-size: 400% 400%;
+    animation: gradient 60s linear infinite;
 
     @keyframes gradient {
       0% {
