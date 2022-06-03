@@ -4,9 +4,14 @@
       <div class="left-block">
         <img
           class="img-fluid"
-          src="~/assets/img/3d-illustration-residential-building-exterior.png"
+          src="~/assets/img/subscribe.png"
           alt="building"
         />
+        <!-- <img
+          class="img-fluid"
+          src="~/assets/img/3d-illustration-residential-building-exterior.png"
+          alt="building"
+        /> -->
       </div>
       <div class="right-block">
         <form @submit="addSubscription">
@@ -55,7 +60,7 @@ export default {
 
 <style lang="scss" scoped>
 .sec-subscribe {
-  // padding-top: 30px;
+  padding-top: 30px;
 
   .navy {
     display: grid;
@@ -69,14 +74,17 @@ export default {
         position: absolute;
         bottom: 0;
         left: calc(10vw - 20px);
-        width: 100%;
-        max-width: 500px;
+        // width: 50%;
+        // max-width: 500px;
+        height: 200px;
+        object-fit: contain;
+        object-position: left;
       }
     }
   }
 
   .right-block {
-    padding: 30px 10vw 30px 5vw;
+    padding: 40px 10vw 40px 5vw;
     display: flex;
     justify-content: center;
   }
@@ -116,24 +124,29 @@ export default {
 
 @media all and (max-width: $md) {
   .sec-subscribe {
+    padding-top: 50px;
+
     .navy {
       display: flex;
-      flex-direction: column-reverse;
+      flex-direction: column;
 
       .left-block {
       display: flex;
       justify-content: center;
 
         img {
-          position: static;
           max-width: 400px;
+          object-position: center;
+          left: 50%;
+          transform: translate(-50%);
+          top: -100px;
         }
       }
     }
 
     .right-block {
       margin: auto;
-      padding: 30px 0 15px 0;
+      padding: 130px 0 30px 0;
     }
 
     form {

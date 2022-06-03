@@ -3,6 +3,7 @@
     <Preload v-if="!$store.state.preloaded" />
     <div id="preloadIndex" scroll="no" class="preloaded">
       <div class="allContainer">
+        <canvas width="2" height="2"></canvas>
         <div class="elementContainer">
           <div class="logoContainer">
             <svg class="logoSVG" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 178.1 385.39"><defs></defs><title>logo</title><path class="cls-1" d="M211,408.7l-84-84.06V169.06L211,23.3Zm94.05-94.05V162.39L222.11,306.08v91.51Z" transform="translate(-126.95 -23.3)"/></svg>
@@ -216,7 +217,66 @@ export default {
     skipPreload () {
       this.$store.commit('setPreload', true)
     }
-  }
+  },
+  // mounted() {
+  //   const canvas = document.querySelector('canvas');
+  //   const ctx = canvas.getContext('2d');
+
+
+  //   function Pixel( x, y ) {
+  //     this.x = x;
+  //     this.y = y;
+  //     // this.hue = Math.floor( Math.random() * 360 );
+  //     this.opacity = Math.floor( Math.random() * 100 )
+  //     let direction = Math.random() > 0.5 ? -1 : 1;
+  //     // let direction = 1;
+  //     // this.velocity = ( Math.random() * 10 ) * 0.01 * direction;
+  //     this.velocity = ( Math.random() * 30 + 20 ) * 0.01 * direction;
+
+  //     console.log(this.velocity)
+  //   }
+
+  //   Pixel.prototype.update = function() {
+  //     // this.hue += this.velocity;
+  //     this.opacity += this.velocity;
+  //     // console.log(this.hue, this.opacity)
+  //     let direction = Math.random() > 0.5 ? -1 : 1;
+  //     // this.velocity = ( Math.random() * 30 + 20 ) * 0.01 * direction;
+  //     this.velocity = Math.random() * direction;
+  //     // console.log(this.velocity)
+  //   };
+
+  //   Pixel.prototype.render = function( ctx ) {
+  //     // let hue = Math.round( this.hue );
+  //     // let hue = this.hue;
+  //     let opacity = this.opacity;
+  //     // ctx.fillStyle = `rgba(11,44,66, ${opacity / 100})`;
+  //     // ctx.fillStyle = `hsl(${hue}, 100%, 50%)`;
+  //     ctx.fillStyle = `hsl(204, 100%, ${Math.floor(opacity)}%)`;
+  //     ctx.fillRect( this.x, this.y, 1, 1 );
+  //     // console.log(
+  //     //   // 'hue', (Math.floor(hue / 360 * 100)),
+  //     //   'opacity', (opacity / 100)
+  //     // )
+  //   }
+
+  //   let pixels = [
+  //     new Pixel( 0, 0 ),
+  //     new Pixel( 1, 0 ),
+  //     new Pixel( 0, 1 ),
+  //     new Pixel( 1, 1 ),
+  //   ];
+
+  //   function animate() {
+  //     pixels.forEach( function( pixel ) {
+  //       pixel.update();
+  //       pixel.render( ctx );
+  //     });
+  //     requestAnimationFrame( animate );
+  //   }
+
+  //   animate();
+  // }
 }
 </script>
 
@@ -227,36 +287,15 @@ export default {
   width: 100%;
   height: 100vh;
   background: #fff;
-  // animation: fade 1.5s ease-in 9s forwards;
 
-  // .skipContainer {
-  //   position: fixed;
-  //   top: 30px;
-  //   right: 30px;
-  //   z-index: 1001;
-  //   opacity: 0;
-  //   animation: fadeIn 0.5s ease-in 2s forwards, fade 0.5s ease-in 8.5s forwards;
-
-  //   .skip {
-  //     transition: all 0.3s ease;
-  //     opacity: 0.3;
-  //     font-weight: 700;
-  //     color: white;
-  //     font-size: 14px;
-    
-  //     &:hover {
-  //       cursor: pointer;
-  //       opacity: 0.8;
-  //     }
-  //   }
-  // }
 
   .allContainer {
-    background: linear-gradient(105.4deg, #0B2C42 20%, rgba(11, 44, 66, 0.78),rgba(11, 44, 66, 0.58),rgba(11, 44, 66, 0.78), #0B2C42,#0B2C42,rgba(11, 44, 66, 0.88), rgba(11, 44, 66, 0.68), rgba(11, 44, 66, 0.48));
-    // background: linear-gradient(100deg, #0B2C42 10%, rgba(#0B2C42, 0.48) 30%,rgba(#0B2C42, 0.68) 50%, rgba(#0B2C42, 0.58) 80%), #163f5a 100%;
     position: relative;
     width: 100%;
     height: 100%;
+    overflow: hidden;
+    background: linear-gradient(105.4deg, #0B2C42 20%, rgba(11, 44, 66, 0.78),rgba(11, 44, 66, 0.58),rgba(11, 44, 66, 0.78), #0B2C42,#0B2C42,rgba(11, 44, 66, 0.88), rgba(11, 44, 66, 0.68), rgba(11, 44, 66, 0.48));
+    // background: linear-gradient(100deg, #0B2C42 10%, rgba(#0B2C42, 0.48) 30%,rgba(#0B2C42, 0.68) 50%, rgba(#0B2C42, 0.58) 80%), #163f5a 100%;
     background-size: 400% 400%;
     animation: gradient 60s linear infinite;
 
@@ -270,6 +309,13 @@ export default {
       100% {
         background-position: 0% 50%;
       }
+    }
+    canvas {
+      position: absolute;
+      display: block;
+      width: 100%;
+      height: 100%;
+      transform: scale(2);
     }
   }
 
