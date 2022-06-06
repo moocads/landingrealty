@@ -112,3 +112,43 @@ a {
 .ant-tabs-nav .ant-tabs-tab:hover, .ant-breadcrumb a:hover {
   color: $navy;
 }
+
+.ant-input,
+.ant-input-number,
+.ant-input-password {
+  width: 100%;
+
+  &:hover,
+  &:focus,
+  &.ant-input-number-focused {
+    border-color: $navy !important;
+    box-shadow: none;
+  }
+}
+
+.ant-select-dropdown-menu-item:hover:not(.ant-select-dropdown-menu-item-disabled),
+.ant-select-dropdown-menu-item-active:not(.ant-select-dropdown-menu-item-disabled) {
+  background-color: $navy;
+  color: white;
+}
+
+.ant-select {
+  width: 100%;
+
+  &.ant-select-focused .ant-select-selection,
+  &.ant-select-open .ant-select-selection {
+    border-color: $navy;
+    box-shadow: none;
+  }
+
+  .ant-select-selection {
+
+    &:hover,
+    &:focus,
+    &.ant-select-focused,
+    &.ant-select-open {
+      border-color: $navy;
+      box-shadow: none;
+    }
+  }
+}
