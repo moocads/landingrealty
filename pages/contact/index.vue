@@ -8,33 +8,34 @@
         </div>
       </div>
     </div>
-    <div class="forms">
-      <!-- <div class="wrapper"> -->
+    <div class="wrapper">
+      <h2 class="callToAction">Feel free to send us a message anytime!</h2>
+      <div class="forms">
         <a-tabs default-active-key="contact" class="custom-tab">
           <a-tab-pane key="contact" tab="Contact Us" class="contact">
             <a-form :form="contactForm" @submit="submitContact">
               <a-row :gutter="[30, 0]">
-                <a-col :md="{span:12}" :sm="{span:24}" :xs="{span:24}">
+                <a-col :md="{span:12}" :sm="{span:12}" :xs="{span:24}">
                   <a-form-item label="First Name">
                     <a-input placeholder="Jane" v-decorator="['firstName', {rules: [{ required: true, message: 'Required' }]}]"></a-input>
                   </a-form-item>
                 </a-col>
-                <a-col :md="{span:12}" :sm="{span:24}" :xs="{span:24}">
+                <a-col :md="{span:12}" :sm="{span:12}" :xs="{span:24}">
                   <a-form-item label="Last Name">
                     <a-input placeholder="Doe" v-decorator="['lastName', {rules: [{ required: true, message: 'Required' }]}]"></a-input>
                   </a-form-item>
                 </a-col>
-                <a-col :md="{span:12}" :sm="{span:24}" :xs="{span:24}">
+                <a-col :md="{span:12}" :sm="{span:12}" :xs="{span:24}">
                   <a-form-item label="Phone">
                     <a-input placeholder="123-456-7890" v-decorator="['phone', {rules: [{ required: true, message: 'Required' }]}]"></a-input>
                   </a-form-item>
                 </a-col>
-                <a-col :md="{span:12}" :sm="{span:24}" :xs="{span:24}">
+                <a-col :md="{span:12}" :sm="{span:12}" :xs="{span:24}">
                   <a-form-item label="Email">
                     <a-input placeholder="jane.doe@mail.com" v-decorator="['email', {rules: [{type: 'email', message: 'Not a valid email'},{required: true, message: 'Required' }]}]"></a-input>
                   </a-form-item>
                 </a-col>
-                <a-col :md="{span:12}" :sm="{span:24}" :xs="{span:24}">
+                <a-col :md="{span:12}" :sm="{span:12}" :xs="{span:24}">
                   <a-form-item label="I'm looking to:">
                     <a-select placeholder="Please select" v-decorator="['intent']">
                       <a-select-option value="lease">
@@ -52,7 +53,7 @@
                     </a-select>
                   </a-form-item>
                 </a-col>
-                <a-col :md="{span:12}" :sm="{span:24}" :xs="{span:24}">
+                <a-col :md="{span:12}" :sm="{span:12}" :xs="{span:24}">
                   <a-form-item label="Property Type:">
                     <a-select placeholder="Please select" v-decorator="['type']">
                       <a-select-option value="house">
@@ -83,22 +84,22 @@
           <a-tab-pane key="join" tab="Join Us" class="join">
             <a-form :form="joinForm" @submit="submitJoin">
               <a-row :gutter="[30,0]">
-                <a-col :md="{span:12}" :sm="{span:24}" :xs="{span:24}">
+                <a-col :md="{span:12}" :sm="{span:12}" :xs="{span:24}">
                   <a-form-item label="First Name">
                     <a-input placeholder="Jane" v-decorator="['firstName', {rules: [{ required: true, message: 'Required' }]}]"></a-input>
                   </a-form-item>
                 </a-col>
-                <a-col :md="{span:12}" :sm="{span:24}" :xs="{span:24}">
+                <a-col :md="{span:12}" :sm="{span:12}" :xs="{span:24}">
                   <a-form-item label="Last Name">
                     <a-input placeholder="Doe" v-decorator="['lastName', {rules: [{ required: true, message: 'Required' }]}]"></a-input>
                   </a-form-item>
                 </a-col>
-                <a-col :md="{span:12}" :sm="{span:24}" :xs="{span:24}">
+                <a-col :md="{span:12}" :sm="{span:12}" :xs="{span:24}">
                   <a-form-item label="Phone">
                     <a-input placeholder="123-456-7890" v-decorator="['phone', {rules: [{ required: true, message: 'Required' }]}]"></a-input>
                   </a-form-item>
                 </a-col>
-                <a-col :md="{span:12}" :sm="{span:24}" :xs="{span:24}">
+                <a-col :md="{span:12}" :sm="{span:12}" :xs="{span:24}">
                   <a-form-item label="Email">
                     <a-input placeholder="jane.doe@mail.com" v-decorator="['email', {rules: [{type: 'email', message: 'Not a valid email'},{ required: true, message: 'Required' }]}]"></a-input>
                   </a-form-item>
@@ -121,7 +122,7 @@
             </a-form>
           </a-tab-pane>
         </a-tabs>
-      <!-- </div> -->
+      </div>
     </div>
   </div>
 </template>
@@ -224,17 +225,21 @@ export default {
     }
   }
 }
+  .callToAction {
+    margin-top: 50px;
+    text-align: center;
+    font-size: 30px;
+    color: $navy;
+  }
+
 .forms {
-  padding: 100px 0;
+  padding: 50px 0 100px 0;
   max-width: 600px;
   margin: 0 auto;
 
+
   .main-btn {
     width: 100%;
-  }
-
-  @media (max-width:765px) {
-    max-width: 300px;
   }
 
   .contact, .join {
