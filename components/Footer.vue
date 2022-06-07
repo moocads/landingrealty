@@ -98,7 +98,10 @@
                 </a>
               </li>
             </ul>
-            <img src="~/assets/img/map.jpg" alt="map" class="img-fluid" />
+            <!-- <a href="https://goo.gl/maps/anNTEMmDad13bScA6">
+              <img src="~/assets/img/map.jpg" alt="map" class="img-fluid" />
+            </a> -->
+            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2877.753929098095!2d-79.3273869!3d43.8401999!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89d4d553793c0919%3A0x2caa026b569ff136!2sLanding%20Realty%20Inc.!5e0!3m2!1sen!2sca!4v1654548615104!5m2!1sen!2sca" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
           </section>
         </a-col>
         <a-col :xl="{span:4}" :lg="{span:12}" :md="{span:12}" :sm="{span:12}" :xs="{span:24}">
@@ -231,6 +234,13 @@ h4 {
         color: white;
       }
     }
+  }
+
+  iframe {
+    margin-top: 20px;
+    width: 100%;
+    height: 150px;
+    border-radius: 15px;
   }
 }
 

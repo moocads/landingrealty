@@ -1,29 +1,19 @@
 <template>
   <section class="sec-subscribe">
     <div class="navy">
-      <div class="left-block">
-        <img
-          class="img-fluid"
-          src="~/assets/img/subscribe.png"
-          alt="building"
-        />
-        <!-- <img
-          class="img-fluid"
-          src="~/assets/img/3d-illustration-residential-building-exterior.png"
-          alt="building"
-        /> -->
-      </div>
-      <div class="right-block">
-        <form @submit="addSubscription">
-          <input
-            name="email"
-            type="email"
-            required
-            placeholder="example@email.com"
-            v-model="customerEmail"
-          />
-          <input name="submit" type="submit" value="SUBSCRIBE" />
-        </form>
+      <div class="wrapper">
+        <div class="right-block">
+          <form @submit="addSubscription">
+            <input
+              name="email"
+              type="email"
+              required
+              placeholder="example@email.com"
+              v-model="customerEmail"
+            />
+            <input name="submit" type="submit" value="SUBSCRIBE" />
+          </form>
+        </div>
       </div>
     </div>
   </section>
@@ -60,31 +50,14 @@ export default {
 
 <style lang="scss" scoped>
 .sec-subscribe {
-  padding-top: 30px;
 
   .navy {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    padding: 50px 0;
     background-color: $navy;
     color: white;
-    // margin-top: 2rem;
-    .left-block {
-      position: relative;
-      img {
-        position: absolute;
-        bottom: 0;
-        left: calc(10vw - 20px);
-        // width: 50%;
-        // max-width: 500px;
-        height: 200px;
-        object-fit: contain;
-        object-position: left;
-      }
-    }
   }
 
   .right-block {
-    padding: 40px 10vw 40px 5vw;
     display: flex;
     justify-content: center;
   }
@@ -92,6 +65,7 @@ export default {
     justify-content: flex-end;
     display: flex;
     width: 100%;
+    max-width: 600px;
 
     input {
       border: 1px solid white;
@@ -114,43 +88,14 @@ export default {
       padding: 0.5rem 1.5rem;
       transition: all 0.5s ease;
 
+      @media (max-width: 576px) {
+        padding: 0.5rem 0.5rem;
+      }
+
       &:hover {
         cursor: pointer;
         filter: brightness(1.3);
       }
-    }
-  }
-}
-
-@media all and (max-width: $md) {
-  .sec-subscribe {
-    padding-top: 50px;
-
-    .navy {
-      display: flex;
-      flex-direction: column;
-
-      .left-block {
-      display: flex;
-      justify-content: center;
-
-        img {
-          max-width: 400px;
-          object-position: center;
-          left: 50%;
-          transform: translate(-50%);
-          top: -100px;
-        }
-      }
-    }
-
-    .right-block {
-      margin: auto;
-      padding: 130px 0 30px 0;
-    }
-
-    form {
-      display: flex;
     }
   }
 }
