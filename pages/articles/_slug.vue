@@ -1,5 +1,5 @@
 <template>
-  <div id="articleDetails">
+  <div id="articleDetails" data-aos="fade-up">
     <div class="wrapper">
       <a-breadcrumb>
         <a-breadcrumb-item>

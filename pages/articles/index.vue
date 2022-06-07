@@ -2,10 +2,10 @@
   <div id="articles">
     <section class="title">
       <div class="wrapper">
-        <h1>real estate article</h1>
+        <h1 data-aos="fade-up">real estate articles</h1>
       </div>
     </section>
-    <section class="articleList">
+    <section class="articleList" data-aos="fade-up">
       <div class="wrapper">
         <a-row type="flex" :gutter="[30,40]">
           <a-col :lg="{span:16}" :md="{span:15}" :sm="{span:24}" :xs="{span:24}">

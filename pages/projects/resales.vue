@@ -1,6 +1,6 @@
 <template>
   <div class="container" id="resaleProjects">
-    <ItemDisplay title="resales" :displayData="data" />
+    <ItemDisplay title="resales" :displayData="data" data-aos="fade-up" />
     <Subscription />
   </div>
 </template>

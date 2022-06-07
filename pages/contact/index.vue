@@ -4,13 +4,13 @@
       <img class="img-fluid" src="~/assets/img/contact-header.png" alt="" />
       <div class="blender">
         <div class="wrapper">
-          <h1>Contact Us</h1>
+          <h1 data-aos="fade-up">Contact Us</h1>
         </div>
       </div>
     </div>
     <div class="wrapper">
-      <h2 class="callToAction">Feel free to send us a message anytime!</h2>
-      <div class="forms">
+      <h2 class="callToAction" data-aos="fade-up">Feel free to send us a message anytime!</h2>
+      <div class="forms" data-aos="fade-up">
         <a-tabs default-active-key="contact" class="custom-tab">
           <a-tab-pane key="contact" tab="Contact Us" class="contact">
             <a-form :form="contactForm" @submit="submitContact">

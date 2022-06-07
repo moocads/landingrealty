@@ -16,7 +16,7 @@
     </div>
     <section class="sec-intro">
       <div class="wrapper">
-        <div>
+        <div data-aos="fade-up">
           <p>Toronto Real Estate Company</p>
           <h3>EXTRAORDINARY, LANDED</h3>
           <p>
@@ -36,28 +36,29 @@
       title="pre-construction"
       :displayData="this.precon"
       :isHome="true"
+      data-aos="fade-up"
     />
     <section class="sec-slogan-1">
       <img src="~/assets/img/building-bg-blue.png" alt="" class="fluid-img" />
-      <div class="wrapper">
+      <div class="wrapper" data-aos="fade-up">
         <h2>Build a culture of real estate investment</h2>
         <h2>Live an exquisite life</h2>
         <h2>Enhance the quality of life</h2>
         <h2>One-stop-shop for Worry-free services</h2>
       </div>
     </section>
-    <ItemDisplay title="resales" :displayData="this.resales" :isHome="true" />
+    <ItemDisplay title="resales" :displayData="this.resales" :isHome="true" data-aos="fade-up" />
     <section class="sec-slogan-2">
       <img class="quote1" src="/img/home/quote1.svg" alt="Calvin Deng Quote">
       <img class="quote2" src="/img/home/quote2.svg" alt="Calvin Deng Quote">
-      <div class="wrapper flex-col-center">
+      <div class="wrapper flex-col-center" data-aos="fade-up">
         <h2>We build a culture of real estate investment.</h2>
         <h5>Calvin Deng</h5>
         <p>CEO/Founder, Broker of Record, FRI, BEc, MBA</p>
       </div>
     </section>
     <section class="sec-landing-articles">
-      <div class="wrapper flex-col-center">
+      <div class="wrapper flex-col-center" data-aos="fade-up">
         <h6>Toronto Real Estate Company</h6>
         <h1>LANDING ARTICLES</h1>
         <div class="articles-grid">
@@ -221,7 +222,6 @@ export default {
   // mounted() {
   //   const canvas = document.querySelector('canvas');
   //   const ctx = canvas.getContext('2d');
-
 
   //   function Pixel( x, y ) {
   //     this.x = x;

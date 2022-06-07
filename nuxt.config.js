@@ -24,6 +24,10 @@ export default {
       {
         rel:"stylesheet",
         href:"https://unpkg.com/swiper@8/swiper-bundle.min.css"
+      },
+      {
+        rel:"stylesheet",
+        href:"https://unpkg.com/aos@2.3.1/dist/aos.css"
       }
     ],
     script: [
@@ -42,6 +46,7 @@ export default {
   plugins: [
     '@/plugins/antd-ui',
     '@/plugins/axios',
+    {src:'@/plugins/aos', ssr:false},
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

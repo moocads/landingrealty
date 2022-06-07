@@ -1,10 +1,10 @@
 <template>
   <div class="container">
     <section class="header-img">
-      <img class="img-fluid" src="~/assets/img/about-img.jpg" alt="" />
+      <img class="img-fluid" src="/img/about/about-img.jpg" alt="Landing Realty" >
     </section>
     <section class="about">
-      <div class="wrapper">
+      <div class="wrapper" data-aos="fade-up">
         <h1>ABOUT US</h1>
         <p>
           Landing Realty Inc. Brokerage is a Full-Service real estate company
@@ -27,7 +27,7 @@
     </section>
 
     <section class="choose-us">
-      <div class="wrapper">
+      <div class="wrapper" data-aos="fade-up">
         <h1>WHY CHOOSE US</h1>
         <div class="grid">
           <div class="key-block">
