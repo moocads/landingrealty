@@ -30,7 +30,7 @@
             <p>{{ item.attributes.style }}</p>
             <!-- <h4>{{ item.attributes.location }}</h4> -->
             <div class="project-basics">
-              <a-row type="flex" :gutter="[12,12]">
+              <a-row type="flex" :gutter="[15,20]">
                 <a-col :lg="{span: 8}" :md="{span: 8}" :sm="{span: 12}" :xs="{span:12}">
                   <span>
                     Starting from
@@ -93,6 +93,30 @@
                   </span>
                   <h3>
                     {{item.attributes.size ? item.attributes.size + ' sqft' : 'N/A'}}
+                  </h3>
+                </a-col>
+                <a-col :lg="{span: 8}" :md="{span: 8}" :sm="{span: 12}" :xs="{span:12}" v-if="item.attributes.type === 'resell'">
+                  <span>
+                    Basements
+                  </span>
+                  <h3>
+                    {{item.attributes.basement ? item.attributes.basement : 'N/A'}}
+                  </h3>
+                </a-col>
+                <a-col :lg="{span: 8}" :md="{span: 8}" :sm="{span: 12}" :xs="{span:12}">
+                  <span>
+                    Sale Status
+                  </span>
+                  <h3>
+                    {{item.attributes.status ? saleStatus[item.attributes.status] : 'N/A'}}
+                  </h3>
+                </a-col>
+                <a-col :lg="{span: 8}" :md="{span: 8}" :sm="{span: 12}" :xs="{span:12}" v-if="item.attributes.type === 'precon'">
+                  <span>
+                    Payment Structure
+                  </span>
+                  <h3>
+                    {{item.attributes.deposit ? item.attributes.deposit : 'N/A'}}
                   </h3>
                 </a-col>
               </a-row>
@@ -227,6 +251,7 @@
   </div>
 </template>
 <script>
+import saleStatus from '~/utils/saleStatus'
 // import ProjectDetailsSlider from "../../components/ProjectDetailsSlider.vue";
 export default {
   data() {
@@ -237,6 +262,7 @@ export default {
         'height: 100%; background-color: #d9d9d9; margin: auto',
       amenitiesDividerStyle:
         'height: 90%; background-color: #white; margin: auto',
+      saleStatus
     }
   },
   async asyncData({ $axios, route }) {

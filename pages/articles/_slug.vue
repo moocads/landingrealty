@@ -22,10 +22,11 @@
             <div class="articleBody">
               <div class="title">
                 <h1>{{article.attributes.title}}</h1>
-                <span><a-icon type="clock-circle" />  {{article.attributes.date}}</span>
+                <span>By: {{article.attributes.author}}</span>
               </div>
               <img v-if="article.attributes.thumbnail.data" :src="article.attributes.thumbnail.data.attributes.url" :alt="article.attributes.title">
               <div v-html="article.attributes.content"></div>
+              <p class="date"><em>Published: {{article.attributes.date}}</em></p>
             </div>
           </a-col>
           <a-col :lg="{span:8}" :md="{span:9}" :sm="{span:24}" :xs="{span:24}">
@@ -110,7 +111,7 @@ export default {
         line-height: 38px;
         text-transform: uppercase;
         color: $navy;
-        margin-bottom: 30px;
+        margin-bottom: 20px;
       }
 
       span {
@@ -119,6 +120,7 @@ export default {
         color: #88765B;
         display: block;
         margin-bottom: 10px;
+        text-transform: uppercase;
       }
     }
 
@@ -127,6 +129,12 @@ export default {
       width: 100%;
       max-height: 400px;
       object-fit: cover;
+    }
+
+    .date {
+      text-align: right;
+      margin-top: 50px;
+      opacity: 0.5;
     }
 
     @media (min-width:766px) {
