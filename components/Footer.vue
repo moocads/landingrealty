@@ -30,10 +30,10 @@
               sales, rentals, property management, and real estate investment.
             </p>
             <div class="social-icons">
-              <a href="/" target="_blank">
+              <a href="https://www.facebook.com/Landing-Realty-Inc-Brokerage-101415599156399/?notif_id=1647380398693885&notif_t=aymt_page_post_reminder_14d_notification&ref=notif" target="_blank">
                 <IconFacebook />
               </a>
-              <a href="/" target="_blank">
+              <a href="https://www.instagram.com/landingrealty/" target="_blank">
                 <IconInstagram />
               </a>
               <a href="/" target="_blank">
