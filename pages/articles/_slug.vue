@@ -1,3 +1,13 @@
+<i18n>
+{
+  "en":{
+    "promo":"AD"
+  },
+  "zh":{
+    "promo":"广告"
+  }
+}
+</i18n>
 <template>
   <div id="articleDetails" data-aos="fade-up">
     <div class="wrapper">
@@ -56,6 +66,12 @@
                 </nuxt-link>
               </div>
             </div>
+            <div class="promo">
+              <div class="tag">
+                <p>{{$t('promo')}}</p>
+              </div>
+              <img :src="promotion.attributes.promotion.data.attributes.url" alt="Landing Promotion">
+            </div>
           </a-col>
         </a-row>
       </section>
@@ -79,15 +95,17 @@ export default {
       }
     })
     const featuredArticles = await $axios.$get('/blogs', {params:{populate: ['thumbnail'], filters: {featured: { $eq:true}} }})
+    const promo = await $axios.$get('/promo', {params:{populate:'*'}})
     return {
       slug,
       article: res.data[0],
-      features: featuredArticles.data
+      features: featuredArticles.data,
+      promotion: promo.data
     }
   },
-  created() {
-    console.log(this.article)
-  }
+  // created() {
+  //   console.log(this.article)
+  // }
 }
 </script>
 
@@ -231,6 +249,31 @@ export default {
           }
         }
       }
+    }
+  }
+
+  .promo {
+    margin-top: 50px;
+    position: relative;
+
+    .tag {
+      position: absolute;
+      background-color: rgba(black, 0.3);
+      padding: 3px 5px 3px 8px;
+      border-top-left-radius: 50%;
+      border-bottom-left-radius: 50%;
+      right: 0;
+      top: 10%;
+      
+      p {
+        color: white;
+        margin-bottom: 0;
+        font-size: 10px;
+      }
+    }
+
+    img {
+      max-width: 100%;
     }
   }
 }
