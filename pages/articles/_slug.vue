@@ -40,13 +40,13 @@
               </div>
               <div class="eachFeature" v-for="b in features" :key="b.id">
                 <nuxt-link :to="`/articles/${b.attributes.slug}`">
-                  <a-row type="flex" :gutter="[15,20]">
-                    <a-col :lg="{span:8}" :md="{span:9}" :sm="{span:7}" :xs="{span:7}">
+                  <a-row type="flex" :gutter="[{ xs: 10, sm: 15, md: 15, lg: 15, xl:15 },20]">
+                    <a-col :lg="{span:9}" :md="{span:9}" :sm="{span:7}" :xs="{span:7}">
                       <div class="img">
                         <img v-if="b.attributes.thumbnail.data" :src="b.attributes.thumbnail.data.attributes.url" :alt="b.attributes.title">
                       </div>
                     </a-col>
-                    <a-col :lg="{span:16}" :md="{span:15}" :sm="{span:17}" :xs="{span:17}">
+                    <a-col :lg="{span:15}" :md="{span:15}" :sm="{span:17}" :xs="{span:17}">
                       <div class="text">
                         <h3>{{b.attributes.title}}</h3>
                         <span><a-icon type="clock-circle" />  {{b.attributes.date}}</span>
@@ -60,6 +60,7 @@
         </a-row>
       </section>
     </div>
+    <Subscription />
   </div>
 </template>
 
@@ -119,7 +120,6 @@ export default {
         line-height: 16px;
         color: #88765B;
         display: block;
-        margin-bottom: 10px;
         text-transform: uppercase;
       }
     }
@@ -137,7 +137,7 @@ export default {
       opacity: 0.5;
     }
 
-    @media (min-width:766px) {
+    @media (min-width:767px) {
       padding-bottom: 50px;
     }
   }
@@ -190,7 +190,7 @@ export default {
         font-size: 14px;
         text-transform: capitalize;
         display: -webkit-box;
-        -webkit-line-clamp: 3;
+        -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;  
         overflow: hidden;
       }
@@ -201,11 +201,22 @@ export default {
         margin-bottom: 10px;
       }
 
-      @media (max-width: 765px) {
-        .img {
-          height: 100px;
-        }
+      .img {
+        width: 100%;
+        position: relative;
+        padding-bottom: 65%;
 
+        img {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+
+      @media (max-width: 767px) {
         .text {
           h3 {
             font-size: 14px;

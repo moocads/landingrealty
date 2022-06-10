@@ -17,7 +17,7 @@
     <section class="sec-intro">
       <div class="wrapper">
         <div data-aos="fade-up">
-          <p>Toronto Real Estate Company</p>
+          <h6>Toronto Real Estate Company</h6>
           <h3>EXTRAORDINARY, LANDED</h3>
           <p>
             Landing Realty Inc. Brokerage is a Full-Service real estate company
@@ -378,7 +378,12 @@ export default {
   }
 }
 
-
+h6 {
+  font-size: 18px;
+  line-height: 21px;
+  color: $navy;
+  font-weight: 300;
+}
 
 .sec-landing {
   color: white;
@@ -428,11 +433,13 @@ export default {
   p {
     font-size: 16px;
     line-height: 27px;
+    margin: 20px 0 35px 0;
   }
   h3 {
     font-size: 24px;
     line-height: 28.13px;
     font-weight: 700;
+    margin-bottom: 0;
   }
 }
 
@@ -521,17 +528,9 @@ h5 {
   }
 }
 
-h6 {
-  font-size: 18px;
-  line-height: 21px;
-}
-
 .sec-landing-articles {
   padding: 4rem 0;
   color: $navy;
-  h6 {
-    color: $navy;
-  }
 }
 .articles-grid {
   display: grid;

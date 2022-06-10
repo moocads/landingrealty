@@ -155,7 +155,7 @@ export default {
   }
 
   .project-slide {
-    background-color: lightgrey;
+    background-color: $navy;
 
     img {
       width: 100%;

@@ -60,6 +60,32 @@ export default {
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     '@nuxtjs/style-resources',
+    [
+      "nuxt-i18n",
+      {
+        vueI18nLoader: true,
+        locales: [
+          {
+            code: "en",
+            iso: "en-US",
+            name: "EN"
+          },
+          {
+            code: "zh",
+            iso: "zh-CN",
+            name: "zh"
+          }
+        ],
+        defaultLocale: "en",
+        seo: true,
+        detectBrowserLanguage: {
+          useCookie: true,
+          cookieKey: "i18n_redirected",
+          alwaysRedirect: false,
+          fallbackLocale: "en"
+        }
+      }
+    ]
   ],
 
   styleResources: {

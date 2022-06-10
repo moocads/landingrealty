@@ -62,7 +62,7 @@ export default {
 .sample-grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 27px;
+  gap: 25px;
   width: 100%;
   margin: 2rem auto;
 }

@@ -1,3 +1,37 @@
+<i18n>
+{
+  "en":{
+    "n":"North",
+    "ne":"Northeast",
+    "e":"East",
+    "se":"Southeast",
+    "s":"South",
+    "sw":"Southwest",
+    "w":"West",
+    "nw":"Northwest",
+    "coming": "Coming Soon",
+    "sale": "On Sale Now",
+    "final": "Final Release",
+    "sold": "Sold Out",
+    "soldOver": "Sold Over Asking"
+  },
+  "zh":{
+    "n":"北",
+    "ne":"东-北",
+    "e":"东",
+    "se":"东-南",
+    "s":"南",
+    "sw":"西-南",
+    "w":"西",
+    "nw":"西-北",
+    "coming": "即将上线",
+    "sale": "正在卖",
+    "final": "最后几家",
+    "sold": "卖完了",
+    "soldOver": "高价卖出"
+  }
+}
+</i18n>
 <template>
   <div class="container" id="projectDetails">
     <div class="wrapper">
@@ -19,153 +53,159 @@
       <br>
       <br>
     </div>
-    <div class="wrapper project-main">
-      <a-row type="flex" :gutter="[{xl: 24, lg: 24, md: 0, sm: 0, xs: 0},24]">
-        <a-col :xl="{span:10}" :lg="{span:10}" :md="{span:24}" :sm="{span:24}" :xs="{span:24}">
-          <ProjectDetailsSlider :images="item.attributes.images.data" />
-        </a-col>
-        <a-col :xl="{span:14}" :lg="{span:14}" :md="{span:24}" :sm="{span:24}" :xs="{span:24}">
-          <div class="info-wrapper">
-            <h1>{{ item.attributes.type==='precon' ? item.attributes.title : item.attributes.type==='resell' ? 'MLS ' + item.attributes.mls : ''}}</h1>
-            <p>{{ item.attributes.style }}</p>
-            <!-- <h4>{{ item.attributes.location }}</h4> -->
-            <div class="project-basics">
-              <a-row type="flex" :gutter="[15,20]">
-                <a-col :lg="{span: 8}" :md="{span: 8}" :sm="{span: 12}" :xs="{span:12}">
-                  <span>
-                    Starting from
-                  </span>
-                  <h3>
-                    $ {{item.attributes.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}}
-                  </h3>
-                </a-col>
-                <a-col :lg="{span: 8}" :md="{span: 8}" :sm="{span: 12}" :xs="{span:12}">
-                  <span>
-                    Maintenance (per sqft)
-                  </span>
-                  <h3>
-                    {{item.attributes.maintenance ? `$ ${item.attributes.maintenance.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}` : "N/A"}}
-                  </h3>
-                </a-col>
-                <a-col :lg="{span: 8}" :md="{span: 8}" :sm="{span: 12}" :xs="{span:12}">
-                  <span>
-                    Major Intersection
-                  </span>
-                  <h3>
-                    {{item.attributes.address ? item.attributes.address : 'N/A'}}
-                  </h3>
-                </a-col>
-                <a-col :lg="{span: 8}" :md="{span: 8}" :sm="{span: 12}" :xs="{span:12}" v-if="item.attributes.type === 'precon'">
-                  <span>
-                    Starting Date
-                  </span>
-                  <h3>
-                    {{item.attributes.start ? item.attributes.start : 'N/A'}}
-                  </h3>
-                </a-col>
-                <a-col :lg="{span: 8}" :md="{span: 8}" :sm="{span: 12}" :xs="{span:12}" v-if="item.attributes.type === 'precon'">
-                  <span>
-                    Closing Date
-                  </span>
-                  <h3>
-                    {{item.attributes.closing ? item.attributes.closing : 'N/A'}}
-                  </h3>
-                </a-col>
-                <a-col :lg="{span: 8}" :md="{span: 8}" :sm="{span: 12}" :xs="{span:12}" v-if="item.attributes.type === 'resell'">
-                  <span>
-                    Floor
-                  </span>
-                  <h3>
-                    {{item.attributes.floor ? item.attributes.floor : 'N/A'}}
-                  </h3>
-                </a-col>
-                <a-col :lg="{span: 8}" :md="{span: 8}" :sm="{span: 12}" :xs="{span:12}" v-if="item.attributes.type === 'resell'">
-                  <span>
-                    Suite
-                  </span>
-                  <h3>
-                    {{item.attributes.suite ? item.attributes.suite : 'N/A'}}
-                  </h3>
-                </a-col>
-                <a-col :lg="{span: 8}" :md="{span: 8}" :sm="{span: 12}" :xs="{span:12}">
-                  <span>
-                    Size
-                  </span>
-                  <h3>
-                    {{item.attributes.size ? item.attributes.size + ' sqft' : 'N/A'}}
-                  </h3>
-                </a-col>
-                <a-col :lg="{span: 8}" :md="{span: 8}" :sm="{span: 12}" :xs="{span:12}" v-if="item.attributes.type === 'resell'">
-                  <span>
-                    Basements
-                  </span>
-                  <h3>
-                    {{item.attributes.basement ? item.attributes.basement : 'N/A'}}
-                  </h3>
-                </a-col>
-                <a-col :lg="{span: 8}" :md="{span: 8}" :sm="{span: 12}" :xs="{span:12}">
-                  <span>
-                    Sale Status
-                  </span>
-                  <h3>
-                    {{item.attributes.status ? saleStatus[item.attributes.status] : 'N/A'}}
-                  </h3>
-                </a-col>
-                <a-col :lg="{span: 8}" :md="{span: 8}" :sm="{span: 12}" :xs="{span:12}" v-if="item.attributes.type === 'precon'">
-                  <span>
-                    Payment Structure
-                  </span>
-                  <h3>
-                    {{item.attributes.deposit ? item.attributes.deposit : 'N/A'}}
-                  </h3>
-                </a-col>
-              </a-row>
-            </div>
-            <div class="project-detail" v-if="item.attributes.type === 'resell'">
-              <div>
-                <IconBedroom />
-                <p>{{ item.attributes.bed ? item.attributes.bed : 'N/A' }}</p>
-              </div>
-              <a-divider type="vertical" :style="this.detailDividerStyle" />
-              <div>
-                <IconBathroom />
-                <p>{{ item.attributes.bath ? item.attributes.bath : 'N/A'}}</p>
-              </div>
-              <a-divider type="vertical" :style="this.detailDividerStyle" />
-              <!-- <div>
-                <IconArea />
-                <p>
-                  {{item.attributes.size ? item.attributes.size : "N/A"}}
-                </p>
-              </div> -->
-              <div>
-                <img src="/img/projects/sofa.png" alt="Living Room Icon">
-                <p>
-                  {{item.attributes.livingRoom ? item.attributes.livingRoom : "N/A"}}
-                </p>
-              </div>
-            </div>
-            <div class="features-wrapper">
-              <h4>features</h4>
-              <div class="features">
-                <ul>
-                  <li v-for="(feature, index) in item.attributes.features" :key="index">{{feature}}</li>
-                </ul>
-              </div>
-              <div class="btn-container">
-                <a-row type="flex" :gutter="[12,12]">
-                  <a-col :md="{span:12}" :sm="{span:12}" :xs="{span:24}">
-                    <a href="#" class="main-btn navy"> contact agent</a>
+    <div class="project-main">
+      <div class="wrapper">
+        <a-row type="flex" :gutter="[{xl: 60, lg: 30, md: 0, sm: 0, xs: 0},24]">
+          <a-col :xl="{span:10}" :lg="{span:10}" :md="{span:24}" :sm="{span:24}" :xs="{span:24}">
+            <ProjectDetailsSlider :images="item.attributes.images.data" />
+          </a-col>
+          <a-col :xl="{span:14}" :lg="{span:14}" :md="{span:24}" :sm="{span:24}" :xs="{span:24}">
+            <div class="info-wrapper">
+              <h1>{{ item.attributes.type==='precon' ? item.attributes.title : item.attributes.type==='resell' ? 'MLS ' + item.attributes.mls : ''}}</h1>
+              <span class="propertyStyle">{{ item.attributes.style }}</span>
+              <!-- <h4>{{ item.attributes.location }}</h4> -->
+              <div class="project-basics">
+                <a-row type="flex" :gutter="[15,20]">
+                  <a-col :lg="{span: 8}" :md="{span: 8}" :sm="{span: 12}" :xs="{span:12}">
+                    <span>
+                      Starting from
+                    </span>
+                    <h3>
+                      $ {{item.attributes.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}}
+                    </h3>
                   </a-col>
-                  <a-col :md="{span:12}" :sm="{span:12}" :xs="{span:24}" v-if="item.attributes.floorPlan.data">
-                    <a :href="item.attributes.floorPlan.data.attributes.url" target="_blank" class="main-btn gray"> floorplan </a>
+                  <a-col :lg="{span: 8}" :md="{span: 8}" :sm="{span: 12}" :xs="{span:12}">
+                    <span>
+                      Maintenance (per sqft)
+                    </span>
+                    <h3>
+                      {{item.attributes.maintenance ? `$ ${item.attributes.maintenance.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}` : "N/A"}}
+                    </h3>
+                  </a-col>
+                  <a-col :lg="{span: 8}" :md="{span: 8}" :sm="{span: 12}" :xs="{span:12}">
+                    <span>
+                      Major Intersection
+                    </span>
+                    <h3>
+                      {{item.attributes.address ? item.attributes.address : 'N/A'}}
+                    </h3>
+                  </a-col>
+                  <a-col :lg="{span: 8}" :md="{span: 8}" :sm="{span: 12}" :xs="{span:12}" v-if="item.attributes.type === 'precon'">
+                    <span>
+                      Starting Date
+                    </span>
+                    <h3>
+                      {{item.attributes.start ? item.attributes.start : 'N/A'}}
+                    </h3>
+                  </a-col>
+                  <a-col :lg="{span: 8}" :md="{span: 8}" :sm="{span: 12}" :xs="{span:12}" v-if="item.attributes.type === 'precon'">
+                    <span>
+                      Closing Date
+                    </span>
+                    <h3>
+                      {{item.attributes.closing ? item.attributes.closing : 'N/A'}}
+                    </h3>
+                  </a-col>
+                  <a-col :lg="{span: 8}" :md="{span: 8}" :sm="{span: 12}" :xs="{span:12}" v-if="item.attributes.type === 'resell'">
+                    <span>
+                      Floor
+                    </span>
+                    <h3>
+                      {{item.attributes.floor ? item.attributes.floor : 'N/A'}}
+                    </h3>
+                  </a-col>
+                  <a-col :lg="{span: 8}" :md="{span: 8}" :sm="{span: 12}" :xs="{span:12}" v-if="item.attributes.type === 'resell'">
+                    <span>
+                      Suite
+                    </span>
+                    <h3>
+                      {{item.attributes.suite ? item.attributes.suite : 'N/A'}}
+                    </h3>
+                  </a-col>
+                  <a-col :lg="{span: 8}" :md="{span: 8}" :sm="{span: 12}" :xs="{span:12}">
+                    <span>
+                      Size
+                    </span>
+                    <h3>
+                      {{item.attributes.size ? item.attributes.size + ' sqft' : 'N/A'}}
+                    </h3>
+                  </a-col>
+                  <a-col :lg="{span: 8}" :md="{span: 8}" :sm="{span: 12}" :xs="{span:12}" v-if="item.attributes.type === 'resell'">
+                    <span>
+                      Basements
+                    </span>
+                    <h3>
+                      {{item.attributes.basement ? item.attributes.basement : 'N/A'}}
+                    </h3>
+                  </a-col>
+                  <a-col :lg="{span: 8}" :md="{span: 8}" :sm="{span: 12}" :xs="{span:12}" v-if="item.attributes.type === 'resell'">
+                    <span>
+                      Exposure
+                    </span>
+                    <h3>
+                      {{item.attributes.exposure ? $t(item.attributes.exposure) : 'N/A'}}
+                    </h3>
+                  </a-col>
+                  <a-col :lg="{span: 8}" :md="{span: 8}" :sm="{span: 12}" :xs="{span:12}">
+                    <span>
+                      Sale Status
+                    </span>
+                    <h3>
+                      {{item.attributes.status ? $t(item.attributes.status) : 'N/A'}}
+                    </h3>
                   </a-col>
                 </a-row>
               </div>
+              <div class="project-detail" v-if="item.attributes.type === 'resell'">
+                <div>
+                  <IconBedroom />
+                  <p>{{ item.attributes.bed ? item.attributes.bed : 'N/A' }}</p>
+                </div>
+                <a-divider type="vertical" :style="this.detailDividerStyle" />
+                <div>
+                  <IconBathroom />
+                  <p>{{ item.attributes.bath ? item.attributes.bath : 'N/A'}}</p>
+                </div>
+                <a-divider type="vertical" :style="this.detailDividerStyle" />
+                <!-- <div>
+                  <IconArea />
+                  <p>
+                    {{item.attributes.size ? item.attributes.size : "N/A"}}
+                  </p>
+                </div> -->
+                <div>
+                  <img src="/img/projects/sofa.png" alt="Living Room Icon">
+                  <p>
+                    {{item.attributes.livingRoom ? item.attributes.livingRoom : "N/A"}}
+                  </p>
+                </div>
+              </div>
+              <div class="features-wrapper">
+                <h4>features</h4>
+                <div class="features">
+                  <ul>
+                    <li v-for="(feature, index) in item.attributes.features" :key="index">{{feature}}</li>
+                  </ul>
+                </div>
+                <div class="deposit" v-if="item.attributes.type === 'precon'">
+                  <h4>deposit structure</h4>
+                  <p>{{item.attributes.deposit ? item.attributes.deposit : 'N/A'}}</p>
+                </div>
+                <div class="btn-container">
+                  <a-row type="flex" :gutter="[12,12]">
+                    <a-col :md="{span:12}" :sm="{span:12}" :xs="{span:24}">
+                      <a href="#" class="main-btn navy" style="border-radius: 5px;">contact agent</a>
+                    </a-col>
+                    <a-col :md="{span:12}" :sm="{span:12}" :xs="{span:24}" v-if="item.attributes.floorPlan.data">
+                      <a :href="item.attributes.floorPlan.data.attributes.url" target="_blank" class="main-btn gray" style="border-radius: 5px;"> floorplan </a>
+                    </a-col>
+                  </a-row>
+                </div>
+              </div>
             </div>
-          </div>
-        </a-col>
-      </a-row>
+          </a-col>
+        </a-row>
+      </div>
     </div>
     <div class="project-intro" v-if="item.attributes.type === 'precon'">
       <div class="wrapper">
@@ -173,11 +213,11 @@
         <p>{{item.attributes.description}}</p>
       </div>
     </div>
-    <div class="environment">
+    <div class="amenities">
       <div class="wrapper">
         <h2>Neighborhood</h2>
-        <a-row type="flex" :gutter="[24,24]">
-          <a-col :md="{span:12}" :sm="{span:24}" :xs="{span:24}">
+        <a-row type="flex" :gutter="[{xs: 0, sm:15, md:50, lg: 50, xl:50}, 30]">
+          <a-col :lg="{span:12}" :md="{span:24}" :sm="{span:24}" :xs="{span:24}">
             <h3>Entertainment</h3>
             <div class="icon-container">
               <div class="icon">
@@ -202,7 +242,7 @@
               </div>
             </div>
           </a-col>
-          <a-col :md="{span:12}" :sm="{span:24}" :xs="{span:24}">
+          <a-col :lg="{span:12}" :md="{span:24}" :sm="{span:24}" :xs="{span:24}">
             <h3>Wellness</h3>
             <div class="icon-container">
               <div class="icon">
@@ -227,6 +267,31 @@
               </div>
             </div>
           </a-col>
+          <a-col :lg="{span:12}" :md="{span:24}" :sm="{span:24}" :xs="{span:24}">
+            <h3>Area</h3>
+            <div class="icon-container">
+              <div class="icon">
+                <img src="/img/projects/transit.SVG" alt="Landing Realty Transit">
+                <h4>Transit</h4>
+                <p>{{item.attributes.area ? item.attributes.area.transit : ' '}}</p>
+              </div>
+              <div class="icon">
+                <img src="/img/projects/shopping.SVG" alt="Landing Realty Shopping">
+                <h4>Shopping</h4>
+                <p>{{item.attributes.area ? item.attributes.area.shopping : ' '}}</p>
+              </div>
+              <div class="icon">
+                <img src="/img/projects/school.SVG" alt="Landing Realty School">
+                <h4>Schools</h4>
+                <p>{{item.attributes.area ? item.attributes.area.school : ' '}}</p>
+              </div>
+              <div class="icon">
+                <img src="/img/projects/hospital.SVG" alt="Landing Realty Hospital">
+                <h4>Hospitals</h4>
+                <p>{{item.attributes.area ? item.attributes.area.hospital : ' '}}</p>
+              </div>
+            </div>
+          </a-col>
         </a-row>
       </div>
     </div>
@@ -234,7 +299,7 @@
       <div class="wrapper">
         <h2>Recommended</h2>
         <a-row :gutter="[36,36]">
-          <a-col :lg="{span: 8}" :md="{span: 12}" :sm="{span: 24}" v-for="(rec, index) in recommended" :key="index">
+          <a-col :xl="{span: 6}" :lg="{span: 6}" :md="{span: 12}" :sm="{span: 12}" :xs="{span: 24}" v-for="(rec, index) in recommended" :key="index">
             <NuxtLink :to="`/projects/${rec.id}`">
               <ItemCard
                 :img="rec.attributes.images.data[0].attributes.url"
@@ -293,7 +358,7 @@ export default {
         },
         populate: ['images'],
         pagination: {
-          pageSize: 3,
+          pageSize: 4,
         },
       },
     }).then(res => {
@@ -330,14 +395,21 @@ export default {
   h1,
   h2 {
     font-size: 38px;
+  }
+
+  h1 {
     font-weight: 900;
   }
+
   h2 {
     font-weight: 600;
+
+    @media (max-width:768px) {
+      font-size: 34px;
+    }
   }
   h3 {
     font-size: 28px;
-    // text-transform: uppercase;
     font-weight: 700;
   }
   h4 {
@@ -364,20 +436,7 @@ export default {
   margin-bottom: 30px;
 }
 .project-main {
-  // display: grid;
-  // grid-template-columns: 2fr 3fr;
-  // gap: 3rem;
-  display: flex;
   margin-bottom: 50px;
-  justify-content: space-between;
-
-  .ant-row-flex {
-    width: 100%;
-
-    // @media (max-width: 992px) {
-    //   width: 110%;
-    // }
-  }
 
   .img-slider {
     max-width: 100%;
@@ -387,13 +446,17 @@ export default {
     display: flex;
     flex-direction: column;
 
-    p {
+    .propertyStyle {
       text-transform: uppercase;
       color: #727272;
       font-weight: 600;
       font-size: 18px;
-      margin: 15px 0 20px 0;
+      margin: 10px 0 15px 0;
     }
+  }
+
+  @media (max-width: 768px) {
+    margin-bottom: 30px;
   }
 }
 .project-basics {
@@ -404,10 +467,15 @@ export default {
     color: #727272;
   }
   h3 {
-    margin-top: 10px;
+    margin-top: 0px;
     font-size: 18px;
     font-weight: 600;
     color: $navy;
+
+    
+    @media(max-width: 768px) {
+      font-size: 16px;
+    }
   }
 }
 
@@ -416,8 +484,8 @@ export default {
   grid-template-columns: 1fr auto 1fr auto 1fr;
   background-color: #ececec;
   border-radius: 5px;
-  margin: 2rem 0;
-  padding: 20px 0 15px 0;
+  margin: 30px 0 0 0;
+  padding: 15px 0 10px 0;
 
   div {
     display: flex;
@@ -444,27 +512,70 @@ export default {
   }
   p {
     font-size: 20px;
-    margin-bottom: 0;
+    margin-bottom: 0 !important;
+    color: #727272;
   }
 }
+
 .features-wrapper {
-  margin: 2rem 0;
+  margin-top: 30px;
   display: flex;
   flex-direction: column;
 
   .features {
-    padding: 20px 0;
+    padding: 15px 0 25px 0;
 
     ul {
-      columns: 3;
-      -webkit-columns: 3;
-      -moz-columns: 3;
+      columns: 4;
+      -webkit-columns: 4;
+      -moz-columns: 4;
+      padding-left: 20px;
+      list-style: none;
 
       li {
         margin-bottom: 5px;
+        position: relative;
+
+        &::before {
+          content: "\2022"; 
+          position: absolute;
+          font-weight: bold;
+          width: 20px; 
+          left: -12px;
+          opacity: 0.5;
+        }
+      }
+
+      @media (max-width: 1200px) and (min-width: 992px) {
+        columns: 3;
+        -webkit-columns: 3;
+        -moz-columns: 3;
+      }
+
+      @media (max-width: 768px) {
+        columns: 3;
+        -webkit-columns: 3;
+        -moz-columns: 3;
+      }
+
+      @media (max-width: 576px) {
+        columns: 2;
+        -webkit-columns: 2;
+        -moz-columns: 2;
       }
     }
 
+  }
+
+  .deposit {
+    margin-bottom: 30px;
+    
+    p {
+      font-size: 14px;
+      font-weight: 300;
+      text-transform: none;
+      padding: 15px 0;
+    }
   }
 
   .btn-container {
@@ -491,9 +602,13 @@ export default {
   }
 }
 
-.environment {
+.amenities {
   background-color: $navy;
-  padding: 50px 0 60px 0;
+  padding: 50px 0;
+
+  @media (max-width: 768px) {
+    padding: 40px 0;
+  }
 
   h2, h3, h4, p {
     color: white;
@@ -508,9 +623,18 @@ export default {
     font-size: 20px;
   }
 
+  .ant-row-flex {
+    width: 105%;
+
+    @media (max-width:992px) {
+      width: 100%;
+    }
+  }
+
   .icon-container {
     display: flex;
     margin-top: 30px;
+    flex-wrap: wrap;
     // justify-content: space-between;
   
     .icon {
@@ -537,13 +661,33 @@ export default {
         line-height: 20px;
         opacity: 0;
         transition: all 0.5s ease;
-        font-size: 16px;
+        font-size: 15px;
+        padding: 0 10px;
+        width: 150%;
       }
 
       &:hover {
         p {
-          opacity: 1;
+          opacity: 0.7;
         }
+      }
+    }
+
+    @media (max-width: 992px) {
+      .icon {        
+        p {
+          width: 100%;
+          font-size: 13px;
+          opacity: 0.7;
+        }
+      }
+
+    }
+
+    @media(max-width: 768px) {
+      .icon {
+        width:50%;
+        margin-bottom: 30px;
       }
     }
   }
@@ -554,6 +698,10 @@ export default {
 
   h2 {
     margin-bottom: 30px;
+  }
+
+  @media (max-width: 768px) {
+    padding: 30px 0 60px 0;
   }
 }
 
@@ -578,7 +726,7 @@ export default {
     padding: 0;
   }
   .info-wrapper {
-    text-align: center;
+    // text-align: center;
   }
   .features {
     text-align: left;

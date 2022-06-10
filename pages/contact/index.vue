@@ -124,6 +124,7 @@
         </a-tabs>
       </div>
     </div>
+    <Subscription />
   </div>
 </template>
 
@@ -141,7 +142,6 @@ export default {
       e.preventDefault()
       this.contactForm.validateFields(async (err, values) => {
         if (!err) {
-          // console.log(values)
           this.$axios.$post('/contacts', {data: {
             firstName: values.firstName,
             lastName: values.lastName,
@@ -153,7 +153,6 @@ export default {
           }}).then(
             res => {
               if (res) {
-                console.log(res)
                 this.$message.success('Message received! We\'ll get back to you as soon as possible!')
                 this.contactForm = this.$form.createForm(this)
               } else {
@@ -168,7 +167,6 @@ export default {
       e.preventDefault()
       this.joinForm.validateFields(async (err, values) => {
         if (!err) {
-          console.log(values)
           // const fd = new FormData()
           this.$axios.$post('/joins', {data: {
             firstName: values.firstName,
@@ -179,7 +177,6 @@ export default {
           }}).then(
             res => {
               if (res) {
-                console.log(res)
                 this.$message.success('Application received! We\'ll get back to you as soon as possible!')
                 this.joinForm = this.$form.createForm(this)
               } else {
@@ -192,7 +189,6 @@ export default {
     },
     beforeUpload(file) {
       this.resumeFile = [file]      
-      console.log(this.resumeFile)
     }
   }
 }

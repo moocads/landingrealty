@@ -1,6 +1,6 @@
 <template>
-  <div class="card-container">
-    <img class="image" :class="{article:hideTag}" :src="img" :alt="title" />
+  <div class="card-container" :class="{article:hideTag}">
+    <img class="image" :src="img" :alt="title" />
     <div class="details">
       <span class="region-tag" v-if="!hideTag">
         {{ locations[tag].en }}
@@ -61,26 +61,22 @@ export default {
 .card-container {
   position: relative;
   width: 100%;
+  padding-bottom: 130%;
+
+  &.article {
+    padding-bottom: 120%;
+  }
+
 
   .image {
+    position: absolute;
     width: 100%;
-    height: auto;
+    height: 100%;
+    top: 0;
+    left: 0;
     filter: grayscale(1);
     transition: all 0.5s ease;
-    height: 500px;
     object-fit: cover;
-
-    @media(max-width:1200px) {
-      height: 400px;
-    }
-
-    &.article {
-      height: 300px;
-
-      @media (max-width: 1200px) {
-        height: 250px;
-      }
-    }
   }
 
   &:hover {
@@ -116,12 +112,16 @@ export default {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    padding: 2rem;
     background: rgba(11, 44, 66, 0.73);
-    border-radius: 100%;
+    border-radius: 50%;
     color: #c8c8c8;
     transition: all 0.5s ease;
     opacity: 0;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   .info {
     position: absolute;

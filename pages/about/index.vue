@@ -58,9 +58,6 @@
       </div>
     </section>
     <Subscription />
-    <!-- <div class="wrapper">
-      <ProjectDetailsSlider />
-    </div> -->
   </div>
 </template>
 

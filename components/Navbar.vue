@@ -20,9 +20,10 @@
             <NuxtLink to="/projects/resales">resales</NuxtLink>
           </div>
         </div>
-
         <NuxtLink to="/articles">articles</NuxtLink>
         <NuxtLink to="/contact">contact</NuxtLink>
+        <NuxtLink class="switchLocale" v-if="$i18n.locale=='en'" :to="switchLocalePath('zh')">中</NuxtLink>
+        <NuxtLink class="switchLocale" v-if="$i18n.locale=='zh'" :to="switchLocalePath('en')">EN</NuxtLink>
       </div>
       <!-- mobile -->
       <div class="hamburger" @click="toggleNav">
@@ -71,6 +72,10 @@
           </div>
           <div @click="mobileNavOpen = false">
             <NuxtLink to="/contact">contact</NuxtLink>
+          </div>
+          <div @click="mobileNavOpen = false">
+            <NuxtLink class="switchLocale" v-if="$i18n.locale=='en'" :to="switchLocalePath('zh')">中</NuxtLink>
+            <NuxtLink class="switchLocale" v-if="$i18n.locale=='zh'" :to="switchLocalePath('en')">EN</NuxtLink>
           </div>
         </div>
       </div>

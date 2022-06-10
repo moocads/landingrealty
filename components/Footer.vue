@@ -1,23 +1,6 @@
 <template>
   <footer>
-    <!-- <div class="logo-container">
-      <a-row type="flex" :gutter="[36,36]" align="bottom">
-        <a-col :xl="{span:6}" :lg="{span:12}" :md="{span:12}" :sm="{span:12}" :xs="{span:24}">
-          <img src="~/assets/img/nav-logo.png" alt="" />
-        </a-col>
-        <a-col :xl="{span:6}" :lg="{span:12}" :md="{span:12}" :sm="{span:12}" :xs="{span:24}">
-          <h5>contact us</h5>
-        </a-col>
-        <a-col :xl="{span:8}" :lg="{span:12}" :md="{span:12}" :sm="{span:12}" :xs="{span:24}">
-          <h5>Featured Articles</h5>
-        </a-col>
-        <a-col :xl="{span:8}" :lg="{span:12}" :md="{span:12}" :sm="{span:12}" :xs="{span:24}">
-          <h5>links</h5>
-        </a-col>
-      </a-row>
-    </div>
-    <br> -->
-    <div class="footer-container">
+    <div class="footer-container" data-aos="fade-up">
       <a-row type="flex" :gutter="[36,36]">
         <a-col :xl="{span:6}" :lg="{span:12}" :md="{span:12}" :sm="{span:12}" :xs="{span:24}">
           <section>
@@ -31,13 +14,16 @@
             </p>
             <div class="social-icons">
               <a href="https://www.facebook.com/Landing-Realty-Inc-Brokerage-101415599156399/?notif_id=1647380398693885&notif_t=aymt_page_post_reminder_14d_notification&ref=notif" target="_blank">
-                <IconFacebook />
+                <img src="/img/icons/fb.png" alt="Landing Realty Facebook">
               </a>
               <a href="https://www.instagram.com/landingrealty/" target="_blank">
-                <IconInstagram />
+                <img src="/img/icons/ins.png" alt="Landing Realty Instagram">
               </a>
               <a href="/" target="_blank">
-                <IconWechat />
+                <img src="/img/icons/wechat.png" alt="Landing Realty WeChat">
+              </a>
+              <a href="/" target="_blank">
+                <img src="/img/icons/red.png" alt="Landing Realty Red">
               </a>
             </div>
           </section>
@@ -120,6 +106,23 @@
         </a-col>
       </a-row>
     </div>
+    <div class="mobile">
+      <div class="contactBar">
+        <div class="call">
+          <a href="tel:9056047171">
+            <a-icon type="phone" theme="filled" style="transform:rotateY(180deg)" />
+            Call Us
+          </a>
+        </div>
+        <div class="divide"></div>
+        <div class="mail">
+          <a href="mailto:info@landingrealestate.com">
+            <a-icon type="mail" theme="filled" />
+            Message Us
+          </a>
+        </div>
+      </div>
+    </div>
   </footer>
 </template>
 
@@ -168,7 +171,12 @@ footer {
   .social-icons {
     display: flex;
     a {
-      margin-right: 10px;
+      margin-right: 5px;
+    }
+
+    img {
+      width: 50px;
+      height: 50px;
     }
   }
 
@@ -200,7 +208,7 @@ h4 {
 
 .contact-block {
   .phone, .email, .address {
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     
     i {
       margin-right: 10px;
@@ -219,11 +227,11 @@ h4 {
       padding-left: 25px;
     }
   }
-  img {
-    // height: 250px;
-    // width: 80%;
-    border-radius: 10px;
-  }
+  // img {
+  //   // height: 250px;
+  //   // width: 80%;
+  //   border-radius: 10px;
+  // }
 
   ul.contact-list {
     padding-left: 0px;
@@ -240,7 +248,7 @@ h4 {
     margin-top: 20px;
     width: 100%;
     height: 150px;
-    border-radius: 15px;
+    border-radius: 10px;
   }
 }
 
@@ -285,11 +293,62 @@ ul.links {
   list-style: none;
   padding-left: 0;
   li {
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 
     a {
       color: white;
     }
   }
+}
+
+.mobile {
+  display: none;
+  padding-bottom: 70px;
+
+  .contactBar {
+    position: fixed;
+    z-index: 10;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: $navy;
+    color: white;
+    display: flex;
+    justify-content: space-evenly;
+    height: 70px;
+    align-items: center;
+    box-shadow: 0 -5px 20px 10px rgb(97, 113, 127, 29%);
+
+    .divide {
+      height: 100%;
+      width: 1.5px;
+      background-color: white;
+      opacity: 0.2;
+    }
+
+    .call, .mail {
+      width: 49%;
+      font-size: 20px;
+      height: 100%;
+
+      a {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        color: inherit;
+        justify-content: center;
+        align-items: center;
+      }
+
+      i {
+        margin-right: 15px;
+      }
+    }
+  }
+
+  @media (max-width:992px) {
+    display: block;
+  }
+  align-items: center;
 }
 </style>
