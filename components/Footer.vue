@@ -64,6 +64,14 @@
                   </span>
                 </a>
               </li>
+              <li class="fax">
+                <a href="tel:9056047171">
+                  <a-icon type="printer" theme="filled" />
+                  <span>
+                    (905) 604-7161
+                  </span>
+                </a>
+              </li>
               <li class="email">
                 <a href="mailto:info@landingrealestate.com">
                   <a-icon type="mail" theme="filled" />
@@ -207,7 +215,7 @@ h4 {
 }
 
 .contact-block {
-  .phone, .email, .address {
+  .phone, .fax, .email, .address {
     margin-bottom: 5px;
     
     i {
