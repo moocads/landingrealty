@@ -294,13 +294,13 @@ export default {
 
   .contactInfo {
     h3 {
-      font-size: 16px;
+      font-size: 18px;
       font-weight: bold;
-      margin-bottom: 15px;
+      margin-bottom: 10px;
     }
 
     p {
-      font-size: 16px;
+      font-size: 18px;
       color: #727272;
     }
 
