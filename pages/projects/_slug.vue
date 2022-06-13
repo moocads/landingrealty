@@ -201,7 +201,7 @@
                       <a-modal v-model="floorPlanModal" :footer="null">
                         <h3 style="color:#0b2c42; font-size: 20px;">Floorplans Available</h3>
                         <br>
-                        <a v-for="(file, index) in item.attributes.floorPlan.data" :key="index" style="color:#0b2c42; text-decoration: underline;" :href="file.attributes.url" target="_blank"><a-icon type="file"></a-icon>  {{file.attributes.name}}</a>
+                        <a v-for="(file, index) in item.attributes.floorPlan.data" :key="index" style="color:#0b2c42; text-decoration: underline; display: block" :href="file.attributes.url" target="_blank"><a-icon type="file"></a-icon>  {{file.attributes.name}}</a>
                       </a-modal>
                     </a-col>
                   </a-row>
