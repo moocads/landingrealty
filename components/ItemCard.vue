@@ -3,7 +3,7 @@
     <img class="image" :src="img" :alt="title" />
     <div class="details">
       <span class="region-tag" v-if="!hideTag">
-        {{ locations[tag].en }}
+        {{ tag }}
       </span>
       <div class="eye" v-if="!hideTag">
         <svg
@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import locations from '~/utils/locations'
+// import locations from '~/utils/locations'
 
 export default {
   props: {
@@ -50,7 +50,7 @@ export default {
   },
   data() {
     return {
-      locations
+      // locations
     }
   },
   methods: {},
