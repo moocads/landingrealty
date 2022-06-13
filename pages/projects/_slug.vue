@@ -197,7 +197,7 @@
                       <a href="#" class="main-btn navy" style="border-radius: 5px;">contact agent</a>
                     </a-col>
                     <a-col :md="{span:12}" :sm="{span:12}" :xs="{span:24}" v-if="item.attributes.floorPlan.data">
-                      <a :href="item.attributes.floorPlan.data.attributes.url" target="_blank" class="main-btn gray" style="border-radius: 5px;"> floorplan </a>
+                      <a :href="item.attributes.floorPlan.data[0].attributes.url" target="_blank" class="main-btn gray" style="border-radius: 5px;"> floorplan </a>
                     </a-col>
                   </a-row>
                 </div>
