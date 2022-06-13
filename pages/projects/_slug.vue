@@ -197,7 +197,12 @@
                       <a href="#" class="main-btn navy" style="border-radius: 5px;">contact agent</a>
                     </a-col>
                     <a-col :md="{span:12}" :sm="{span:12}" :xs="{span:24}" v-if="item.attributes.floorPlan.data">
-                      <a :href="item.attributes.floorPlan.data[0].attributes.url" target="_blank" class="main-btn gray" style="border-radius: 5px;"> floorplan </a>
+                      <a target="_blank" class="main-btn gray" style="border-radius: 5px;" @click="floorPlanModal = true"> floorplan </a>
+                      <a-modal v-model="floorPlanModal" :footer="null">
+                        <h3 style="color:#0b2c42; font-size: 20px;">Floorplans Available</h3>
+                        <br>
+                        <a v-for="(file, index) in item.attributes.floorPlan.data" :key="index" style="color:#0b2c42; text-decoration: underline;" :href="file.attributes.url" target="_blank"><a-icon type="file"></a-icon>  {{file.attributes.name}}</a>
+                      </a-modal>
                     </a-col>
                   </a-row>
                 </div>
@@ -338,7 +343,8 @@ export default {
     })
     return {
       item: res.data,
-      recommended: undefined
+      recommended: undefined,
+      floorPlanModal: false 
     }
   },
   created() {
