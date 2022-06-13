@@ -19,11 +19,13 @@
               <a href="https://www.instagram.com/landingrealty/" target="_blank">
                 <img src="/img/icons/ins.png" alt="Landing Realty Instagram">
               </a>
-              <a href="/" target="_blank">
-                <img src="/img/icons/wechat.png" alt="Landing Realty WeChat">
+              <a class="wechat">
+                <img src="/img/icons/wechat.png" alt="Landing Realty WeChat" @click="wechatQR = !wechatQR; redQR = false">
+                <img v-if="wechatQR" class="qr" src="/img/home/wechat-qr.jpg" alt="Landing Realty Wechat QR" @click="wechatQR = !wechatQR; redQR = false">
               </a>
-              <a href="/" target="_blank">
-                <img src="/img/icons/red.png" alt="Landing Realty Red">
+              <a class="red">
+                <img src="/img/icons/red.png" alt="Landing Realty Red" @click="redQR = !redQR; wechatQR = false">
+                <img v-if="redQR" class="qr" src="/img/home/red-qr.png" alt="Landing Realty Red QR" @click="redQR = !redQR; wechatQR = false">
               </a>
             </div>
           </section>
@@ -139,6 +141,8 @@ export default {
   data() {
     return {
       articles: undefined,
+      wechatQR: false,
+      redQR: false,
     }
   },
   created() {
@@ -180,17 +184,30 @@ footer {
     display: flex;
     a {
       margin-right: 5px;
+      position: relative;
     }
 
     img {
       width: 50px;
       height: 50px;
     }
+
+    .qr {
+      position: absolute;
+      left: 100%;
+      // bottom: 100%;
+      width: 150px;
+      height: 150px;
+      z-index: 100;
+
+      @media (max-width:992px) {
+        left: 50%;
+        top: 110%;
+        transform: translate(-50%);  
+      }
+    }
   }
 
-  // @media (max-width:992px) {
-  //   padding: 50px 5vw 100px 5vw;  
-  // }
 }
 
 .logo, .title {
