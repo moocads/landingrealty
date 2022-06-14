@@ -35,7 +35,7 @@
                 <span>By: {{article.attributes.author}}</span>
               </div>
               <img v-if="article.attributes.thumbnail.data" :src="article.attributes.thumbnail.data.attributes.url" :alt="article.attributes.title">
-              <div v-html="article.attributes.content"></div>
+              <div class="htmlContent" v-html="article.attributes.content"></div>
               <p class="date"><em>Published: {{article.attributes.date}}</em></p>
             </div>
           </a-col>
@@ -276,5 +276,13 @@ export default {
       max-width: 100%;
     }
   }
+}
+</style>
+<style lang="scss">
+.htmlContent {
+  img {
+    max-width: 100%;
+    height: auto
+  };
 }
 </style>
