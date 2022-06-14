@@ -281,8 +281,11 @@ export default {
 <style lang="scss">
 .htmlContent {
   img {
+    width: 720px;
     max-width: 100%;
-    height: auto
+    height: 500px;
+    object-fit: contain;
+    
   };
 }
 </style>
