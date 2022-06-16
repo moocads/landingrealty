@@ -1,27 +1,49 @@
+<i18n>
+{
+  "en": {
+    "home":"Home",
+    "about":"About",
+    "projects":"Projects",
+    "articles":"Articles",
+    "contact":"Contact",
+    "precon":"Pre-Construction",
+    "resale":"Resale"
+  },
+  "zh":{
+    "home":"主页",
+    "about":"关于",
+    "projects":"项目",
+    "articles":"资讯",
+    "contact":"联系",
+    "precon":"楼花",
+    "resale":"转售"
+  }
+}
+</i18n>
 <template>
   <div class="nav-container">
     <Infobar />
     <nav :class="{ homeNav: $nuxt.$route.path === '/', active: navActive }">
-      <NuxtLink to="/">
+      <NuxtLink :to="localePath('/')">
         <div class="logo-container">
           <img src="~/assets/img/nav-logo.png" alt="" />
         </div>
       </NuxtLink>
 
       <div class="nav-items">
-        <NuxtLink to="/">home</NuxtLink>
-        <NuxtLink to="/about">about</NuxtLink>
+        <NuxtLink :to="localePath('/')">{{$t('home')}}</NuxtLink>
+        <NuxtLink :to="localePath('/about')">{{$t('about')}}</NuxtLink>
         <div class="dropdown-wrapper">
-          <a class="dropdown-link"> projects  <a-icon type="caret-down" /></a>
+          <a class="dropdown-link">{{$t('projects')}}  <a-icon type="caret-down" /></a>
           <div class="dropdown-content">
-            <NuxtLink to="/projects/pre-construction"
-              >pre-construction</NuxtLink
+            <NuxtLink :to="localePath('/projects/pre-construction')"
+              >{{$t('precon')}}</NuxtLink
             >
-            <NuxtLink to="/projects/resales">resales</NuxtLink>
+            <NuxtLink :to="localePath('/projects/resales')">{{$t('resale')}}</NuxtLink>
           </div>
         </div>
-        <NuxtLink to="/articles">articles</NuxtLink>
-        <NuxtLink to="/contact">contact</NuxtLink>
+        <NuxtLink :to="localePath('/articles')">{{$t('articles')}}</NuxtLink>
+        <NuxtLink :to="localePath('/contact')">{{$t('contact')}}</NuxtLink>
         <NuxtLink class="switchLocale" v-if="$i18n.locale=='en'" :to="switchLocalePath('zh')">中</NuxtLink>
         <NuxtLink class="switchLocale" v-if="$i18n.locale=='zh'" :to="switchLocalePath('en')">EN</NuxtLink>
       </div>
@@ -35,43 +57,22 @@
       <div class="mobile-nav-wrapper" :class="{ open: mobileNavOpen }">
         <div class="mobile-nav-items">
           <div @click="mobileNavOpen = false">
-            <NuxtLink to="/">home</NuxtLink>
+            <NuxtLink :to="localePath('/')">{{$t('home')}}</NuxtLink>
           </div>
           <div @click="mobileNavOpen = false">
-            <NuxtLink to="/about">about</NuxtLink>
+            <NuxtLink :to="localePath('/about')">{{$t('about')}}</NuxtLink>
           </div>
           <div @click="mobileNavOpen = false">
-            <NuxtLink to="/projects/pre-construction">pre-construction</NuxtLink>
+            <NuxtLink :to="localePath('/projects/pre-construction')">{{$t('precon')}}</NuxtLink>
           </div>
           <div @click="mobileNavOpen = false">
-            <NuxtLink to="/projects/resales">resales</NuxtLink>
-          </div>
-
-          <!-- <div class="mobile-dropdown-wrapper">
-            <a
-              @click="mobileProjectTab = !mobileProjectTab"
-              class="dropdown-link"
-              >projects</a
-            >
-            <div
-              class="mobile-dropdown-content"
-              :class="{ open: mobileProjectTab }"
-            >
-              <div @click="mobileNavOpen = false">
-                <NuxtLink to="/projects/pre-construction"
-                  >pre-construction</NuxtLink
-                >
-              </div>
-              <div @click="mobileNavOpen = false">
-                <NuxtLink to="/projects/resales">resales</NuxtLink>
-              </div>
-            </div>
-          </div> -->
-          <div @click="mobileNavOpen = false">
-            <NuxtLink to="/articles">articles</NuxtLink>
+            <NuxtLink :to="localePath('/projects/resales')">{{$t('resale')}}</NuxtLink>
           </div>
           <div @click="mobileNavOpen = false">
-            <NuxtLink to="/contact">contact</NuxtLink>
+            <NuxtLink :to="localePath('/articles')">{{$t('articles')}}</NuxtLink>
+          </div>
+          <div @click="mobileNavOpen = false">
+            <NuxtLink :to="localePath('/contact')">{{$t('contact')}}</NuxtLink>
           </div>
           <div @click="mobileNavOpen = false">
             <NuxtLink class="switchLocale" v-if="$i18n.locale=='en'" :to="switchLocalePath('zh')">中</NuxtLink>

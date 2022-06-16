@@ -1,6 +1,41 @@
 <i18n>
 {
   "en":{
+    "home":"Home",
+    "resell":"Resale",
+    "precon":"Pre-Construction",
+    "start":"Starting from",
+    "maintenance":"Maintenance/sqft",
+    "intersection":"Major Intersection",
+    "starting":"Starting Date",
+    "closing":"Closing Date",
+    "floor":"Floor",
+    "suite":"Suite",
+    "size":"Size",
+    "basements":"Basements",
+    "exposure":"Exposure",
+    "status":"Sale Status",
+    "features":"Features",
+    "see":"See",
+    "hear":"Hear",
+    "taste":"Taste",
+    "play":"Play",
+    "wellness":"Wellness",
+    "nature":"Nature",
+    "workout":"Workout",
+    "relax":"Relax",
+    "nourish":"Nourish",
+    "area":"Area",
+    "transit":"Transit",
+    "shopping":"Shopping",
+    "schools":"Schools",
+    "hospitals":"Hospitals",
+    "recommended":"Recommended",
+    "intro":"Project Introduction",
+    "neighborhood":"Neighborhood",
+    "deposit":"Deposit Structure",
+    "contact":"CONTACT AGENT",
+    "floorplan":"FLOORPLAN",
     "n":"North",
     "ne":"Northeast",
     "e":"East",
@@ -16,6 +51,58 @@
     "soldOver": "Sold Over Asking"
   },
   "zh":{
+    "home":"主页",
+    "resell":"转售",
+    "precon":"楼花",
+    "start":"起价",
+    "maintenance":"管理费/平方尺",
+    "intersection":"主要枢纽",
+    "starting":"动工日期",
+    "closing":"交接日期",
+    "floor":"楼层",
+    "suite":"单元号",
+    "size":"面积",
+    "basements":"地下室",
+    "exposure":"朝向",
+    "status":"出售状态",
+    "features":"设施",
+    "Elevator":"电梯",
+    "Gym":"健身房",
+    "Building Storage":"储物室",
+    "Locker":"储物柜",
+    "Pets":"允许宠物",
+    "Garage":"车库",
+    "Dog Care":"狗狗设施",
+    "Game Room":"游戏室",
+    "Pool":"游泳池",
+    "Building Laundry":"洗衣房",
+    "Concierge":"前台",
+    "BBQ":"烧烤台",
+    "Rooftop":"天台",
+    "Bike Storage":"自行车库",
+    "Lounge":"休息室",
+    "Playground":"儿童设施",
+    "entertainment":"娱乐",
+    "see":"视觉享受",
+    "hear":"听觉享受",
+    "taste":"味觉享受",
+    "play":"日常享受",
+    "wellness":"家康养生",
+    "nature":"接触自然",
+    "workout":"健身场所",
+    "relax":"身心放松",
+    "nourish":"滋补养身",
+    "area":"周围地区",
+    "transit":"公共交通",
+    "shopping":"日常购物",
+    "schools":"学校教育",
+    "hospitals":"医疗设施",
+    "recommended":"推荐",
+    "intro":"项目介绍",
+    "neighborhood":"周边设施",
+    "deposit":"付款流程",
+    "contact":"联系经纪",
+    "floorplan":"户型图",
     "n":"北",
     "ne":"东-北",
     "e":"东",
@@ -38,16 +125,19 @@
       <a-breadcrumb>
         <a-breadcrumb-item>
           <nuxt-link :to="`/`">
-            Home
+            {{$t('home')}}
           </nuxt-link>
         </a-breadcrumb-item>
         <a-breadcrumb-item>
           <nuxt-link :to="`/projects/${item.attributes.type === 'resell' ? 'resales' : 'pre-construction'}`">
-            {{item.attributes.type === 'resell' ? 'Resale' : 'Pre-Construction'}}
+            {{$t(item.attributes.type)}}
           </nuxt-link>
         </a-breadcrumb-item>
-        <a-breadcrumb-item>
+        <a-breadcrumb-item v-if="$i18n.locale === 'en'">
           {{item.attributes.type==='precon' ? item.attributes.title : item.attributes.type==='resell' ? 'MLS ' + item.attributes.mls : ''}}
+        </a-breadcrumb-item>
+        <a-breadcrumb-item v-if="$i18n.locale === 'zh'">
+          {{item.attributes.type==='precon' ? item.attributes.title_zh : item.attributes.type==='resell' ? 'MLS ' + item.attributes.mls : ''}}
         </a-breadcrumb-item>
       </a-breadcrumb>
       <br>
@@ -61,14 +151,15 @@
           </a-col>
           <a-col :xl="{span:14}" :lg="{span:14}" :md="{span:24}" :sm="{span:24}" :xs="{span:24}">
             <div class="info-wrapper">
-              <h1>{{ item.attributes.type==='precon' ? item.attributes.title : item.attributes.type==='resell' ? 'MLS ' + item.attributes.mls : ''}}</h1>
+              <h1 v-if="$i18n.locale === 'en'">{{ item.attributes.type==='precon' ? item.attributes.title : item.attributes.type==='resell' ? 'MLS ' + item.attributes.mls : ''}}</h1>
+              <h1 v-if="$i18n.locale === 'zh'">{{ item.attributes.type==='precon' ? item.attributes.title_zh : item.attributes.type==='resell' ? 'MLS ' + item.attributes.mls : ''}}</h1>
               <span class="propertyStyle">{{ item.attributes.style }}</span>
               <!-- <h4>{{ item.attributes.location }}</h4> -->
               <div class="project-basics">
                 <a-row type="flex" :gutter="[15,20]">
                   <a-col :lg="{span: 8}" :md="{span: 8}" :sm="{span: 12}" :xs="{span:12}">
                     <span>
-                      Starting from
+                      {{$t('start')}}
                     </span>
                     <h3>
                       $ {{item.attributes.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}}
@@ -76,7 +167,7 @@
                   </a-col>
                   <a-col :lg="{span: 8}" :md="{span: 8}" :sm="{span: 12}" :xs="{span:12}">
                     <span>
-                      Maintenance (per sqft)
+                      {{$t('maintenance')}}
                     </span>
                     <h3>
                       {{item.attributes.maintenance ? `$ ${item.attributes.maintenance.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}` : "N/A"}}
@@ -84,7 +175,7 @@
                   </a-col>
                   <a-col :lg="{span: 8}" :md="{span: 8}" :sm="{span: 12}" :xs="{span:12}">
                     <span>
-                      Major Intersection
+                      {{$t('intersection')}}
                     </span>
                     <h3>
                       {{item.attributes.address ? item.attributes.address : 'N/A'}}
@@ -92,7 +183,7 @@
                   </a-col>
                   <a-col :lg="{span: 8}" :md="{span: 8}" :sm="{span: 12}" :xs="{span:12}" v-if="item.attributes.type === 'precon'">
                     <span>
-                      Starting Date
+                      {{$t('starting')}}
                     </span>
                     <h3>
                       {{item.attributes.start ? item.attributes.start : 'N/A'}}
@@ -100,7 +191,7 @@
                   </a-col>
                   <a-col :lg="{span: 8}" :md="{span: 8}" :sm="{span: 12}" :xs="{span:12}" v-if="item.attributes.type === 'precon'">
                     <span>
-                      Closing Date
+                      {{$t('closing')}}
                     </span>
                     <h3>
                       {{item.attributes.closing ? item.attributes.closing : 'N/A'}}
@@ -108,7 +199,7 @@
                   </a-col>
                   <a-col :lg="{span: 8}" :md="{span: 8}" :sm="{span: 12}" :xs="{span:12}" v-if="item.attributes.type === 'resell'">
                     <span>
-                      Floor
+                      {{$t('floor')}}
                     </span>
                     <h3>
                       {{item.attributes.floor ? item.attributes.floor : 'N/A'}}
@@ -116,7 +207,7 @@
                   </a-col>
                   <a-col :lg="{span: 8}" :md="{span: 8}" :sm="{span: 12}" :xs="{span:12}" v-if="item.attributes.type === 'resell'">
                     <span>
-                      Suite
+                      {{$t('suite')}}
                     </span>
                     <h3>
                       {{item.attributes.suite ? item.attributes.suite : 'N/A'}}
@@ -124,7 +215,7 @@
                   </a-col>
                   <a-col :lg="{span: 8}" :md="{span: 8}" :sm="{span: 12}" :xs="{span:12}">
                     <span>
-                      Size
+                      {{$t('size')}}
                     </span>
                     <h3>
                       {{item.attributes.size ? item.attributes.size + ' sqft' : 'N/A'}}
@@ -132,7 +223,7 @@
                   </a-col>
                   <a-col :lg="{span: 8}" :md="{span: 8}" :sm="{span: 12}" :xs="{span:12}" v-if="item.attributes.type === 'resell'">
                     <span>
-                      Basements
+                      {{$t('basements')}}
                     </span>
                     <h3>
                       {{item.attributes.basement ? item.attributes.basement : 'N/A'}}
@@ -140,7 +231,7 @@
                   </a-col>
                   <a-col :lg="{span: 8}" :md="{span: 8}" :sm="{span: 12}" :xs="{span:12}" v-if="item.attributes.type === 'resell'">
                     <span>
-                      Exposure
+                      {{$t('exposure')}}
                     </span>
                     <h3>
                       {{item.attributes.exposure ? $t(item.attributes.exposure) : 'N/A'}}
@@ -148,7 +239,7 @@
                   </a-col>
                   <a-col :lg="{span: 8}" :md="{span: 8}" :sm="{span: 12}" :xs="{span:12}">
                     <span>
-                      Sale Status
+                      {{$t('status')}}
                     </span>
                     <h3>
                       {{item.attributes.status ? $t(item.attributes.status) : 'N/A'}}
@@ -181,23 +272,32 @@
                 </div>
               </div>
               <div class="features-wrapper">
-                <h4>features</h4>
+                <h4>{{$t('features')}}</h4>
                 <div class="features">
                   <ul>
-                    <li v-for="(feature, index) in item.attributes.features" :key="index">{{feature}}</li>
+                    <li v-for="(feature, index) in item.attributes.features" :key="index">{{$t(feature)}}</li>
                   </ul>
                 </div>
                 <div class="deposit" v-if="item.attributes.type === 'precon'">
-                  <h4>deposit structure</h4>
-                  <p>{{item.attributes.deposit ? item.attributes.deposit : 'N/A'}}</p>
+                  <h4>{{$t('deposit')}}</h4>
+                  <a-row>
+                    <a-col :sm="{span:12}" :xs="{span:24}">
+                      <p v-if="$i18n.locale==='en'">{{item.attributes.deposit ? item.attributes.deposit : 'N/A'}}</p>
+                      <p v-if="$i18n.locale==='zh'">{{item.attributes.deposit_zh ? item.attributes.deposit_zh : 'N/A'}}</p>
+                    </a-col>
+                    <a-col :sm="{span:12}" :xs="{span:24}">
+                      <p v-if="$i18n.locale==='en'">{{item.attributes.depositIntl ? item.attributes.depositIntl : ''}}</p>
+                      <p v-if="$i18n.locale==='zh'">{{item.attributes.depositIntl_zh ? item.attributes.depositIntl_zh : ''}}</p>
+                    </a-col>
+                  </a-row>
                 </div>
                 <div class="btn-container">
                   <a-row type="flex" :gutter="[12,12]">
                     <a-col :md="{span:12}" :sm="{span:12}" :xs="{span:24}">
-                      <a href="#" class="main-btn navy" style="border-radius: 5px;">contact agent</a>
+                      <a href="#" class="main-btn navy" style="border-radius: 5px;">{{$t('contact')}}</a>
                     </a-col>
                     <a-col :md="{span:12}" :sm="{span:12}" :xs="{span:24}" v-if="item.attributes.floorPlan.data">
-                      <a target="_blank" class="main-btn gray" style="border-radius: 5px;" @click="floorPlanModal = true"> floorplan </a>
+                      <a target="_blank" class="main-btn gray" style="border-radius: 5px;" @click="floorPlanModal = true"> {{$t('floorplan')}} </a>
                       <a-modal v-model="floorPlanModal" :footer="null">
                         <h3 style="color:#0b2c42; font-size: 20px;">Floorplans Available</h3>
                         <br>
@@ -214,86 +314,99 @@
     </div>
     <div class="project-intro" v-if="item.attributes.type === 'precon'">
       <div class="wrapper">
-        <h2>Project Introduction</h2>
-        <p>{{item.attributes.description}}</p>
+        <h2>{{$t('intro')}}</h2>
+        <p v-if="$i18n.locale === 'en'">{{item.attributes.description}}</p>
+        <p v-if="$i18n.locale === 'zh'">{{item.attributes.description_zh}}</p>
       </div>
     </div>
     <div class="amenities">
       <div class="wrapper">
-        <h2>Neighborhood</h2>
+        <h2>{{$t('neighborhood')}}</h2>
         <a-row type="flex" :gutter="[{xs: 0, sm:15, md:50, lg: 50, xl:50}, 30]">
           <a-col :lg="{span:12}" :md="{span:24}" :sm="{span:24}" :xs="{span:24}">
-            <h3>Entertainment</h3>
+            <h3>{{$t('entertainment')}}</h3>
             <div class="icon-container">
               <div class="icon">
                 <img src="/img/projects/eye-solid.svg" alt="Landing Realty See">
-                <h4>See</h4>
-                <p>{{item.attributes.entertainment ? item.attributes.entertainment.see : ' '}}</p>
+                <h4>{{$t('hear')}}</h4>
+                <p v-if="$i18n.locale === 'en'">{{item.attributes.entertainment ? item.attributes.entertainment.see : ' '}}</p>
+                <p v-if="$i18n.locale === 'zh'">{{item.attributes.entertainment ? item.attributes.entertainment.see_zh : ' '}}</p>
               </div>
               <div class="icon">
                 <img src="/img/projects/headphones-simple-solid.svg" alt="Landing Realty Hear">
-                <h4>Hear</h4>
-                <p>{{item.attributes.entertainment ? item.attributes.entertainment.hear : ' '}}</p>
+                <h4>{{$t('hear')}}</h4>
+                <p v-if="$i18n.locale === 'en'">{{item.attributes.entertainment ? item.attributes.entertainment.hear : ' '}}</p>
+                <p v-if="$i18n.locale === 'zh'">{{item.attributes.entertainment ? item.attributes.entertainment.hear_zh : ' '}}</p>
               </div>
               <div class="icon">
                 <img src="/img/projects/utensils-solid.svg" alt="Landing Realty Taste">
-                <h4>Taste</h4>
-                <p>{{item.attributes.entertainment ? item.attributes.entertainment.taste : ' '}}</p>
+                <h4>{{$t('taste')}}</h4>
+                <p v-if="$i18n.locale === 'en'">{{item.attributes.entertainment ? item.attributes.entertainment.taste : ' '}}</p>
+                <p v-if="$i18n.locale === 'zh'">{{item.attributes.entertainment ? item.attributes.entertainment.taste_zh : ' '}}</p>
               </div>
               <div class="icon">
                 <img src="/img/projects/champagne-glasses-solid.svg" alt="Landing Realty Play">
-                <h4>Play</h4>
-                <p>{{item.attributes.entertainment ? item.attributes.entertainment.play : ' '}}</p>
+                <h4>{{$t('play')}}</h4>
+                <p v-if="$i18n.locale === 'en'">{{item.attributes.entertainment ? item.attributes.entertainment.play : ' '}}</p>
+                <p v-if="$i18n.locale === 'zh'">{{item.attributes.entertainment ? item.attributes.entertainment.play_zh : ' '}}</p>
               </div>
             </div>
           </a-col>
           <a-col :lg="{span:12}" :md="{span:24}" :sm="{span:24}" :xs="{span:24}">
-            <h3>Wellness</h3>
+            <h3>{{$t('wellness')}}</h3>
             <div class="icon-container">
               <div class="icon">
                 <img src="/img/projects/leaf-solid.svg" alt="Landing Realty Nature">
-                <h4>Nature</h4>
-                <p>{{item.attributes.wellness ? item.attributes.wellness.nature : ' '}}</p>
+                <h4>{{$t('nature')}}</h4>
+                <p v-if="$i18n.locale === 'en'">{{item.attributes.wellness ? item.attributes.wellness.nature : ' '}}</p>
+                <p v-if="$i18n.locale === 'zh'">{{item.attributes.wellness ? item.attributes.wellness.nature_zh : ' '}}</p>
               </div>
               <div class="icon">
                 <img src="/img/projects/dumbbell-solid.svg" alt="Landing Realty Workout">
-                <h4>Workout</h4>
-                <p>{{item.attributes.wellness ? item.attributes.wellness.workout : ' '}}</p>
+                <h4>{{$t('workout')}}</h4>
+                <p v-if="$i18n.locale === 'en'">{{item.attributes.wellness ? item.attributes.wellness.workout : ' '}}</p>
+                <p v-if="$i18n.locale === 'zh'">{{item.attributes.wellness ? item.attributes.wellness.workout_zh : ' '}}</p>
               </div>
               <div class="icon">
                 <img src="/img/projects/spa-solid.svg" alt="Landing Realty Relax">
-                <h4>Relax</h4>
-                <p>{{item.attributes.wellness ? item.attributes.wellness.relax : ' '}}</p>
+                <h4>{{$t('relax')}}</h4>
+                <p v-if="$i18n.locale === 'en'">{{item.attributes.wellness ? item.attributes.wellness.relax : ' '}}</p>
+                <p v-if="$i18n.locale === 'zh'">{{item.attributes.wellness ? item.attributes.wellness.relax_zh : ' '}}</p>
               </div>
               <div class="icon">
                 <img src="/img/projects/heart-pulse-solid.svg" alt="Landing Realty Nourish">
-                <h4>Nourish</h4>
-                <p>{{item.attributes.wellness ? item.attributes.wellness.nourish : ' '}}</p>
+                <h4>{{$t('nourish')}}</h4>
+                <p v-if="$i18n.locale === 'en'">{{item.attributes.wellness ? item.attributes.wellness.nourish : ' '}}</p>
+                <p v-if="$i18n.locale === 'zh'">{{item.attributes.wellness ? item.attributes.wellness.nourish_zh : ' '}}</p>
               </div>
             </div>
           </a-col>
           <a-col :lg="{span:12}" :md="{span:24}" :sm="{span:24}" :xs="{span:24}">
-            <h3>Area</h3>
+            <h3>{{$t('area')}}</h3>
             <div class="icon-container">
               <div class="icon">
                 <img src="/img/projects/transit.SVG" alt="Landing Realty Transit">
-                <h4>Transit</h4>
-                <p>{{item.attributes.area ? item.attributes.area.transit : ' '}}</p>
+                <h4>{{$t('area')}}</h4>
+                <p v-if="$i18n.locale === 'en'">{{item.attributes.area ? item.attributes.area.transit : ' '}}</p>
+                <p v-if="$i18n.locale === 'zh'">{{item.attributes.area ? item.attributes.area.transit_zh : ' '}}</p>
               </div>
               <div class="icon">
                 <img src="/img/projects/shopping.SVG" alt="Landing Realty Shopping">
-                <h4>Shopping</h4>
-                <p>{{item.attributes.area ? item.attributes.area.shopping : ' '}}</p>
+                <h4>{{$t('shopping')}}</h4>
+                <p v-if="$i18n.locale === 'en'">{{item.attributes.area ? item.attributes.area.shopping : ' '}}</p>
+                <p v-if="$i18n.locale === 'zh'">{{item.attributes.area ? item.attributes.area.shopping_zh : ' '}}</p>
               </div>
               <div class="icon">
                 <img src="/img/projects/school.SVG" alt="Landing Realty School">
-                <h4>Schools</h4>
-                <p>{{item.attributes.area ? item.attributes.area.school : ' '}}</p>
+                <h4>{{$t('schools')}}</h4>
+                <p v-if="$i18n.locale === 'en'">{{item.attributes.area ? item.attributes.area.school : ' '}}</p>
+                <p v-if="$i18n.locale === 'zh'">{{item.attributes.area ? item.attributes.area.school_zh : ' '}}</p>
               </div>
               <div class="icon">
                 <img src="/img/projects/hospital.SVG" alt="Landing Realty Hospital">
-                <h4>Hospitals</h4>
-                <p>{{item.attributes.area ? item.attributes.area.hospital : ' '}}</p>
+                <h4>{{$t('hospitals')}}</h4>
+                <p v-if="$i18n.locale === 'en'">{{item.attributes.area ? item.attributes.area.hospital : ' '}}</p>
+                <p v-if="$i18n.locale === 'zh'">{{item.attributes.area ? item.attributes.area.hospital_zh : ' '}}</p>
               </div>
             </div>
           </a-col>
@@ -302,10 +415,10 @@
     </div>
     <div class="recommended">
       <div class="wrapper">
-        <h2>Recommended</h2>
+        <h2>{{$t('recommended')}}</h2>
         <a-row :gutter="[36,36]">
           <a-col :xl="{span: 6}" :lg="{span: 6}" :md="{span: 12}" :sm="{span: 12}" :xs="{span: 24}" v-for="(rec, index) in recommended" :key="index">
-            <NuxtLink :to="`/projects/${rec.id}`">
+            <NuxtLink :to="localePath(`/projects/${rec.id}`)">
               <ItemCard
                 :img="rec.attributes.images.data[0].attributes.url"
                 :title="rec.attributes.type === 'precon' ? rec.attributes.title : rec.attributes.type === 'resell' ? 'MLS ' + rec.attributes.mls : ''"

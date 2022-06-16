@@ -1,7 +1,20 @@
+<i18n>
+{
+  "en": {
+    "call":"Subscribe to our newsletter to stay up to date.",
+    "subscribe":"SUBSCRIBE"
+  },
+  "zh":{
+    "call":"订阅我们最新的资讯，不要错过好消息。",
+    "subscribe":"订阅"
+  }
+}
+</i18n>
 <template>
   <section class="sec-subscribe">
     <div class="navy">
       <div class="wrapper">
+        <h3>{{$t('call')}}</h3>
         <div class="right-block">
           <form @submit="addSubscription">
             <input
@@ -11,7 +24,7 @@
               placeholder="example@email.com"
               v-model="customerEmail"
             />
-            <input name="submit" type="submit" value="SUBSCRIBE" />
+            <input name="submit" type="submit" :value="$t('subscribe')" />
           </form>
         </div>
       </div>
@@ -50,6 +63,12 @@ export default {
 
 <style lang="scss" scoped>
 .sec-subscribe {
+
+  h3 {
+    text-align: center;
+    color: white;
+    margin-bottom: 15px;
+  }
 
   .navy {
     padding: 50px 0;

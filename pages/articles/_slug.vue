@@ -1,10 +1,14 @@
 <i18n>
 {
   "en":{
-    "promo":"AD"
+    "promo":"AD",
+    "articles":"REAL ESTATE ARTICLES",
+    "articlesF":"Featured Articles"
   },
   "zh":{
-    "promo":"广告"
+    "promo":"广告",
+    "articles":"房产资讯",
+    "articlesF":"热点资讯"
   }
 }
 </i18n>
@@ -13,13 +17,13 @@
     <div class="wrapper">
       <a-breadcrumb>
         <a-breadcrumb-item>
-          <nuxt-link to="/">
-            Home
+          <nuxt-link :to="localePath('/')">
+            {{$t('home')}}
           </nuxt-link>
         </a-breadcrumb-item>
         <a-breadcrumb-item>
-          <nuxt-link to="/articles">
-            Articles
+          <nuxt-link :to="localePath('/articles')">
+            {{$t('articles')}}
           </nuxt-link>
         </a-breadcrumb-item>
         <a-breadcrumb-item>
@@ -42,7 +46,7 @@
           <a-col :lg="{span:8}" :md="{span:9}" :sm="{span:24}" :xs="{span:24}">
             <div class="featured">
               <h2>
-                Featured Articles
+                {{$t('articlesF')}}
               </h2>
               <div class="decoration">
                 <div class="dark"></div>

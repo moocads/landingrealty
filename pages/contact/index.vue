@@ -1,26 +1,94 @@
+<i18n>
+{
+  "en": {
+    "contact":"Contact Us",
+    "contact2":"Feel free to reach out anytime!",
+    "hours":"Business Hours",
+    "mon":"Monday",
+    "fri":"Friday",
+    "sat":"Saturday",
+    "sun":"Sunday",
+    "contactInfo":"Contact Information",
+    "joinUs":"Join Us",
+    "first":"First Name",
+    "last":"Last Name",
+    "phone":"Phone",
+    "email":"Email",
+    "looking":"I'm looking to",
+    "lease":"Lease",
+    "rent":"Rent Out",
+    "sell":"Sell",
+    "buy":"Buy",
+    "style":"Property Style",
+    "house":"House",
+    "condo":"Condominium",
+    "precon":"Pre-Construction",
+    "commercial":"Commercial",
+    "coverLetter":"Cover Letter",
+    "writeCoverLetter":"Please write your CV and/or cover letter here",
+    "message":"Message",
+    "select":"Please Select",
+    "leaveMsg":"Please leave your message here.",
+    "closed":"Closed",
+    "submit":"Submit"
+  },
+  "zh":{
+    "contact":"联系我们",
+    "contact2":"请随时联系我们",
+    "hours":"营业时间",
+    "mon":"周一",
+    "fri":"周五",
+    "sat":"周六",
+    "sun":"周日",
+    "contactInfo":"联系信息",
+    "joinUs":"加入我们",
+    "first":"名",
+    "last":"姓",
+    "phone":"电话",
+    "email":"邮箱",
+    "looking":"我想",
+    "lease":"租房",
+    "rent":"出租",
+    "sell":"卖",
+    "buy":"买",
+    "style":"房型",
+    "house":"独立屋",
+    "condo":"公寓",
+    "precon":"楼花",
+    "commercial":"商业",
+    "coverLetter":"简历",
+    "writeCoverLetter":"请在此填写您的工作经验。",
+    "message":"留言",
+    "select":"请选",
+    "leaveMsg":"请在此留言。",
+    "closed":"关",
+    "submit":"提交"
+  }
+}
+</i18n>
 <template>
   <div class="container">
     <div class="header">
       <img class="img-fluid" src="~/assets/img/contact-header.png" alt="" />
       <div class="blender">
         <div class="wrapper">
-          <h1 data-aos="fade-up">Contact Us</h1>
+          <h1 data-aos="fade-up">{{$t('contact')}}</h1>
         </div>
       </div>
     </div>
     <div class="wrapper">
       <div class="card" data-aos="fade-up">
-        <h2 class="callToAction">Feel free to reach out anytime!</h2>
+        <h2 class="callToAction">{{$t('contact2')}}</h2>
         <a-row type="flex" :gutter="[50, 50]">
           <a-col :lg="{span:12}" :md="{span:24}" :sm="{span:24}" :xs="{span:24}">
             <div class="contactInfo">
-              <h3>Hours</h3>
-              <p>Monday - Friday: 10AM - 6PM
-                <br/> Saturday: 10AM - 3PM
-                <br/> Sunday: Closed
+              <h3>{{$t('hours')}}</h3>
+              <p>{{$t('mon')}} - {{$t('fri')}}: 10AM - 6PM
+                <br/> {{$t('sat')}}: 10AM - 3PM
+                <br/> {{$t('sun')}}: {{$t('closed')}}
               </p>
               <hr style="opacity:0.3; margin: 30px 0">
-              <h3>Contact Information</h3>
+              <h3>{{$t('contactInfo')}}</h3>
               <ul>
                 <li class="phone">
                   <a href="tel:9056047171">
@@ -68,95 +136,95 @@
           <a-col :lg="{span:12}" :md="{span:24}" :sm="{span:24}" :xs="{span:24}">
             <div class="forms">
               <a-tabs default-active-key="contact" class="custom-tab">
-                <a-tab-pane key="contact" tab="Contact Us" class="contact">
+                <a-tab-pane key="contact" :tab="$t('contact')" class="contact">
                   <a-form :form="contactForm" @submit="submitContact">
                     <a-row :gutter="[20, 0]">
                       <a-col :md="{span:12}" :sm="{span:12}" :xs="{span:24}">
-                        <a-form-item label="First Name">
+                        <a-form-item :label="$t('first')">
                           <a-input placeholder="Jane" v-decorator="['firstName', {rules: [{ required: true, message: 'Required' }]}]"></a-input>
                         </a-form-item>
                       </a-col>
                       <a-col :md="{span:12}" :sm="{span:12}" :xs="{span:24}">
-                        <a-form-item label="Last Name">
+                        <a-form-item :label="$t('last')">
                           <a-input placeholder="Doe" v-decorator="['lastName', {rules: [{ required: true, message: 'Required' }]}]"></a-input>
                         </a-form-item>
                       </a-col>
                       <a-col :md="{span:12}" :sm="{span:12}" :xs="{span:24}">
-                        <a-form-item label="Phone">
+                        <a-form-item :label="$t('phone')">
                           <a-input placeholder="123-456-7890" v-decorator="['phone', {rules: [{ required: true, message: 'Required' }]}]"></a-input>
                         </a-form-item>
                       </a-col>
                       <a-col :md="{span:12}" :sm="{span:12}" :xs="{span:24}">
-                        <a-form-item label="Email">
+                        <a-form-item :label="$t('email')">
                           <a-input placeholder="jane.doe@mail.com" v-decorator="['email', {rules: [{type: 'email', message: 'Not a valid email'},{required: true, message: 'Required' }]}]"></a-input>
                         </a-form-item>
                       </a-col>
                       <a-col :md="{span:12}" :sm="{span:12}" :xs="{span:24}">
-                        <a-form-item label="I'm looking to:">
-                          <a-select placeholder="Please select" v-decorator="['intent']">
+                        <a-form-item :label="`${$t('looking')}:`">
+                          <a-select :placeholder="$t('select')" v-decorator="['intent']">
                             <a-select-option value="lease">
-                              Lease
+                              {{$t('lease')}}
                             </a-select-option>
                             <a-select-option value="rent">
-                              Rent Out                        
+                              {{$t('rent')}}                     
                             </a-select-option>
                             <a-select-option value="sell">
-                              Sell
+                              {{$t('sell')}}
                             </a-select-option>
                             <a-select-option value="buy">
-                              Buy
+                              {{$t('buy')}}
                             </a-select-option>
                           </a-select>
                         </a-form-item>
                       </a-col>
                       <a-col :md="{span:12}" :sm="{span:12}" :xs="{span:24}">
-                        <a-form-item label="Property Type:">
-                          <a-select placeholder="Please select" v-decorator="['type']">
+                        <a-form-item :label="`${$t('style')}:`">
+                          <a-select :placeholder="$t('select')" v-decorator="['type']">
                             <a-select-option value="house">
-                              House
+                              {{$t('house')}}
                             </a-select-option>
                             <a-select-option value="condo">
-                              Condominium    
+                              {{$t('condo')}} 
                             </a-select-option>
                             <a-select-option value="precon">
-                              Pre-Construction
+                              {{$t('precon')}}
                             </a-select-option>
                             <a-select-option value="commercial">
-                              Commercial
+                              {{$t('commercial')}}
                             </a-select-option>
                           </a-select>
                         </a-form-item>
                       </a-col>
                       <a-col :span="24">
-                        <a-form-item label="Message">
-                          <a-textarea :rows="4" placeholder="Please leave your message here." v-decorator="['message', {rules: [{ required: true, message: 'Required' }]}]">
+                        <a-form-item :label="$t('message')">
+                          <a-textarea :rows="4" :placeholder="$t('leaveMsg')" v-decorator="['message', {rules: [{ required: true, message: 'Required' }]}]">
                           </a-textarea>
                         </a-form-item>
                       </a-col>
                     </a-row>
-                    <button class="main-btn" style="margin:0 auto" type="submit">Submit</button>
+                    <button class="main-btn" style="margin:0 auto" type="submit">{{$t('submit')}}</button>
                   </a-form>
                 </a-tab-pane>
-                <a-tab-pane key="join" tab="Join Us" class="join">
+                <a-tab-pane key="join" :tab="$t('joinUs')" class="join">
                   <a-form :form="joinForm" @submit="submitJoin">
                     <a-row :gutter="[30,0]">
                       <a-col :md="{span:12}" :sm="{span:12}" :xs="{span:24}">
-                        <a-form-item label="First Name">
+                        <a-form-item :label="$t('first')">
                           <a-input placeholder="Jane" v-decorator="['firstName', {rules: [{ required: true, message: 'Required' }]}]"></a-input>
                         </a-form-item>
                       </a-col>
                       <a-col :md="{span:12}" :sm="{span:12}" :xs="{span:24}">
-                        <a-form-item label="Last Name">
+                        <a-form-item :label="$t('last')">
                           <a-input placeholder="Doe" v-decorator="['lastName', {rules: [{ required: true, message: 'Required' }]}]"></a-input>
                         </a-form-item>
                       </a-col>
                       <a-col :md="{span:12}" :sm="{span:12}" :xs="{span:24}">
-                        <a-form-item label="Phone">
+                        <a-form-item :label="$t('phone')">
                           <a-input placeholder="123-456-7890" v-decorator="['phone', {rules: [{ required: true, message: 'Required' }]}]"></a-input>
                         </a-form-item>
                       </a-col>
                       <a-col :md="{span:12}" :sm="{span:12}" :xs="{span:24}">
-                        <a-form-item label="Email">
+                        <a-form-item :label="$t('email')">
                           <a-input placeholder="jane.doe@mail.com" v-decorator="['email', {rules: [{type: 'email', message: 'Not a valid email'},{ required: true, message: 'Required' }]}]"></a-input>
                         </a-form-item>
                       </a-col>
@@ -168,13 +236,13 @@
                         </a-upload>
                       </a-col> -->
                       <a-col :span="24">
-                        <a-form-item label="Cover Letter">
-                          <a-textarea :rows="4" placeholder="Please write your cover letter here." v-decorator="['coverLetter']">
+                        <a-form-item :label="$t('coverLetter')">
+                          <a-textarea :rows="4" :placeholder="$t('writeCoverLetter')" v-decorator="['coverLetter']">
                           </a-textarea>
                         </a-form-item>
                       </a-col>
                     </a-row>
-                    <button class="main-btn" style="margin:0 auto" type="submit">Submit</button>
+                    <button class="main-btn" style="margin:0 auto" type="submit">{{$t('submit')}}</button>
                   </a-form>
                 </a-tab-pane>
               </a-tabs>
@@ -255,7 +323,15 @@ export default {
 
 <style lang="scss" scoped>
 .header {
+  max-height: 60vh;
   position: relative;
+
+  img {
+    width: 100%;
+    height: 60vh;
+    object-fit: cover;
+  }
+
   .blender {
     position: absolute;
     left: 0;
@@ -276,7 +352,9 @@ export default {
   .wrapper {
     h1 {
       color: white;
-      font-size: 68px;
+      font-size: 38px;
+      font-weight: bold;
+      text-transform: uppercase;
     }
   }
 }

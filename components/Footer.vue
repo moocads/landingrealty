@@ -1,3 +1,36 @@
+<i18n>
+{
+  "en": {
+    "intro":"Landing Realty Inc. Brokerage is a Full-Service real estate company serving Greater Toronto Area and other cities across Ontario, Canada. We provide a wide variety of real estate services to homeowners & investors including residential/commercial resales, pre-construction sales, rentals, property management, and real estate investment.",
+    "contactUs":"CONTACT US",
+    "articlesF":"FEATURED ARTICLES",
+    "links":"USEFUL LINKS",
+    "home":"Home",
+    "about":"About",
+    "articles":"Articles",
+    "contact":"Contact",
+    "precon":"Pre-Construction",
+    "resale":"Resale",
+    "callUs":"Call Us",
+    "emailUs":"Email Us"
+  },
+  "zh":{
+    "intro":"Landing Realty Inc. 是一家提供全方位服务的房地产公司，服务于大多伦多地区和加拿大安大略省的其他城市。我们为房主和投资者提供各种房地产服务，包括住宅/商业转售、建筑前销售、租赁、物业管理和房地产投资。",
+    "contactUs":"联系我们",
+    "articlesF":"最新资讯",
+    "links":"相关链接",
+    "home":"主页",
+    "about":"关于",
+    "projects":"项目",
+    "articles":"资讯",
+    "contact":"联系",
+    "precon":"楼花",
+    "resale":"转售",
+    "callUs":"电话",
+    "emailUs":"邮件"
+  }
+}
+</i18n>
 <template>
   <footer>
     <div class="footer-container" data-aos="fade-up">
@@ -6,11 +39,7 @@
           <section>
             <img class="logo" src="~/assets/img/nav-logo.png" alt="" />
             <p class="detail">
-              Landing Realty Inc. Brokerage is a Full-Service real estate company
-              serving Greater Toronto Area and other cities across Ontario, Canada.
-              We provide a wide variety of real estate services to homeowners &
-              investors including residential/commercial resales, pre-construction
-              sales, rentals, property management, and real estate investment.
+              {{$t('intro')}}
             </p>
             <div class="social-icons">
               <a href="https://www.facebook.com/Landing-Realty-Inc-Brokerage-101415599156399/?notif_id=1647380398693885&notif_t=aymt_page_post_reminder_14d_notification&ref=notif" target="_blank">
@@ -33,18 +62,19 @@
         <a-col :xl="{span:8}" :lg="{span:12}" :md="{span:12}" :sm="{span:12}" :xs="{span:24}">
           <section>
             <div class="title">
-              <h4>Featured Articles</h4>
+              <h4>{{$t('articlesF')}}</h4>
             </div>
             <div class="articles">
               <div v-for="b in articles" :key="b.id">
-                <NuxtLink class="articles-block" :to="`/articles/${b.attributes.slug}`">
+                <NuxtLink class="articles-block" :to="localePath(`/articles/${b.attributes.slug}`)">
                   <img
                     v-if="b.attributes.thumbnail.data"
                     :src="b.attributes.thumbnail.data.attributes.url"
                     :alt="b.attributes.title"
                   />
                   <div class="articles-content">
-                    <h5>{{ b.attributes.title }}</h5>
+                    <h5 v-if="$i18n.locale === 'en'">{{ b.attributes.title }}</h5>
+                    <h5 v-if="$i18n.locale === 'zh'">{{ b.attributes.title_zh }}</h5>
                     <!-- <p>{{b.attributes.blurb}}</p> -->
                   </div>
                 </NuxtLink>
@@ -55,7 +85,7 @@
         <a-col :xl="{span:6}" :lg="{span:12}" :md="{span:12}" :sm="{span:12}" :xs="{span:24}">
           <section class="contact-block">
             <div class="title">
-              <h4>contact us</h4>
+              <h4>{{$t('contactUs')}}</h4>
             </div>
             <ul class="contact-list">
               <li class="phone">
@@ -103,14 +133,15 @@
         <a-col :xl="{span:4}" :lg="{span:12}" :md="{span:12}" :sm="{span:12}" :xs="{span:24}">
           <section>
             <div class="title">
-              <h4>links</h4>
+              <h4>{{$t('links')}}</h4>
             </div>
             <ul class="links">
-              <li><NuxtLink to="/about">About Us</NuxtLink></li>
-              <li><NuxtLink to="/projects/pre-construction">Pre-Construction</NuxtLink></li>
-              <li><NuxtLink to="/projects/resales">Resales</NuxtLink></li>
-              <li><NuxtLink to="/articles">Articles</NuxtLink></li>
-              <li><NuxtLink to="/contact">Contact</NuxtLink></li>
+              <li><NuxtLink :to="localePath('/')">{{$t('home')}}</NuxtLink></li>
+              <li><NuxtLink :to="localePath('/about')">{{$t('about')}}</NuxtLink></li>
+              <li><NuxtLink :to="localePath('/projects/pre-construction')">{{$t('precon')}}</NuxtLink></li>
+              <li><NuxtLink :to="localePath('/projects/resales')">{{$t('resale')}}</NuxtLink></li>
+              <li><NuxtLink :to="localePath('/articles')">{{$t('articles')}}</NuxtLink></li>
+              <li><NuxtLink :to="localePath('/contact')">{{$t('contact')}}</NuxtLink></li>
             </ul>
           </section>
         </a-col>
@@ -121,14 +152,14 @@
         <div class="call">
           <a href="tel:9056047171">
             <a-icon type="phone" theme="filled" style="transform:rotateY(180deg)" />
-            Call Us
+            {{$t('callUs')}}
           </a>
         </div>
         <div class="divide"></div>
         <div class="mail">
           <a href="mailto:info@landingrealestate.com">
             <a-icon type="mail" theme="filled" />
-            Message Us
+            {{$t('emailUs')}}
           </a>
         </div>
       </div>
@@ -291,6 +322,7 @@ h4 {
     width: 25%;
     height: 50px;
     margin-right: 10px;
+    object-fit: cover;
   }
 
   &:hover {

@@ -1,3 +1,13 @@
+<i18n>
+{
+  "en": {
+    "precon":"Resale"
+  },
+  "zh":{
+    "precon":"转售"
+  }
+}
+</i18n>
 <template>
   <div class="container" id="resaleProjects">
     <ItemDisplay title="resales" :displayData="data" data-aos="fade-up" />

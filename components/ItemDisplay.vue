@@ -1,3 +1,19 @@
+<i18n>
+{
+  "en": {
+    "view":"VIEW ALL",
+    "condo":"Condo",
+    "house":"House",
+    "townhouse":"Townhouse"
+  },
+  "zh":{
+    "view":"查看全部",
+    "condo":"公寓",
+    "house":"独立屋",
+    "townhouse":"联排别墅 "
+  }
+}
+</i18n>
 <template>
   <section class="item-display">
     <div class="wrapper">
@@ -8,7 +24,7 @@
             class="flex-col-center"
             v-for="(items, style,i) in displayData"
             :key="'tab'+i"
-            :tab="style"
+            :tab="$t(style)"
           >
             <div class="sample-grid">
               <div v-for="(item, index) in items" :key="index">
@@ -25,8 +41,8 @@
           </a-tab-pane>
         </a-tabs>
       </div>
-      <NuxtLink v-if="isHome" :to="`/projects/${this.title}`" class="main-btn">
-        View All
+      <NuxtLink v-if="isHome" :to="localePath(`/projects/${this.title}`)" class="main-btn">
+        {{$t('view')}}
       </NuxtLink>
     </div>
   </section>

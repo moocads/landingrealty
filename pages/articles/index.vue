@@ -1,10 +1,14 @@
 <i18n>
 {
   "en":{
-    "promo":"AD"
+    "promo":"AD",
+    "articles":"REAL ESTATE ARTICLES",
+    "articlesF":"Featured Articles"
   },
   "zh":{
-    "promo":"广告"
+    "promo":"广告",
+    "articles":"房产资讯",
+    "articlesF":"热点资讯"
   }
 }
 </i18n>
@@ -12,7 +16,7 @@
   <div id="articles">
     <section class="title">
       <div class="wrapper">
-        <h1 data-aos="fade-up">real estate articles</h1>
+        <h1 data-aos="fade-up">{{$t('articles')}}</h1>
       </div>
     </section>
     <section class="articleList" data-aos="fade-up">
@@ -29,9 +33,11 @@
                   </a-col>
                   <a-col :lg="{span:17}" :md="{span:16, offset: 0}" :sm="{span:17, offset: 0}" :xs="{span:17, offset: 0}">
                     <div class="text">
-                      <h3>{{b.attributes.title}}</h3>
+                      <h3 v-if="$i18n.locale === 'en'">{{b.attributes.title}}</h3>
+                      <h3 v-if="$i18n.locale === 'zh'">{{b.attributes.title_zh}}</h3>
                       <span><a-icon type="clock-circle" />  {{b.attributes.date}}</span>
-                      <p>{{b.attributes.blurb}}</p>
+                      <p v-if="$i18n.locale === 'en'">{{b.attributes.blurb}}</p>
+                      <p v-if="$i18n.locale === 'zh'">{{b.attributes.blurb_zh}}</p>
                     </div>
                   </a-col>
                 </a-row>
@@ -41,7 +47,7 @@
           <a-col :lg="{span:8}" :md="{span:9}" :sm="{span:24}" :xs="{span:24}">
             <div class="featured">
               <h2>
-                Feature Articles
+                {{$t('articlesF')}}
               </h2>
               <div class="decoration">
                 <div class="dark"></div>
@@ -57,7 +63,8 @@
                     </a-col>
                     <a-col :lg="{span:15}" :md="{span:15}" :sm="{span:17}" :xs="{span:17}">
                       <div class="text">
-                        <h3>{{b.attributes.title}}</h3>
+                        <h3 v-if="$i18n.locale === 'en'">{{b.attributes.title}}</h3>
+                        <h3 v-if="$i18n.locale === 'zh'">{{b.attributes.title_zh}}</h3>
                         <span><a-icon type="clock-circle" />  {{b.attributes.date}}</span>
                       </div>
                     </a-col>
@@ -102,6 +109,10 @@ export default {
 #articles {
   background-color: #fff;
   padding-top: 110px;
+
+  @media(max-width:992px) {
+    padding-top: 90px
+  }
 
   .title {
     background-color: #f4f4f4;
@@ -313,6 +324,10 @@ export default {
 
     img {
       max-width: 100%;
+    }
+
+    @media (max-width: 992px) {
+      max-width: 300px;
     }
   }
 }
