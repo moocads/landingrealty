@@ -61,7 +61,7 @@
     "message":"留言",
     "select":"请选",
     "leaveMsg":"请在此留言。",
-    "closed":"关",
+    "closed":"歇业",
     "submit":"提交"
   }
 }
