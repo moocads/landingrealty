@@ -282,12 +282,12 @@
                   <h4>{{$t('deposit')}}</h4>
                   <a-row>
                     <a-col :sm="{span:12}" :xs="{span:24}">
-                      <p v-if="$i18n.locale==='en'">{{item.attributes.deposit ? item.attributes.deposit : 'N/A'}}</p>
-                      <p v-if="$i18n.locale==='zh'">{{item.attributes.deposit_zh ? item.attributes.deposit_zh : 'N/A'}}</p>
+                      <p v-if="$i18n.locale==='en'" v-html="item.attributes.deposit ? item.attributes.deposit : 'N/A'"></p>
+                      <p v-if="$i18n.locale==='zh'" v-html="item.attributes.deposit_zh ? item.attributes.deposit_zh : 'N/A'"></p>
                     </a-col>
                     <a-col :sm="{span:12}" :xs="{span:24}">
-                      <p v-if="$i18n.locale==='en'">{{item.attributes.depositIntl ? item.attributes.depositIntl : ''}}</p>
-                      <p v-if="$i18n.locale==='zh'">{{item.attributes.depositIntl_zh ? item.attributes.depositIntl_zh : ''}}</p>
+                      <p v-if="$i18n.locale==='en'" v-html="item.attributes.depositIntl ? item.attributes.depositIntl : ''"></p>
+                      <p v-if="$i18n.locale==='zh'" v-html="item.attributes.depositIntl_zh ? item.attributes.depositIntl_zh : ''"></p>
                     </a-col>
                   </a-row>
                 </div>
