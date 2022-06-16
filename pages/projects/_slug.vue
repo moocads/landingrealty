@@ -34,6 +34,8 @@
     "intro":"Project Introduction",
     "neighborhood":"Neighborhood",
     "deposit":"Deposit Structure",
+    "depositL":"Canadian/PR",
+    "depositI":"International",
     "contact":"CONTACT AGENT",
     "floorplan":"FLOORPLAN",
     "n":"North",
@@ -101,6 +103,8 @@
     "intro":"项目介绍",
     "neighborhood":"周边设施",
     "deposit":"付款流程",
+    "depositL":"加拿大公民及永久居民",
+    "depositI":"非加拿大公民及永久居民",
     "contact":"联系经纪",
     "floorplan":"户型图",
     "n":"北",
@@ -124,12 +128,12 @@
     <div class="wrapper">
       <a-breadcrumb>
         <a-breadcrumb-item>
-          <nuxt-link :to="`/`">
+          <nuxt-link :to="localePath(`/`)">
             {{$t('home')}}
           </nuxt-link>
         </a-breadcrumb-item>
         <a-breadcrumb-item>
-          <nuxt-link :to="`/projects/${item.attributes.type === 'resell' ? 'resales' : 'pre-construction'}`">
+          <nuxt-link :to="localePath(`/projects/${item.attributes.type === 'resell' ? 'resales' : 'pre-construction'}`)">
             {{$t(item.attributes.type)}}
           </nuxt-link>
         </a-breadcrumb-item>
@@ -280,12 +284,14 @@
                 </div>
                 <div class="deposit" v-if="item.attributes.type === 'precon'">
                   <h4>{{$t('deposit')}}</h4>
-                  <a-row>
+                  <a-row :gutter="[30,30]">
                     <a-col :sm="{span:12}" :xs="{span:24}">
+                      <h6><strong>{{$t('depositL')}}</strong></h6>
                       <p v-if="$i18n.locale==='en'" v-html="item.attributes.deposit ? item.attributes.deposit : 'N/A'"></p>
                       <p v-if="$i18n.locale==='zh'" v-html="item.attributes.deposit_zh ? item.attributes.deposit_zh : 'N/A'"></p>
                     </a-col>
                     <a-col :sm="{span:12}" :xs="{span:24}">
+                      <h6><strong>{{$t('depositI')}}</strong></h6>
                       <p v-if="$i18n.locale==='en'" v-html="item.attributes.depositIntl ? item.attributes.depositIntl : ''"></p>
                       <p v-if="$i18n.locale==='zh'" v-html="item.attributes.depositIntl_zh ? item.attributes.depositIntl_zh : ''"></p>
                     </a-col>
@@ -540,6 +546,11 @@ export default {
     font-size: 18px;
     color: $grey;
   }
+  h6 {
+    margin-top: 10px;
+    font-size: 16px;
+    color: $grey;
+  }
   p {
     text-transform: capitalize;
     font-size: 16px;
@@ -693,7 +704,7 @@ export default {
       font-size: 14px;
       font-weight: 300;
       text-transform: none;
-      padding: 15px 0;
+      padding-bottom: 15px;
     }
   }
 
