@@ -10,7 +10,7 @@
     "view":"查看全部",
     "condo":"公寓",
     "house":"独立屋",
-    "townhouse":"联排别墅 "
+    "townhouse":"镇屋"
   }
 }
 </i18n>

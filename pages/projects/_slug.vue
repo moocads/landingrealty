@@ -392,7 +392,7 @@
             <div class="icon-container">
               <div class="icon">
                 <img src="/img/projects/transit.SVG" alt="Landing Realty Transit">
-                <h4>{{$t('area')}}</h4>
+                <h4>{{$t('transit')}}</h4>
                 <p v-if="$i18n.locale === 'en'">{{item.attributes.area ? item.attributes.area.transit : ' '}}</p>
                 <p v-if="$i18n.locale === 'zh'">{{item.attributes.area ? item.attributes.area.transit_zh : ' '}}</p>
               </div>
