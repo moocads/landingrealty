@@ -4,13 +4,17 @@
     "view":"VIEW ALL",
     "condo":"Condo",
     "house":"House",
-    "townhouse":"Townhouse"
+    "townhouse":"Townhouse",
+    "pre-construction":"Pre-Construction",
+    "resales":"Resale"
   },
   "zh":{
     "view":"查看全部",
     "condo":"公寓",
     "house":"独立屋",
-    "townhouse":"镇屋"
+    "townhouse":"镇屋",
+    "pre-construction":"楼花",
+    "resales":"转售"
   }
 }
 </i18n>

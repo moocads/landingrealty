@@ -1,13 +1,4 @@
-<i18n>
-{
-  "en": {
-    "precon":"Pre-Construction"
-  },
-  "zh":{
-    "precon":"楼花"
-  }
-}
-</i18n>
+
 <template>
   <div class="container" id="preconProjects">
     <ItemDisplay title="pre-construction" :displayData="data" data-aos="fade-up" />
