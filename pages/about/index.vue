@@ -139,15 +139,18 @@
 
   p {
     position: absolute;
-    bottom: 0;
+    top: 50%;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translate(-50%, -50%);
     color: white;
     text-transform: uppercase;
-    font-size: 20px;
+    font-size: 24px;
     font-weight: 700;
     padding-bottom: 10px;
     margin-bottom: 0;
+    @media (min-width:1200px) {
+      font-size: 30px;
+    }
     @media (max-width:576px) {
       font-size: 16px;
     }

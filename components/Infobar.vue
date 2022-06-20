@@ -13,8 +13,8 @@
 <style lang="scss" scoped>
 .infobar-container {
   width: 100%;
-  background-color: #c4c4c4;
-  padding: 0.25rem 0;
+  background-color: black;
+  padding: 5px 0;
   .infobar-wrapper {
     display: flex;
     justify-content: space-between;
@@ -27,7 +27,7 @@
       }
     }
     p {
-      color: $navy;
+      color: white;
       font-size: 16px;
       margin: 0;
     }
