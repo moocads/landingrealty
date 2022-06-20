@@ -443,6 +443,11 @@
 import saleStatus from '~/utils/saleStatus'
 // import ProjectDetailsSlider from "../../components/ProjectDetailsSlider.vue";
 export default {
+  head() {
+    return {
+      title: "Projects | Landing Realty | A Toronto Real Estate Company"
+    };
+  },
   data() {
     return {
       detailDividerStyle:

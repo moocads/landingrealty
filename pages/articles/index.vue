@@ -88,6 +88,11 @@
 
 <script>
 export default {
+  head() {
+    return {
+      title: "Articles | Landing Realty | A Toronto Real Estate Company"
+    };
+  },
   async asyncData({$axios}) {
     const allArticles = await $axios.$get('/blogs', {params:{populate: ['thumbnail'] }})
     const featuredArticles = await $axios.$get('/blogs', {params:{populate: ['thumbnail'], filters: {featured: { $eq:true}} }})

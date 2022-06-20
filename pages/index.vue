@@ -1,7 +1,7 @@
 <i18n>
 {
   "en": {
-    "slogan":"Client First, Client's Need Is Our # 1 Priority",
+    "slogan":"Client First, Client's Needs Are Our # 1 Priority",
     "learn":"Learn More",
     "realEstate":"Toronto Real Estate Company",
     "extraordinary":"EXTRAORDINARY, LANDED",
@@ -110,6 +110,11 @@
 import ItemCard from '~/components/ItemCard.vue'
 import Subscription from '~/components/Subscription.vue'
 export default {
+  head() {
+    return {
+      title: "Home | Landing Realty | A Toronto Real Estate Company"
+    };
+  },
   async asyncData({ $axios }) {
     const res1 = await $axios.$get('/assignments', {
       params: {

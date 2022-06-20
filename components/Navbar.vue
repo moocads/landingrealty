@@ -44,8 +44,6 @@
         </div>
         <NuxtLink :to="localePath('/articles')">{{$t('articles')}}</NuxtLink>
         <NuxtLink :to="localePath('/contact')">{{$t('contact')}}</NuxtLink>
-        <NuxtLink class="switchLocale" v-if="$i18n.locale=='en'" :to="switchLocalePath('zh')">中文</NuxtLink>
-        <NuxtLink class="switchLocale" v-if="$i18n.locale=='zh'" :to="switchLocalePath('en')">EN</NuxtLink>
       </div>
       <!-- mobile -->
       <div class="hamburger" @click="toggleNav">

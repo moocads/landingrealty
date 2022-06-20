@@ -1,10 +1,30 @@
+<i18n>
+{
+  "en": {
+    "slogan":"Client First, Client's Needs Are Our # 1 Priority"
+  },
+  "zh":{
+    "slogan":"客户至上，客户的需求是我们的第一要务"
+  }
+}
+</i18n>
 <template>
   <div class="infobar-container">
-    <div class="infobar-wrapper">
-      <p>Client First, Client’s Need Is Our # 1 Priority</p>
+    <div class="infobar-wrapper wrapper">
+      <p>{{$t('slogan')}}</p>
       <div>
         <p>info@landingrealty.ca</p>
         <p>905-604-7171</p>
+        <NuxtLink class="switchLocale" v-if="$i18n.locale=='en'" :to="switchLocalePath('zh')">
+          <a-tag style="margin-right:0">
+            中文
+          </a-tag>
+        </NuxtLink>
+        <NuxtLink class="switchLocale" v-if="$i18n.locale=='zh'" :to="switchLocalePath('en')">
+          <a-tag style="margin-right:0">
+            EN
+          </a-tag>
+        </NuxtLink>
       </div>
     </div>
   </div>
@@ -18,11 +38,9 @@
   .infobar-wrapper {
     display: flex;
     justify-content: space-between;
-    max-width: 10000px;
-    padding: 0 10vw;
     div {
       display: flex;
-      p:first-child{
+      p{
           margin-right: 35px;
       }
     }

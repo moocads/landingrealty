@@ -8,6 +8,11 @@
 
 <script>
 export default {
+  head() {
+    return {
+      title: "Resales | Landing Realty | A Toronto Real Estate Company"
+    };
+  },
   async asyncData({ $axios }) {
     const res1 = await $axios.$get('/assignments', {
       params: {

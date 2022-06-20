@@ -99,6 +99,11 @@
 
 <script>
 export default {
+  head() {
+    return {
+      title: "Articles | Landing Realty | A Toronto Real Estate Company"
+    };
+  },
   async asyncData({route, $axios}) {
     const slug = route.params.slug
     const res = await $axios.$get('/blogs', {

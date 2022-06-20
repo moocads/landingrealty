@@ -257,6 +257,11 @@
 
 <script>
 export default {
+  head() {
+    return {
+      title: "Contact | Landing Realty | A Toronto Real Estate Company"
+    };
+  },
   data() {
     return {
       contactForm: this.$form.createForm(this),

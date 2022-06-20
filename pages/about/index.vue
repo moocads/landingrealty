@@ -78,6 +78,15 @@
     <Subscription />
   </div>
 </template>
+<script>
+export default {
+  head() {
+    return {
+      title: "About | Landing Realty | A Toronto Real Estate Company"
+    };
+  },
+}
+</script>
 
 <style lang="scss" scoped>
 .about {
