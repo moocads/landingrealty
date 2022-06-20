@@ -151,7 +151,7 @@
       <div class="contactBar">
         <div class="call">
           <a href="tel:9056047171">
-            <a-icon type="phone" theme="filled" style="transform:rotateY(180deg)" />
+            <a-icon type="phone" theme="filled" style="transform:scaleX(-1)" />
             {{$t('callUs')}}
           </a>
         </div>
@@ -273,7 +273,7 @@ h4 {
 
   .phone {
     i {
-      transform: rotateY(180deg);
+      transform: scaleX(-1);
     }
   }
 

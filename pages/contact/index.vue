@@ -412,7 +412,7 @@ export default {
 
         &.phone {
           i {
-            transform: rotateY(180deg);
+            transform: scaleX(-1);
           }
         }
 
