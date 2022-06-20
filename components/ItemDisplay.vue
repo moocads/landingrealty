@@ -21,7 +21,7 @@
 <template>
   <section class="item-display">
     <div class="wrapper">
-      <h2 v-if="title">{{ title }}</h2>
+      <h2 v-if="title">{{ $t(title) }}</h2>
       <div>
         <a-tabs class="custom-tab" default-active-key="tab0">
           <a-tab-pane
