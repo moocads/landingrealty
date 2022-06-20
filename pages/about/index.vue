@@ -146,8 +146,7 @@
     text-transform: uppercase;
     font-size: 24px;
     font-weight: 700;
-    padding-bottom: 10px;
-    margin-bottom: 0;
+    margin-bottom: 0 ;
     @media (min-width:1200px) {
       font-size: 30px;
     }
