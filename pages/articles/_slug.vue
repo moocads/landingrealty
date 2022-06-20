@@ -3,12 +3,18 @@
   "en":{
     "promo":"AD",
     "articles":"REAL ESTATE ARTICLES",
-    "articlesF":"Featured Articles"
+    "articlesF":"Featured Articles",
+    "home":"Home",
+    "by":"By",
+    "published":"Published"
   },
   "zh":{
     "promo":"广告",
     "articles":"房产资讯",
-    "articlesF":"热点资讯"
+    "articlesF":"热点资讯",
+    "home":"主页",
+    "by":"作者",
+    "published":"发布日期"
   }
 }
 </i18n>
@@ -26,8 +32,11 @@
             {{$t('articles')}}
           </nuxt-link>
         </a-breadcrumb-item>
-        <a-breadcrumb-item>
+        <a-breadcrumb-item v-if="$i18n.locale==='en'">
             {{article.attributes.title}}
+        </a-breadcrumb-item>
+        <a-breadcrumb-item v-if="$i18n.locale==='zh'">
+            {{article.attributes.title_zh}}
         </a-breadcrumb-item>
       </a-breadcrumb>
       <section>
@@ -35,12 +44,15 @@
           <a-col :lg="{span:16}" :md="{span:15}" :sm="{span:24}" :xs="{span:24}">
             <div class="articleBody">
               <div class="title">
-                <h1>{{article.attributes.title}}</h1>
-                <span>By: {{article.attributes.author}}</span>
+                <h1 v-if="$i18n.locale==='en'">{{article.attributes.title}}</h1>
+                <h1 v-if="$i18n.locale==='zh'">{{article.attributes.title_zh}}</h1>
+                <span v-if="$i18n.locale==='en'">{{$t('by')}}: {{article.attributes.author}}</span>
+                <span v-if="$i18n.locale==='zh'">{{$t('by')}}: {{article.attributes.author_zh}}</span>
               </div>
               <img v-if="article.attributes.thumbnail.data" :src="article.attributes.thumbnail.data.attributes.url" :alt="article.attributes.title">
-              <div class="htmlContent" v-html="article.attributes.content"></div>
-              <p class="date"><em>Published: {{article.attributes.date}}</em></p>
+              <div v-if="$i18n.locale==='en'" class="htmlContent" v-html="article.attributes.content"></div>
+              <div v-if="$i18n.locale==='zh'" class="htmlContent" v-html="article.attributes.content_zh"></div>
+              <p class="date"><em>{{$t('published')}}: {{article.attributes.date}}</em></p>
             </div>
           </a-col>
           <a-col :lg="{span:8}" :md="{span:9}" :sm="{span:24}" :xs="{span:24}">
@@ -62,7 +74,8 @@
                     </a-col>
                     <a-col :lg="{span:15}" :md="{span:15}" :sm="{span:17}" :xs="{span:17}">
                       <div class="text">
-                        <h3>{{b.attributes.title}}</h3>
+                        <h3 v-if="$i18n.locale === 'en'">{{b.attributes.title}}</h3>
+                        <h3 v-if="$i18n.locale === 'zh'">{{b.attributes.title_zh}}</h3>
                         <span><a-icon type="clock-circle" />  {{b.attributes.date}}</span>
                       </div>
                     </a-col>
@@ -95,7 +108,9 @@ export default {
             $eq: slug
           }
         },
-        populate: ['thumbnail']
+        populate: ['thumbnail'],
+
+
       }
     })
     const featuredArticles = await $axios.$get('/blogs', {params:{populate: ['thumbnail'], filters: {featured: { $eq:true}} }})

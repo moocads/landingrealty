@@ -24,7 +24,7 @@
         <a-row type="flex" :gutter="[40,0]">
           <a-col :lg="{span:16}" :md="{span:15}" :sm="{span:24}" :xs="{span:24}">
             <div v-for="b in articles" :key="b.id" class="eachArticle">
-              <nuxt-link :to="`/articles/${b.attributes.slug}`">
+              <nuxt-link :to="localePath(`/articles/${b.attributes.slug}`)">
                 <a-row type="flex" :gutter="[{ xs: 10, sm: 15, md: 25, lg: 25, xl:25 },0]">
                   <a-col :lg="{span:7}" :md="{span:8, offset: 0}" :sm="{span:7, offset: 0}" :xs="{span:7, offset: 0}">
                     <div class="img">
