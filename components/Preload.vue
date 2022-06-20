@@ -38,7 +38,7 @@ export default {
   width: 100%;
   height: 100vh;
   background: #fff;
-  animation: fade 1.5s ease-in 9s forwards;
+  animation: fade 1s ease-in 7.5s forwards;
 
   .skipContainer {
     position: fixed;
@@ -46,7 +46,7 @@ export default {
     right: 30px;
     z-index: 1001;
     opacity: 0;
-    animation: fadeIn 0.5s ease-in 2s forwards, fade 0.5s ease-in 8.5s forwards;
+    animation: fadeIn 0.5s ease-in 1.5s forwards, fade 0.5s ease-in 7s forwards;
 
     .skip {
       transition: all 0.3s ease;
@@ -104,7 +104,7 @@ export default {
 
     .heroTxt, .heroBtn {
       opacity: 0;
-      animation: fadeIn 1s ease-in 10s forwards;
+      animation: fadeIn 1s ease-in 5.5s forwards;
     }
 
     .logoContainer {
@@ -126,7 +126,7 @@ export default {
       .logoTxt {
         margin-top: 20px;
         opacity: 0;
-        animation: fadeIn 2s ease-in 5.5s forwards;
+        animation: fadeIn 1.5s ease-in 4s forwards;
         // max-height: 50vh;
         width: 200px;
         .cls-1{fill:#fff;}
@@ -147,7 +147,7 @@ export default {
         stroke-width: 1;
         stroke-dasharray: 1000;
         stroke-dashoffset: 1000;
-        animation: strokeFade 4s ease-in 2s forwards;
+        animation: strokeFade 3s ease-in 1.5s forwards;
         transform-origin: center;
         max-height: 50vh;
       }
