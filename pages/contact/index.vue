@@ -370,6 +370,10 @@ export default {
     color: $navy;
   }
 
+  @media (max-width: 576px) {
+    padding: 20px;
+  }
+
   .contactInfo {
     h3 {
       font-size: 18px;
@@ -399,6 +403,10 @@ export default {
             color: $navy;
             font-size: 20px;
             margin-right: 20px;
+            @media (max-width: 576px) {
+              margin-right: 10px;
+              font-size: 16px;
+            }
           }
         }
 
@@ -412,6 +420,10 @@ export default {
           span:nth-of-type(2) {
             display: block;
             padding-left: 45px;
+
+            @media (max-width: 576px) {
+              padding-left: 35px;
+            }
           }
         }
       }

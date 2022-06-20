@@ -361,13 +361,14 @@ ul.links {
 .mobile {
   display: none;
   padding-bottom: 70px;
+  align-items: center;
 
   .contactBar {
     position: fixed;
     z-index: 10;
     bottom: 0;
     left: 0;
-    width: 100%;
+    width: 100vw;
     background-color: $navy;
     color: white;
     display: flex;
@@ -406,6 +407,17 @@ ul.links {
   @media (max-width:992px) {
     display: block;
   }
-  align-items: center;
+
+  @media (max-width: 576px) {
+    .contactBar {
+      height: 60px;
+  
+      .call, .mail {
+        a {
+          font-size: 16px;
+        }
+      }
+    }
+  }
 }
 </style>
