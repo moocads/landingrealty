@@ -49,7 +49,9 @@
       font-size: 16px;
       margin: 0;
     }
-
+    .ant-tag:hover {
+      cursor: pointer;
+    }
     // @media (max-width: 992px) {
     //   padding: 0 5vw;
     // }

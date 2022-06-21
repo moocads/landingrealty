@@ -32,7 +32,7 @@
           >
             <div class="sample-grid">
               <div v-for="(item, index) in items" :key="index">
-                <NuxtLink :to="`/projects/${item.id}`">
+                <NuxtLink :to="localePath(`/projects/${item.id}`)">
                   <ItemCard
                     :img="item.attributes.images.data[0].attributes.url"
                     :title="item.attributes.type === 'precon' ? item.attributes.title : item.attributes.type === 'resell' ? 'MLS ' + item.attributes.mls : ''"

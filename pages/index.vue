@@ -91,7 +91,7 @@
         <h6>{{$t('realEstate')}}</h6>
         <h1>{{$t('articles')}}</h1>
         <div class="articles-grid">
-          <NuxtLink v-for="(b, i) in articles" :key="i" :to="`/articles/${b.attributes.slug}`">
+          <NuxtLink v-for="(b, i) in articles" :key="i" :to="localePath(`/articles/${b.attributes.slug}`)">
             <ItemCard
               :img="b.attributes.thumbnail.data.attributes.url"
               :title="$i18n.locale === 'en' ? b.attributes.title : $i18n.locale === 'zh' ? b.attributes.title_zh : ''"

@@ -2,7 +2,7 @@
 {
   "en":{
     "promo":"AD",
-    "articles":"REAL ESTATE ARTICLES",
+    "articles":"Real Estate Articles",
     "articlesF":"Featured Articles",
     "home":"Home",
     "by":"By",
