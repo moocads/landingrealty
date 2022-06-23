@@ -65,7 +65,7 @@
                 <div class="light"></div>
               </div>
               <div class="eachFeature" v-for="b in features" :key="b.id">
-                <nuxt-link :to="`/articles/${b.attributes.slug}`">
+                <nuxt-link :to="localePath(`/articles/${b.attributes.slug}`)">
                   <a-row type="flex" :gutter="[{ xs: 10, sm: 15, md: 15, lg: 15, xl:15 },20]">
                     <a-col :lg="{span:9}" :md="{span:9}" :sm="{span:7}" :xs="{span:7}">
                       <div class="img">
