@@ -16,6 +16,7 @@
     "exposure":"Exposure",
     "status":"Sale Status",
     "features":"Features",
+    "entertainment":"Entertainment",
     "see":"See",
     "hear":"Hear",
     "taste":"Taste",
@@ -793,10 +794,10 @@ export default {
       }
 
       p {
-        line-height: 20px;
+        line-height: 1.5;
         opacity: 0;
         transition: all 0.5s ease;
-        font-size: 15px;
+        font-size: 12px;
         padding: 0 10px;
         width: 150%;
       }
