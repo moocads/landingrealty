@@ -90,7 +90,7 @@
     "hear":"听觉享受",
     "taste":"味觉享受",
     "play":"日常享受",
-    "wellness":"家康养生",
+    "wellness":"健康养生",
     "nature":"接触自然",
     "workout":"健身场所",
     "relax":"身心放松",
