@@ -12,7 +12,7 @@
     "promo":"广告",
     "articles":"房产资讯",
     "articlesF":"热点资讯",
-    "home":"主页",
+    "home":"首页",
     "by":"作者",
     "published":"发布日期"
   },
@@ -20,7 +20,7 @@
     "promo":"廣告",
     "articles":"房產資訊",
     "articlesF":"熱點資訊",
-    "home":"主頁",
+    "home":"首頁",
     "by":"作者",
     "published":"發布日期"
   }

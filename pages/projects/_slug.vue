@@ -54,7 +54,7 @@
     "soldOver": "Sold Over Asking"
   },
   "zh":{
-    "home":"主页",
+    "home":"首页",
     "resell":"转售",
     "precon":"楼花",
     "start":"起价",
@@ -123,7 +123,7 @@
     "soldOver": "高价卖出"
   },
   "tc":{
-    "home":"主頁",
+    "home":"首頁",
     "resell":"轉售",
     "precon":"樓花",
     "start":"起價",
@@ -367,9 +367,9 @@
                     </a-col>
                     <a-col :sm="{span:12}" :xs="{span:24}">
                       <h6><strong>{{$t('depositI')}}</strong></h6>
-                      <p v-if="$i18n.locale==='en'" v-html="item.attributes.depositIntl ? item.attributes.depositIntl : ''"></p>
-                      <p v-if="$i18n.locale==='zh'" v-html="item.attributes.depositIntl_zh ? item.attributes.depositIntl_zh : ''"></p>
-                      <p v-if="$i18n.locale==='tc'" v-html="item.attributes.depositIntl_tc ? item.attributes.depositIntl_tc : ''"></p>
+                      <p v-if="$i18n.locale==='en'" v-html="item.attributes.depositIntl ? item.attributes.depositIntl : 'N/A'"></p>
+                      <p v-if="$i18n.locale==='zh'" v-html="item.attributes.depositIntl_zh ? item.attributes.depositIntl_zh : 'N/A'"></p>
+                      <p v-if="$i18n.locale==='tc'" v-html="item.attributes.depositIntl_tc ? item.attributes.depositIntl_tc : 'N/A'"></p>
                     </a-col>
                   </a-row>
                 </div>
@@ -411,7 +411,7 @@
             <div class="icon-container">
               <div class="icon">
                 <img src="/img/projects/eye-solid.svg" alt="Landing Realty See">
-                <h4>{{$t('hear')}}</h4>
+                <h4>{{$t('see')}}</h4>
                 <p v-if="$i18n.locale === 'en'">{{item.attributes.entertainment ? item.attributes.entertainment.see : ' '}}</p>
                 <p v-if="$i18n.locale === 'zh'">{{item.attributes.entertainment ? item.attributes.entertainment.see_zh : ' '}}</p>
                 <p v-if="$i18n.locale === 'tc'">{{item.attributes.entertainment ? item.attributes.entertainment.see_tc : ' '}}</p>

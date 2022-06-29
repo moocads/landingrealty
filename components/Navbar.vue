@@ -10,7 +10,7 @@
     "resale":"Resale"
   },
   "zh":{
-    "home":"主页",
+    "home":"首页",
     "about":"关于",
     "projects":"项目",
     "articles":"资讯",
@@ -19,7 +19,7 @@
     "resale":"转售"
   },
   "tc":{
-    "home":"主頁",
+    "home":"首頁",
     "about":"關於",
     "projects":"項目",
     "articles":"資訊",

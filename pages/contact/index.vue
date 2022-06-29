@@ -1,7 +1,7 @@
 <i18n>
 {
   "en": {
-    "contact":"Contact Us",
+    "contact":"Contact Us: ",
     "contact2":"Feel free to reach out anytime!",
     "hours":"Business Hours",
     "mon":"Monday",
@@ -115,7 +115,7 @@
           <a-col :lg="{span:12}" :md="{span:24}" :sm="{span:24}" :xs="{span:24}">
             <div class="contactInfo">
               <h3>{{$t('hours')}}</h3>
-              <p>{{$t('mon')}} - {{$t('fri')}}: 10AM - 6PM
+              <p>{{$t('mon')}} - {{$t('fri')}} 10AM - 6PM
                 <br/> {{$t('sat')}}: 10AM - 3PM
                 <br/> {{$t('sun')}}: {{$t('closed')}}
               </p>

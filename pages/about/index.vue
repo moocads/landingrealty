@@ -2,9 +2,10 @@
 {
   "en":{
     "about":"About Us",
-    "intro1":"Landing Realty Inc. Brokerage is a Full-Service real estate company serving Greater Toronto Area and other cities across Ontario, Canada. We provide a wide variety of real estate services to homeowners & investors including residential/commercial resales, pre-construction sales, rentals, property management, and real estate investment.",
-    "intro2":"Leading the newcomers with experiences and helping all become elite, to create a young, dynamic, united, professional, and efficient corporate culture. Our clients are the soil of our company, we not only strive to satisfy our clients during real estate transactions but also help them make more long-term and forward-looking decisions. With years of wealth knowledge and experience in the industry, we do our best to plant & nurture our client's 'real estate seeds' for a fruitful reward.",
-    "intro3":"",
+    "intro1":"Landing Realty Inc. Brokerage is a Full-Service real estate company serving Greater Toronto Area and other cities across Ontario, Canada.",
+    "intro2":"We provide a wide variety of real estate services to homeowners & investors including residential/commercial resales, pre-construction sales, rentals, property management, and real estate investment.",
+    "intro3":"Leading the newcomers with experiences and helping all become elite, to create a young, dynamic, united, professional, and efficient corporate culture. Our clients are the foundation of our company, we not only strive to satisfy our clients during real estate transactions but also help them make more long-term and forward-looking decisions. With years of wealth knowledge and experience in the industry, we do our best to plant & nurture our client's 'real estate seeds' for a fruitful reward.",
+    "intro4":"",
     "why":"Why Us",
     "pro":"Professional",
     "exp":"Experienced",
@@ -13,9 +14,10 @@
   },
   "zh":{
     "about":"关于我们",
-    "intro1":"大麦置业是一间集民用房产、商业地产、楼花销售、房屋租赁、房产管理及地产投资开发于一体的综合类房产经纪公司。公司本着以经验带新人，全体菁英化总值，营造出年轻、活力、团结、专业、高效的企业。",
-    "intro2":"大麦的土壤就是广大客户，不仅让客户在地产交易中称心满意，更加运用多年在行业中积累的深厚底蕴，帮助客户在投资上，以点及面，从深度和广度上，做出更具有长远性、前瞻性的选择。",
-    "intro3":"大麦会全力以赴孕育丰硕的果实里来回报我们的客户。",
+    "intro1":"大麦置业是一间集民用房产、商业地产、楼花销售、房屋租赁、房产管理及地产投资开发于一体的综合类房产经纪公司。",
+    "intro2":"公司本着以 “经验带新人，全体菁英化” 的宗旨，营造出年轻、活力、团结、专业、高效的企业。",
+    "intro3":"大麦的土壤就是广大客户，不仅让客户在地产交易中称心满意，更加运用多年在行业中积累的深厚底蕴，帮助客户在投资上，以点及面，从深度和广度上，做出更具有长远性、前瞻性的选择。",
+    "intro4":"大麦会全力以赴孕育丰硕的果实里来回报我们的客户。",
     "why":"为什么选择我们",
     "pro":"专业性",
     "exp":"经验丰富",
@@ -24,9 +26,10 @@
   },
   "tc":{
     "about":"關於我們",
-    "intro1":"大麥置業是一間集民用房產、商業地產、樓花銷售、房屋租賃、房產管理及地產投資開發於一體的綜合類房產經紀公司。公司本著以經驗帶新人，全體菁英化總值，營造出年輕、活力、團結、專業、高效的企業。",
-    "intro2":"大麥的土壤就是廣大客戶，不僅讓客戶在地產交易中稱心滿意，更加運用多年在行業中積累的深厚底蘊，幫助客戶在投資上，以點及面，從深度和廣度上，做出更具有長遠性、前瞻性的選擇。",
-    "intro3":"大麥會全力以赴孕育豐碩的果實裡來回報我們的客戶。",
+    "intro1":"大麥置業是一間集民用房產、商業地產、樓花銷售、房屋租賃、房產管理及地產投資開發於一體的綜合類房產經紀公司。",
+    "intro2":"公司本著以「經驗帶新人，全體菁英化」的宗旨，營造出年輕、活力、團結、專業、高效的企業。",
+    "intro3":"大麥的土壤就是廣大客戶，不僅讓客戶在地產交易中稱心滿意，更加運用多年在行業中積累的深厚底蘊，幫助客戶在投資上，以點及面，從深度和廣度上，做出更具有長遠性、前瞻性的選擇。",
+    "intro4":"大麥會全力以赴孕育豐碩的果實裡來回報我們的客戶。",
     "why":"為什麼選擇我們",
     "pro":"專業性",
     "exp":"經驗豐富",
@@ -49,8 +52,11 @@
         <p>
           {{$t('intro2')}}
         </p>
-        <p v-if="$i18n.locale === 'zh' || $i18n.locale === 'tc'">
+        <p>
           {{$t('intro3')}}
+        </p>
+        <p v-if="$i18n.locale === 'zh' || $i18n.locale === 'tc'">
+          {{$t('intro4')}}
         </p>
       </div>
     </section>
