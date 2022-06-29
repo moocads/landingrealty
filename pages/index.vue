@@ -109,7 +109,7 @@
           <NuxtLink v-for="(b, i) in articles" :key="i" :to="localePath(`/articles/${b.attributes.slug}`)">
             <ItemCard
               :img="b.attributes.thumbnail.data.attributes.url"
-              :title="$i18n.locale === 'en' ? b.attributes.title : $i18n.locale === 'zh' ? b.attributes.title_zh : ''"
+              :title="$i18n.locale === 'en' ? b.attributes.title : $i18n.locale === 'zh' ? b.attributes.title_zh : $i18n.locale === 'tc' ? b.attributes.title_tc : ''"
               :content="b.attributes.blurb"
               hideTag
             />

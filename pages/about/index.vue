@@ -49,7 +49,7 @@
         <p>
           {{$t('intro2')}}
         </p>
-        <p v-if="$i18n.locale === 'zh'">
+        <p v-if="$i18n.locale === 'zh' || $i18n.locale === 'tc'">
           {{$t('intro3')}}
         </p>
       </div>

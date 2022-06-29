@@ -90,6 +90,7 @@
                   <div class="articles-content">
                     <h5 v-if="$i18n.locale === 'en'">{{ b.attributes.title }}</h5>
                     <h5 v-if="$i18n.locale === 'zh'">{{ b.attributes.title_zh }}</h5>
+                    <h5 v-if="$i18n.locale === 'tc'">{{ b.attributes.title_tc }}</h5>
                     <!-- <p>{{b.attributes.blurb}}</p> -->
                   </div>
                 </NuxtLink>
