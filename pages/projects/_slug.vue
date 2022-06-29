@@ -51,7 +51,8 @@
     "sale": "On Sale Now",
     "final": "Final Release",
     "sold": "Sold Out",
-    "soldOver": "Sold Over Asking"
+    "soldOver": "Sold Over Asking",
+    "fromSearch":"Search Results"
   },
   "zh":{
     "home":"首页",
@@ -120,7 +121,8 @@
     "sale": "在售",
     "final": "尾盘在售",
     "sold": "售罄",
-    "soldOver": "高价卖出"
+    "soldOver": "高价卖出",
+    "fromSearch":"搜索结果"
   },
   "tc":{
     "home":"首頁",
@@ -189,7 +191,8 @@
     "sale": "在售",
     "final": "尾盤在售",
     "sold": "售罄",
-    "soldOver": "高價賣出"
+    "soldOver": "高價賣出",
+    "fromSearch":"搜索結果"
   }
 }
 </i18n>
@@ -202,9 +205,14 @@
             {{$t('home')}}
           </nuxt-link>
         </a-breadcrumb-item>
-        <a-breadcrumb-item>
+        <a-breadcrumb-item v-if="!fromSearch">
           <nuxt-link :to="localePath(`/projects/${item.attributes.type === 'resell' ? 'resales' : 'pre-construction'}`)">
             {{$t(item.attributes.type)}}
+          </nuxt-link>
+        </a-breadcrumb-item>
+        <a-breadcrumb-item v-if="fromSearch">
+          <nuxt-link :to="localePath(`/search`)">
+            {{$t('fromSearch')}}
           </nuxt-link>
         </a-breadcrumb-item>
         <a-breadcrumb-item v-if="$i18n.locale === 'en'">
@@ -219,6 +227,9 @@
       </a-breadcrumb>
       <br>
       <br>
+      <!-- <a v-if="$store.state.searchWords" class="main-btn" style="display: inline-block;">Back to Search Results</a>
+      <br>
+      <br> -->
     </div>
     <div class="project-main">
       <div class="wrapper">
@@ -557,10 +568,16 @@ export default {
     return {
       item: res.data,
       recommended: undefined,
-      floorPlanModal: false 
+      floorPlanModal: false,
+      fromSearch: false
     }
   },
   created() {
+    console.log('from search', this.$store.state.fromSearchResult)
+    if (this.$store.state.fromSearchResult) {
+      this.fromSearch = true
+      this.$store.commit('setFromSearchResult', false)
+    }
     // console.log(this.item.attributes.type, this.item.attributes.style)
     this.$axios.$get('/assignments', {
       params: {
@@ -586,7 +603,7 @@ export default {
   },
   components: {
     // ProjectDetailsSlider
-}
+  }
 }
 </script>
 

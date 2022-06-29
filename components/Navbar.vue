@@ -32,7 +32,7 @@
 <template>
   <div class="nav-container">
     <Infobar />
-    <nav :class="{ homeNav: $nuxt.$route.path === '/', homeNav: $nuxt.$route.path === '/zh', homeNav: $nuxt.$route.path === '/tc', active: navActive }">
+    <nav :class="{ homeNav: $nuxt.$route.path === '/tc' || $nuxt.$route.path === '/zh' || $nuxt.$route.path === '/', active: navActive }">
       <NuxtLink :to="localePath('/')">
         <div class="logo-container">
           <img src="~/assets/img/nav-logo.png" alt="" />
