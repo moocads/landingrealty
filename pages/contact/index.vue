@@ -4,10 +4,9 @@
     "contact":"Contact Us: ",
     "contact2":"Feel free to reach out anytime!",
     "hours":"Business Hours",
-    "mon":"Monday",
-    "fri":"Friday",
-    "sat":"Saturday",
-    "sun":"Sunday",
+    "monFri":"Monday - Friday: ",
+    "sat":"Saturday: ",
+    "sun":"Sunday: ",
     "contactInfo":"Contact Information",
     "joinUs":"Join Us",
     "first":"First Name",
@@ -36,10 +35,9 @@
     "contact":"联系我们",
     "contact2":"请随时联系我们",
     "hours":"营业时间",
-    "mon":"周一",
-    "fri":"周五",
-    "sat":"周六",
-    "sun":"周日",
+    "monFri":"周一至周五：",
+    "sat":"周六：",
+    "sun":"周日：",
     "contactInfo":"联系信息",
     "joinUs":"加入我们",
     "first":"名",
@@ -68,10 +66,9 @@
     "contact":"聯繫我們",
     "contact2":"請隨時聯繫我們",
     "hours":"營業時間",
-    "mon":"週一",
-    "fri":"週五",
-    "sat":"週六",
-    "sun":"週日",
+    "monFri":"週一至週五：",
+    "sat":"週六：",
+    "sun":"週日：",
     "contactInfo":"聯繫信息",
     "joinUs":"加入我們",
     "first":"名",
@@ -115,9 +112,9 @@
           <a-col :lg="{span:12}" :md="{span:24}" :sm="{span:24}" :xs="{span:24}">
             <div class="contactInfo">
               <h3>{{$t('hours')}}</h3>
-              <p>{{$t('mon')}} - {{$t('fri')}} 10AM - 6PM
-                <br/> {{$t('sat')}}: 10AM - 3PM
-                <br/> {{$t('sun')}}: {{$t('closed')}}
+              <p>{{$t('monFri')}} 10AM - 6PM
+                <br/> {{$t('sat')}} 10AM - 3PM
+                <br/> {{$t('sun')}} {{$t('closed')}}
               </p>
               <hr style="opacity:0.3; margin: 30px 0">
               <h3>{{$t('contactInfo')}}</h3>
