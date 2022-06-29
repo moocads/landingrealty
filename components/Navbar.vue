@@ -17,13 +17,22 @@
     "contact":"联系",
     "precon":"楼花",
     "resale":"转售"
+  },
+  "tc":{
+    "home":"主頁",
+    "about":"關於",
+    "projects":"項目",
+    "articles":"資訊",
+    "contact":"聯繫",
+    "precon":"樓花",
+    "resale":"轉售"
   }
 }
 </i18n>
 <template>
   <div class="nav-container">
     <Infobar />
-    <nav :class="{ homeNav: $nuxt.$route.path === '/', active: navActive }">
+    <nav :class="{ homeNav: $nuxt.$route.path === '/', homeNav: $nuxt.$route.path === '/zh', homeNav: $nuxt.$route.path === '/tc', active: navActive }">
       <NuxtLink :to="localePath('/')">
         <div class="logo-container">
           <img src="~/assets/img/nav-logo.png" alt="" />
@@ -72,9 +81,10 @@
           <div @click="mobileNavOpen = false">
             <NuxtLink :to="localePath('/contact')">{{$t('contact')}}</NuxtLink>
           </div>
-          <div @click="mobileNavOpen = false">
-            <NuxtLink class="switchLocale" v-if="$i18n.locale=='en'" :to="switchLocalePath('zh')">中文</NuxtLink>
-            <NuxtLink class="switchLocale" v-if="$i18n.locale=='zh'" :to="switchLocalePath('en')">EN</NuxtLink>
+          <div @click="mobileNavOpen = false" style="display: flex;">
+            <NuxtLink class="switchLocale" v-if="$i18n.locale !=='en'" :to="switchLocalePath('en')" style="padding-left: 10px; padding-right: 10px">EN</NuxtLink>
+            <NuxtLink class="switchLocale" v-if="$i18n.locale !=='zh'" :to="switchLocalePath('zh')" style="padding-left: 10px; padding-right: 10px">简中</NuxtLink>
+            <NuxtLink class="switchLocale" v-if="$i18n.locale !=='tc'" :to="switchLocalePath('tc')" style="padding-left: 10px; padding-right: 10px">繁中</NuxtLink>
           </div>
         </div>
       </div>

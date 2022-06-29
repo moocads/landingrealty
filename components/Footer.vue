@@ -28,6 +28,21 @@
     "resale":"转售",
     "callUs":"电话",
     "emailUs":"邮件"
+  },
+  "tc":{
+    "intro":"Landing Realty Inc. 是一家提供全方位服務的房地產公司，服務於大多倫多地區和加拿大安大略省的其他城市。我們為房主和投資者提供各種房地產服務，包括住宅/商業轉售、樓花銷售、租賃、房產管理和房地產投資。",
+    "contactUs":"聯繫我們",
+    "articlesF":"最新資訊",
+    "links":"相關鏈接",
+    "home":"主頁",
+    "about":"關於",
+    "projects":"項目",
+    "articles":"資訊",
+    "contact":"聯繫",
+    "precon":"樓花",
+    "resale":"轉售",
+    "callUs":"電話",
+    "emailUs":"郵件"
   }
 }
 </i18n>
@@ -337,7 +352,7 @@ h4 {
   flex-direction: column;
 
   h5 {
-    font-weight: 600;
+    font-weight: 700;
     margin-bottom: 0;
     display: -webkit-box;
     line-height: 1.5;

@@ -15,6 +15,14 @@
     "townhouse":"镇屋",
     "pre-construction":"楼花",
     "resales":"转售"
+  },
+  "tc":{
+    "view":"查看全部",
+    "condo":"公寓",
+    "house":"獨立屋",
+    "townhouse":"鎮屋",
+    "pre-construction":"樓花",
+    "resales":"轉售"
   }
 }
 </i18n>

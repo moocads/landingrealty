@@ -9,6 +9,11 @@
     "promo":"广告",
     "articles":"房产资讯",
     "articlesF":"热点资讯"
+  },
+  "tc":{
+    "promo":"廣告",
+    "articles":"房產資訊",
+    "articlesF":"熱點資訊"
   }
 }
 </i18n>
@@ -35,9 +40,11 @@
                     <div class="text">
                       <h3 v-if="$i18n.locale === 'en'">{{b.attributes.title}}</h3>
                       <h3 v-if="$i18n.locale === 'zh'">{{b.attributes.title_zh}}</h3>
+                      <h3 v-if="$i18n.locale === 'tc'">{{b.attributes.title_tc}}</h3>
                       <span><a-icon type="clock-circle" />  {{b.attributes.date}}</span>
                       <p v-if="$i18n.locale === 'en'">{{b.attributes.blurb}}</p>
                       <p v-if="$i18n.locale === 'zh'">{{b.attributes.blurb_zh}}</p>
+                      <p v-if="$i18n.locale === 'tc'">{{b.attributes.blurb_tc}}</p>
                     </div>
                   </a-col>
                 </a-row>
@@ -65,6 +72,7 @@
                       <div class="text">
                         <h3 v-if="$i18n.locale === 'en'">{{b.attributes.title}}</h3>
                         <h3 v-if="$i18n.locale === 'zh'">{{b.attributes.title_zh}}</h3>
+                        <h3 v-if="$i18n.locale === 'tc'">{{b.attributes.title_tc}}</h3>
                         <span><a-icon type="clock-circle" />  {{b.attributes.date}}</span>
                       </div>
                     </a-col>

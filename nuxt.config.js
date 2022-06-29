@@ -15,38 +15,37 @@ export default {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       {
         rel: 'stylesheet',
-        href: 'https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700;900&display=swap',
+        href: 'https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Sans+TC:wght@400;500;700;900&family=Roboto:wght@400;500;700;900&display=swap',
       },
       {
         rel: 'stylesheet',
-        href: 'https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css'
+        href: 'https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css',
       },
       {
-        rel:"stylesheet",
-        href:"https://unpkg.com/swiper@8/swiper-bundle.min.css"
+        rel: 'stylesheet',
+        href: 'https://unpkg.com/swiper@8/swiper-bundle.min.css',
       },
       {
-        rel:"stylesheet",
-        href:"https://unpkg.com/aos@2.3.1/dist/aos.css"
-      }
+        rel: 'stylesheet',
+        href: 'https://unpkg.com/aos@2.3.1/dist/aos.css',
+      },
     ],
     script: [
-      {src: 'https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js'},
-      {src: 'https://unpkg.com/swiper@8/swiper-bundle.min.js'}
-    ]
+      {
+        src: 'https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js',
+      },
+      { src: 'https://unpkg.com/swiper@8/swiper-bundle.min.js' },
+    ],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [
-    'ant-design-vue/dist/antd.css',
-    '@/assets/scss/global.scss',
-  ],
+  css: ['ant-design-vue/dist/antd.css', '@/assets/scss/global.scss'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     '@/plugins/antd-ui',
     '@/plugins/axios',
-    {src:'@/plugins/aos', ssr:false},
+    { src: '@/plugins/aos', ssr: false },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -61,31 +60,36 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/style-resources',
     [
-      "nuxt-i18n",
+      'nuxt-i18n',
       {
         vueI18nLoader: true,
         locales: [
           {
-            code: "en",
-            iso: "en-US",
-            name: "EN"
+            code: 'en',
+            iso: 'en-US',
+            name: 'EN',
           },
           {
-            code: "zh",
-            iso: "zh-CN",
-            name: "zh"
-          }
+            code: 'zh',
+            iso: 'zh-CN',
+            name: 'zh',
+          },
+          {
+            code: 'tc',
+            iso: 'zh-TW',
+            name: 'tc',
+          },
         ],
-        defaultLocale: "en",
+        defaultLocale: 'en',
         seo: true,
         detectBrowserLanguage: {
           useCookie: true,
-          cookieKey: "i18n_redirected",
+          cookieKey: 'i18n_redirected',
           alwaysRedirect: false,
-          fallbackLocale: "en"
-        }
-      }
-    ]
+          fallbackLocale: 'en',
+        },
+      },
+    ],
   ],
 
   styleResources: {

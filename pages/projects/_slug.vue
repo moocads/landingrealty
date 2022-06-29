@@ -121,6 +121,75 @@
     "final": "尾盘在售",
     "sold": "售罄",
     "soldOver": "高价卖出"
+  },
+  "tc":{
+    "home":"主頁",
+    "resell":"轉售",
+    "precon":"樓花",
+    "start":"起價",
+    "maintenance":"管理費/平方尺",
+    "intersection":"主要樞紐",
+    "starting":"動工日期",
+    "closing":"交接日期",
+    "floor":"樓層",
+    "suite":"單元號",
+    "size":"面積",
+    "basements":"地下室",
+    "exposure":"朝向",
+    "status":"出售狀態",
+    "features":"設施",
+    "Elevator":"電梯",
+    "Gym":"健身房",
+    "Building Storage":"儲物室",
+    "Locker":"儲物櫃",
+    "Pets":"允許寵物",
+    "Garage":"車庫",
+    "Dog Care":"狗狗設施",
+    "Game Room":"遊戲室",
+    "Pool":"游泳池",
+    "Building Laundry":"洗衣房",
+    "Concierge":"前台",
+    "BBQ":"燒烤台",
+    "Rooftop":"天台",
+    "Bike Storage":"自行車庫",
+    "Lounge":"休息室",
+    "Playground":"兒童設施",
+    "entertainment":"娛樂",
+    "see":"視覺享受",
+    "hear":"聽覺享受",
+    "taste":"味覺享受",
+    "play":"日常享受",
+    "wellness":"健康養生",
+    "nature":"接觸自然",
+    "workout":"健身場所",
+    "relax":"身心放鬆",
+    "nourish":"滋補養身",
+    "area":"周圍地區",
+    "transit":"公共交通",
+    "shopping":"日常購物",
+    "schools":"學校教育",
+    "hospitals":"醫療設施",
+    "recommended":"推薦",
+    "intro":"項目介紹",
+    "neighborhood":"周邊設施",
+    "deposit":"付款流程",
+    "depositL":"加拿大公民及永久居民",
+    "depositI":"非加拿大公民及永久居民",
+    "contact":"聯繫經紀",
+    "floorplan":"戶型圖",
+    "n":"北",
+    "ne":"東-北",
+    "e":"東",
+    "se":"東-南",
+    "s":"南",
+    "sw":"西-南",
+    "w":"西",
+    "nw":"西-北",
+    "coming": "即將上線",
+    "sale": "在售",
+    "final": "尾盤在售",
+    "sold": "售罄",
+    "soldOver": "高價賣出"
   }
 }
 </i18n>
@@ -144,6 +213,9 @@
         <a-breadcrumb-item v-if="$i18n.locale === 'zh'">
           {{item.attributes.type==='precon' ? item.attributes.title_zh : item.attributes.type==='resell' ? 'MLS ' + item.attributes.mls : ''}}
         </a-breadcrumb-item>
+        <a-breadcrumb-item v-if="$i18n.locale === 'tc'">
+          {{item.attributes.type==='precon' ? item.attributes.title_tc : item.attributes.type==='resell' ? 'MLS ' + item.attributes.mls : ''}}
+        </a-breadcrumb-item>
       </a-breadcrumb>
       <br>
       <br>
@@ -158,6 +230,7 @@
             <div class="info-wrapper">
               <h1 v-if="$i18n.locale === 'en'">{{ item.attributes.type==='precon' ? item.attributes.title : item.attributes.type==='resell' ? 'MLS ' + item.attributes.mls : ''}}</h1>
               <h1 v-if="$i18n.locale === 'zh'">{{ item.attributes.type==='precon' ? item.attributes.title_zh : item.attributes.type==='resell' ? 'MLS ' + item.attributes.mls : ''}}</h1>
+              <h1 v-if="$i18n.locale === 'tc'">{{ item.attributes.type==='precon' ? item.attributes.title_tc : item.attributes.type==='resell' ? 'MLS ' + item.attributes.mls : ''}}</h1>
               <span class="propertyStyle">{{ item.attributes.style }}</span>
               <!-- <h4>{{ item.attributes.location }}</h4> -->
               <div class="project-basics">
@@ -290,11 +363,13 @@
                       <h6><strong>{{$t('depositL')}}</strong></h6>
                       <p v-if="$i18n.locale==='en'" v-html="item.attributes.deposit ? item.attributes.deposit : 'N/A'"></p>
                       <p v-if="$i18n.locale==='zh'" v-html="item.attributes.deposit_zh ? item.attributes.deposit_zh : 'N/A'"></p>
+                      <p v-if="$i18n.locale==='tc'" v-html="item.attributes.deposit_tc ? item.attributes.deposit_tc : 'N/A'"></p>
                     </a-col>
                     <a-col :sm="{span:12}" :xs="{span:24}">
                       <h6><strong>{{$t('depositI')}}</strong></h6>
                       <p v-if="$i18n.locale==='en'" v-html="item.attributes.depositIntl ? item.attributes.depositIntl : ''"></p>
                       <p v-if="$i18n.locale==='zh'" v-html="item.attributes.depositIntl_zh ? item.attributes.depositIntl_zh : ''"></p>
+                      <p v-if="$i18n.locale==='tc'" v-html="item.attributes.depositIntl_tc ? item.attributes.depositIntl_tc : ''"></p>
                     </a-col>
                   </a-row>
                 </div>
@@ -324,6 +399,7 @@
         <h2>{{$t('intro')}}</h2>
         <p v-if="$i18n.locale === 'en'">{{item.attributes.description}}</p>
         <p v-if="$i18n.locale === 'zh'">{{item.attributes.description_zh}}</p>
+        <p v-if="$i18n.locale === 'tc'">{{item.attributes.description_tc}}</p>
       </div>
     </div>
     <div class="amenities">
@@ -338,24 +414,28 @@
                 <h4>{{$t('hear')}}</h4>
                 <p v-if="$i18n.locale === 'en'">{{item.attributes.entertainment ? item.attributes.entertainment.see : ' '}}</p>
                 <p v-if="$i18n.locale === 'zh'">{{item.attributes.entertainment ? item.attributes.entertainment.see_zh : ' '}}</p>
+                <p v-if="$i18n.locale === 'tc'">{{item.attributes.entertainment ? item.attributes.entertainment.see_tc : ' '}}</p>
               </div>
               <div class="icon">
                 <img src="/img/projects/headphones-simple-solid.svg" alt="Landing Realty Hear">
                 <h4>{{$t('hear')}}</h4>
                 <p v-if="$i18n.locale === 'en'">{{item.attributes.entertainment ? item.attributes.entertainment.hear : ' '}}</p>
                 <p v-if="$i18n.locale === 'zh'">{{item.attributes.entertainment ? item.attributes.entertainment.hear_zh : ' '}}</p>
+                <p v-if="$i18n.locale === 'tc'">{{item.attributes.entertainment ? item.attributes.entertainment.hear_tc : ' '}}</p>
               </div>
               <div class="icon">
                 <img src="/img/projects/utensils-solid.svg" alt="Landing Realty Taste">
                 <h4>{{$t('taste')}}</h4>
                 <p v-if="$i18n.locale === 'en'">{{item.attributes.entertainment ? item.attributes.entertainment.taste : ' '}}</p>
                 <p v-if="$i18n.locale === 'zh'">{{item.attributes.entertainment ? item.attributes.entertainment.taste_zh : ' '}}</p>
+                <p v-if="$i18n.locale === 'tc'">{{item.attributes.entertainment ? item.attributes.entertainment.taste_tc : ' '}}</p>
               </div>
               <div class="icon">
                 <img src="/img/projects/champagne-glasses-solid.svg" alt="Landing Realty Play">
                 <h4>{{$t('play')}}</h4>
                 <p v-if="$i18n.locale === 'en'">{{item.attributes.entertainment ? item.attributes.entertainment.play : ' '}}</p>
                 <p v-if="$i18n.locale === 'zh'">{{item.attributes.entertainment ? item.attributes.entertainment.play_zh : ' '}}</p>
+                <p v-if="$i18n.locale === 'tc'">{{item.attributes.entertainment ? item.attributes.entertainment.play_tc : ' '}}</p>
               </div>
             </div>
           </a-col>
@@ -367,24 +447,28 @@
                 <h4>{{$t('nature')}}</h4>
                 <p v-if="$i18n.locale === 'en'">{{item.attributes.wellness ? item.attributes.wellness.nature : ' '}}</p>
                 <p v-if="$i18n.locale === 'zh'">{{item.attributes.wellness ? item.attributes.wellness.nature_zh : ' '}}</p>
+                <p v-if="$i18n.locale === 'tc'">{{item.attributes.wellness ? item.attributes.wellness.nature_tc : ' '}}</p>
               </div>
               <div class="icon">
                 <img src="/img/projects/dumbbell-solid.svg" alt="Landing Realty Workout">
                 <h4>{{$t('workout')}}</h4>
                 <p v-if="$i18n.locale === 'en'">{{item.attributes.wellness ? item.attributes.wellness.workout : ' '}}</p>
                 <p v-if="$i18n.locale === 'zh'">{{item.attributes.wellness ? item.attributes.wellness.workout_zh : ' '}}</p>
+                <p v-if="$i18n.locale === 'tc'">{{item.attributes.wellness ? item.attributes.wellness.workout_tc : ' '}}</p>
               </div>
               <div class="icon">
                 <img src="/img/projects/spa-solid.svg" alt="Landing Realty Relax">
                 <h4>{{$t('relax')}}</h4>
                 <p v-if="$i18n.locale === 'en'">{{item.attributes.wellness ? item.attributes.wellness.relax : ' '}}</p>
                 <p v-if="$i18n.locale === 'zh'">{{item.attributes.wellness ? item.attributes.wellness.relax_zh : ' '}}</p>
+                <p v-if="$i18n.locale === 'tc'">{{item.attributes.wellness ? item.attributes.wellness.relax_tc : ' '}}</p>
               </div>
               <div class="icon">
                 <img src="/img/projects/heart-pulse-solid.svg" alt="Landing Realty Nourish">
                 <h4>{{$t('nourish')}}</h4>
                 <p v-if="$i18n.locale === 'en'">{{item.attributes.wellness ? item.attributes.wellness.nourish : ' '}}</p>
                 <p v-if="$i18n.locale === 'zh'">{{item.attributes.wellness ? item.attributes.wellness.nourish_zh : ' '}}</p>
+                <p v-if="$i18n.locale === 'tc'">{{item.attributes.wellness ? item.attributes.wellness.nourish_tc : ' '}}</p>
               </div>
             </div>
           </a-col>
@@ -396,24 +480,28 @@
                 <h4>{{$t('transit')}}</h4>
                 <p v-if="$i18n.locale === 'en'">{{item.attributes.area ? item.attributes.area.transit : ' '}}</p>
                 <p v-if="$i18n.locale === 'zh'">{{item.attributes.area ? item.attributes.area.transit_zh : ' '}}</p>
+                <p v-if="$i18n.locale === 'tc'">{{item.attributes.area ? item.attributes.area.transit_tc : ' '}}</p>
               </div>
               <div class="icon">
                 <img src="/img/projects/shopping.SVG" alt="Landing Realty Shopping">
                 <h4>{{$t('shopping')}}</h4>
                 <p v-if="$i18n.locale === 'en'">{{item.attributes.area ? item.attributes.area.shopping : ' '}}</p>
                 <p v-if="$i18n.locale === 'zh'">{{item.attributes.area ? item.attributes.area.shopping_zh : ' '}}</p>
+                <p v-if="$i18n.locale === 'tc'">{{item.attributes.area ? item.attributes.area.shopping_tc : ' '}}</p>
               </div>
               <div class="icon">
                 <img src="/img/projects/school.SVG" alt="Landing Realty School">
                 <h4>{{$t('schools')}}</h4>
                 <p v-if="$i18n.locale === 'en'">{{item.attributes.area ? item.attributes.area.school : ' '}}</p>
                 <p v-if="$i18n.locale === 'zh'">{{item.attributes.area ? item.attributes.area.school_zh : ' '}}</p>
+                <p v-if="$i18n.locale === 'tc'">{{item.attributes.area ? item.attributes.area.school_tc : ' '}}</p>
               </div>
               <div class="icon">
                 <img src="/img/projects/hospital.SVG" alt="Landing Realty Hospital">
                 <h4>{{$t('hospitals')}}</h4>
                 <p v-if="$i18n.locale === 'en'">{{item.attributes.area ? item.attributes.area.hospital : ' '}}</p>
                 <p v-if="$i18n.locale === 'zh'">{{item.attributes.area ? item.attributes.area.hospital_zh : ' '}}</p>
+                <p v-if="$i18n.locale === 'tc'">{{item.attributes.area ? item.attributes.area.hospital_tc : ' '}}</p>
               </div>
             </div>
           </a-col>
@@ -533,7 +621,7 @@ export default {
   }
 
   h2 {
-    font-weight: 600;
+    font-weight: 700;
 
     @media (max-width:768px) {
       font-size: 34px;
@@ -585,7 +673,7 @@ export default {
     .propertyStyle {
       text-transform: uppercase;
       color: #727272;
-      font-weight: 600;
+      font-weight: 700;
       font-size: 18px;
       margin: 10px 0 15px 0;
     }
@@ -605,7 +693,7 @@ export default {
   h3 {
     margin-top: 0px;
     font-size: 18px;
-    font-weight: 600;
+    font-weight: 700;
     color: $navy;
 
     

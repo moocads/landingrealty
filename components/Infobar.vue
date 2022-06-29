@@ -5,6 +5,9 @@
   },
   "zh":{
     "slogan":"客户至上，客户的需求是我们的第一要务"
+  },
+  "tc":{
+    "slogan":"客戶至上，客戶的需求是我們的第一要務"
   }
 }
 </i18n>
@@ -15,14 +18,19 @@
       <div>
         <p>info@landingrealty.ca</p>
         <p>905-604-7171</p>
-        <NuxtLink class="switchLocale" v-if="$i18n.locale=='en'" :to="switchLocalePath('zh')">
-          <a-tag style="margin-right:0">
-            中文
+        <NuxtLink class="switchLocale" v-if="$i18n.locale !=='en'" :to="switchLocalePath('en')">
+          <a-tag style="margin-right:0; margin-left:10px">
+            EN
           </a-tag>
         </NuxtLink>
-        <NuxtLink class="switchLocale" v-if="$i18n.locale=='zh'" :to="switchLocalePath('en')">
-          <a-tag style="margin-right:0">
-            EN
+        <NuxtLink class="switchLocale" v-if="$i18n.locale !=='zh'" :to="switchLocalePath('zh')">
+          <a-tag style="margin-right:0; margin-left:10px">
+            简中
+          </a-tag>
+        </NuxtLink>
+        <NuxtLink class="switchLocale" v-if="$i18n.locale !=='tc'" :to="switchLocalePath('tc')">
+          <a-tag style="margin-right:0; margin-left:10px">
+            繁中
           </a-tag>
         </NuxtLink>
       </div>

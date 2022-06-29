@@ -15,6 +15,14 @@
     "home":"主页",
     "by":"作者",
     "published":"发布日期"
+  },
+  "tc":{
+    "promo":"廣告",
+    "articles":"房產資訊",
+    "articlesF":"熱點資訊",
+    "home":"主頁",
+    "by":"作者",
+    "published":"發布日期"
   }
 }
 </i18n>
@@ -38,6 +46,9 @@
         <a-breadcrumb-item v-if="$i18n.locale==='zh'">
             {{article.attributes.title_zh}}
         </a-breadcrumb-item>
+        <a-breadcrumb-item v-if="$i18n.locale==='tc'">
+            {{article.attributes.title_tc}}
+        </a-breadcrumb-item>
       </a-breadcrumb>
       <section>
         <a-row type="flex" :gutter="[40,50]">
@@ -46,12 +57,15 @@
               <div class="title">
                 <h1 v-if="$i18n.locale==='en'">{{article.attributes.title}}</h1>
                 <h1 v-if="$i18n.locale==='zh'">{{article.attributes.title_zh}}</h1>
+                <h1 v-if="$i18n.locale==='tc'">{{article.attributes.title_tc}}</h1>
                 <span v-if="$i18n.locale==='en'">{{$t('by')}}: {{article.attributes.author}}</span>
                 <span v-if="$i18n.locale==='zh'">{{$t('by')}}: {{article.attributes.author_zh}}</span>
+                <span v-if="$i18n.locale==='tc'">{{$t('by')}}: {{article.attributes.author_tc}}</span>
               </div>
               <img v-if="article.attributes.thumbnail.data" :src="article.attributes.thumbnail.data.attributes.url" :alt="article.attributes.title">
               <div v-if="$i18n.locale==='en'" class="htmlContent" v-html="article.attributes.content"></div>
               <div v-if="$i18n.locale==='zh'" class="htmlContent" v-html="article.attributes.content_zh"></div>
+              <div v-if="$i18n.locale==='tc'" class="htmlContent" v-html="article.attributes.content_tc"></div>
               <p class="date"><em>{{$t('published')}}: {{article.attributes.date}}</em></p>
             </div>
           </a-col>
@@ -76,6 +90,7 @@
                       <div class="text">
                         <h3 v-if="$i18n.locale === 'en'">{{b.attributes.title}}</h3>
                         <h3 v-if="$i18n.locale === 'zh'">{{b.attributes.title_zh}}</h3>
+                        <h3 v-if="$i18n.locale === 'tc'">{{b.attributes.title_tc}}</h3>
                         <span><a-icon type="clock-circle" />  {{b.attributes.date}}</span>
                       </div>
                     </a-col>

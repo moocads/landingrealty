@@ -63,6 +63,38 @@
     "leaveMsg":"请在此留言。",
     "closed":"歇业",
     "submit":"提交"
+  },
+  "tc":{
+    "contact":"聯繫我們",
+    "contact2":"請隨時聯繫我們",
+    "hours":"營業時間",
+    "mon":"週一",
+    "fri":"週五",
+    "sat":"週六",
+    "sun":"週日",
+    "contactInfo":"聯繫信息",
+    "joinUs":"加入我們",
+    "first":"名",
+    "last":"姓",
+    "phone":"電話",
+    "email":"郵箱",
+    "looking":"我想",
+    "lease":"租房",
+    "rent":"出租",
+    "sell":"賣房",
+    "buy":"買房",
+    "style":"房型",
+    "house":"獨立屋",
+    "condo":"公寓",
+    "precon":"樓花",
+    "commercial":"商業房",
+    "coverLetter":"簡歷",
+    "writeCoverLetter":"請在此填寫您的工作經驗。",
+    "message":"留言",
+    "select":"請選",
+    "leaveMsg":"請在此留言。",
+    "closed":"歇業",
+    "submit":"提交"
   }
 }
 </i18n>

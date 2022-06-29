@@ -29,6 +29,21 @@
     "quote-2":"邓翀",
     "quote-3":"大麦置业CEO、安省持牌房产经纪、多伦多地产院士、MBA、经济学学士",
     "articles":"地产资讯"
+  },
+  "tc":{
+    "slogan":"客戶至上，客戶的需求是我們的第一要務",
+    "learn":"了解更多",
+    "realEstate":"多倫多房地產公司",
+    "extraordinary":"異國他鄉，落地生根",
+    "intro":"Landing Realty Inc. 是一家提供全方位服務的房地產公司，服務於大多倫多地區和加拿大安大略省的其他城市。我們為房主和投資者提供各種房地產服務，包括住宅/商業轉售、樓花銷售、租賃、房地產管理和房地產投資。",
+    "slogan2-1":"創建房地產投資文化",
+    "slogan2-2":"過上精緻生活",
+    "slogan2-3":"提升生活品質",
+    "slogan2-4":"一站式無憂服務",
+    "quote-1":"我們創建了一種房地產投資的文化。",
+    "quote-2":"鄧翀",
+    "quote-3":"大麥置業CEO、安省持牌房產經紀、多倫多地產院士、MBA、經濟學學士",
+    "articles":"地產資訊"
   }
 }
 </i18n>
@@ -529,7 +544,7 @@ h2 {
 
 h5 {
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 700;
   text-transform: uppercase;
   color: white;
 }
