@@ -46,7 +46,7 @@
                     :title="item.attributes.type === 'precon' && $i18n.locale === 'en' ? item.attributes.title 
                       : item.attributes.type === 'precon' && $i18n.locale === 'zh' ? item.attributes.title_zh
                       : item.attributes.type === 'precon' && $i18n.locale === 'tc' ? item.attributes.title_tc
-                      : item.attributes.type === 'resell' && $i18n.locale === 'en' ? 'MLS ' + item.attributes.mls 
+                      : item.attributes.type === 'resell' ? 'MLS ' + item.attributes.mls 
                       : ''"
                     :tag="item.attributes.location"
                     :content="item.attributes.price.toString()"
