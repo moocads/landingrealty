@@ -73,9 +73,11 @@ export default {
     },
     handleSearch() {
       this.loading = true
-      this.$store.commit('setSearchWords', this.keywords.toLowerCase())
-      const keywordsArr = this.keywords.split(' ')
+      this.$store.commit('setSearchWords', this.keywords.toLowerCase().trim().replace(/\s\s+/g, ' '))
+      // const keywordsArr = this.keywords.toLowerCase().trim().replace(/\s\s+/g, ' ').split(' ')
       // console.log(keywordsArr)
+      const keywordsArr = this.keywords.toLowerCase().trim().replace(/\s\s+/g, ' ').split(' ')
+      console.log(keywordsArr)
       this.$axios.$get('/assignments', {
         params: {
           populate: '*',
@@ -83,12 +85,12 @@ export default {
             $or: [
               {
                 mls: {
-                  $eq: this.keywords
+                  $eq: this.$store.state.searchWords
                 }
               },
               {
                 title: {
-                  $eq: this.keywords
+                  $eq: this.$store.state.searchWords
                 }
               },
               {
