@@ -86,7 +86,7 @@
     </section>
     <section class="sec-search">
       <div class="navy">
-        <div class="wrapper">
+        <div class="wrapper" data-aos="fade-up">
           <h3>{{$t('searchProperties')}}</h3>
           <div class="right-block">
             <div class="form">
