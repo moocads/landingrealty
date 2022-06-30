@@ -73,7 +73,7 @@ export default {
     },
     handleSearch() {
       this.loading = true
-      this.$store.commit('setSearchWords', this.keywords)
+      this.$store.commit('setSearchWords', this.keywords.toLowerCase())
       const keywordsArr = this.keywords.split(' ')
       // console.log(keywordsArr)
       this.$axios.$get('/assignments', {
@@ -83,12 +83,12 @@ export default {
             $or: [
               {
                 mls: {
-                  $containsi: keywordsArr
+                  $eq: this.keywords
                 }
               },
               {
                 title: {
-                  $containsi: keywordsArr
+                  $eq: this.keywords
                 }
               },
               {
@@ -101,6 +101,11 @@ export default {
                   $containsi: keywordsArr
                 }
               },
+              {
+                style: {
+                  $containsi: keywordsArr
+                }
+              }
             ]
             
           }

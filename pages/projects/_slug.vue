@@ -215,13 +215,13 @@
             {{$t('fromSearch')}}
           </nuxt-link>
         </a-breadcrumb-item>
-        <a-breadcrumb-item v-if="$i18n.locale === 'en'">
+        <a-breadcrumb-item v-if="$i18n.locale === 'en'" style="text-transform: capitalize">
           {{item.attributes.type==='precon' ? item.attributes.title : item.attributes.type==='resell' ? 'MLS ' + item.attributes.mls : ''}}
         </a-breadcrumb-item>
-        <a-breadcrumb-item v-if="$i18n.locale === 'zh'">
+        <a-breadcrumb-item v-if="$i18n.locale === 'zh'" style="text-transform: capitalize">
           {{item.attributes.type==='precon' ? item.attributes.title_zh : item.attributes.type==='resell' ? 'MLS ' + item.attributes.mls : ''}}
         </a-breadcrumb-item>
-        <a-breadcrumb-item v-if="$i18n.locale === 'tc'">
+        <a-breadcrumb-item v-if="$i18n.locale === 'tc'" style="text-transform: capitalize">
           {{item.attributes.type==='precon' ? item.attributes.title_tc : item.attributes.type==='resell' ? 'MLS ' + item.attributes.mls : ''}}
         </a-breadcrumb-item>
       </a-breadcrumb>
@@ -635,6 +635,7 @@ export default {
 
   h1 {
     font-weight: 900;
+    text-transform: capitalize;
   }
 
   h2 {

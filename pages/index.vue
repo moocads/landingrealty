@@ -302,7 +302,7 @@ export default {
       }
     },
     handleSearch() {
-      this.$store.commit('setSearchWords', this.searchWords)
+      this.$store.commit('setSearchWords', this.searchWords.toLowerCase())
       this.$router.push(this.localePath(`/search`))
     }
   },
