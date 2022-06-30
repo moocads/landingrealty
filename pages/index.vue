@@ -93,6 +93,7 @@
               <a-input 
                 v-model="searchWords"
                 :placeholder="$t('searchParams')"
+                @keydown="enterIndexSearch"
               ></a-input>
               <div class="btn" @click="handleSearch">{{$t('search')}}</div>
             </div>
@@ -294,6 +295,11 @@ export default {
   methods: {
     skipPreload () {
       this.$store.commit('setPreload', true)
+    },
+    enterIndexSearch (e) {
+      if (e.keyCode == 13) {
+        this.handleSearch()
+      }
     },
     handleSearch() {
       this.$store.commit('setSearchWords', this.searchWords)

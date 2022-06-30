@@ -26,7 +26,7 @@
       <div class="wrapper">
         <h1>{{$t('searchProperties')}}</h1>
         <div class="searchbar">
-          <a-input v-model="keywords" :placeholder="$t('searchParams')"></a-input>
+          <a-input v-model="keywords" :placeholder="$t('searchParams')" @keydown="enterIndexSearch"></a-input>
           <a class="main-btn" @click="handleSearch" style="width: 250px; height: 60px">
             <span>{{$t('search')}}<a-spin size="small" v-if="loading" style="margin-left: 10px;" /></span>
           </a>
@@ -66,6 +66,11 @@ export default {
     }
   },
   methods: {
+    enterIndexSearch (e) {
+      if (e.keyCode == 13) {
+        this.handleSearch()
+      }
+    },
     handleSearch() {
       this.loading = true
       this.$store.commit('setSearchWords', this.keywords)
