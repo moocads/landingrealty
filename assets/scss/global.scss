@@ -125,7 +125,7 @@ body {
   &:hover,
   &:focus,
   &.ant-input-number-focused {
-    border-color: $navy !important;
+    border-color: $navy;
     box-shadow: none;
   }
 }

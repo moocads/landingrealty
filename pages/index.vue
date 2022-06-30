@@ -13,7 +13,10 @@
     "quote-1":"We build a culture of real estate investment.",
     "quote-2":"Calvin Deng",
     "quote-3":"CEO/Founder, Broker of Record, FRI, BEc, MBA",
-    "articles":"LANDING ARTICLES"
+    "articles":"LANDING ARTICLES",
+    "search":"Search",
+    "searchProperties":"Search for your ideal property!",
+    "searchParams":"MLS/Project Name/Location/Address"
   },
   "zh":{
     "slogan":"客户至上，客户的需求是我们的第一要务",
@@ -28,7 +31,10 @@
     "quote-1":"我们创建了一种房地产投资文化。",
     "quote-2":"邓翀",
     "quote-3":"大麦置业CEO、安省持牌房产经纪、多伦多地产院士、MBA、经济学学士",
-    "articles":"地产资讯"
+    "articles":"地产资讯",
+    "search":"搜索",
+    "searchProperties":"搜索您的理想房屋",
+    "searchParams":"MLS/项目名/城市/地址"
   },
   "tc":{
     "slogan":"客戶至上，客戶的需求是我們的第一要務",
@@ -43,7 +49,10 @@
     "quote-1":"我們創建了一種房地產投資文化。",
     "quote-2":"鄧翀",
     "quote-3":"大麥置業CEO、安省持牌房產經紀、多倫多地產院士、MBA、經濟學學士",
-    "articles":"地產資訊"
+    "articles":"地產資訊",
+    "search":"搜索",
+    "searchProperties":"搜索您的理想房屋",
+    "searchParams":"MLS/項目名/城市/地址"
   }
 }
 </i18n>
@@ -75,7 +84,22 @@
         </div>
       </div>
     </section>
-    <Subscription />
+    <section class="sec-search">
+      <div class="navy">
+        <div class="wrapper">
+          <h3>{{$t('searchProperties')}}</h3>
+          <div class="right-block">
+            <div class="form">
+              <a-input 
+                v-model="searchWords"
+                :placeholder="$t('searchParams')"
+              ></a-input>
+              <div class="btn" @click="handleSearch">{{$t('search')}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
     <ItemDisplay
       title="pre-construction"
       :displayData="this.precon"
@@ -250,6 +274,7 @@ export default {
       precon,
       resales,
       articles: allArticles.data,
+      searchWords: undefined
     }
   },
   data() {
@@ -261,11 +286,18 @@ export default {
   created() {
     setTimeout(() => {
       this.$store.commit('setPreload', true)
-    }, 10000)
+    }, 5000)
+    setTimeout(() => {
+      console.log(this.$store.state)
+    }, 5000)
   },
   methods: {
     skipPreload () {
       this.$store.commit('setPreload', true)
+    },
+    handleSearch() {
+      this.$store.commit('setSearchWords', this.searchWords)
+      this.$router.push(this.localePath(`/search`))
     }
   },
   // mounted() {
@@ -489,6 +521,75 @@ h6 {
     line-height: 28.13px;
     font-weight: 700;
     margin-bottom: 0;
+  }
+}
+
+.sec-search {
+
+  h3 {
+    text-align: center;
+    color: white;
+    margin-bottom: 15px;
+  }
+
+  .navy {
+    padding: 50px 0;
+    background-color: $navy;
+    color: white;
+  }
+
+  .right-block {
+    display: flex;
+    justify-content: center;
+  }
+
+  .form {
+    justify-content: flex-end;
+    display: flex;
+    width: 100%;
+    max-width: 600px;
+
+    div {
+      border: 1px solid white;
+    }
+
+    .ant-input {
+      border: 1px solid white;
+      width: 100%;
+      font-size: 16px;
+      color: rgba(#000, 0.65);
+      height: 40px;
+      border-radius: 0;
+
+      &::placeholder {
+        color: #b4b4b4;
+      }
+
+      &:hover, &:focus {
+        border-color: white !important;
+      }
+    }
+
+    .btn {
+      background-color: $navy;
+      font-size: 16px;
+      font-weight: 700;
+      transition: all 0.5s ease;
+      height: 40px;
+      width: 150px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      @media (max-width: 576px) {
+        padding: 0.5rem 0.5rem;
+      }
+
+      &:hover {
+        cursor: pointer;
+        filter: brightness(1.3);
+      }
+    }
   }
 }
 
