@@ -41,7 +41,11 @@
             <a @click="handleFromSearch(rec.id)">
               <ItemCard
                 :img="rec.attributes.images.data[0].attributes.url"
-                :title="rec.attributes.type === 'precon' ? rec.attributes.title : rec.attributes.type === 'resell' ? 'MLS ' + rec.attributes.mls : ''"
+                :title="rec.attributes.type === 'precon' && $i18n.locale === 'en' ? rec.attributes.title 
+                  : rec.attributes.type === 'precon' && $i18n.locale === 'zh' ? rec.attributes.title_zh
+                  : rec.attributes.type === 'precon' && $i18n.locale === 'tc' ? rec.attributes.title_tc
+                  : rec.attributes.type === 'resell' && $i18n.locale === 'en' ? 'MLS ' + rec.attributes.mls 
+                  : ''"
                 :tag="rec.attributes.location"
                 :content="rec.attributes.price.toString()"
               />

@@ -43,7 +43,11 @@
                 <NuxtLink :to="localePath(`/projects/${item.id}`)">
                   <ItemCard
                     :img="item.attributes.images.data[0].attributes.url"
-                    :title="item.attributes.type === 'precon' ? item.attributes.title : item.attributes.type === 'resell' ? 'MLS ' + item.attributes.mls : ''"
+                    :title="item.attributes.type === 'precon' && $i18n.locale === 'en' ? item.attributes.title 
+                      : item.attributes.type === 'precon' && $i18n.locale === 'zh' ? item.attributes.title_zh
+                      : item.attributes.type === 'precon' && $i18n.locale === 'tc' ? item.attributes.title_tc
+                      : item.attributes.type === 'resell' && $i18n.locale === 'en' ? 'MLS ' + item.attributes.mls 
+                      : ''"
                     :tag="item.attributes.location"
                     :content="item.attributes.price.toString()"
                   />
