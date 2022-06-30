@@ -536,6 +536,8 @@ h6 {
     text-align: center;
     color: white;
     margin-bottom: 15px;
+    font-size: 20px;
+    text-transform: uppercase;
   }
 
   .navy {
