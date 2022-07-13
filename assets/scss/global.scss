@@ -55,6 +55,7 @@ body {
   &:hover {
     background-color: $navy;
     color: white;
+    cursor: pointer;
   }
   &.grey {
     color: #212121;
