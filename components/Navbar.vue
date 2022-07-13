@@ -323,26 +323,11 @@ nav {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  // justify-items: center;
-  // display: grid;
-  // grid-template-columns: 1fr;
+
   * {
     font-size: 20px;
-    // margin: 1rem 0;
   }
 }
-// .mobile-dropdown-wrapper {
-//   text-align: center;
-// }
-// .mobile-dropdown-content {
-//   display: none;
-//   div {
-//     margin: 1rem 0;
-//   }
-//   &.open {
-//     display: block;
-//   }
-// }
 
 @media all and (max-width: $md) {
   nav {

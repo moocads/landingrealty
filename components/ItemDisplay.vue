@@ -70,9 +70,6 @@ export default {
     title: String,
     displayData: Object,
     isHome: { type: Boolean, default: false },
-  },
-  created() {
-    console.log(this.displayData)
   }
 }
 </script>

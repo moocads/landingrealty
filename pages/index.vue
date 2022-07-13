@@ -288,9 +288,6 @@ export default {
     setTimeout(() => {
       this.$store.commit('setPreload', true)
     }, 5000)
-    setTimeout(() => {
-      console.log(this.$store.state)
-    }, 5000)
   },
   methods: {
     skipPreload () {
@@ -305,65 +302,7 @@ export default {
       this.$store.commit('setSearchWords', this.searchWords.toLowerCase().trim().replace(/\s\s+/g, ' '))
       this.$router.push(this.localePath(`/search`))
     }
-  },
-  // mounted() {
-  //   const canvas = document.querySelector('canvas');
-  //   const ctx = canvas.getContext('2d');
-
-  //   function Pixel( x, y ) {
-  //     this.x = x;
-  //     this.y = y;
-  //     // this.hue = Math.floor( Math.random() * 360 );
-  //     this.opacity = Math.floor( Math.random() * 100 )
-  //     let direction = Math.random() > 0.5 ? -1 : 1;
-  //     // let direction = 1;
-  //     // this.velocity = ( Math.random() * 10 ) * 0.01 * direction;
-  //     this.velocity = ( Math.random() * 30 + 20 ) * 0.01 * direction;
-
-  //     console.log(this.velocity)
-  //   }
-
-  //   Pixel.prototype.update = function() {
-  //     // this.hue += this.velocity;
-  //     this.opacity += this.velocity;
-  //     // console.log(this.hue, this.opacity)
-  //     let direction = Math.random() > 0.5 ? -1 : 1;
-  //     // this.velocity = ( Math.random() * 30 + 20 ) * 0.01 * direction;
-  //     this.velocity = Math.random() * direction;
-  //     // console.log(this.velocity)
-  //   };
-
-  //   Pixel.prototype.render = function( ctx ) {
-  //     // let hue = Math.round( this.hue );
-  //     // let hue = this.hue;
-  //     let opacity = this.opacity;
-  //     // ctx.fillStyle = `rgba(11,44,66, ${opacity / 100})`;
-  //     // ctx.fillStyle = `hsl(${hue}, 100%, 50%)`;
-  //     ctx.fillStyle = `hsl(204, 100%, ${Math.floor(opacity)}%)`;
-  //     ctx.fillRect( this.x, this.y, 1, 1 );
-  //     // console.log(
-  //     //   // 'hue', (Math.floor(hue / 360 * 100)),
-  //     //   'opacity', (opacity / 100)
-  //     // )
-  //   }
-
-  //   let pixels = [
-  //     new Pixel( 0, 0 ),
-  //     new Pixel( 1, 0 ),
-  //     new Pixel( 0, 1 ),
-  //     new Pixel( 1, 1 ),
-  //   ];
-
-  //   function animate() {
-  //     pixels.forEach( function( pixel ) {
-  //       pixel.update();
-  //       pixel.render( ctx );
-  //     });
-  //     requestAnimationFrame( animate );
-  //   }
-
-  //   animate();
-  // }
+  }
 }
 </script>
 

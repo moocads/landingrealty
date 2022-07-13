@@ -111,10 +111,7 @@ export default {
       articles: allArticles.data,
       features: featuredArticles.data
     }
-  },
-  // created() {
-  //   console.log(this.promotion)
-  // }
+  }
 }
 </script>
 

@@ -387,12 +387,14 @@
                 <div class="btn-container">
                   <a-row type="flex" :gutter="[12,12]">
                     <a-col :md="{span:12}" :sm="{span:12}" :xs="{span:24}">
-                      <a href="#" class="main-btn navy" style="border-radius: 5px;">{{$t('contact')}}</a>
+                      <nuxt-link :to="localePath('/contact')">
+                        <a href="#" class="main-btn navy" style="border-radius: 5px;">{{$t('contact')}}</a>
+                      </nuxt-link>
                     </a-col>
                     <a-col :md="{span:12}" :sm="{span:12}" :xs="{span:24}" v-if="item.attributes.floorPlan.data">
                       <a target="_blank" class="main-btn gray" style="border-radius: 5px;" @click="floorPlanModal = true"> {{$t('floorplan')}} </a>
                       <a-modal v-model="floorPlanModal" :footer="null">
-                        <h3 style="color:#0b2c42; font-size: 20px;">Floorplans Available</h3>
+                        <h3 style="color:#0b2c42; font-size: 20px;">{{$t('floorplan')}}</h3>
                         <br>
                         <a v-for="(file, index) in item.attributes.floorPlan.data" :key="index" style="color:#0b2c42; text-decoration: underline; display: block" :href="file.attributes.url" target="_blank"><a-icon type="file"></a-icon>  {{file.attributes.name}}</a>
                       </a-modal>
@@ -573,12 +575,10 @@ export default {
     }
   },
   created() {
-    console.log('from search', this.$store.state.fromSearchResult)
     if (this.$store.state.fromSearchResult) {
       this.fromSearch = true
       this.$store.commit('setFromSearchResult', false)
     }
-    // console.log(this.item.attributes.type, this.item.attributes.style)
     this.$axios.$get('/assignments', {
       params: {
         filters: {

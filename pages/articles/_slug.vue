@@ -141,10 +141,7 @@ export default {
       features: featuredArticles.data,
       promotion: promo.data
     }
-  },
-  // created() {
-  //   console.log(this.article)
-  // }
+  }
 }
 </script>
 

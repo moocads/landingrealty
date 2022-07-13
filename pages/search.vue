@@ -75,7 +75,6 @@ export default {
       this.loading = true
       this.$store.commit('setSearchWords', this.keywords.toLowerCase().trim().replace(/\s\s+/g, ' '))
       const keywordsArr = this.$store.state.searchWords.split(' ')
-      console.log(keywordsArr)
       this.$axios.$get('/assignments', {
         params: {
           populate: '*',
@@ -121,7 +120,6 @@ export default {
     }
   },
   created() {
-    console.log(this.$store.state.searchWords)
     if (this.$store.state.searchWords) {
       this.handleSearch()
     }
