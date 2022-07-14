@@ -162,6 +162,14 @@
           </section>
         </a-col>
       </a-row>
+      <div class="copyright">
+        <p>
+          © 2022 Landing Realty Inc. All right reserved.
+        </p>
+        <p>
+          Designed by <a href="https://moocads.com/">Mooc Creative</a>
+        </p>
+      </div>
     </div>
     <div class="mobile">
       <div class="contactBar">
@@ -370,6 +378,21 @@ ul.links {
 
     a {
       color: white;
+    }
+  }
+}
+
+.copyright {
+  margin-top: 100px;
+  margin-bottom: -50px;
+  text-align: center;
+
+  p {
+    margin-bottom: 5px;
+    font-size: 12px;
+    a {
+      color: white;
+      font-weight: bold;
     }
   }
 }
