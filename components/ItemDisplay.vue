@@ -34,20 +34,28 @@
         <a-tabs class="custom-tab" default-active-key="tab0">
           <a-tab-pane
             class="flex-col-center"
-            v-for="(items, style,i) in displayData"
-            :key="'tab'+i"
+            v-for="(items, style, i) in displayData"
+            :key="'tab' + i"
             :tab="$t(style)"
           >
             <div class="sample-grid">
               <div v-for="(item, index) in items" :key="index">
                 <NuxtLink :to="localePath(`/projects/${item.id}`)">
                   <ItemCard
-                    :img="item.attributes.images.data[0].attributes.url"
-                    :title="item.attributes.type === 'precon' && $i18n.locale === 'en' ? item.attributes.title 
-                      : item.attributes.type === 'precon' && $i18n.locale === 'zh' ? item.attributes.title_zh
-                      : item.attributes.type === 'precon' && $i18n.locale === 'tc' ? item.attributes.title_tc
-                      : item.attributes.type === 'resell' ? 'MLS ' + item.attributes.mls 
-                      : ''"
+                    :img="item.attributes.thumbnail.data.attributes.url"
+                    :title="
+                      item.attributes.type === 'precon' && $i18n.locale === 'en'
+                        ? item.attributes.title
+                        : item.attributes.type === 'precon' &&
+                          $i18n.locale === 'zh'
+                        ? item.attributes.title_zh
+                        : item.attributes.type === 'precon' &&
+                          $i18n.locale === 'tc'
+                        ? item.attributes.title_tc
+                        : item.attributes.type === 'resell'
+                        ? 'MLS ' + item.attributes.mls
+                        : ''
+                    "
                     :tag="item.attributes.location"
                     :content="item.attributes.price.toString()"
                   />
@@ -57,8 +65,12 @@
           </a-tab-pane>
         </a-tabs>
       </div>
-      <NuxtLink v-if="isHome" :to="localePath(`/projects/${this.title}`)" class="main-btn">
-        {{$t('view')}}
+      <NuxtLink
+        v-if="isHome"
+        :to="localePath(`/projects/${this.title}`)"
+        class="main-btn"
+      >
+        {{ $t('view') }}
       </NuxtLink>
     </div>
   </section>
@@ -70,7 +82,7 @@ export default {
     title: String,
     displayData: Object,
     isHome: { type: Boolean, default: false },
-  }
+  },
 }
 </script>
 
@@ -83,7 +95,7 @@ export default {
     width: 200px;
   }
 
-  @media (max-width:992px) {
+  @media (max-width: 992px) {
     padding: 50px 0 50px 0;
   }
 }

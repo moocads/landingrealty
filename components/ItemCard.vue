@@ -1,5 +1,5 @@
 <template>
-  <div class="card-container" :class="{article:hideTag}">
+  <div class="card-container" :class="{ article: hideTag }">
     <img class="image" :src="img" :alt="title" />
     <div class="details">
       <span class="region-tag" v-if="!hideTag">
@@ -67,7 +67,6 @@ export default {
     padding-bottom: 120%;
   }
 
-
   .image {
     position: absolute;
     width: 100%;
@@ -81,7 +80,7 @@ export default {
 
   &:hover {
     .image {
-      filter: grayscale(0)
+      filter: grayscale(0);
     }
 
     .eye {
@@ -140,7 +139,7 @@ export default {
       text-transform: uppercase;
       display: -webkit-box;
       -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;  
+      -webkit-box-orient: vertical;
       overflow: hidden;
     }
     p {
@@ -149,7 +148,7 @@ export default {
       margin: 0;
       display: -webkit-box;
       -webkit-line-clamp: 1;
-      -webkit-box-orient: vertical;  
+      -webkit-box-orient: vertical;
       overflow: hidden;
     }
   }
