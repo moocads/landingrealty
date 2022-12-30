@@ -42,7 +42,7 @@
               <div v-for="(item, index) in items" :key="index">
                 <NuxtLink :to="localePath(`/projects/${item.id}`)">
                   <ItemCard
-                    :img="item.attributes.thumbnail.data.attributes.url"
+                    :img="item.attributes.thumbnail.data[0].attributes.url"
                     :title="
                       item.attributes.type === 'precon' && $i18n.locale === 'en'
                         ? item.attributes.title
