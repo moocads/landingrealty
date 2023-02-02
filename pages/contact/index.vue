@@ -144,22 +144,19 @@
                   </a>
                 </li>
                 <li class="address">
-                  <a href="https://goo.gl/maps/anNTEMmDad13bScA6">
+                  <a href="https://goo.gl/maps/e9u4Z1dZJvFQWfqw8">
                     <a-icon type="environment" theme="filled" />
                     <span>
-                      145 Royal Crest Ct Unit48, 
+                      7181 Woodbine Ave, Unit 226 
                     </span>
                     <br>
                     <span>
-                      Markham, ON L3R 9Z4
+                      Markham, ON L3R 1A3
                     </span>
                   </a>
                 </li>
               </ul>
-              <!-- <a href="https://goo.gl/maps/anNTEMmDad13bScA6">
-                <img src="~/assets/img/map.jpg" alt="map" class="img-fluid" />
-              </a> -->
-              <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2877.753929098095!2d-79.3273869!3d43.8401999!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89d4d553793c0919%3A0x2caa026b569ff136!2sLanding%20Realty%20Inc.!5e0!3m2!1sen!2sca!4v1654548615104!5m2!1sen!2sca" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2878.7998645375924!2d-79.3507794842188!3d43.81851054974268!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89d4d3651adb37af%3A0x3ad2916fdeb2d12a!2s7181%20Woodbine%20Ave%20%23226%2C%20Markham%2C%20ON%20L3R%201A3!5e0!3m2!1sen!2sca!4v1675094438946!5m2!1sen!2sca" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
           </a-col>
           <a-col :lg="{span:12}" :md="{span:24}" :sm="{span:24}" :xs="{span:24}">

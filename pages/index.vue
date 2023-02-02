@@ -98,7 +98,9 @@
           <p class="heroTxt">{{ $t('slogan') }}</p>
           <NuxtLink class="heroBtn main-btn" :to="localePath('/about')">{{
             $t('learn')
-          }}</NuxtLink>
+          }}
+          </NuxtLink>
+          <h4>Landing Realty Inc. Brokerage (Capital)</h4>
         </div>
       </div>
     </div>
@@ -230,7 +232,7 @@ export default {
             $eq: 'precon',
           },
           style: {
-            $eq: 'house',
+            $eq: 'detached',
           },
         },
         populate: ['images', 'thumbnail'],
@@ -247,6 +249,22 @@ export default {
           },
           style: {
             $eq: 'townhouse',
+          },
+        },
+        populate: ['images', 'thumbnail'],
+        pagination: {
+          pageSize: 3,
+        },
+      },
+    })
+    const preconSemiDetachedData = await $axios.$get('/assignments', {
+      params: {
+        filters: {
+          type: {
+            $eq: 'precon',
+          },
+          style: {
+            $eq: 'semiDetached',
           },
         },
         populate: ['images', 'thumbnail'],
@@ -278,7 +296,7 @@ export default {
             $eq: 'resell',
           },
           style: {
-            $eq: 'house',
+            $eq: 'detached',
           },
         },
         populate: ['images', 'thumbnail'],
@@ -303,15 +321,33 @@ export default {
         },
       },
     })
+    const resaleSemiDetachedData = await $axios.$get('/assignments', {
+      params: {
+        filters: {
+          type: {
+            $eq: 'resell',
+          },
+          style: {
+            $eq: 'semiDetached',
+          },
+        },
+        populate: ['images', 'thumbnail'],
+        pagination: {
+          pageSize: 3,
+        },
+      },
+    })
     let precon = {
       condo: res1.data,
-      house: res2.data,
+      detached: res2.data,
       townhouse: res3.data,
+      "semi-detached":preconSemiDetachedData.data
     }
     let resales = {
       condo: res4.data,
-      house: res5.data,
+      detached: res5.data,
       townhouse: res6.data,
+      "semi-detached":resaleSemiDetachedData.data
     }
     const allArticles = await $axios.$get('/blogs', {
       params: {
@@ -469,6 +505,15 @@ export default {
         max-height: 50vh;
       }
     }
+  }
+  h4{
+    font-size: 18px;
+    color:#fff;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    font-weight: normal;
   }
 }
 

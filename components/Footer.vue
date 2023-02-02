@@ -12,7 +12,12 @@
     "precon":"Pre-Construction",
     "resale":"Resale",
     "callUs":"Call Us",
-    "emailUs":"Email Us"
+    "emailUs":"Email Us",
+    "assignment":"Assignment",
+    "rental":"Rental",
+    "commercial":"Commercial",
+    "detached":"Detached",
+    "semi-detached":"Semi-Detached"
   },
   "zh":{
     "intro":"Landing Realty Inc. 是一家提供全方位服务的房地产公司，服务于大多伦多地区和加拿大安大略省的其他城市。我们为房主和投资者提供各种房地产服务，包括住宅/商业转售、楼花销售、租赁、房产管理和房地产投资。",
@@ -27,7 +32,12 @@
     "precon":"楼花",
     "resale":"转售",
     "callUs":"电话",
-    "emailUs":"邮件"
+    "emailUs":"邮件",
+    "assignment":"楼花转让",
+    "rental":"房屋出租",
+    "commercial":"商业",
+    "detached":"独立屋",
+    "semi-detached":"半独立屋"
   },
   "tc":{
     "intro":"Landing Realty Inc. 是一家提供全方位服務的房地產公司，服務於大多倫多地區和加拿大安大略省的其他城市。我們為房主和投資者提供各種房地產服務，包括住宅/商業轉售、樓花銷售、租賃、房產管理和房地產投資。",
@@ -42,7 +52,12 @@
     "precon":"樓花",
     "resale":"轉售",
     "callUs":"電話",
-    "emailUs":"郵件"
+    "emailUs":"郵件",
+    "assignment":"樓花轉讓",
+    "rental":"房屋出租",
+    "commercial":"商業",
+    "detached":"獨立屋",
+    "semi-detached":"半獨立屋"
   }
 }
 </i18n>
@@ -143,7 +158,7 @@
             <!-- <a href="https://goo.gl/maps/anNTEMmDad13bScA6">
               <img src="~/assets/img/map.jpg" alt="map" class="img-fluid" />
             </a> -->
-            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2877.753929098095!2d-79.3273869!3d43.8401999!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89d4d553793c0919%3A0x2caa026b569ff136!2sLanding%20Realty%20Inc.!5e0!3m2!1sen!2sca!4v1654548615104!5m2!1sen!2sca" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2878.7998645375924!2d-79.3507794842188!3d43.81851054974268!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89d4d3651adb37af%3A0x3ad2916fdeb2d12a!2s7181%20Woodbine%20Ave%20%23226%2C%20Markham%2C%20ON%20L3R%201A3!5e0!3m2!1sen!2sca!4v1675094438946!5m2!1sen!2sca" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
           </section>
         </a-col>
         <a-col :xl="{span:4}" :lg="{span:12}" :md="{span:12}" :sm="{span:12}" :xs="{span:24}">
@@ -156,6 +171,9 @@
               <li><NuxtLink :to="localePath('/about')">{{$t('about')}}</NuxtLink></li>
               <li><NuxtLink :to="localePath('/projects/pre-construction')">{{$t('precon')}}</NuxtLink></li>
               <li><NuxtLink :to="localePath('/projects/resales')">{{$t('resale')}}</NuxtLink></li>
+              <li><NuxtLink :to="localePath('/projects/assignment')">{{$t('assignment')}}</NuxtLink></li>
+              <li><NuxtLink :to="localePath('/projects/rental')">{{$t('rental')}}</NuxtLink></li>
+              <li><NuxtLink :to="localePath('/projects/commercial')">{{$t('commercial')}}</NuxtLink></li>
               <li><NuxtLink :to="localePath('/articles')">{{$t('articles')}}</NuxtLink></li>
               <li><NuxtLink :to="localePath('/contact')">{{$t('contact')}}</NuxtLink></li>
             </ul>

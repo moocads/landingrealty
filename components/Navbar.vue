@@ -7,7 +7,10 @@
     "articles":"Articles",
     "contact":"Contact",
     "precon":"Pre-Construction",
-    "resale":"Resale"
+    "resale":"Resale",
+    "assignment":"Assignment",
+    "rental":"Rental",
+    "commercial":"Commercial"
   },
   "zh":{
     "home":"首页",
@@ -16,7 +19,10 @@
     "articles":"资讯",
     "contact":"联系",
     "precon":"楼花",
-    "resale":"转售"
+    "resale":"转售",
+    "assignment":"楼花转让",
+    "rental":"房屋出租",
+    "commercial":"商业"
   },
   "tc":{
     "home":"首頁",
@@ -25,14 +31,25 @@
     "articles":"資訊",
     "contact":"聯繫",
     "precon":"樓花",
-    "resale":"轉售"
+    "resale":"轉售",
+    "assignment":"樓花轉讓",
+    "rental":"房屋出租",
+    "commercial":"商業"
   }
 }
 </i18n>
 <template>
   <div class="nav-container">
     <Infobar />
-    <nav :class="{ homeNav: $nuxt.$route.path === '/tc' || $nuxt.$route.path === '/zh' || $nuxt.$route.path === '/', active: navActive }">
+    <nav
+      :class="{
+        homeNav:
+          $nuxt.$route.path === '/tc' ||
+          $nuxt.$route.path === '/zh' ||
+          $nuxt.$route.path === '/',
+        active: navActive,
+      }"
+    >
       <NuxtLink :to="localePath('/')">
         <div class="logo-container">
           <img src="~/assets/img/nav-logo.png" alt="" />
@@ -40,19 +57,32 @@
       </NuxtLink>
 
       <div class="nav-items">
-        <NuxtLink :to="localePath('/')">{{$t('home')}}</NuxtLink>
-        <NuxtLink :to="localePath('/about')">{{$t('about')}}</NuxtLink>
+        <NuxtLink :to="localePath('/')">{{ $t('home') }}</NuxtLink>
+        <NuxtLink :to="localePath('/about')">{{ $t('about') }}</NuxtLink>
         <div class="dropdown-wrapper">
-          <a class="dropdown-link">{{$t('projects')}}  <a-icon type="caret-down" /></a>
+          <a class="dropdown-link"
+            >{{ $t('projects') }} <a-icon type="caret-down"
+          /></a>
           <div class="dropdown-content">
-            <NuxtLink :to="localePath('/projects/pre-construction')"
-              >{{$t('precon')}}</NuxtLink
-            >
-            <NuxtLink :to="localePath('/projects/resales')">{{$t('resale')}}</NuxtLink>
+            <NuxtLink :to="localePath('/projects/resales')">{{
+              $t('resale')
+            }}</NuxtLink>
+            <NuxtLink :to="localePath('/projects/pre-construction')">
+              {{ $t('precon') }}
+            </NuxtLink>
+            <NuxtLink :to="localePath('/projects/assignment')">{{
+              $t('assignment')
+            }}</NuxtLink>
+            <NuxtLink :to="localePath('/projects/rental')">{{
+              $t('rental')
+            }}</NuxtLink>
+            <NuxtLink :to="localePath('/projects/commercial')">{{
+              $t('commercial')
+            }}</NuxtLink>
           </div>
         </div>
-        <NuxtLink :to="localePath('/articles')">{{$t('articles')}}</NuxtLink>
-        <NuxtLink :to="localePath('/contact')">{{$t('contact')}}</NuxtLink>
+        <NuxtLink :to="localePath('/articles')">{{ $t('articles') }}</NuxtLink>
+        <NuxtLink :to="localePath('/contact')">{{ $t('contact') }}</NuxtLink>
       </div>
       <!-- mobile -->
       <div class="hamburger" @click="toggleNav">
@@ -64,27 +94,68 @@
       <div class="mobile-nav-wrapper" :class="{ open: mobileNavOpen }">
         <div class="mobile-nav-items">
           <div @click="mobileNavOpen = false">
-            <NuxtLink :to="localePath('/')">{{$t('home')}}</NuxtLink>
+            <NuxtLink :to="localePath('/')">{{ $t('home') }}</NuxtLink>
           </div>
           <div @click="mobileNavOpen = false">
-            <NuxtLink :to="localePath('/about')">{{$t('about')}}</NuxtLink>
+            <NuxtLink :to="localePath('/about')">{{ $t('about') }}</NuxtLink>
           </div>
           <div @click="mobileNavOpen = false">
-            <NuxtLink :to="localePath('/projects/pre-construction')">{{$t('precon')}}</NuxtLink>
+            <NuxtLink :to="localePath('/projects/pre-construction')">{{
+              $t('precon')
+            }}</NuxtLink>
           </div>
           <div @click="mobileNavOpen = false">
-            <NuxtLink :to="localePath('/projects/resales')">{{$t('resale')}}</NuxtLink>
+            <NuxtLink :to="localePath('/projects/resales')">{{
+              $t('resale')
+            }}</NuxtLink>
           </div>
           <div @click="mobileNavOpen = false">
-            <NuxtLink :to="localePath('/articles')">{{$t('articles')}}</NuxtLink>
+            <NuxtLink :to="localePath('/projects/assignment')">{{
+              $t('assignment')
+            }}</NuxtLink>
           </div>
           <div @click="mobileNavOpen = false">
-            <NuxtLink :to="localePath('/contact')">{{$t('contact')}}</NuxtLink>
+            <NuxtLink :to="localePath('/projects/rental')">{{
+              $t('rental')
+            }}</NuxtLink>
           </div>
-          <div @click="mobileNavOpen = false" style="display: flex;">
-            <NuxtLink class="switchLocale" v-if="$i18n.locale !=='en'" :to="switchLocalePath('en')" style="padding-left: 10px; padding-right: 10px">EN</NuxtLink>
-            <NuxtLink class="switchLocale" v-if="$i18n.locale !=='zh'" :to="switchLocalePath('zh')" style="padding-left: 10px; padding-right: 10px">简中</NuxtLink>
-            <NuxtLink class="switchLocale" v-if="$i18n.locale !=='tc'" :to="switchLocalePath('tc')" style="padding-left: 10px; padding-right: 10px">繁中</NuxtLink>
+          <div @click="mobileNavOpen = false">
+            <NuxtLink :to="localePath('/projects/commercial')">{{
+              $t('commercial')
+            }}</NuxtLink>
+          </div>
+          <div @click="mobileNavOpen = false">
+            <NuxtLink :to="localePath('/articles')">{{
+              $t('articles')
+            }}</NuxtLink>
+          </div>
+          <div @click="mobileNavOpen = false">
+            <NuxtLink :to="localePath('/contact')">{{
+              $t('contact')
+            }}</NuxtLink>
+          </div>
+          <div @click="mobileNavOpen = false" style="display: flex">
+            <NuxtLink
+              class="switchLocale"
+              v-if="$i18n.locale !== 'en'"
+              :to="switchLocalePath('en')"
+              style="padding-left: 10px; padding-right: 10px"
+              >EN</NuxtLink
+            >
+            <NuxtLink
+              class="switchLocale"
+              v-if="$i18n.locale !== 'zh'"
+              :to="switchLocalePath('zh')"
+              style="padding-left: 10px; padding-right: 10px"
+              >简中</NuxtLink
+            >
+            <NuxtLink
+              class="switchLocale"
+              v-if="$i18n.locale !== 'tc'"
+              :to="switchLocalePath('tc')"
+              style="padding-left: 10px; padding-right: 10px"
+              >繁中</NuxtLink
+            >
           </div>
         </div>
       </div>
@@ -168,7 +239,7 @@ nav {
 .nav-items {
   display: flex;
   align-items: center;
-  
+
   a {
     display: block;
     height: 90px;
@@ -217,11 +288,10 @@ nav {
       pointer-events: all;
 
       a:hover {
-        background-color: rgba( $navy, 0.5);
+        background-color: rgba($navy, 0.5);
       }
     }
   }
-
 }
 
 // for scrolled navbar
@@ -255,7 +325,7 @@ nav {
   display: none;
   position: relative;
   z-index: 101;
-  padding-bottom: 10px ;
+  padding-bottom: 10px;
   margin-right: 20px;
 
   .line {

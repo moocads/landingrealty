@@ -1,7 +1,7 @@
 
 <template>
   <div class="container page-project">
-    <ItemDisplay title="resales" :displayData="data" data-aos="fade-up" />
+    <ItemDisplay title="rental" :displayData="data" data-aos="fade-up" />
     <Subscription />
   </div>
 </template>
@@ -10,7 +10,7 @@
 export default {
   head() {
     return {
-      title: "Resales | Landing Realty | A Toronto Real Estate Company"
+      title: "Rental | Landing Realty | A Toronto Real Estate Company"
     };
   },
   async asyncData({ $axios }) {
@@ -18,7 +18,7 @@ export default {
       params: {
         filters: {
           type: {
-            $eq: 'resell',
+            $eq: 'rental',
           },
           style: {
             $eq: 'condo',
@@ -31,7 +31,7 @@ export default {
       params: {
         filters: {
           type: {
-            $eq: 'resell',
+            $eq: 'rental',
           },
           style: {
             $eq: 'detached',
@@ -44,7 +44,7 @@ export default {
       params: {
         filters: {
           type: {
-            $eq: 'resell',
+            $eq: 'rental',
           },
           style: {
             $eq: 'townhouse',
@@ -57,7 +57,7 @@ export default {
       params: {
         filters: {
           type: {
-            $eq: 'resell',
+            $eq: 'rental',
           },
           style: {
             $eq: 'semiDetached',

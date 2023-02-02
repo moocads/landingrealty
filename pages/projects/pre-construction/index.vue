@@ -1,6 +1,6 @@
 
 <template>
-  <div class="container" id="preconProjects">
+  <div class="container page-project">
     <ItemDisplay title="pre-construction" :displayData="data" data-aos="fade-up" />
     <Subscription />
   </div>
@@ -14,7 +14,7 @@ export default {
     };
   },
   async asyncData({ $axios }) {
-    const res1 = await $axios.$get('/assignments', {
+    const resCondo = await $axios.$get('/assignments', {
       params: {
         filters: {
           type: {
@@ -27,7 +27,7 @@ export default {
         populate: '*'
       }
     })
-    const res2 = await $axios.$get('/assignments', {
+    const resDetached = await $axios.$get('/assignments', {
       params: {
 
         filters: {
@@ -35,13 +35,13 @@ export default {
             $eq: 'precon',
           },
           style: {
-            $eq: 'house',
+            $eq: 'detached',
           },
         },
         populate: '*'
       }
     })
-    const res3 = await $axios.$get('/assignments', {
+    const resTownHouse = await $axios.$get('/assignments', {
       params: {
         filters: {
           type: {
@@ -54,10 +54,24 @@ export default {
         populate: '*'
       }
     })
+    const resSemiDetached = await $axios.$get('/assignments', {
+      params: {
+        filters: {
+          type: {
+            $eq: 'precon',
+          },
+          style: {
+            $eq: 'semiDetached',
+          },
+        },
+        populate: '*'
+      },
+    })
     let data = {
-      condo: res1.data,
-      house: res2.data,
-      townhouse: res3.data,
+      condo: resCondo.data,
+      detached: resDetached.data,
+      townhouse: resTownHouse.data,
+      "semi-detached":resSemiDetached.data
     }
     return {
       data
@@ -65,8 +79,3 @@ export default {
   },
 }
 </script>
-
-<style lang="scss" scoped>
-#preconProjects {
-  background-color: white;
-}</style>

@@ -6,7 +6,12 @@
     "house":"House",
     "townhouse":"Townhouse",
     "pre-construction":"Pre-Construction",
-    "resales":"Resale"
+    "resales":"Resale",
+    "assignment":"Assignment",
+    "rental":"Rental",
+    "commercial":"Commercial",
+    "detached":"Detached",
+    "semi-detached":"Semi-Detached"
   },
   "zh":{
     "view":"查看全部",
@@ -14,7 +19,12 @@
     "house":"独立屋",
     "townhouse":"镇屋",
     "pre-construction":"楼花",
-    "resales":"转售"
+    "resales":"转售",
+    "assignment":"楼花转让",
+    "rental":"房屋出租",
+    "commercial":"商业",
+    "detached":"独立屋",
+    "semi-detached":"半独立屋"
   },
   "tc":{
     "view":"查看全部",
@@ -22,7 +32,12 @@
     "house":"獨立屋",
     "townhouse":"鎮屋",
     "pre-construction":"樓花",
-    "resales":"轉售"
+    "resales":"轉售",
+    "assignment":"樓花轉讓",
+    "rental":"房屋出租",
+    "commercial":"商業",
+    "detached":"獨立屋",
+    "semi-detached":"半獨立屋"
   }
 }
 </i18n>
@@ -40,7 +55,9 @@
           >
             <div class="sample-grid">
               <div v-for="(item, index) in items" :key="index">
-                <NuxtLink :to="localePath(`/projects/${item.id}`)">
+                <NuxtLink
+                  :to="localePath(checkTypes(item.attributes.type, item.id))"
+                >
                   <ItemCard
                     :img="item.attributes.thumbnail.data[0].attributes.url"
                     :title="
@@ -52,8 +69,17 @@
                         : item.attributes.type === 'precon' &&
                           $i18n.locale === 'tc'
                         ? item.attributes.title_tc
+                        : item.attributes.type === 'assignment' &&
+                          $i18n.locale === 'en'
+                        ? item.attributes.title
+                        : item.attributes.type === 'assignment' &&
+                          $i18n.locale === 'zh'
+                        ? item.attributes.title_zh
+                        : item.attributes.type === 'assignment' &&
+                          $i18n.locale === 'tc'
+                        ? item.attributes.title_tc
                         : item.attributes.type === 'resell'
-                        ? 'MLS ' + item.attributes.mls
+                        ? item.attributes.address
                         : ''
                     "
                     :tag="item.attributes.location"
@@ -82,6 +108,17 @@ export default {
     title: String,
     displayData: Object,
     isHome: { type: Boolean, default: false },
+  },
+  methods: {
+    checkTypes(type, id) {
+      let route = ''
+      if (type === 'precon') {
+        route = `/projects/pre-construction/${id}`
+      } else {
+        route = `/projects/${id}`
+      }
+      return route
+    },
   },
 }
 </script>

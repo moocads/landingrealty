@@ -4,7 +4,6 @@
     "home":"Home",
     "resell":"Resale",
     "precon":"Pre-Construction",
-    "start":"Starting from",
     "maintenance":"Maintenance/sqft",
     "intersection":"Major Intersection",
     "starting":"Starting Date",
@@ -31,7 +30,6 @@
     "shopping":"Shopping",
     "schools":"Schools",
     "hospitals":"Hospitals",
-    "recommended":"Recommended",
     "intro":"Project Introduction",
     "neighborhood":"Neighborhood",
     "deposit":"Deposit Structure",
@@ -52,13 +50,16 @@
     "final": "Final Release",
     "sold": "Sold Out",
     "soldOver": "Sold Over Asking",
-    "fromSearch":"Search Results"
+    "fromSearch":"Search Results",
+    "tax":"Tax",
+    "assignment":"Assignment",
+    "rental":"Rental",
+    "commercial":"Commercial"
   },
   "zh":{
     "home":"首页",
     "resell":"转售",
     "precon":"楼花",
-    "start":"起价",
     "maintenance":"管理费/平方尺",
     "intersection":"主要枢纽",
     "starting":"动工日期",
@@ -101,7 +102,6 @@
     "shopping":"日常购物",
     "schools":"学校教育",
     "hospitals":"医疗设施",
-    "recommended":"推荐",
     "intro":"项目介绍",
     "neighborhood":"周边设施",
     "deposit":"付款流程",
@@ -122,13 +122,16 @@
     "final": "尾盘在售",
     "sold": "售罄",
     "soldOver": "高价卖出",
-    "fromSearch":"搜索结果"
+    "fromSearch":"搜索结果",
+    "tax":"地税",
+    "assignment":"楼花转让",
+    "rental":"房屋出租",
+    "commercial":"商业"
   },
   "tc":{
     "home":"首頁",
     "resell":"轉售",
     "precon":"樓花",
-    "start":"起價",
     "maintenance":"管理費/平方尺",
     "intersection":"主要樞紐",
     "starting":"動工日期",
@@ -171,7 +174,6 @@
     "shopping":"日常購物",
     "schools":"學校教育",
     "hospitals":"醫療設施",
-    "recommended":"推薦",
     "intro":"項目介紹",
     "neighborhood":"周邊設施",
     "deposit":"付款流程",
@@ -192,7 +194,11 @@
     "final": "尾盤在售",
     "sold": "售罄",
     "soldOver": "高價賣出",
-    "fromSearch":"搜索結果"
+    "fromSearch":"搜索結果",
+    "tax":"地稅",
+    "assignment":"樓花轉讓",
+    "rental":"房屋出租",
+    "commercial":"商業"
   }
 }
 </i18n>
@@ -202,141 +208,180 @@
       <a-breadcrumb>
         <a-breadcrumb-item>
           <nuxt-link :to="localePath(`/`)">
-            {{$t('home')}}
+            {{ $t('home') }}
           </nuxt-link>
         </a-breadcrumb-item>
         <a-breadcrumb-item v-if="!fromSearch">
-          <nuxt-link :to="localePath(`/projects/${item.attributes.type === 'resell' ? 'resales' : 'pre-construction'}`)">
-            {{$t(item.attributes.type)}}
+          <nuxt-link :to="localePath(breadcrumbRoute(item.attributes.type))">
+            {{ $t(item.attributes.type) }}
           </nuxt-link>
         </a-breadcrumb-item>
         <a-breadcrumb-item v-if="fromSearch">
           <nuxt-link :to="localePath(`/search`)">
-            {{$t('fromSearch')}}
+            {{ $t('fromSearch') }}
           </nuxt-link>
         </a-breadcrumb-item>
-        <a-breadcrumb-item v-if="$i18n.locale === 'en'" style="text-transform: capitalize">
-          {{item.attributes.type==='precon' ? item.attributes.title : item.attributes.type==='resell' ? 'MLS ' + item.attributes.mls : ''}}
-        </a-breadcrumb-item>
-        <a-breadcrumb-item v-if="$i18n.locale === 'zh'" style="text-transform: capitalize">
-          {{item.attributes.type==='precon' ? item.attributes.title_zh : item.attributes.type==='resell' ? 'MLS ' + item.attributes.mls : ''}}
-        </a-breadcrumb-item>
-        <a-breadcrumb-item v-if="$i18n.locale === 'tc'" style="text-transform: capitalize">
-          {{item.attributes.type==='precon' ? item.attributes.title_tc : item.attributes.type==='resell' ? 'MLS ' + item.attributes.mls : ''}}
+        <a-breadcrumb-item>
+          {{ item.attributes.address }}
         </a-breadcrumb-item>
       </a-breadcrumb>
-      <br>
-      <br>
+      <br />
+      <br />
       <!-- <a v-if="$store.state.searchWords" class="main-btn" style="display: inline-block;">Back to Search Results</a>
       <br>
       <br> -->
     </div>
     <div class="project-main">
       <div class="wrapper">
-        <a-row type="flex" :gutter="[{xl: 60, lg: 30, md: 0, sm: 0, xs: 0},24]">
-          <a-col :xl="{span:10}" :lg="{span:10}" :md="{span:24}" :sm="{span:24}" :xs="{span:24}">
+        <a-row
+          type="flex"
+          :gutter="[{ xl: 60, lg: 30, md: 0, sm: 0, xs: 0 }, 24]"
+        >
+          <a-col
+            :xl="{ span: 10 }"
+            :lg="{ span: 10 }"
+            :md="{ span: 24 }"
+            :sm="{ span: 24 }"
+            :xs="{ span: 24 }"
+          >
             <ProjectDetailsSlider :images="item.attributes.images.data" />
           </a-col>
-          <a-col :xl="{span:14}" :lg="{span:14}" :md="{span:24}" :sm="{span:24}" :xs="{span:24}">
+          <a-col
+            :xl="{ span: 14 }"
+            :lg="{ span: 14 }"
+            :md="{ span: 24 }"
+            :sm="{ span: 24 }"
+            :xs="{ span: 24 }"
+          >
             <div class="info-wrapper">
-              <h1 v-if="$i18n.locale === 'en'">{{ item.attributes.type==='precon' ? item.attributes.title : item.attributes.type==='resell' ? 'MLS ' + item.attributes.mls : ''}}</h1>
-              <h1 v-if="$i18n.locale === 'zh'">{{ item.attributes.type==='precon' ? item.attributes.title_zh : item.attributes.type==='resell' ? 'MLS ' + item.attributes.mls : ''}}</h1>
-              <h1 v-if="$i18n.locale === 'tc'">{{ item.attributes.type==='precon' ? item.attributes.title_tc : item.attributes.type==='resell' ? 'MLS ' + item.attributes.mls : ''}}</h1>
-              <span class="propertyStyle">{{ item.attributes.style }}</span>
-              <!-- <h4>{{ item.attributes.location }}</h4> -->
+              <h1>
+                {{ item.attributes.address }}
+              </h1>
+              <ProjectBriefIntro
+                :project-type="item.attributes.type"
+                :project-style="item.attributes.style"
+                :status="$t(item.attributes.status)"
+                :price="decimalFormatter(item.attributes.price)"
+                :mls="item.attributes.mls"
+              />
               <div class="project-basics">
-                <a-row type="flex" :gutter="[15,20]">
-                  <a-col :lg="{span: 8}" :md="{span: 8}" :sm="{span: 12}" :xs="{span:12}">
+                <a-row type="flex" :gutter="[15, 20]">
+                  <!-- Size Start  -->
+                  <a-col
+                    :lg="{ span: 8 }"
+                    :md="{ span: 8 }"
+                    :sm="{ span: 12 }"
+                    :xs="{ span: 12 }"
+                  >
                     <span>
-                      {{$t('start')}}
+                      {{ $t('size') }}
                     </span>
                     <h3>
-                      $ {{item.attributes.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}}
+                      {{
+                        item.attributes.size
+                          ? item.attributes.size + ' sqft'
+                          : 'N/A'
+                      }}
                     </h3>
                   </a-col>
-                  <a-col :lg="{span: 8}" :md="{span: 8}" :sm="{span: 12}" :xs="{span:12}">
+                  <!-- Size End  -->
+                  <!-- Floor Start  -->
+                  <a-col
+                    :lg="{ span: 8 }"
+                    :md="{ span: 8 }"
+                    :sm="{ span: 12 }"
+                    :xs="{ span: 12 }"
+                  >
                     <span>
-                      {{$t('maintenance')}}
+                      {{ $t('floor') }}
                     </span>
                     <h3>
-                      {{item.attributes.maintenance ? `$ ${item.attributes.maintenance.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}` : "N/A"}}
+                      {{
+                        item.attributes.floor ? item.attributes.floor : 'N/A'
+                      }}
                     </h3>
                   </a-col>
-                  <a-col :lg="{span: 8}" :md="{span: 8}" :sm="{span: 12}" :xs="{span:12}">
+                  <!-- Floor End  -->
+                  <!-- Exposure Start  -->
+                  <a-col
+                    :lg="{ span: 8 }"
+                    :md="{ span: 8 }"
+                    :sm="{ span: 12 }"
+                    :xs="{ span: 12 }"
+                  >
                     <span>
-                      {{$t('intersection')}}
+                      {{ $t('exposure') }}
                     </span>
                     <h3>
-                      {{item.attributes.address ? item.attributes.address : 'N/A'}}
+                      {{
+                        item.attributes.exposure
+                          ? $t(item.attributes.exposure)
+                          : 'N/A'
+                      }}
                     </h3>
                   </a-col>
-                  <a-col :lg="{span: 8}" :md="{span: 8}" :sm="{span: 12}" :xs="{span:12}" v-if="item.attributes.type === 'precon'">
+                  <!-- Exposure End  -->
+                  <!-- Maintenance fee Start  -->
+                  <a-col
+                    :lg="{ span: 8 }"
+                    :md="{ span: 8 }"
+                    :sm="{ span: 12 }"
+                    :xs="{ span: 12 }"
+                  >
                     <span>
-                      {{$t('starting')}}
+                      {{ $t('maintenance') }}
                     </span>
                     <h3>
-                      {{item.attributes.start ? item.attributes.start : 'N/A'}}
+                      {{
+                        item.attributes.maintenance
+                          ? `$ ${item.attributes.maintenance
+                              .toString()
+                              .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`
+                          : 'N/A'
+                      }}
                     </h3>
                   </a-col>
-                  <a-col :lg="{span: 8}" :md="{span: 8}" :sm="{span: 12}" :xs="{span:12}" v-if="item.attributes.type === 'precon'">
+                  <!-- Maintenance Fee End  -->
+                  <!-- Tax Start  -->
+                  <a-col
+                    :lg="{ span: 8 }"
+                    :md="{ span: 8 }"
+                    :sm="{ span: 12 }"
+                    :xs="{ span: 12 }"
+                  >
                     <span>
-                      {{$t('closing')}}
+                      {{ $t('tax') }}
                     </span>
                     <h3>
-                      {{item.attributes.closing ? item.attributes.closing : 'N/A'}}
+                      {{ item.attributes.tax ? item.attributes.tax : 'N/A' }}
                     </h3>
                   </a-col>
-                  <a-col :lg="{span: 8}" :md="{span: 8}" :sm="{span: 12}" :xs="{span:12}" v-if="item.attributes.type === 'resell'">
+                  <!-- Tax End  -->
+                  <!-- Basement(House) / Locker (Condo) Start  -->
+                  <a-col
+                    :lg="{ span: 8 }"
+                    :md="{ span: 8 }"
+                    :sm="{ span: 12 }"
+                    :xs="{ span: 12 }"
+                    
+                  >
                     <span>
-                      {{$t('floor')}}
+                      {{ item.attributes.style === 'condo' ? $t('Locker') : $t('basements') }}
                     </span>
                     <h3>
-                      {{item.attributes.floor ? item.attributes.floor : 'N/A'}}
+                      {{
+                        item.attributes.basement
+                          ? item.attributes.basement
+                          : 'N/A'
+                      }}
                     </h3>
                   </a-col>
-                  <a-col :lg="{span: 8}" :md="{span: 8}" :sm="{span: 12}" :xs="{span:12}" v-if="item.attributes.type === 'resell'">
-                    <span>
-                      {{$t('suite')}}
-                    </span>
-                    <h3>
-                      {{item.attributes.suite ? item.attributes.suite : 'N/A'}}
-                    </h3>
-                  </a-col>
-                  <a-col :lg="{span: 8}" :md="{span: 8}" :sm="{span: 12}" :xs="{span:12}">
-                    <span>
-                      {{$t('size')}}
-                    </span>
-                    <h3>
-                      {{item.attributes.size ? item.attributes.size + ' sqft' : 'N/A'}}
-                    </h3>
-                  </a-col>
-                  <a-col :lg="{span: 8}" :md="{span: 8}" :sm="{span: 12}" :xs="{span:12}" v-if="item.attributes.type === 'resell'">
-                    <span>
-                      {{$t('basements')}}
-                    </span>
-                    <h3>
-                      {{item.attributes.basement ? item.attributes.basement : 'N/A'}}
-                    </h3>
-                  </a-col>
-                  <a-col :lg="{span: 8}" :md="{span: 8}" :sm="{span: 12}" :xs="{span:12}" v-if="item.attributes.type === 'resell'">
-                    <span>
-                      {{$t('exposure')}}
-                    </span>
-                    <h3>
-                      {{item.attributes.exposure ? $t(item.attributes.exposure) : 'N/A'}}
-                    </h3>
-                  </a-col>
-                  <a-col :lg="{span: 8}" :md="{span: 8}" :sm="{span: 12}" :xs="{span:12}">
-                    <span>
-                      {{$t('status')}}
-                    </span>
-                    <h3>
-                      {{item.attributes.status ? $t(item.attributes.status) : 'N/A'}}
-                    </h3>
-                  </a-col>
+                  <!-- Basement(House) / Locker (Condo) End  -->
                 </a-row>
               </div>
-              <div class="project-detail" v-if="item.attributes.type === 'resell'">
+              <div
+                class="project-detail"
+              >
                 <div>
                   <IconBedroom />
                   <p>{{ item.attributes.bed ? item.attributes.bed : 'N/A' }}</p>
@@ -344,7 +389,9 @@
                 <a-divider type="vertical" :style="this.detailDividerStyle" />
                 <div>
                   <IconBathroom />
-                  <p>{{ item.attributes.bath ? item.attributes.bath : 'N/A'}}</p>
+                  <p>
+                    {{ item.attributes.bath ? item.attributes.bath : 'N/A' }}
+                  </p>
                 </div>
                 <a-divider type="vertical" :style="this.detailDividerStyle" />
                 <!-- <div>
@@ -354,49 +401,143 @@
                   </p>
                 </div> -->
                 <div>
-                  <img src="/img/projects/sofa.png" alt="Living Room Icon">
+                  <img
+                    src="/img/projects/parking.png"
+                    width="30"
+                    height="30"
+                    alt="Parking Icon"
+                  />
                   <p>
-                    {{item.attributes.livingRoom ? item.attributes.livingRoom : "N/A"}}
+                    {{
+                      item.attributes.parking ? item.attributes.parking : 'N/A'
+                    }}
                   </p>
                 </div>
               </div>
               <div class="features-wrapper">
-                <h4>{{$t('features')}}</h4>
+                <h4>{{ $t('features') }}</h4>
                 <div class="features">
                   <ul>
-                    <li v-for="(feature, index) in item.attributes.features" :key="index">{{$t(feature)}}</li>
+                    <li
+                      v-for="(feature, index) in item.attributes.features"
+                      :key="index"
+                    >
+                      {{ $t(feature) }}
+                    </li>
                   </ul>
                 </div>
                 <div class="deposit" v-if="item.attributes.type === 'precon'">
-                  <h4>{{$t('deposit')}}</h4>
-                  <a-row :gutter="[30,30]">
-                    <a-col :sm="{span:12}" :xs="{span:24}">
-                      <h6><strong>{{$t('depositL')}}</strong></h6>
-                      <p v-if="$i18n.locale==='en'" v-html="item.attributes.deposit ? item.attributes.deposit : 'N/A'"></p>
-                      <p v-if="$i18n.locale==='zh'" v-html="item.attributes.deposit_zh ? item.attributes.deposit_zh : 'N/A'"></p>
-                      <p v-if="$i18n.locale==='tc'" v-html="item.attributes.deposit_tc ? item.attributes.deposit_tc : 'N/A'"></p>
+                  <h4>{{ $t('deposit') }}</h4>
+                  <a-row :gutter="[30, 30]">
+                    <a-col :sm="{ span: 12 }" :xs="{ span: 24 }">
+                      <h6>
+                        <strong>{{ $t('depositL') }}</strong>
+                      </h6>
+                      <p
+                        v-if="$i18n.locale === 'en'"
+                        v-html="
+                          item.attributes.deposit
+                            ? item.attributes.deposit
+                            : 'N/A'
+                        "
+                      ></p>
+                      <p
+                        v-if="$i18n.locale === 'zh'"
+                        v-html="
+                          item.attributes.deposit_zh
+                            ? item.attributes.deposit_zh
+                            : 'N/A'
+                        "
+                      ></p>
+                      <p
+                        v-if="$i18n.locale === 'tc'"
+                        v-html="
+                          item.attributes.deposit_tc
+                            ? item.attributes.deposit_tc
+                            : 'N/A'
+                        "
+                      ></p>
                     </a-col>
-                    <a-col :sm="{span:12}" :xs="{span:24}">
-                      <h6><strong>{{$t('depositI')}}</strong></h6>
-                      <p v-if="$i18n.locale==='en'" v-html="item.attributes.depositIntl ? item.attributes.depositIntl : 'N/A'"></p>
-                      <p v-if="$i18n.locale==='zh'" v-html="item.attributes.depositIntl_zh ? item.attributes.depositIntl_zh : 'N/A'"></p>
-                      <p v-if="$i18n.locale==='tc'" v-html="item.attributes.depositIntl_tc ? item.attributes.depositIntl_tc : 'N/A'"></p>
+                    <a-col :sm="{ span: 12 }" :xs="{ span: 24 }">
+                      <h6>
+                        <strong>{{ $t('depositI') }}</strong>
+                      </h6>
+                      <p
+                        v-if="$i18n.locale === 'en'"
+                        v-html="
+                          item.attributes.depositIntl
+                            ? item.attributes.depositIntl
+                            : 'N/A'
+                        "
+                      ></p>
+                      <p
+                        v-if="$i18n.locale === 'zh'"
+                        v-html="
+                          item.attributes.depositIntl_zh
+                            ? item.attributes.depositIntl_zh
+                            : 'N/A'
+                        "
+                      ></p>
+                      <p
+                        v-if="$i18n.locale === 'tc'"
+                        v-html="
+                          item.attributes.depositIntl_tc
+                            ? item.attributes.depositIntl_tc
+                            : 'N/A'
+                        "
+                      ></p>
                     </a-col>
                   </a-row>
                 </div>
                 <div class="btn-container">
-                  <a-row type="flex" :gutter="[12,12]">
-                    <a-col :md="{span:12}" :sm="{span:12}" :xs="{span:24}">
+                  <a-row type="flex" :gutter="[12, 12]">
+                    <a-col
+                      :md="{ span: 12 }"
+                      :sm="{ span: 12 }"
+                      :xs="{ span: 24 }"
+                    >
                       <nuxt-link :to="localePath('/contact')">
-                        <a href="#" class="main-btn navy" style="border-radius: 5px;">{{$t('contact')}}</a>
+                        <a
+                          href="#"
+                          class="main-btn navy"
+                          style="border-radius: 5px"
+                          >{{ $t('contact') }}</a
+                        >
                       </nuxt-link>
                     </a-col>
-                    <a-col :md="{span:12}" :sm="{span:12}" :xs="{span:24}" v-if="item.attributes.floorPlan.data">
-                      <a target="_blank" class="main-btn gray" style="border-radius: 5px;" @click="floorPlanModal = true"> {{$t('floorplan')}} </a>
+                    <a-col
+                      :md="{ span: 12 }"
+                      :sm="{ span: 12 }"
+                      :xs="{ span: 24 }"
+                      v-if="item.attributes.floorPlan.data"
+                    >
+                      <a
+                        target="_blank"
+                        class="main-btn gray"
+                        style="border-radius: 5px"
+                        @click="floorPlanModal = true"
+                      >
+                        {{ $t('floorplan') }}
+                      </a>
                       <a-modal v-model="floorPlanModal" :footer="null">
-                        <h3 style="color:#0b2c42; font-size: 20px;">{{$t('floorplan')}}</h3>
-                        <br>
-                        <a v-for="(file, index) in item.attributes.floorPlan.data" :key="index" style="color:#0b2c42; text-decoration: underline; display: block" :href="file.attributes.url" target="_blank"><a-icon type="file"></a-icon>  {{file.attributes.name}}</a>
+                        <h3 style="color: #0b2c42; font-size: 20px">
+                          {{ $t('floorplan') }}
+                        </h3>
+                        <br />
+                        <a
+                          v-for="(file, index) in item.attributes.floorPlan
+                            .data"
+                          :key="index"
+                          style="
+                            color: #0b2c42;
+                            text-decoration: underline;
+                            display: block;
+                          "
+                          :href="file.attributes.url"
+                          target="_blank"
+                          ><a-icon type="file"></a-icon>
+                          {{ file.attributes.name }}</a
+                        >
                       </a-modal>
                     </a-col>
                   </a-row>
@@ -409,127 +550,415 @@
     </div>
     <div class="project-intro" v-if="item.attributes.type === 'precon'">
       <div class="wrapper">
-        <h2>{{$t('intro')}}</h2>
-        <p v-if="$i18n.locale === 'en'">{{item.attributes.description}}</p>
-        <p v-if="$i18n.locale === 'zh'">{{item.attributes.description_zh}}</p>
-        <p v-if="$i18n.locale === 'tc'">{{item.attributes.description_tc}}</p>
+        <h2>{{ $t('intro') }}</h2>
+        <p v-if="$i18n.locale === 'en'">{{ item.attributes.description }}</p>
+        <p v-if="$i18n.locale === 'zh'">{{ item.attributes.description_zh }}</p>
+        <p v-if="$i18n.locale === 'tc'">{{ item.attributes.description_tc }}</p>
       </div>
     </div>
-    <div class="amenities">
+    <section  v-if="item.attributes.rich_description && $i18n.locale === 'en'" class="sec-description">
       <div class="wrapper">
-        <h2>{{$t('neighborhood')}}</h2>
-        <a-row type="flex" :gutter="[{xs: 0, sm:15, md:50, lg: 50, xl:50}, 30]">
-          <a-col :lg="{span:12}" :md="{span:24}" :sm="{span:24}" :xs="{span:24}">
-            <h3>{{$t('entertainment')}}</h3>
+        <h2 style="color: #fff; margin-bottom: 16px">Description</h2>
+        <div
+          class="desc-content"
+          v-html="item.attributes.rich_description"
+        ></div>
+      </div>
+    </section>
+    <section v-if="item.attributes.rich_description_zh && $i18n.locale === 'zh'" class="sec-description">
+      <div class="wrapper">
+        <h2 style="color: #fff; margin-bottom: 16px">Description</h2>
+        <div
+          class="desc-content"
+          v-html="item.attributes.rich_description_zh"
+        ></div>
+      </div>
+    </section>
+    <section v-if="item.attributes.rich_description_tc && $i18n.locale === 'tc'" class="sec-description">
+      <div class="wrapper">
+        <h2 style="color: #fff; margin-bottom: 16px">Description</h2>
+        <div
+          class="desc-content"
+          v-html="item.attributes.rich_description_tc"
+        ></div>
+      </div>
+    </section>
+    <!-- <div class="amenities">
+      <div class="wrapper">
+        <h2>{{ $t('neighborhood') }}</h2>
+        <a-row
+          type="flex"
+          :gutter="[{ xs: 0, sm: 15, md: 50, lg: 50, xl: 50 }, 30]"
+        >
+          <a-col
+            :lg="{ span: 12 }"
+            :md="{ span: 24 }"
+            :sm="{ span: 24 }"
+            :xs="{ span: 24 }"
+          >
+            <h3>{{ $t('entertainment') }}</h3>
             <div class="icon-container">
               <div class="icon">
-                <img src="/img/projects/eye-solid.svg" alt="Landing Realty See">
-                <h4>{{$t('see')}}</h4>
-                <p v-if="$i18n.locale === 'en'">{{item.attributes.entertainment ? item.attributes.entertainment.see : ' '}}</p>
-                <p v-if="$i18n.locale === 'zh'">{{item.attributes.entertainment ? item.attributes.entertainment.see_zh : ' '}}</p>
-                <p v-if="$i18n.locale === 'tc'">{{item.attributes.entertainment ? item.attributes.entertainment.see_tc : ' '}}</p>
+                <img
+                  src="/img/projects/eye-solid.svg"
+                  alt="Landing Realty See"
+                />
+                <h4>{{ $t('see') }}</h4>
+                <p v-if="$i18n.locale === 'en'">
+                  {{
+                    item.attributes.entertainment
+                      ? item.attributes.entertainment.see
+                      : ' '
+                  }}
+                </p>
+                <p v-if="$i18n.locale === 'zh'">
+                  {{
+                    item.attributes.entertainment
+                      ? item.attributes.entertainment.see_zh
+                      : ' '
+                  }}
+                </p>
+                <p v-if="$i18n.locale === 'tc'">
+                  {{
+                    item.attributes.entertainment
+                      ? item.attributes.entertainment.see_tc
+                      : ' '
+                  }}
+                </p>
               </div>
               <div class="icon">
-                <img src="/img/projects/headphones-simple-solid.svg" alt="Landing Realty Hear">
-                <h4>{{$t('hear')}}</h4>
-                <p v-if="$i18n.locale === 'en'">{{item.attributes.entertainment ? item.attributes.entertainment.hear : ' '}}</p>
-                <p v-if="$i18n.locale === 'zh'">{{item.attributes.entertainment ? item.attributes.entertainment.hear_zh : ' '}}</p>
-                <p v-if="$i18n.locale === 'tc'">{{item.attributes.entertainment ? item.attributes.entertainment.hear_tc : ' '}}</p>
+                <img
+                  src="/img/projects/headphones-simple-solid.svg"
+                  alt="Landing Realty Hear"
+                />
+                <h4>{{ $t('hear') }}</h4>
+                <p v-if="$i18n.locale === 'en'">
+                  {{
+                    item.attributes.entertainment
+                      ? item.attributes.entertainment.hear
+                      : ' '
+                  }}
+                </p>
+                <p v-if="$i18n.locale === 'zh'">
+                  {{
+                    item.attributes.entertainment
+                      ? item.attributes.entertainment.hear_zh
+                      : ' '
+                  }}
+                </p>
+                <p v-if="$i18n.locale === 'tc'">
+                  {{
+                    item.attributes.entertainment
+                      ? item.attributes.entertainment.hear_tc
+                      : ' '
+                  }}
+                </p>
               </div>
               <div class="icon">
-                <img src="/img/projects/utensils-solid.svg" alt="Landing Realty Taste">
-                <h4>{{$t('taste')}}</h4>
-                <p v-if="$i18n.locale === 'en'">{{item.attributes.entertainment ? item.attributes.entertainment.taste : ' '}}</p>
-                <p v-if="$i18n.locale === 'zh'">{{item.attributes.entertainment ? item.attributes.entertainment.taste_zh : ' '}}</p>
-                <p v-if="$i18n.locale === 'tc'">{{item.attributes.entertainment ? item.attributes.entertainment.taste_tc : ' '}}</p>
+                <img
+                  src="/img/projects/utensils-solid.svg"
+                  alt="Landing Realty Taste"
+                />
+                <h4>{{ $t('taste') }}</h4>
+                <p v-if="$i18n.locale === 'en'">
+                  {{
+                    item.attributes.entertainment
+                      ? item.attributes.entertainment.taste
+                      : ' '
+                  }}
+                </p>
+                <p v-if="$i18n.locale === 'zh'">
+                  {{
+                    item.attributes.entertainment
+                      ? item.attributes.entertainment.taste_zh
+                      : ' '
+                  }}
+                </p>
+                <p v-if="$i18n.locale === 'tc'">
+                  {{
+                    item.attributes.entertainment
+                      ? item.attributes.entertainment.taste_tc
+                      : ' '
+                  }}
+                </p>
               </div>
               <div class="icon">
-                <img src="/img/projects/champagne-glasses-solid.svg" alt="Landing Realty Play">
-                <h4>{{$t('play')}}</h4>
-                <p v-if="$i18n.locale === 'en'">{{item.attributes.entertainment ? item.attributes.entertainment.play : ' '}}</p>
-                <p v-if="$i18n.locale === 'zh'">{{item.attributes.entertainment ? item.attributes.entertainment.play_zh : ' '}}</p>
-                <p v-if="$i18n.locale === 'tc'">{{item.attributes.entertainment ? item.attributes.entertainment.play_tc : ' '}}</p>
+                <img
+                  src="/img/projects/champagne-glasses-solid.svg"
+                  alt="Landing Realty Play"
+                />
+                <h4>{{ $t('play') }}</h4>
+                <p v-if="$i18n.locale === 'en'">
+                  {{
+                    item.attributes.entertainment
+                      ? item.attributes.entertainment.play
+                      : ' '
+                  }}
+                </p>
+                <p v-if="$i18n.locale === 'zh'">
+                  {{
+                    item.attributes.entertainment
+                      ? item.attributes.entertainment.play_zh
+                      : ' '
+                  }}
+                </p>
+                <p v-if="$i18n.locale === 'tc'">
+                  {{
+                    item.attributes.entertainment
+                      ? item.attributes.entertainment.play_tc
+                      : ' '
+                  }}
+                </p>
               </div>
             </div>
           </a-col>
-          <a-col :lg="{span:12}" :md="{span:24}" :sm="{span:24}" :xs="{span:24}">
-            <h3>{{$t('wellness')}}</h3>
+          <a-col
+            :lg="{ span: 12 }"
+            :md="{ span: 24 }"
+            :sm="{ span: 24 }"
+            :xs="{ span: 24 }"
+          >
+            <h3>{{ $t('wellness') }}</h3>
             <div class="icon-container">
               <div class="icon">
-                <img src="/img/projects/leaf-solid.svg" alt="Landing Realty Nature">
-                <h4>{{$t('nature')}}</h4>
-                <p v-if="$i18n.locale === 'en'">{{item.attributes.wellness ? item.attributes.wellness.nature : ' '}}</p>
-                <p v-if="$i18n.locale === 'zh'">{{item.attributes.wellness ? item.attributes.wellness.nature_zh : ' '}}</p>
-                <p v-if="$i18n.locale === 'tc'">{{item.attributes.wellness ? item.attributes.wellness.nature_tc : ' '}}</p>
+                <img
+                  src="/img/projects/leaf-solid.svg"
+                  alt="Landing Realty Nature"
+                />
+                <h4>{{ $t('nature') }}</h4>
+                <p v-if="$i18n.locale === 'en'">
+                  {{
+                    item.attributes.wellness
+                      ? item.attributes.wellness.nature
+                      : ' '
+                  }}
+                </p>
+                <p v-if="$i18n.locale === 'zh'">
+                  {{
+                    item.attributes.wellness
+                      ? item.attributes.wellness.nature_zh
+                      : ' '
+                  }}
+                </p>
+                <p v-if="$i18n.locale === 'tc'">
+                  {{
+                    item.attributes.wellness
+                      ? item.attributes.wellness.nature_tc
+                      : ' '
+                  }}
+                </p>
               </div>
               <div class="icon">
-                <img src="/img/projects/dumbbell-solid.svg" alt="Landing Realty Workout">
-                <h4>{{$t('workout')}}</h4>
-                <p v-if="$i18n.locale === 'en'">{{item.attributes.wellness ? item.attributes.wellness.workout : ' '}}</p>
-                <p v-if="$i18n.locale === 'zh'">{{item.attributes.wellness ? item.attributes.wellness.workout_zh : ' '}}</p>
-                <p v-if="$i18n.locale === 'tc'">{{item.attributes.wellness ? item.attributes.wellness.workout_tc : ' '}}</p>
+                <img
+                  src="/img/projects/dumbbell-solid.svg"
+                  alt="Landing Realty Workout"
+                />
+                <h4>{{ $t('workout') }}</h4>
+                <p v-if="$i18n.locale === 'en'">
+                  {{
+                    item.attributes.wellness
+                      ? item.attributes.wellness.workout
+                      : ' '
+                  }}
+                </p>
+                <p v-if="$i18n.locale === 'zh'">
+                  {{
+                    item.attributes.wellness
+                      ? item.attributes.wellness.workout_zh
+                      : ' '
+                  }}
+                </p>
+                <p v-if="$i18n.locale === 'tc'">
+                  {{
+                    item.attributes.wellness
+                      ? item.attributes.wellness.workout_tc
+                      : ' '
+                  }}
+                </p>
               </div>
               <div class="icon">
-                <img src="/img/projects/spa-solid.svg" alt="Landing Realty Relax">
-                <h4>{{$t('relax')}}</h4>
-                <p v-if="$i18n.locale === 'en'">{{item.attributes.wellness ? item.attributes.wellness.relax : ' '}}</p>
-                <p v-if="$i18n.locale === 'zh'">{{item.attributes.wellness ? item.attributes.wellness.relax_zh : ' '}}</p>
-                <p v-if="$i18n.locale === 'tc'">{{item.attributes.wellness ? item.attributes.wellness.relax_tc : ' '}}</p>
+                <img
+                  src="/img/projects/spa-solid.svg"
+                  alt="Landing Realty Relax"
+                />
+                <h4>{{ $t('relax') }}</h4>
+                <p v-if="$i18n.locale === 'en'">
+                  {{
+                    item.attributes.wellness
+                      ? item.attributes.wellness.relax
+                      : ' '
+                  }}
+                </p>
+                <p v-if="$i18n.locale === 'zh'">
+                  {{
+                    item.attributes.wellness
+                      ? item.attributes.wellness.relax_zh
+                      : ' '
+                  }}
+                </p>
+                <p v-if="$i18n.locale === 'tc'">
+                  {{
+                    item.attributes.wellness
+                      ? item.attributes.wellness.relax_tc
+                      : ' '
+                  }}
+                </p>
               </div>
               <div class="icon">
-                <img src="/img/projects/heart-pulse-solid.svg" alt="Landing Realty Nourish">
-                <h4>{{$t('nourish')}}</h4>
-                <p v-if="$i18n.locale === 'en'">{{item.attributes.wellness ? item.attributes.wellness.nourish : ' '}}</p>
-                <p v-if="$i18n.locale === 'zh'">{{item.attributes.wellness ? item.attributes.wellness.nourish_zh : ' '}}</p>
-                <p v-if="$i18n.locale === 'tc'">{{item.attributes.wellness ? item.attributes.wellness.nourish_tc : ' '}}</p>
+                <img
+                  src="/img/projects/heart-pulse-solid.svg"
+                  alt="Landing Realty Nourish"
+                />
+                <h4>{{ $t('nourish') }}</h4>
+                <p v-if="$i18n.locale === 'en'">
+                  {{
+                    item.attributes.wellness
+                      ? item.attributes.wellness.nourish
+                      : ' '
+                  }}
+                </p>
+                <p v-if="$i18n.locale === 'zh'">
+                  {{
+                    item.attributes.wellness
+                      ? item.attributes.wellness.nourish_zh
+                      : ' '
+                  }}
+                </p>
+                <p v-if="$i18n.locale === 'tc'">
+                  {{
+                    item.attributes.wellness
+                      ? item.attributes.wellness.nourish_tc
+                      : ' '
+                  }}
+                </p>
               </div>
             </div>
           </a-col>
-          <a-col :lg="{span:12}" :md="{span:24}" :sm="{span:24}" :xs="{span:24}">
-            <h3>{{$t('area')}}</h3>
+          <a-col
+            :lg="{ span: 12 }"
+            :md="{ span: 24 }"
+            :sm="{ span: 24 }"
+            :xs="{ span: 24 }"
+          >
+            <h3>{{ $t('area') }}</h3>
             <div class="icon-container">
               <div class="icon">
-                <img src="/img/projects/transit.SVG" alt="Landing Realty Transit">
-                <h4>{{$t('transit')}}</h4>
-                <p v-if="$i18n.locale === 'en'">{{item.attributes.area ? item.attributes.area.transit : ' '}}</p>
-                <p v-if="$i18n.locale === 'zh'">{{item.attributes.area ? item.attributes.area.transit_zh : ' '}}</p>
-                <p v-if="$i18n.locale === 'tc'">{{item.attributes.area ? item.attributes.area.transit_tc : ' '}}</p>
+                <img
+                  src="/img/projects/transit.SVG"
+                  alt="Landing Realty Transit"
+                />
+                <h4>{{ $t('transit') }}</h4>
+                <p v-if="$i18n.locale === 'en'">
+                  {{
+                    item.attributes.area ? item.attributes.area.transit : ' '
+                  }}
+                </p>
+                <p v-if="$i18n.locale === 'zh'">
+                  {{
+                    item.attributes.area ? item.attributes.area.transit_zh : ' '
+                  }}
+                </p>
+                <p v-if="$i18n.locale === 'tc'">
+                  {{
+                    item.attributes.area ? item.attributes.area.transit_tc : ' '
+                  }}
+                </p>
               </div>
               <div class="icon">
-                <img src="/img/projects/shopping.SVG" alt="Landing Realty Shopping">
-                <h4>{{$t('shopping')}}</h4>
-                <p v-if="$i18n.locale === 'en'">{{item.attributes.area ? item.attributes.area.shopping : ' '}}</p>
-                <p v-if="$i18n.locale === 'zh'">{{item.attributes.area ? item.attributes.area.shopping_zh : ' '}}</p>
-                <p v-if="$i18n.locale === 'tc'">{{item.attributes.area ? item.attributes.area.shopping_tc : ' '}}</p>
+                <img
+                  src="/img/projects/shopping.SVG"
+                  alt="Landing Realty Shopping"
+                />
+                <h4>{{ $t('shopping') }}</h4>
+                <p v-if="$i18n.locale === 'en'">
+                  {{
+                    item.attributes.area ? item.attributes.area.shopping : ' '
+                  }}
+                </p>
+                <p v-if="$i18n.locale === 'zh'">
+                  {{
+                    item.attributes.area
+                      ? item.attributes.area.shopping_zh
+                      : ' '
+                  }}
+                </p>
+                <p v-if="$i18n.locale === 'tc'">
+                  {{
+                    item.attributes.area
+                      ? item.attributes.area.shopping_tc
+                      : ' '
+                  }}
+                </p>
               </div>
               <div class="icon">
-                <img src="/img/projects/school.SVG" alt="Landing Realty School">
-                <h4>{{$t('schools')}}</h4>
-                <p v-if="$i18n.locale === 'en'">{{item.attributes.area ? item.attributes.area.school : ' '}}</p>
-                <p v-if="$i18n.locale === 'zh'">{{item.attributes.area ? item.attributes.area.school_zh : ' '}}</p>
-                <p v-if="$i18n.locale === 'tc'">{{item.attributes.area ? item.attributes.area.school_tc : ' '}}</p>
+                <img
+                  src="/img/projects/school.SVG"
+                  alt="Landing Realty School"
+                />
+                <h4>{{ $t('schools') }}</h4>
+                <p v-if="$i18n.locale === 'en'">
+                  {{ item.attributes.area ? item.attributes.area.school : ' ' }}
+                </p>
+                <p v-if="$i18n.locale === 'zh'">
+                  {{
+                    item.attributes.area ? item.attributes.area.school_zh : ' '
+                  }}
+                </p>
+                <p v-if="$i18n.locale === 'tc'">
+                  {{
+                    item.attributes.area ? item.attributes.area.school_tc : ' '
+                  }}
+                </p>
               </div>
               <div class="icon">
-                <img src="/img/projects/hospital.SVG" alt="Landing Realty Hospital">
-                <h4>{{$t('hospitals')}}</h4>
-                <p v-if="$i18n.locale === 'en'">{{item.attributes.area ? item.attributes.area.hospital : ' '}}</p>
-                <p v-if="$i18n.locale === 'zh'">{{item.attributes.area ? item.attributes.area.hospital_zh : ' '}}</p>
-                <p v-if="$i18n.locale === 'tc'">{{item.attributes.area ? item.attributes.area.hospital_tc : ' '}}</p>
+                <img
+                  src="/img/projects/hospital.SVG"
+                  alt="Landing Realty Hospital"
+                />
+                <h4>{{ $t('hospitals') }}</h4>
+                <p v-if="$i18n.locale === 'en'">
+                  {{
+                    item.attributes.area ? item.attributes.area.hospital : ' '
+                  }}
+                </p>
+                <p v-if="$i18n.locale === 'zh'">
+                  {{
+                    item.attributes.area
+                      ? item.attributes.area.hospital_zh
+                      : ' '
+                  }}
+                </p>
+                <p v-if="$i18n.locale === 'tc'">
+                  {{
+                    item.attributes.area
+                      ? item.attributes.area.hospital_tc
+                      : ' '
+                  }}
+                </p>
               </div>
             </div>
           </a-col>
         </a-row>
       </div>
-    </div>
-    <div class="recommended">
+    </div> -->
+    <RecommendedProjects :rec-data="recommended" />
+    <!-- <div class="recommended">
       <div class="wrapper">
-        <h2>{{$t('recommended')}}</h2>
-        <a-row :gutter="[36,36]">
-          <a-col :xl="{span: 6}" :lg="{span: 6}" :md="{span: 12}" :sm="{span: 12}" :xs="{span: 24}" v-for="(rec, index) in recommended" :key="index">
+        <h2>{{ $t('recommended') }}</h2>
+        <a-row :gutter="[36, 36]">
+          <a-col
+            :xl="{ span: 6 }"
+            :lg="{ span: 6 }"
+            :md="{ span: 12 }"
+            :sm="{ span: 12 }"
+            :xs="{ span: 24 }"
+            v-for="(rec, index) in recommended"
+            :key="index"
+          >
             <NuxtLink :to="localePath(`/projects/${rec.id}`)">
               <ItemCard
                 :img="rec.attributes.images.data[0].attributes.url"
-                :title="rec.attributes.type === 'precon' ? rec.attributes.title : rec.attributes.type === 'resell' ? 'MLS ' + rec.attributes.mls : ''"
+                :title="rec.attributes.address"
                 :tag="rec.attributes.location"
                 :content="rec.attributes.price.toString()"
               />
@@ -537,7 +966,7 @@
           </a-col>
         </a-row>
       </div>
-    </div>
+    </div> -->
     <Subscription />
   </div>
 </template>
@@ -547,8 +976,8 @@ import saleStatus from '~/utils/saleStatus'
 export default {
   head() {
     return {
-      title: "Projects | Landing Realty | A Toronto Real Estate Company"
-    };
+      title: 'Projects | Landing Realty | A Toronto Real Estate Company',
+    }
   },
   data() {
     return {
@@ -558,7 +987,7 @@ export default {
         'height: 100%; background-color: #d9d9d9; margin: auto',
       amenitiesDividerStyle:
         'height: 90%; background-color: #white; margin: auto',
-      saleStatus
+      saleStatus,
     }
   },
   async asyncData({ $axios, route }) {
@@ -571,7 +1000,7 @@ export default {
       item: res.data,
       recommended: undefined,
       floorPlanModal: false,
-      fromSearch: false
+      fromSearch: false,
     }
   },
   created() {
@@ -579,31 +1008,54 @@ export default {
       this.fromSearch = true
       this.$store.commit('setFromSearchResult', false)
     }
-    this.$axios.$get('/assignments', {
-      params: {
-        filters: {
-          id: {
-            $ne: this.item.id
+    this.$axios
+      .$get('/assignments', {
+        params: {
+          filters: {
+            id: {
+              $ne: this.item.id,
+            },
+            type: {
+              $eq: this.item.attributes.type,
+            },
+            style: {
+              $eq: this.item.attributes.style,
+            },
           },
-          type: {
-            $eq: this.item.attributes.type,
-          },
-          style: {
-            $eq: this.item.attributes.style,
+          populate: ['images'],
+          pagination: {
+            pageSize: 4,
           },
         },
-        populate: ['images'],
-        pagination: {
-          pageSize: 4,
-        },
-      },
-    }).then(res => {
-      this.recommended = res.data
-    })
+      })
+      .then((res) => {
+        this.recommended = res.data
+      })
+  },
+  methods: {
+    decimalFormatter(price) {
+      price = price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+      return price
+    },
+    breadcrumbRoute(category) {
+      let route = ''
+      if (category === 'resell') {
+        route = '/projects/resales'
+      } else if (category === 'precon') {
+        route = '/projects/pre-construction'
+      } else if (category === 'assignment') {
+        route = '/projects/assignment'
+      } else if (category === 'rental') {
+        route = '/projects/rental'
+      } else {
+        route = '/projects/commercial'
+      }
+      return route
+    },
   },
   components: {
     // ProjectDetailsSlider
-  }
+  },
 }
 </script>
 
@@ -641,7 +1093,7 @@ export default {
   h2 {
     font-weight: 700;
 
-    @media (max-width:768px) {
+    @media (max-width: 768px) {
       font-size: 34px;
     }
   }
@@ -714,8 +1166,7 @@ export default {
     font-weight: 700;
     color: $navy;
 
-    
-    @media(max-width: 768px) {
+    @media (max-width: 768px) {
       font-size: 16px;
     }
   }
@@ -736,7 +1187,8 @@ export default {
     align-items: center;
     font-size: 20px;
 
-    svg, img {
+    svg,
+    img {
       width: 30px;
       height: 30px;
       margin-bottom: 10px;
@@ -779,10 +1231,10 @@ export default {
         position: relative;
 
         &::before {
-          content: "\2022"; 
+          content: '\2022';
           position: absolute;
           font-weight: bold;
-          width: 20px; 
+          width: 20px;
           left: -12px;
           opacity: 0.5;
         }
@@ -806,12 +1258,11 @@ export default {
         -moz-columns: 2;
       }
     }
-
   }
 
   .deposit {
     margin-bottom: 30px;
-    
+
     p {
       font-size: 14px;
       font-weight: 300;
@@ -829,7 +1280,7 @@ export default {
   }
 }
 .project-intro {
-  background-color: #F4F4F4;
+  background-color: #f4f4f4;
   padding: 50px 0;
 
   h2 {
@@ -852,7 +1303,10 @@ export default {
     padding: 40px 0;
   }
 
-  h2, h3, h4, p {
+  h2,
+  h3,
+  h4,
+  p {
     color: white;
   }
 
@@ -868,7 +1322,7 @@ export default {
   .ant-row-flex {
     width: 105%;
 
-    @media (max-width:992px) {
+    @media (max-width: 992px) {
       width: 100%;
     }
   }
@@ -878,14 +1332,14 @@ export default {
     margin-top: 30px;
     flex-wrap: wrap;
     // justify-content: space-between;
-  
+
     .icon {
       width: 25%;
       text-align: center;
       display: flex;
       align-items: center;
       flex-direction: column;
-  
+
       img {
         width: 30px;
         height: 30px;
@@ -916,34 +1370,21 @@ export default {
     }
 
     @media (max-width: 992px) {
-      .icon {        
+      .icon {
         p {
           width: 100%;
           font-size: 13px;
           opacity: 0.7;
         }
       }
-
     }
 
-    @media(max-width: 768px) {
+    @media (max-width: 768px) {
       .icon {
-        width:50%;
+        width: 50%;
         margin-bottom: 30px;
       }
     }
-  }
-}
-
-.recommended {
-  padding: 50px 0 100px 0;
-
-  h2 {
-    margin-bottom: 30px;
-  }
-
-  @media (max-width: 768px) {
-    padding: 30px 0 60px 0;
   }
 }
 
@@ -973,5 +1414,10 @@ export default {
   .features {
     text-align: left;
   }
+}
+.sec-description {
+  padding: 50px 0;
+  background-color: $navy;
+  color: #fff;
 }
 </style>
