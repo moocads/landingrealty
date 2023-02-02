@@ -6,7 +6,7 @@
     >
       <div class="swiper-wrapper">
         <div class="swiper-slide project-slide" v-for="(img, index) in images" :key="index">
-          <img :src="img.attributes.url" />
+          <img :src="checkImageExisted(img)" />
         </div>
       </div>
       <!-- <div class="swiper-button-next"></div>
@@ -15,7 +15,7 @@
     <div thumbsSlider="" class="swiper small">
       <div class="swiper-wrapper">
         <div class="swiper-slide project-thumbs" v-for="(img, index) in images" :key="index">
-          <img :src="img.attributes.url" />
+          <img :src="checkImageExisted(img)" />
         </div>
       </div>
       <div class="swiper-button-next"></div>
@@ -58,7 +58,16 @@ export default {
         prevEl: ".swiper-button-prev",
       },
     });
-  }
+  },
+  methods: {
+    checkImageExisted(img){
+      if(!img){
+        return '/img/about/about-img.jpg'
+      }else{
+        return img.attributes.url
+      }
+    },
+  },
 }
 </script>
 <style lang="scss">

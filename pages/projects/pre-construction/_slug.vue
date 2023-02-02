@@ -380,7 +380,7 @@
       </div>
     </div>
     <section  v-if="item.attributes.rich_description && $i18n.locale === 'en'" class="sec-description"
-    :style="`background-image:url(${item.attributes.pre_construction_description_bg.data[0].attributes.url})`"
+    :style="`background-image:url(${checkImageExisted(item.attributes.pre_construction_description_bg)})`"
     >
       <div class="wrapper">
         <h2 style="color: #fff; margin-bottom: 16px">Description</h2>
@@ -392,7 +392,7 @@
     </section>
     <section v-if="item.attributes.rich_description_zh && $i18n.locale === 'zh'" 
     class="sec-description"
-    :style="`background-image:url(${item.attributes.pre_construction_description_bg.data[0].attributes.url})`"
+    :style="`background-image:url(${checkImageExisted(item.attributes.pre_construction_description_bg)})`"
     >
       <div class="wrapper">
         <h2 style="color: #fff; margin-bottom: 16px">Description</h2>
@@ -403,7 +403,7 @@
       </div>
     </section>
     <section v-if="item.attributes.rich_description_tc && $i18n.locale === 'tc'" class="sec-description"
-    :style="`background-image:url(${item.attributes.pre_construction_description_bg.data[0].attributes.url})`"
+    :style="`background-image:url(${checkImageExisted(item.attributes.pre_construction_description_bg)})`"
     >
       <div class="wrapper">
         <h2 style="color: #fff; margin-bottom: 16px">Description</h2>
@@ -413,11 +413,11 @@
         ></div>
       </div>
     </section>
-    <section class="sec-pad sec-gmap">
+    <section v-if="item.attributes.pre_construction_map.data" class="sec-pad sec-gmap" >
       <div class="wrapper">
         <img
           class="google-map-img"
-          :src="item.attributes.pre_construction_map.data[0].attributes.url"
+          :src="checkImageExisted(item.attributes.pre_construction_map)"
           alt="Pre construction Google Map"
         />
       </div>
@@ -476,6 +476,7 @@
 </template>
 <script>
 import saleStatus from '~/utils/saleStatus'
+import { checkImageExisted } from '~/utils/utils'
 // import ProjectDetailsSlider from "../../components/ProjectDetailsSlider.vue";
 export default {
   head() {
@@ -558,6 +559,13 @@ export default {
       }
       return route
     },
+    // checkImageExisted(img){
+    //   if(!img.data){
+    //     return '/img/about/about-img.jpg'
+    //   }else{
+    //     return img.data[0].attributes.url
+    //   }
+    // },
     submitForm(e) {
       e.preventDefault()
       this.registrationForm.validateFields(async (err, values) => {

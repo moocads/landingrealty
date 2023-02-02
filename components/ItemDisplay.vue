@@ -59,29 +59,8 @@
                   :to="localePath(checkTypes(item.attributes.type, item.id))"
                 >
                   <ItemCard
-                    :img="item.attributes.thumbnail.data[0].attributes.url"
-                    :title="
-                      item.attributes.type === 'precon' && $i18n.locale === 'en'
-                        ? item.attributes.title
-                        : item.attributes.type === 'precon' &&
-                          $i18n.locale === 'zh'
-                        ? item.attributes.title_zh
-                        : item.attributes.type === 'precon' &&
-                          $i18n.locale === 'tc'
-                        ? item.attributes.title_tc
-                        : item.attributes.type === 'assignment' &&
-                          $i18n.locale === 'en'
-                        ? item.attributes.title
-                        : item.attributes.type === 'assignment' &&
-                          $i18n.locale === 'zh'
-                        ? item.attributes.title_zh
-                        : item.attributes.type === 'assignment' &&
-                          $i18n.locale === 'tc'
-                        ? item.attributes.title_tc
-                        : item.attributes.type === 'resell'
-                        ? item.attributes.address
-                        : ''
-                    "
+                    :img="checkImageExisted(item.attributes.thumbnail)"
+                    :title="item.attributes.address ? item.attributes.address : 'N/A'"
                     :tag="item.attributes.location"
                     :content="item.attributes.price.toString()"
                   />
@@ -118,6 +97,13 @@ export default {
         route = `/projects/${id}`
       }
       return route
+    },
+    checkImageExisted(img){
+      if(!img.data){
+        return '/img/300x400.svg'
+      }else{
+        return img.data[0].attributes.url
+      }
     },
   },
 }

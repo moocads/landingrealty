@@ -972,6 +972,7 @@
 </template>
 <script>
 import saleStatus from '~/utils/saleStatus'
+
 // import ProjectDetailsSlider from "../../components/ProjectDetailsSlider.vue";
 export default {
   head() {

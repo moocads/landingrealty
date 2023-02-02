@@ -22,16 +22,8 @@
         <div v-for="(item, index) in displayData.data" :key="index">
           <NuxtLink :to="localePath(`/projects/${item.id}`)">
             <ItemCard
-              :img="item.attributes.thumbnail.data[0].attributes.url"
-              :title="
-                item.attributes.type === 'commercial' && $i18n.locale === 'en'
-                  ? item.attributes.title
-                  : item.attributes.type === 'commercial' &&
-                    $i18n.locale === 'zh'
-                  ? item.attributes.title_zh
-                  : item.attributes.type === 'commercial' &&
-                    $i18n.locale === 'tc' ? item.attributes.title_tc : ''
-              "
+              :img="checkImageExisted(item.attributes.thumbnail)"
+              :title="item.attributes.address"
               :tag="item.attributes.location"
               :content="item.attributes.price.toString()"
             />
@@ -54,6 +46,15 @@ export default {
   props: {
     displayData: Object,
     isHome: { type: Boolean, default: false },
+  },
+  methods: {
+    checkImageExisted(img){
+      if(!img.data){
+        return '/img/300x400.svg'
+      }else{
+        return img.data[0].attributes.url
+      }
+    },
   },
 }
 </script>
