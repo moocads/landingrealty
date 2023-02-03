@@ -136,10 +136,10 @@
                 </a>
               </li>
               <li class="email">
-                <a href="mailto:info@landingrealestate.com">
+                <a href="mailto:info@landingrealty.ca">
                   <a-icon type="mail" theme="filled" />
                   <span>
-                    info@landingrealestate.com
+                    info@landingrealty.ca
                   </span>
                 </a>
               </li>
@@ -182,7 +182,7 @@
       </a-row>
       <div class="copyright">
         <p>
-          © 2022 Landing Realty Inc. All right reserved.
+          © 2023 Landing Realty Inc. All right reserved.
         </p>
         <p>
           Designed by <a href="https://moocads.com/">Mooc Creative</a>
@@ -199,7 +199,7 @@
         </div>
         <div class="divide"></div>
         <div class="mail">
-          <a href="mailto:info@landingrealestate.com">
+          <a href="mailto:info@landingrealty.ca">
             <a-icon type="mail" theme="filled" />
             {{$t('emailUs')}}
           </a>

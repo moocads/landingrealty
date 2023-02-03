@@ -15,6 +15,7 @@
   <div class="recommended">
     <div class="wrapper">
       <h2>{{ $t('recommended') }}</h2>
+      {{ recData }}
       <a-row :gutter="[36, 36]">
         <a-col
           :xl="{ span: 6 }"
@@ -44,7 +45,7 @@ export default {
   props: {
     recData: {
       type: Array,
-      default: [],
+      default: () => [],
     },
   },
 }

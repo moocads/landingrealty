@@ -136,10 +136,10 @@
                   </a>
                 </li>
                 <li class="email">
-                  <a href="mailto:info@landingrealestate.com">
+                  <a href="mailto:info@landingrealty.ca">
                     <a-icon type="mail" theme="filled" />
                     <span>
-                      info@landingrealestate.com
+                      info@landingrealty.ca
                     </span>
                   </a>
                 </li>

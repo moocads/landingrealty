@@ -476,7 +476,6 @@
 </template>
 <script>
 import saleStatus from '~/utils/saleStatus'
-import { checkImageExisted } from '~/utils/utils'
 // import ProjectDetailsSlider from "../../components/ProjectDetailsSlider.vue";
 export default {
   head() {
@@ -559,13 +558,13 @@ export default {
       }
       return route
     },
-    // checkImageExisted(img){
-    //   if(!img.data){
-    //     return '/img/about/about-img.jpg'
-    //   }else{
-    //     return img.data[0].attributes.url
-    //   }
-    // },
+    checkImageExisted(img){
+      if(!img.data){
+        return '/img/about/about-img.jpg'
+      }else{
+        return img.data[0].attributes.url
+      }
+    },
     submitForm(e) {
       e.preventDefault()
       this.registrationForm.validateFields(async (err, values) => {
