@@ -100,7 +100,7 @@
             $t('learn')
           }}
           </NuxtLink>
-          <h4>Landing Realty Inc. Brokerage (Capital)</h4>
+          <h4>LANDING REALTY INC. BROKERAGE</h4>
         </div>
       </div>
     </div>
