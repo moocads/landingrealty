@@ -1,204 +1,10 @@
 <i18n>
 {
   "en":{
-    "home":"Home",
-    "resell":"Resale",
-    "precon":"Pre-Construction",
-    "maintenance":"Maintenance",
-    "intersection":"Major Intersection",
-    "starting":"Starting Date",
-    "closing":"Closing Date",
-    "floor":"Floor",
-    "suite":"Suite",
-    "size":"Size",
-    "basements":"Basements",
-    "exposure":"Exposure",
-    "status":"Sale Status",
-    "features":"Features",
-    "entertainment":"Entertainment",
-    "see":"See",
-    "hear":"Hear",
-    "taste":"Taste",
-    "play":"Play",
-    "wellness":"Wellness",
-    "nature":"Nature",
-    "workout":"Workout",
-    "relax":"Relax",
-    "nourish":"Nourish",
-    "area":"Area",
-    "transit":"Transit",
-    "shopping":"Shopping",
-    "schools":"Schools",
-    "hospitals":"Hospitals",
-    "intro":"Project Introduction",
-    "neighborhood":"Neighborhood",
-    "deposit":"Deposit Structure",
-    "depositL":"Canadian/PR",
-    "depositI":"International",
-    "contact":"CONTACT AGENT",
-    "floorplan":"FLOORPLAN",
-    "n":"North",
-    "ne":"Northeast",
-    "e":"East",
-    "se":"Southeast",
-    "s":"South",
-    "sw":"Southwest",
-    "w":"West",
-    "nw":"Northwest",
-    "coming": "Coming Soon",
-    "sale": "On Sale Now",
-    "final": "Final Release",
-    "sold": "Sold Out",
-    "soldOver": "Sold Over Asking",
-    "fromSearch":"Search Results",
-    "tax":"Tax",
-    "assignment":"Assignment",
-    "rental":"Rental",
-    "commercial":"Commercial"
+    "fromSearch":"Search Results"
   },
   "zh":{
-    "home":"首页",
-    "resell":"转售",
-    "precon":"楼花",
-    "maintenance":"管理费",
-    "intersection":"主要枢纽",
-    "starting":"动工日期",
-    "closing":"交接日期",
-    "floor":"楼层",
-    "suite":"单元号",
-    "size":"面积",
-    "basements":"地下室",
-    "exposure":"朝向",
-    "status":"出售状态",
-    "features":"设施",
-    "Elevator":"电梯",
-    "Gym":"健身房",
-    "Building Storage":"储物室",
-    "Locker":"储物柜",
-    "Pets":"允许宠物",
-    "Garage":"车库",
-    "Dog Care":"狗狗设施",
-    "Game Room":"游戏室",
-    "Pool":"游泳池",
-    "Building Laundry":"洗衣房",
-    "Concierge":"前台",
-    "BBQ":"烧烤台",
-    "Rooftop":"天台",
-    "Bike Storage":"自行车库",
-    "Lounge":"休息室",
-    "Playground":"儿童设施",
-    "entertainment":"娱乐",
-    "see":"视觉享受",
-    "hear":"听觉享受",
-    "taste":"味觉享受",
-    "play":"日常享受",
-    "wellness":"健康养生",
-    "nature":"接触自然",
-    "workout":"健身场所",
-    "relax":"身心放松",
-    "nourish":"滋补养身",
-    "area":"周围地区",
-    "transit":"公共交通",
-    "shopping":"日常购物",
-    "schools":"学校教育",
-    "hospitals":"医疗设施",
-    "intro":"项目介绍",
-    "neighborhood":"周边设施",
-    "deposit":"付款流程",
-    "depositL":"加拿大公民及永久居民",
-    "depositI":"非加拿大公民及永久居民",
-    "contact":"联系经纪",
-    "floorplan":"户型图",
-    "n":"北",
-    "ne":"东-北",
-    "e":"东",
-    "se":"东-南",
-    "s":"南",
-    "sw":"西-南",
-    "w":"西",
-    "nw":"西-北",
-    "coming": "即将上线",
-    "sale": "在售",
-    "final": "尾盘在售",
-    "sold": "售罄",
-    "soldOver": "高价卖出",
-    "fromSearch":"搜索结果",
-    "tax":"地税",
-    "assignment":"楼花转让",
-    "rental":"房屋出租",
-    "commercial":"商业"
-  },
-  "tc":{
-    "home":"首頁",
-    "resell":"轉售",
-    "precon":"樓花",
-    "maintenance":"管理費",
-    "intersection":"主要樞紐",
-    "starting":"動工日期",
-    "closing":"交接日期",
-    "floor":"樓層",
-    "suite":"單元號",
-    "size":"面積",
-    "basements":"地下室",
-    "exposure":"朝向",
-    "status":"出售狀態",
-    "features":"設施",
-    "Elevator":"電梯",
-    "Gym":"健身房",
-    "Building Storage":"儲物室",
-    "Locker":"儲物櫃",
-    "Pets":"允許寵物",
-    "Garage":"車庫",
-    "Dog Care":"狗狗設施",
-    "Game Room":"遊戲室",
-    "Pool":"游泳池",
-    "Building Laundry":"洗衣房",
-    "Concierge":"前台",
-    "BBQ":"燒烤台",
-    "Rooftop":"天台",
-    "Bike Storage":"自行車庫",
-    "Lounge":"休息室",
-    "Playground":"兒童設施",
-    "entertainment":"娛樂",
-    "see":"視覺享受",
-    "hear":"聽覺享受",
-    "taste":"味覺享受",
-    "play":"日常享受",
-    "wellness":"健康養生",
-    "nature":"接觸自然",
-    "workout":"健身場所",
-    "relax":"身心放鬆",
-    "nourish":"滋補養身",
-    "area":"周圍地區",
-    "transit":"公共交通",
-    "shopping":"日常購物",
-    "schools":"學校教育",
-    "hospitals":"醫療設施",
-    "intro":"項目介紹",
-    "neighborhood":"周邊設施",
-    "deposit":"付款流程",
-    "depositL":"加拿大公民及永久居民",
-    "depositI":"非加拿大公民及永久居民",
-    "contact":"聯繫經紀",
-    "floorplan":"戶型圖",
-    "n":"北",
-    "ne":"東-北",
-    "e":"東",
-    "se":"東-南",
-    "s":"南",
-    "sw":"西-南",
-    "w":"西",
-    "nw":"西-北",
-    "coming": "即將上線",
-    "sale": "在售",
-    "final": "尾盤在售",
-    "sold": "售罄",
-    "soldOver": "高價賣出",
-    "fromSearch":"搜索結果",
-    "tax":"地稅",
-    "assignment":"樓花轉讓",
-    "rental":"房屋出租",
-    "commercial":"商業"
+    "fromSearch":"搜索结果"
   }
 }
 </i18n>
@@ -213,7 +19,7 @@
         </a-breadcrumb-item>
         <a-breadcrumb-item v-if="!fromSearch">
           <nuxt-link :to="localePath(breadcrumbRoute(item.attributes.type))">
-            {{ $t(item.attributes.type) }}
+            {{ $t('types.'+item.attributes.type) }}
           </nuxt-link>
         </a-breadcrumb-item>
         <a-breadcrumb-item v-if="fromSearch">
@@ -260,7 +66,7 @@
               <ProjectBriefIntro
                 :project-type="item.attributes.type"
                 :project-style="item.attributes.style"
-                :status="$t(item.attributes.status)"
+                :status="$t('sale-status.'+item.attributes.status)"
                 :price="decimalFormatter(item.attributes.price)"
                 :mls="item.attributes.mls"
               />
@@ -274,7 +80,7 @@
                     :xs="{ span: 12 }"
                   >
                     <span>
-                      {{ $t('size') }}
+                      {{ $t('assignment.size') }}
                     </span>
                     <h3>
                       {{
@@ -293,7 +99,7 @@
                     :xs="{ span: 12 }"
                   >
                     <span>
-                      {{ $t('floor') }}
+                      {{ $t('assignment.floor') }}
                     </span>
                     <h3>
                       {{
@@ -310,12 +116,12 @@
                     :xs="{ span: 12 }"
                   >
                     <span>
-                      {{ $t('exposure') }}
+                      {{ $t('assignment.exposure') }}
                     </span>
                     <h3>
                       {{
                         item.attributes.exposure
-                          ? $t(item.attributes.exposure)
+                          ? $t('exposure.'+item.attributes.exposure)
                           : 'N/A'
                       }}
                     </h3>
@@ -329,7 +135,7 @@
                     :xs="{ span: 12 }"
                   >
                     <span>
-                      {{ $t('maintenance') }}
+                      {{ $t('assignment.maintenance') }}
                     </span>
                     <h3>
                       {{
@@ -350,7 +156,7 @@
                     :xs="{ span: 12 }"
                   >
                     <span>
-                      {{ $t('tax') }}
+                      {{ $t('assignment.tax') }}
                     </span>
                     <h3>
                       {{ item.attributes.tax ? item.attributes.tax : 'N/A' }}
@@ -366,7 +172,7 @@
                     
                   >
                     <span>
-                      {{ item.attributes.style === 'condo' ? $t('Locker') : $t('basements') }}
+                      {{ item.attributes.style === 'condo' ? $t('features.Locker') : $t('assignment.basements') }}
                     </span>
                     <h3>
                       {{
@@ -415,79 +221,16 @@
                 </div>
               </div>
               <div class="features-wrapper">
-                <h4>{{ $t('features') }}</h4>
+                <h4>{{ $t('assignment.features') }}</h4>
                 <div class="features">
                   <ul>
                     <li
                       v-for="(feature, index) in item.attributes.features"
                       :key="index"
                     >
-                      {{ $t(feature) }}
+                      {{ $t('features.'+feature) }}
                     </li>
                   </ul>
-                </div>
-                <div class="deposit" v-if="item.attributes.type === 'precon'">
-                  <h4>{{ $t('deposit') }}</h4>
-                  <a-row :gutter="[30, 30]">
-                    <a-col :sm="{ span: 12 }" :xs="{ span: 24 }">
-                      <h6>
-                        <strong>{{ $t('depositL') }}</strong>
-                      </h6>
-                      <p
-                        v-if="$i18n.locale === 'en'"
-                        v-html="
-                          item.attributes.deposit
-                            ? item.attributes.deposit
-                            : 'N/A'
-                        "
-                      ></p>
-                      <p
-                        v-if="$i18n.locale === 'zh'"
-                        v-html="
-                          item.attributes.deposit_zh
-                            ? item.attributes.deposit_zh
-                            : 'N/A'
-                        "
-                      ></p>
-                      <p
-                        v-if="$i18n.locale === 'tc'"
-                        v-html="
-                          item.attributes.deposit_tc
-                            ? item.attributes.deposit_tc
-                            : 'N/A'
-                        "
-                      ></p>
-                    </a-col>
-                    <a-col :sm="{ span: 12 }" :xs="{ span: 24 }">
-                      <h6>
-                        <strong>{{ $t('depositI') }}</strong>
-                      </h6>
-                      <p
-                        v-if="$i18n.locale === 'en'"
-                        v-html="
-                          item.attributes.depositIntl
-                            ? item.attributes.depositIntl
-                            : 'N/A'
-                        "
-                      ></p>
-                      <p
-                        v-if="$i18n.locale === 'zh'"
-                        v-html="
-                          item.attributes.depositIntl_zh
-                            ? item.attributes.depositIntl_zh
-                            : 'N/A'
-                        "
-                      ></p>
-                      <p
-                        v-if="$i18n.locale === 'tc'"
-                        v-html="
-                          item.attributes.depositIntl_tc
-                            ? item.attributes.depositIntl_tc
-                            : 'N/A'
-                        "
-                      ></p>
-                    </a-col>
-                  </a-row>
                 </div>
                 <div class="btn-container">
                   <a-row type="flex" :gutter="[12, 12]">
@@ -501,7 +244,7 @@
                           href="#"
                           class="main-btn navy"
                           style="border-radius: 5px"
-                          >{{ $t('contact') }}</a
+                          >{{ $t('assignment.contact') }}</a
                         >
                       </nuxt-link>
                     </a-col>
@@ -517,11 +260,11 @@
                         style="border-radius: 5px"
                         @click="floorPlanModal = true"
                       >
-                        {{ $t('floorplan') }}
+                        {{ $t('assignment.floorplan') }}
                       </a>
                       <a-modal v-model="floorPlanModal" :footer="null">
                         <h3 style="color: #0b2c42; font-size: 20px">
-                          {{ $t('floorplan') }}
+                          {{ $t('assignment.floorplan') }}
                         </h3>
                         <br />
                         <a

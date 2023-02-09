@@ -1,0 +1,74 @@
+{
+  "home":"首頁",
+  "view":"查看更多",
+  "assignment": {
+    "sale-status": "出售狀態",
+    "location": "地區",
+    "starting-price": "起始價格",
+    "developer": "開發商",
+    "unit-size-range": "單元尺寸區間",
+    "occupancy": "交房時間",
+    "stories":"樓層",
+    "units":"單元數",
+    "exposure":"朝向",
+    "tax":"地稅",
+    "maintenance":"管理費",
+    "floor":"樓層",
+    "suite":"單元號",
+    "size":"面積",
+    "features":"設施",
+    "basements":"地下室",
+    "contact":"聯系經紀",
+    "floorplan":"戶型圖"
+  },
+  "sale-status":{
+    "coming":"即將開盤/上盤",
+    "for_sale":"出售",
+    "for_lease":"出租",
+    "leased":"租出",
+    "sold":"成交",
+    "sold_out":"售罄",
+    "final":"最後放盤"
+  },
+  "styles":{
+    "condo":"公寓",
+    "townhouse":"鎮屋",
+    "detached":"獨立屋",
+    "semi-detached":"半獨立屋"
+  },
+  "types":{
+    "resell":"轉售",
+    "precon":"樓花",
+    "assignment":"樓花轉讓",
+    "rental":"房屋出租",
+    "commercial":"商業"
+  },
+  "exposure":{
+    "n":"北",
+    "ne":"東-北",
+    "e":"東",
+    "se":"東-南",
+    "s":"南",
+    "sw":"西-南",
+    "w":"西",
+    "nw":"西-北"
+  },
+  "features":{
+    "Locker":"儲物櫃",
+    "Elevator":"電梯",
+    "Gym":"健身房",
+    "Building Storage":"儲物室",
+    "Pets":"允許寵物",
+    "Garage":"車庫",
+    "Dog Care":"狗狗設施",
+    "Game Room":"遊戲室",
+    "Pool":"遊泳池",
+    "Building Laundry":"洗衣房",
+    "Concierge":"前臺",
+    "BBQ":"燒烤臺",
+    "Rooftop":"天臺",
+    "Bike Storage":"自行車庫",
+    "Lounge":"休息室",
+    "Playground":"兒童設施"
+  }
+}

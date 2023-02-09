@@ -12,8 +12,6 @@
     "suite":"Suite",
     "size":"Size",
     "basements":"Basements",
-    "exposure":"Exposure",
-    "status":"Sale Status",
     "features":"Features",
     "entertainment":"Entertainment",
     "see":"See",
@@ -37,19 +35,7 @@
     "depositI":"International",
     "contact":"CONTACT AGENT",
     "floorplan":"FLOORPLAN",
-    "n":"North",
-    "ne":"Northeast",
-    "e":"East",
-    "se":"Southeast",
-    "s":"South",
-    "sw":"Southwest",
-    "w":"West",
-    "nw":"Northwest",
-    "coming": "Coming Soon",
-    "sale": "On Sale Now",
-    "final": "Final Release",
-    "sold": "Sold Out",
-    "soldOver": "Sold Over Asking",
+    
     "fromSearch":"Search Results",
     "tax":"Tax",
     "stories":"Stories",
@@ -79,7 +65,6 @@
     "size":"面积",
     "basements":"地下室",
     "exposure":"朝向",
-    "status":"出售状态",
     "features":"设施",
     "Elevator":"电梯",
     "Gym":"健身房",
@@ -119,19 +104,6 @@
     "depositI":"非加拿大公民及永久居民",
     "contact":"联系经纪",
     "floorplan":"户型图",
-    "n":"北",
-    "ne":"东-北",
-    "e":"东",
-    "se":"东-南",
-    "s":"南",
-    "sw":"西-南",
-    "w":"西",
-    "nw":"西-北",
-    "coming": "即将上线",
-    "sale": "在售",
-    "final": "尾盘在售",
-    "sold": "售罄",
-    "soldOver": "高价卖出",
     "fromSearch":"搜索结果",
     "tax":"地税",
     "stories":"楼层",
@@ -209,11 +181,6 @@
     "sw":"西-南",
     "w":"西",
     "nw":"西-北",
-    "coming": "即將上線",
-    "sale": "在售",
-    "final": "尾盤在售",
-    "sold": "售罄",
-    "soldOver": "高價賣出",
     "fromSearch":"搜索結果",
     "tax":"地稅",
     "stories":"樓層",
@@ -287,15 +254,103 @@
               <h1>
                 {{ item.attributes.address }}
               </h1>
-              <ProjectBriefIntro
-                :project-type="item.attributes.type"
-                :project-style="item.attributes.style"
-                :status="$t(item.attributes.status)"
-                :price="decimalFormatter(item.attributes.price)"
-                :mls="item.attributes.mls"
-              />
               <div class="project-basics">
                 <a-row type="flex" :gutter="[15, 20]">
+                  <!-- Sale Status Start  -->
+                  <a-col
+                    :lg="{ span: 8 }"
+                    :md="{ span: 8 }"
+                    :sm="{ span: 12 }"
+                    :xs="{ span: 12 }"
+                  >
+                    <span>
+                      {{ $t('assignment.sale-status') }}
+                    </span>
+                    <h3>
+                      {{
+                        item.attributes.status
+                          ? $t('sale-status.' + item.attributes.status)
+                          : 'N/A'
+                      }}
+                    </h3>
+                  </a-col>
+                  <!-- Sale Status End  -->
+                  <!-- Location Start  -->
+                  <a-col
+                    :lg="{ span: 8 }"
+                    :md="{ span: 8 }"
+                    :sm="{ span: 12 }"
+                    :xs="{ span: 12 }"
+                  >
+                    <span>
+                      {{ $t('assignment.location') }}
+                    </span>
+                    <h3>
+                      {{
+                        item.attributes.location
+                          ? item.attributes.location
+                          : 'N/A'
+                      }}
+                    </h3>
+                  </a-col>
+                  <!-- Location End  -->
+                  <!-- Starting Price Start  -->
+                  <a-col
+                    :lg="{ span: 8 }"
+                    :md="{ span: 8 }"
+                    :sm="{ span: 12 }"
+                    :xs="{ span: 12 }"
+                  >
+                    <span>
+                      {{ $t('assignment.starting-price') }}
+                    </span>
+                    <h3>
+                      ${{
+                        decimalFormatter(item.attributes.price)
+                          ? decimalFormatter(item.attributes.price)
+                          : 'N/A'
+                      }}
+                    </h3>
+                  </a-col>
+                  <!-- Starting Price End  -->
+                  <!-- Developer Start  -->
+                  <a-col
+                    :lg="{ span: 8 }"
+                    :md="{ span: 8 }"
+                    :sm="{ span: 12 }"
+                    :xs="{ span: 12 }"
+                  >
+                    <span>
+                      {{ $t('assignment.developer') }}
+                    </span>
+                    <h3>
+                      {{
+                        item.attributes.developer_name
+                          ? item.attributes.developer_name
+                          : 'N/A'
+                      }}
+                    </h3>
+                  </a-col>
+                  <!-- Developer End  -->
+                  <!-- Size Start  -->
+                  <a-col
+                    :lg="{ span: 8 }"
+                    :md="{ span: 8 }"
+                    :sm="{ span: 12 }"
+                    :xs="{ span: 12 }"
+                  >
+                    <span>
+                      {{ $t('assignment.unit-size-range') }}
+                    </span>
+                    <h3>
+                      {{
+                        item.attributes.unit_size_range
+                          ? item.attributes.unit_size_range + ' sqft'
+                          : 'N/A'
+                      }}
+                    </h3>
+                  </a-col>
+                  <!-- Size End  -->
                   <!-- Occupancy Start  -->
                   <a-col
                     :lg="{ span: 8 }"
@@ -304,7 +359,7 @@
                     :xs="{ span: 12 }"
                   >
                     <span>
-                      {{ $t('occupancy') }}
+                      {{ $t('assignment.occupancy') }}
                     </span>
                     <h3>
                       {{
@@ -315,25 +370,6 @@
                     </h3>
                   </a-col>
                   <!-- Occupancy End  -->
-                  <!-- Size Start  -->
-                  <a-col
-                    :lg="{ span: 8 }"
-                    :md="{ span: 8 }"
-                    :sm="{ span: 12 }"
-                    :xs="{ span: 12 }"
-                  >
-                    <span>
-                      {{ $t('size') }}
-                    </span>
-                    <h3>
-                      {{
-                        item.attributes.size
-                          ? item.attributes.size + ' sqft'
-                          : 'N/A'
-                      }}
-                    </h3>
-                  </a-col>
-                  <!-- Size End  -->
                   <!-- Stories Start  -->
                   <a-col
                     :lg="{ span: 8 }"

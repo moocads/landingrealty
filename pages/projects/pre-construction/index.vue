@@ -1,7 +1,7 @@
 
 <template>
   <div class="container page-project">
-    <ItemDisplay title="pre-construction" :displayData="data" data-aos="fade-up" />
+    <ItemDisplay title="precon" :displayData="data" data-aos="fade-up" />
     <Subscription />
   </div>
 </template>
@@ -70,8 +70,8 @@ export default {
     let data = {
       condo: resCondo.data,
       detached: resDetached.data,
-      townhouse: resTownHouse.data,
-      "semi-detached":resSemiDetached.data
+      "semi-detached":resSemiDetached.data,
+      townhouse: resTownHouse.data
     }
     return {
       data

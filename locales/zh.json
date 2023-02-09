@@ -1,0 +1,74 @@
+{
+  "home":"首页",
+  "view":"查看更多",
+  "assignment": {
+    "sale-status": "出售状态",
+    "location": "地区",
+    "starting-price": "起始价格",
+    "developer": "开发商",
+    "unit-size-range": "单元尺寸区间",
+    "occupancy": "交房时间",
+    "stories":"楼层",
+    "units":"单元数",
+    "exposure":"朝向",
+    "tax":"地税",
+    "maintenance":"管理费",
+    "floor":"楼层",
+    "suite":"单元号",
+    "size":"面积",
+    "features":"设施",
+    "basements":"地下室",
+    "contact":"联系经纪",
+    "floorplan":"户型图"
+  },
+  "sale-status":{
+    "coming":"即将开盘/上盘",
+    "for_sale":"出售",
+    "for_lease":"出租",
+    "leased":"租出",
+    "sold":"成交",
+    "sold_out":"售罄",
+    "final":"最后放盘"
+  },
+  "styles":{
+    "condo":"公寓",
+    "townhouse":"镇屋",
+    "detached":"独立屋",
+    "semi-detached":"半独立屋"
+  },
+  "types":{
+    "resell":"转售",
+    "precon":"楼花",
+    "assignment":"楼花转让",
+    "rental":"房屋出租",
+    "commercial":"商业"
+  },
+  "exposure":{
+    "n":"北",
+    "ne":"东-北",
+    "e":"东",
+    "se":"东-南",
+    "s":"南",
+    "sw":"西-南",
+    "w":"西",
+    "nw":"西-北"
+  },
+  "features":{
+    "Locker":"储物柜",
+    "Elevator":"电梯",
+    "Gym":"健身房",
+    "Building Storage":"储物室",
+    "Pets":"允许宠物",
+    "Garage":"车库",
+    "Dog Care":"狗狗设施",
+    "Game Room":"游戏室",
+    "Pool":"游泳池",
+    "Building Laundry":"洗衣房",
+    "Concierge":"前台",
+    "BBQ":"烧烤台",
+    "Rooftop":"天台",
+    "Bike Storage":"自行车库",
+    "Lounge":"休息室",
+    "Playground":"儿童设施"
+  }
+}

@@ -136,7 +136,7 @@
       </div>
     </section>
     <ItemDisplay
-      title="pre-construction"
+      title="precon"
       :displayData="this.precon"
       :isHome="true"
       data-aos="fade-up"
@@ -151,7 +151,7 @@
       </div>
     </section>
     <ItemDisplay
-      title="resales"
+      title="resell"
       :displayData="this.resales"
       :isHome="true"
       data-aos="fade-up"
@@ -340,14 +340,14 @@ export default {
     let precon = {
       condo: res1.data,
       detached: res2.data,
-      townhouse: res3.data,
-      "semi-detached":preconSemiDetachedData.data
+      "semi-detached":preconSemiDetachedData.data,
+      townhouse: res3.data
     }
     let resales = {
       condo: res4.data,
       detached: res5.data,
-      townhouse: res6.data,
-      "semi-detached":resaleSemiDetachedData.data
+      "semi-detached":resaleSemiDetachedData.data,
+      townhouse: res6.data
     }
     const allArticles = await $axios.$get('/blogs', {
       params: {

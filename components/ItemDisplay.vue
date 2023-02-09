@@ -1,57 +1,14 @@
-<i18n>
-{
-  "en": {
-    "view":"VIEW ALL",
-    "condo":"Condo",
-    "house":"House",
-    "townhouse":"Townhouse",
-    "pre-construction":"Pre-Construction",
-    "resales":"Resale",
-    "assignment":"Assignment",
-    "rental":"Rental",
-    "commercial":"Commercial",
-    "detached":"Detached",
-    "semi-detached":"Semi-Detached"
-  },
-  "zh":{
-    "view":"查看全部",
-    "condo":"公寓",
-    "house":"独立屋",
-    "townhouse":"镇屋",
-    "pre-construction":"楼花",
-    "resales":"转售",
-    "assignment":"楼花转让",
-    "rental":"房屋出租",
-    "commercial":"商业",
-    "detached":"独立屋",
-    "semi-detached":"半独立屋"
-  },
-  "tc":{
-    "view":"查看全部",
-    "condo":"公寓",
-    "house":"獨立屋",
-    "townhouse":"鎮屋",
-    "pre-construction":"樓花",
-    "resales":"轉售",
-    "assignment":"樓花轉讓",
-    "rental":"房屋出租",
-    "commercial":"商業",
-    "detached":"獨立屋",
-    "semi-detached":"半獨立屋"
-  }
-}
-</i18n>
 <template>
   <section class="item-display">
     <div class="wrapper">
-      <h2 v-if="title">{{ $t(title) }}</h2>
+      <h2 v-if="title">{{ $t('types.'+title) }}</h2>
       <div>
         <a-tabs class="custom-tab" default-active-key="tab0">
           <a-tab-pane
             class="flex-col-center"
             v-for="(items, style, i) in displayData"
             :key="'tab' + i"
-            :tab="$t(style)"
+            :tab="$t('styles.'+style)"
           >
             <div class="sample-grid">
               <div v-for="(item, index) in items" :key="index">

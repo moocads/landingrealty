@@ -1,8 +1,8 @@
 <template>
   <div class="project-brief-wrap">
-    <span> {{ projectStyle }}</span>
+    <!-- <span> {{ projectStyle }}</span> -->
     <span v-if="projectType !== 'assignment'">
-      <span v-if="status"> | {{ status }} </span>
+      <span v-if="status"> {{ status }} </span>
       <span v-if="price"> | {{ '$' + price }}</span>
       <span v-if="mls">| {{ 'MLS-' + mls }}</span>
     </span>

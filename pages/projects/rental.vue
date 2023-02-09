@@ -69,8 +69,8 @@ export default {
     let data = {
       condo: resCondo.data,
       detached: resDetached.data,
-      townhouse: resTownHouse.data,
-      "semi-detached":resSemiDetached.data
+      "semi-detached":resSemiDetached.data,
+      townhouse: resTownHouse.data
     }
     return {
       data,
