@@ -408,7 +408,74 @@
                     </h3>
                   </a-col>
                   <!-- Units End  -->
+                  
                 </a-row>
+              </div>
+               <div class="features-wrapper">
+                <h4>{{ $t('assignment.features') }}</h4>
+                <div class="features">
+                  <ul>
+                    <li
+                      v-for="(feature, index) in item.attributes.features"
+                      :key="index"
+                    >
+                      {{ $t('features.'+feature) }}
+                    </li>
+                  </ul>
+                </div>
+                <div class="btn-container">
+                  <a-row type="flex" :gutter="[12, 12]">
+                    <a-col
+                      :md="{ span: 12 }"
+                      :sm="{ span: 12 }"
+                      :xs="{ span: 24 }"
+                    >
+                      <nuxt-link :to="localePath('/contact')">
+                        <a
+                          href="#"
+                          class="main-btn navy"
+                          style="border-radius: 5px"
+                          >{{ $t('assignment.contact') }}</a
+                        >
+                      </nuxt-link>
+                    </a-col>
+                    <a-col
+                      :md="{ span: 12 }"
+                      :sm="{ span: 12 }"
+                      :xs="{ span: 24 }"
+                      v-if="item.attributes.floorPlan.data"
+                    >
+                      <a
+                        target="_blank"
+                        class="main-btn gray"
+                        style="border-radius: 5px"
+                        @click="floorPlanModal = true"
+                      >
+                        {{ $t('assignment.floorplan') }}
+                      </a>
+                      <a-modal v-model="floorPlanModal" :footer="null">
+                        <h3 style="color: #0b2c42; font-size: 20px">
+                          {{ $t('assignment.floorplan') }}
+                        </h3>
+                        <br />
+                        <a
+                          v-for="(file, index) in item.attributes.floorPlan
+                            .data"
+                          :key="index"
+                          style="
+                            color: #0b2c42;
+                            text-decoration: underline;
+                            display: block;
+                          "
+                          :href="file.attributes.url"
+                          target="_blank"
+                          ><a-icon type="file"></a-icon>
+                          {{ file.attributes.name }}</a
+                        >
+                      </a-modal>
+                    </a-col>
+                  </a-row>
+                </div>
               </div>
             </div>
           </a-col>
