@@ -1,6 +1,6 @@
 {
-  "home":"Home",
-  "view":"VIEW",
+  "home": "Home",
+  "view": "VIEW",
   "assignment": {
     "sale-status": "Sale Status",
     "location": "Location",
@@ -8,67 +8,68 @@
     "developer": "Developer",
     "unit-size-range": "Unit Size Range",
     "occupancy": "Occupancy",
-    "stories":"Stories",
-    "units":"Units",
-    "exposure":"Exposure",
-    "tax":"Tax",
-    "maintenance":"Maintenance",
-    "contact":"CONTACT AGENT",
-    "features":"Features",
-    "floor":"Floor",
-    "suite":"Suite",
-    "size":"Size",
-    "basements":"Basements",
-    "floorplan":"FLOORPLAN"
+    "stories": "Stories",
+    "units": "Units",
+    "exposure": "Exposure",
+    "tax": "Tax",
+    "maintenance": "Maintenance",
+    "contact": "CONTACT AGENT",
+    "features": "Features",
+    "floor": "Floor",
+    "suite": "Suite",
+    "size": "Size",
+    "basements": "Basements",
+    "floorplan": "FLOORPLAN",
+    "address": "Address"
   },
-  "sale-status":{
-    "coming":"Coming Soon",
-    "for_sale":"For Sale",
-    "for_lease":"For Lease",
-    "leased":"Leased",
-    "sold":"Sold",
-    "sold_out":"Sold Out",
-    "final":"Final Release"
+  "sale-status": {
+    "coming": "Coming Soon",
+    "for_sale": "For Sale",
+    "for_lease": "For Lease",
+    "leased": "Leased",
+    "sold": "Sold",
+    "sold_out": "Sold Out",
+    "final": "Final Release"
   },
-  "styles":{
-    "condo":"Condo",
-    "townhouse":"Townhouse",
-    "detached":"Detached",
-    "semi-detached":"Semi-Detached"
+  "styles": {
+    "condo": "Condo",
+    "townhouse": "Townhouse",
+    "detached": "Detached",
+    "semi-detached": "Semi-Detached"
   },
-  "types":{
-    "resell":"Resale",
-    "precon":"Pre-Construction",
-    "assignment":"Assignment",
-    "rental":"Rental",
-    "commercial":"Commercial"
+  "types": {
+    "resell": "Resale",
+    "precon": "Pre-Construction",
+    "assignment": "Assignment",
+    "rental": "Rental",
+    "commercial": "Commercial"
   },
-  "exposure":{
-    "n":"North",
-    "ne":"Northeast",
-    "e":"East",
-    "se":"Southeast",
-    "s":"South",
-    "sw":"Southwest",
-    "w":"West",
-    "nw":"Northwest"
+  "exposure": {
+    "n": "North",
+    "ne": "Northeast",
+    "e": "East",
+    "se": "Southeast",
+    "s": "South",
+    "sw": "Southwest",
+    "w": "West",
+    "nw": "Northwest"
   },
-  "features":{
-    "Locker":"Lockers",
-    "Elevator":"Elevator",
-    "Gym":"Gym",
-    "Building Storage":"Building Storage",
-    "Pets":"Pets",
-    "Garage":"Garage",
-    "Dog Care":"Dog Care",
-    "Game Room":"Game Room",
-    "Pool":"Pool",
-    "Building Laundry":"Building Laundry",
-    "Concierge":"Concierge",
-    "BBQ":"BBQ",
-    "Rooftop":"Rooftop",
-    "Bike Storage":"Bike Storage",
-    "Lounge":"Lounge",
-    "Playground":"Playground"
+  "features": {
+    "Locker": "Lockers",
+    "Elevator": "Elevator",
+    "Gym": "Gym",
+    "Building Storage": "Building Storage",
+    "Pets": "Pets",
+    "Garage": "Garage",
+    "Dog Care": "Dog Care",
+    "Game Room": "Game Room",
+    "Pool": "Pool",
+    "Building Laundry": "Building Laundry",
+    "Concierge": "Concierge",
+    "BBQ": "BBQ",
+    "Rooftop": "Rooftop",
+    "Bike Storage": "Bike Storage",
+    "Lounge": "Lounge",
+    "Playground": "Playground"
   }
 }

@@ -252,7 +252,7 @@
           >
             <div class="info-wrapper">
               <h1>
-                {{ item.attributes.address }}
+                {{ item.attributes.title }}
               </h1>
               <div class="project-basics">
                 <a-row type="flex" :gutter="[15, 20]">
@@ -283,12 +283,12 @@
                     :xs="{ span: 12 }"
                   >
                     <span>
-                      {{ $t('assignment.location') }}
+                      {{ $t('assignment.address') }}
                     </span>
                     <h3>
                       {{
-                        item.attributes.location
-                          ? item.attributes.location
+                        item.attributes.address
+                          ? item.attributes.address
                           : 'N/A'
                       }}
                     </h3>
