@@ -5,36 +5,21 @@
     "about":"About",
     "projects":"Projects",
     "articles":"Articles",
-    "contact":"Contact",
-    "precon":"Pre-Construction",
-    "resale":"Resale",
-    "assignment":"Assignment",
-    "rental":"Rental",
-    "commercial":"Commercial"
+    "contact":"Contact"
   },
   "zh":{
     "home":"首页",
     "about":"关于",
     "projects":"项目",
     "articles":"资讯",
-    "contact":"联系",
-    "precon":"楼花",
-    "resale":"转售",
-    "assignment":"楼花转让",
-    "rental":"房屋出租",
-    "commercial":"商业"
+    "contact":"联系"
   },
   "tc":{
     "home":"首頁",
     "about":"關於",
     "projects":"項目",
     "articles":"資訊",
-    "contact":"聯繫",
-    "precon":"樓花",
-    "resale":"轉售",
-    "assignment":"樓花轉讓",
-    "rental":"房屋出租",
-    "commercial":"商業"
+    "contact":"聯繫"
   }
 }
 </i18n>
@@ -65,19 +50,19 @@
           /></a>
           <div class="dropdown-content">
             <NuxtLink :to="localePath('/projects/resales')">{{
-              $t('resale')
+              $t('types.resell')
             }}</NuxtLink>
             <NuxtLink :to="localePath('/projects/pre-construction')">
-              {{ $t('precon') }}
+              {{ $t('types.precon') }}
             </NuxtLink>
             <NuxtLink :to="localePath('/projects/assignment')">{{
-              $t('assignment')
+              $t('types.assignment')
             }}</NuxtLink>
             <NuxtLink :to="localePath('/projects/rental')">{{
-              $t('rental')
+              $t('types.rental')
             }}</NuxtLink>
             <NuxtLink :to="localePath('/projects/commercial')">{{
-              $t('commercial')
+              $t('types.commercial')
             }}</NuxtLink>
           </div>
         </div>
@@ -101,27 +86,27 @@
           </div>
           <div @click="mobileNavOpen = false">
             <NuxtLink :to="localePath('/projects/pre-construction')">{{
-              $t('precon')
+              $t('types.precon')
             }}</NuxtLink>
           </div>
           <div @click="mobileNavOpen = false">
             <NuxtLink :to="localePath('/projects/resales')">{{
-              $t('resale')
+              $t('types.resell')
             }}</NuxtLink>
           </div>
           <div @click="mobileNavOpen = false">
             <NuxtLink :to="localePath('/projects/assignment')">{{
-              $t('assignment')
+              $t('types.assignment')
             }}</NuxtLink>
           </div>
           <div @click="mobileNavOpen = false">
             <NuxtLink :to="localePath('/projects/rental')">{{
-              $t('rental')
+              $t('types.rental')
             }}</NuxtLink>
           </div>
           <div @click="mobileNavOpen = false">
             <NuxtLink :to="localePath('/projects/commercial')">{{
-              $t('commercial')
+              $t('types.commercial')
             }}</NuxtLink>
           </div>
           <div @click="mobileNavOpen = false">
