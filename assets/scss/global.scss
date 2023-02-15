@@ -111,7 +111,17 @@ body {
     }
   }
 }
-
+@media all and (max-width:768px){
+  .custom-tab {
+    .ant-tabs-tab {
+      font-size: 14px;
+    }
+    .ant-tabs-nav-scroll {
+      display: flex;
+      justify-content: flex-start;
+    }
+  }
+}
 .ant-tabs-nav .ant-tabs-tab:hover,
 .ant-breadcrumb a:hover {
   font-weight: 700;
