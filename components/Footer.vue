@@ -169,11 +169,11 @@
             <ul class="links">
               <li><NuxtLink :to="localePath('/')">{{$t('home')}}</NuxtLink></li>
               <li><NuxtLink :to="localePath('/about')">{{$t('about')}}</NuxtLink></li>
-              <li><NuxtLink :to="localePath('/projects/pre-construction')">{{$t('precon')}}</NuxtLink></li>
-              <li><NuxtLink :to="localePath('/projects/resales')">{{$t('resale')}}</NuxtLink></li>
-              <li><NuxtLink :to="localePath('/projects/assignment')">{{$t('assignment')}}</NuxtLink></li>
-              <li><NuxtLink :to="localePath('/projects/rental')">{{$t('rental')}}</NuxtLink></li>
-              <li><NuxtLink :to="localePath('/projects/commercial')">{{$t('commercial')}}</NuxtLink></li>
+              <li><NuxtLink :to="localePath('/projects/pre-construction')">{{$t('types.precon')}}</NuxtLink></li>
+              <li><NuxtLink :to="localePath('/projects/resales')">{{$t('types.resell')}}</NuxtLink></li>
+              <li><NuxtLink :to="localePath('/projects/assignment')">{{$t('types.assignment')}}</NuxtLink></li>
+              <li><NuxtLink :to="localePath('/projects/rental')">{{$t('types.rental')}}</NuxtLink></li>
+              <li><NuxtLink :to="localePath('/projects/commercial')">{{$t('types.commercial')}}</NuxtLink></li>
               <li><NuxtLink :to="localePath('/articles')">{{$t('articles')}}</NuxtLink></li>
               <li><NuxtLink :to="localePath('/contact')">{{$t('contact')}}</NuxtLink></li>
             </ul>
