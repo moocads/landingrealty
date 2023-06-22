@@ -182,10 +182,10 @@
       </a-row>
       <div class="copyright">
         <p>
-          © 2023 Landing Realty Inc. All right reserved.
+          © {{ new Date().getFullYear() }} Landing Realty Inc. All right reserved.
         </p>
         <p>
-          Designed by <a href="https://moocads.com/">Mooc Creative</a>
+          Powered by <a href="https://moocads.com/">Mooc Creative Lab</a>
         </p>
       </div>
     </div>
