@@ -185,7 +185,7 @@
           © {{ new Date().getFullYear() }} Landing Realty Inc. All right reserved.
         </p>
         <p>
-          Powered by <a href="https://moocads.com/">Mooc Creative Lab</a>
+          <a href="https://moocads.com/">Designed by Mooc Creative Lab</a>
         </p>
       </div>
     </div>
@@ -409,7 +409,7 @@ ul.links {
     margin-bottom: 5px;
     font-size: 12px;
     a {
-      color: white;
+      color: #0d4271;
       font-weight: bold;
     }
   }
