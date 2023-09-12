@@ -15,11 +15,16 @@
                 <NuxtLink
                   :to="localePath(checkTypes(item.attributes.type, item.id))"
                 >
-                  <ItemCard
+                  <!-- <ItemCard
                     :img="checkImageExisted(item.attributes.thumbnail)"
                     :title="item.attributes.address ? item.attributes.address : 'N/A'"
                     :tag="item.attributes.location"
                     :content="item.attributes.price.toString()"
+                  /> -->
+                  <ItemCard
+                    :img="checkImageExisted(item.attributes.thumbnail)"
+                    :title="item.attributes.address ? item.attributes.address : 'N/A'"
+                    :tag="item.attributes.location"
                   />
                 </NuxtLink>
               </div>
