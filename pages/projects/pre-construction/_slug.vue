@@ -305,11 +305,8 @@
                       {{ $t('assignment.starting-price') }}
                     </span>
                     <h3>
-                      ${{
-                        decimalFormatter(item.attributes.price)
-                          ? decimalFormatter(item.attributes.price)
-                          : 'N/A'
-                      }}
+                       {{decimalFormatter(item.attributes.price)}}
+                    
                     </h3>
                   </a-col>
                   <!-- Starting Price End  -->
@@ -643,8 +640,11 @@ export default {
   },
   methods: {
     decimalFormatter(price) {
+      if(price === 0){
+        return "N/A"
+      }
       price = price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
-      return price
+      return "$" + price
     },
     breadcrumbRoute(category) {
       let route = ''
